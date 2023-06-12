@@ -411,7 +411,7 @@ header .ci .catch-copy {
   font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  line-height: 1.5;
+  line-height: 2;
 }
 header .nav-links {
   visibility: visible;
@@ -425,7 +425,7 @@ header .nav-links li {
   letter-spacing: 0.04em;
 }
 header .nav-links li + li {
-  margin-left: 20px;
+  margin-left: 28px;
   padding-left: 0;
 }
 header .nav-links li a {
@@ -643,13 +643,15 @@ section .more-info-btn .border span:nth-of-type(6) {
 .cover .copy p {
   position: absolute;
   left: 10%;
+  margin: 0;
   font-family: "Noto Sans JP", sans-serif;
   font-size: 6rem;
   font-weight: 900;
   line-height: 1;
+  color: #fff;
 }
 .cover .copy p:nth-of-type(3) {
-  top: 365px;
+  top: 290px;
   padding: 6px;
   font-size: 2rem;
   font-weight: 700;
@@ -657,9 +659,10 @@ section .more-info-btn .border span:nth-of-type(6) {
   border: 1px solid #fff;
 }
 .cover .copy p:nth-of-type(4) {
-  top: 425px;
+  top: 350px;
   letter-spacing: 0.08em;
-  line-height: 1.3;
+  line-height: 1.4;
+  text-align: left;
 }
 .cover .copy p[lang=en] {
   font-family: "Jost", sans-serif;
@@ -684,11 +687,11 @@ section .more-info-btn .border span:nth-of-type(6) {
 }
 .cover .copy p[lang=en]:nth-of-type(2) {
   top: 200px;
-  right: 4%;
+  right: 5%;
   writing-mode: vertical-rl;
 }
 .cover .copy p[lang=en]:nth-of-type(5) {
-  top: 79%;
+  bottom: 18%;
   right: 5%;
   letter-spacing: 0.2em;
   writing-mode: vertical-rl;
@@ -704,7 +707,7 @@ section .more-info-btn .border span:nth-of-type(6) {
 }
 .cover .copy .what-new {
   position: absolute;
-  bottom: 9%;
+  bottom: 10%;
   left: 10%;
   width: -moz-fit-content;
   width: fit-content;
@@ -732,6 +735,7 @@ section .more-info-btn .border span:nth-of-type(6) {
   color: #fff;
 }
 .cover .copy .what-new p {
+  margin: 0;
   font-size: 1.4rem;
   line-height: 1;
   letter-spacing: 0.15em;
@@ -775,7 +779,7 @@ section .more-info-btn .border span:nth-of-type(6) {
 }
 .concept .composed-visual {
   position: relative;
-  height: 55vh;
+  height: 64vh;
 }
 .concept .composed-visual img {
   position: absolute;
@@ -810,32 +814,32 @@ section .more-info-btn .border span:nth-of-type(6) {
   font-size: 1.8rem;
   letter-spacing: 0.15em;
   line-height: 2.55;
+  color: #fff;
 }
-.concept .frame {
+.concept .philosophy {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.concept .frame.philosophy {
   position: relative;
   margin: 55px auto 0;
-  width: 440px;
-  height: 125px;
+  width: 450px;
+  height: 135px;
   background-color: #112342;
 }
-.concept .frame.philosophy img {
-  width: 55%;
+.concept .philosophy img {
+  display: inline-block;
+  width: 265px;
 }
-.concept .frame.philosophy .border {
+.concept .philosophy .border {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 420px;
-  height: 105px;
+  width: 430px;
+  height: 115px;
   border: 1px solid #c2c3c4;
 }
-.concept .frame.philosophy .border span {
+.concept .philosophy .border span {
   position: absolute;
   top: -2.5px;
   left: -2.5px;
@@ -843,24 +847,24 @@ section .more-info-btn .border span:nth-of-type(6) {
   height: 5px;
   background-color: #c2c3c4;
 }
-.concept .frame.philosophy .border span:nth-of-type(2) {
+.concept .philosophy .border span:nth-of-type(2) {
   top: -2.5px;
   left: 50%;
   transform: translateX(-50%);
 }
-.concept .frame.philosophy .border span:nth-of-type(3) {
+.concept .philosophy .border span:nth-of-type(3) {
   top: -2.5px;
   left: calc(100% - 2.5px);
 }
-.concept .frame.philosophy .border span:nth-of-type(4) {
+.concept .philosophy .border span:nth-of-type(4) {
   top: calc(100% - 2.5px);
   left: -2.5px;
 }
-.concept .frame.philosophy .border span:nth-of-type(5) {
+.concept .philosophy .border span:nth-of-type(5) {
   top: calc(100% - 2.5px);
   left: 50%;
 }
-.concept .frame.philosophy .border span:nth-of-type(6) {
+.concept .philosophy .border span:nth-of-type(6) {
   top: calc(100% - 2.5px);
   left: calc(100% - 2.5px);
 }
@@ -896,7 +900,35 @@ section .more-info-btn .border span:nth-of-type(6) {
 }
 
 .project {
+  position: relative;
   padding-left: 120px;
+  background-image: url(../img/project-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom left;
+  z-index: -2;
+}
+.project img {
+  position: absolute;
+}
+.project img:nth-of-type(1) {
+  top: -115px;
+  left: -70px;
+  width: 50%;
+  z-index: -1;
+}
+.project img:nth-of-type(2) {
+  top: 5%;
+  right: 0;
+  width: 50%;
+  z-index: -1;
+}
+.project img:nth-of-type(3) {
+  top: 30%;
+  left: 55%;
+  transform: translateX(-50%);
+  width: 27%;
+  z-index: -1;
 }
 .project h2 {
   margin-top: 130px;
@@ -910,6 +942,90 @@ section .more-info-btn .border span:nth-of-type(6) {
 }
 .project .more-info-btn.left {
   margin: 40px 0 0;
+}
+.project .point {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-top: 210px;
+}
+.project .point li {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1.4;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.project .point li:nth-of-type(1) {
+  background-image: url(../img/project01.jpg);
+}
+.project .point li:nth-of-type(2) {
+  margin-top: 40px;
+  background-image: url(../img/project02.jpg);
+}
+.project .point li:nth-of-type(3) {
+  margin-top: 80px;
+  background-image: url(../img/project03.jpg);
+}
+.project .point li div {
+  position: absolute;
+  bottom: 8%;
+  left: 0;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 1.5rem 2rem;
+  background-color: #00266a;
+}
+.project .point li div h4, .project .point li div p {
+  margin: 0;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: #fff;
+}
+.project .point li div h4 {
+  margin-bottom: 15px;
+  font-size: 1.15rem;
+  font-style: italic;
+  letter-spacing: 0.15em;
+}
+.project .point li div p:nth-of-type(1) {
+  font-size: 2.3rem;
+  margin-bottom: 10px;
+}
+
+.learning ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.learning ul li {
+  width: 100%;
+  overflow: hidden;
+}
+.learning ul li img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.learning ul li h3, .learning ul li p {
+  margin: 0;
+  text-align: left;
+  white-space: normal;
+}
+.learning ul li .lead-copy {
+  font-size: 4rem;
+  letter-spacing: 0;
+  font-feature-settings: "palt";
+}
+.learning ul li .left {
+  margin: 0;
+}
+.learning ul li:first-of-type h3, .learning ul li:first-of-type p, .learning ul li:first-of-type .more-info-btn {
+  margin-left: 70px;
+}
+.learning ul li:last-of-type h3, .learning ul li:last-of-type p, .learning ul li:last-of-type .more-info-btn {
+  margin-left: 40px;
 }
 
 footer img {

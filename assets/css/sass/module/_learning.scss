@@ -1,1 +1,40 @@
 @use "../forwards" as fw;
+
+.learning {
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    li {
+      width: 100%;
+      overflow: hidden;
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+      h3, p {
+        margin: 0;
+        text-align: left;
+        white-space: normal;
+      }
+      .lead-copy {
+        font-size: 4rem;
+        letter-spacing: 0;
+        font-feature-settings: "palt";
+      }
+      .left {
+        margin: 0;
+      }
+      &:first-of-type {
+        h3, p, .more-info-btn {
+          margin-left: 70px;
+        }
+      }
+      &:last-of-type {
+        h3, p, .more-info-btn {
+          margin-left: 40px;
+        }
+      }
+    }
+  }
+}
