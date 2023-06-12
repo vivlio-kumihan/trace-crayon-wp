@@ -1,0 +1,134 @@
+@use "../forwards" as fw;
+
+.cover {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  color: #fff;
+  background-image: linear-gradient(0deg, #000, #333 5% ,#888 15% , #ccc 25%, #ddd 40%, #eee 50%, #fff);
+  // background-color: linear-gradient(0deg, #000, #eee 30%, #fff);
+  overflow: hidden;
+  .copy {
+    z-index: fw.set_index(catch-copy);
+    p {
+      position: absolute;
+      left: 10%;
+      font-family: fw.$noto;
+      font-size: 6rem;
+      font-weight: 900;
+      line-height: 1;
+      // color: #fff;
+      &:nth-of-type(3) {
+        top: 365px;
+        padding: 6px;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: .15em;
+        border: 1px solid #fff;
+      }
+      &:nth-of-type(4) {
+        top: 425px;
+        letter-spacing: 0.08em;
+        line-height: 1.3;
+      }
+      &[lang="en"] {
+        font-family: fw.$jost;
+        font-size: 1rem;
+        font-weight: 500;
+        font-style: italic;
+        letter-spacing: .08em;
+        &:nth-of-type(1) {
+          top: 200px;
+          padding-left: 3.75em;
+          &::before {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            content: "";
+            width: 3.25em;
+            height: 1px;
+            background-color: #fff;
+          }
+        }
+        &:nth-of-type(2) {
+          top: 200px;
+          right: 4%;
+          writing-mode: vertical-rl;
+        }
+        &:nth-of-type(5) {
+          top: 79%;
+          right: 5%;
+          letter-spacing: .2em;
+          writing-mode: vertical-rl;
+          &:after {
+            position: absolute;
+            top: 135%;
+            right: 3px;
+            content: "";
+            width: 2px;
+            height: 140px;
+            background-color: #fff;
+          }  
+        }
+      }
+    }
+    .what-new {
+      position: absolute;
+      bottom: 9%;
+      left: 10%;
+      width: fit-content;
+      padding-left: 20px;
+      h4 {
+        position: relative;
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+        line-height: 1;
+        letter-spacing: .15em;
+        color: fw.$color-cyan-daru-gray;
+        &::before {
+          position: absolute;
+          top: -5px;
+          left: -20px;
+          content: "NEWS";
+          writing-mode: vertical-rl;
+          font-family: fw.$jost;
+          font-size: 1.5rem;
+          font-weight: 500;
+          line-height: 1;
+          letter-spacing: .08em;
+          color: #fff;
+        }
+      }
+      p {
+        font-size: 1.4rem;
+        line-height: 1;
+        letter-spacing: .15em;
+        white-space: nowrap;
+      }
+    }
+  }
+  .bg-visual {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    aspect-ratio: 1/0.735;
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      &.sp {
+        display: none;
+      }
+      @include fw.media-query-sp {
+        &.pc {
+          display: none;
+        }
+        &.sp {
+          display: block;
+        }
+      }
+    }
+  }
+}
