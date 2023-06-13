@@ -27,8 +27,10 @@
       height: 0;
       text-align: right;
       z-index: fw.set-index(special);
+      // none /////////////////////////////////////// none
+      // display: none;
       img {
-        width: 30%;
+        width: 25%;
         object-fit: cover;
       }
     }
@@ -167,3 +169,8 @@ section {
     background-position: 0 0;
   }
 }
+
+// 【&nbsp;】半角スペースと同じサイズの空白
+// 【&thinsp;】&nbsp;の空白より小さい空白
+// 【&ensp;】半角スペースより間隔がやや広い空白
+// 【&emsp;】全角スペースとほぼ同じサイズの空白

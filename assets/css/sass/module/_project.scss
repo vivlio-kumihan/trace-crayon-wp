@@ -2,10 +2,10 @@
 
 .project {
   position: relative;
-  padding-left: 120px;
+  padding: 0 0 145px 120px;
   background-image: url(../img/project-bg.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100%;
   background-position: bottom left;
   z-index: -2;
   img {
@@ -23,7 +23,7 @@
       z-index: -1;
     }
     &:nth-of-type(3) {
-      top: 30%;
+      top: 21%;
       left: 55%;
       transform: translateX(-50%);
       width: 27%;

@@ -1,1 +1,102 @@
 @use "../forwards" as fw;
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 7.5px;
+  padding: 62px 0;
+  width: 100%;
+  color: #fff;
+  background-image: url(../img/contact-bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  p {
+    position: relative;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1;
+    letter-spacing: 0.18em;
+    color: #fff;
+    &::after {
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      content: "CONTACT";
+      font-family: fw.$jost;
+      font-size: 90px;
+      font-style: italic;
+      color: #fff;
+      opacity: .2;
+    }
+  }
+  a {
+    position: relative;
+    display: block;
+    margin: 45px 0;
+    padding: 25px 55px;
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: .15em;
+    border: 2px solid #fff;
+    &::before {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 6%;
+      content: "\f0e0";
+      font-family: "Font Awesome 6 Free";
+      font-size: 1.5rem;
+      color: #fff;
+    }
+    &::after {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 5%;
+      content: "\f178";
+      font-family: "Font Awesome 6 Free";
+      font-size: 1.5rem;
+      color: #fff;
+    }
+  }
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    li {
+      font-size: 2.9rem;
+      letter-spacing: 0.11em;
+      color: #fff;
+      &:lang(en) {
+        font-weight: 500;
+      }
+      &:last-of-type {
+        font-size: 1.4rem;
+        span:first-of-type {
+          position: relative;
+          font-size: 1.2rem;
+          &::before {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -7px;
+            content: "";
+            width: 67px;
+            height: 22px;
+            border: 1px solid #fff;
+
+          }
+        }
+        span:lang(en) {
+          font-size: 2rem;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

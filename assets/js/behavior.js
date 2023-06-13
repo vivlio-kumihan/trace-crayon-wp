@@ -8,7 +8,7 @@ function killLetterSpace(arr) {
   })
 }
 
-const arg = Array.from(document.querySelectorAll('.lead-copy'))
-// const arg2 = Array.from(document.querySelectorAll('.more-info-btn'))
-// const arg = arg1.concat(arg2)
-killLetterSpace(arg)
+// const arg = Array.from(document.querySelectorAll('.lead-copy'))
+// // const arg2 = Array.from(document.querySelectorAll('.more-info-btn'))
+// // const arg = arg1.concat(arg2)
+// killLetterSpace(arg)
