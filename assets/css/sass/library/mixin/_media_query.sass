@@ -1,0 +1,12 @@
+@use '../../component/size' as size
+
+= media-query-pc() 
+  @media screen and (min-width: size.$bk-point-pc) 
+    @content
+  
+
+
+= media-query-sp() 
+  @media screen and (max-width: size.$bk-point-sp) 
+    @content
+  

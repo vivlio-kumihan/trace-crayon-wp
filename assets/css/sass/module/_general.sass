@@ -1,0 +1,176 @@
+@use "../forwards" as fw
+
+:root 
+  font-size: 62.5%;  
+  body 
+    font-family: fw.$noto
+  
+
+
+.container 
+  width: 100%
+  margin: 0 auto
+  :lang(en) 
+    font-family: fw.$jost
+  
+  .frame 
+    width: 100%
+    overflow: hidden
+  
+  .contents 
+    .special 
+      display: block
+      position: sticky
+      top: 80vh
+      right: 500px
+      width: 100%
+      height: 0
+      text-align: right
+      z-index: fw.set-index(special)
+      // none /////////////////////////////////////// none
+      // display: none
+      img 
+        width: 25%
+        object-fit: cover
+      
+    
+  
+  + fw.media-query-pc 
+  
+  + fw.media-query-sp 
+    .main-visual 
+      .pc 
+        display: none
+      
+    
+  
+
+
+.remove-letter-spacing 
+  letter-spacing: 0
+
+section 
+  h2 
+    margin-bottom: 70px
+    text-align: center
+    font-size: 4.6rem
+    font-weight: 700
+    line-height: 1
+    letter-spacing: .06em
+    color: fw.$color-cyan-vivid-blue
+    span 
+      font-size: 2.6rem
+      font-weight: 500
+      font-style: italic
+      letter-spacing: .1em
+    
+  
+  .lead-copy 
+    margin: 0 auto 10px
+    width: max-content
+    padding: 6px
+    font-size: 3rem
+    font-weight: 700
+    letter-spacing: .15em
+    line-height: 1
+    color: #fff
+    background-color: fw.$color-cyan-vivid-blue
+  
+  p 
+    margin-top: 40px
+    text-align: center
+    font-size: 1.6rem
+    font-weight: 500
+    line-height: 1.8
+    letter-spacing: .1em
+    color: fw.$color-cyan-vivid-blue
+  
+  .more-info-btn 
+    display: flex
+    justify-content: center
+    align-items: center
+    position: relative
+    width: max-content
+    margin: 40px auto 0
+    padding: 25px 50px
+    font-size: 1.8rem
+    font-weight: 500
+    line-height: 1
+    letter-spacing: .15em
+    color: fw.$color-cyan-vivid-blue
+    .border 
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      width: 100%
+      height: 100%
+      border: 1px solid fw.$color-cyan-vivid-blue
+      span 
+        position: absolute
+        top: -2.5px
+        left: -2.5px
+        width: 5px
+        height: 5px
+        background-color: fw.$color-cyan-vivid-blue
+        &:nth-of-type(2) 
+          top: -2.5px
+          left: 50%
+          transform: translateX(-50%)
+        
+        &:nth-of-type(3) 
+          top: -2.5px
+          left: calc(100% - 2.5px)
+        
+        &:nth-of-type(4) 
+          top: calc(100% - 2.5px)
+          left: -2.5px
+        
+        &:nth-of-type(5) 
+          top: calc(100% - 2.5px)
+          left: 50%
+        
+        &:nth-of-type(6) 
+          top: calc(100% - 2.5px)
+          left: calc(100% - 2.5px)
+        
+      
+    
+  
+
+
+.service 
+  +.frame 
+    margin-top: 130px
+  
+
+
+.slider 
+  position: relative
+  width: 3000px
+  height: 18vw
+  margin-top: 14px
+  background-size: auto 100%
+  background-repeat: repeat-x
+  animation: gallery 60s linear infinite
+  overflow: hidden
+  &.pre 
+    background-image: url(../img/slide-up.png)
+  
+  &.behind 
+    background-image: url(../img/slide-down.png)
+  
+
+@keyframes gallery 
+  0% 
+    background-position: 100% 0
+  
+  100% 
+    background-position: 0 0
+  
+
+
+// 【&nbsp;】半角スペースと同じサイズの空白
+// 【&thinsp;】&nbsp;の空白より小さい空白
+// 【&ensp;】半角スペースより間隔がやや広い空白
+// 【&emsp;】全角スペースとほぼ同じサイズの空白

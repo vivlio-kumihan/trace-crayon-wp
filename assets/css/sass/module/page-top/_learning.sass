@@ -1,0 +1,104 @@
+@use "../../forwards" as fw
+
+.learning 
+  padding-bottom: 130px
+  .lead 
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    height: 66.5vh
+    padding-bottom: 40px
+    background-image: url(../img/learning-bg.png)
+    background-repeat: no-repeat
+    background-size: cover
+    h2, p 
+      margin: 0
+      color: #fff
+    
+    h2 
+      margin-bottom: 60px
+      line-height: .9
+    
+  
+  ul 
+    display: flex
+    justify-content: space-between
+    align-items: flex-start
+    margin-top: -115px
+    li 
+      position: relative
+      width: 100%
+      span 
+        position: absolute
+        top: -55px
+        right: 20px
+        font-size: 9rem
+        font-weight: 500
+        font-style: italic
+        color: #fff
+        &.right-side 
+          margin-top: 60px
+        
+        &::after 
+          position: absolute
+          top: 100px
+          right: 0
+          content: ""
+          width: 5rem
+          height: 5px
+          background-color: #fff
+        
+      
+      img 
+        width: 100%
+        object-fit: cover
+      
+      h3, p 
+        margin: 0
+        text-align: left
+        white-space: normal
+      
+      h3 
+        margin: 70px 0 25px
+        padding-bottom: 5px
+        width: max-content
+        font-size: 1.8rem
+        font-weight: 700
+        letter-spacing: .15em
+        color: fw.$color-cyan-vivid-blue
+        border-bottom: 1px solid fw.$color-cyan-vivid-blue
+      
+      .lead-copy 
+        font-size: 4rem
+        line-height: 1.2
+        background-color: fw.$color-cyan-vivid-blue
+        + p 
+          margin-top: 20px
+        
+      
+      .more-info-btn 
+        padding: 25px 80px
+      
+      .left 
+        margin: 60px 0 0 0
+      
+      &:first-of-type 
+        h3, p, .more-info-btn 
+          margin-left: 70px
+        
+      
+      &:last-of-type 
+        padding-top: 60px
+        // span 
+        //   top: 10px
+        // 
+        .for-border 
+          border-left: 1px solid fw.$color-cyan-vivid-blue
+        
+        h3, p, .more-info-btn 
+          margin-left: 40px
+        
+      
+    
+  

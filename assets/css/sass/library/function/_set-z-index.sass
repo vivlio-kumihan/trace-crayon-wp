@@ -1,10 +1,9 @@
 $index-map: about-salon-vibe-last,
 header,
 special,
-catch-copy;
+catch-copy
 
 // z-index属性へ代入する関数を定義する。
 // 配列と値の名称を引数とする。
-@function set_index($name) {
+@function set_index($name) 
   @return index($index-map, $name)
-}

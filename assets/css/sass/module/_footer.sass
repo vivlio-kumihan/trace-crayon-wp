@@ -1,0 +1,116 @@
+@use '../forwards' as fw
+
+footer 
+  display: flex
+  justify-content: space-between
+  align-items: flex-start
+  position: relative
+  padding: 90px 0 50px
+  color: #fff
+  background-color: fw.$color-cyan-dark-blue-more
+  figure 
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    width: 30%
+    img 
+      width: 55%
+    
+    figcaption 
+      width: 80%
+      margin-top: 20px
+      text-align: center
+      font-size: 1.7rem
+      font-weight: bold
+      line-height: 1.8
+      letter-spacing: 0.08em
+    
+  
+  .link 
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    width: 70%
+    .menu-link 
+      padding: 20px 20% 0px 0
+      li 
+        display: inline-block
+        padding: 0 30px 30px 0
+        text-align: left
+        font-size: 1.4rem
+        font-weight: 700
+        letter-spacing: 0.02em
+        line-height: 1.5
+        color: #fff
+      
+    
+  
+  ul:last-of-type 
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: 100%
+    padding: 30px 10% 30px 0
+    border-top: 1px solid fw.$color-cyan-bluish-gray
+    // #363e45
+    li 
+      &:first-of-type 
+        .icon 
+          display: inline-block
+          position: relative
+          width: 27.5px
+          height: 27.5px
+          margin-right: 30px
+          &::before 
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            width: 27.5px
+            height: 27.5px
+            font-family: "Font Awesome 6 Brands"
+            font-weight: 900
+            font-size: 27.5px
+            color: #fff
+          
+          &.twitter::before 
+            content: "\f099"
+          
+          &.instagram::before 
+            content: "\f16d"
+          
+        
+      
+    
+    &:last-of-type 
+      li 
+        font-size: 1.4rem
+        font-weight: 500
+        letter-spacing: 0.02em
+        color: fw.$color-cyan-dark-blue-lomid
+        span 
+          font-size: 1.2rem
+          font-weight: 400
+          letter-spacing: 0.02em
+        
+      
+    
+  
+  .to-top 
+    position: absolute
+    top: 20%
+    right: 5%
+    margin-left: auto
+    width: 90px
+    font-size: 1.2rem
+    text-align: center
+    img 
+      width: 100%
+      object-fit: cover
+      margin-bottom: 10px
+    
+  
+  img 
+    width: 120px
+  
