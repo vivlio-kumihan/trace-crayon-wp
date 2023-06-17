@@ -1,28 +1,32 @@
-@use "../forwards" as fw
+@use "forwards" as fw
+
+// WEBフォントのインポート
+// Noto Sans JP
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap')
+// Jost
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700;800;900&display=swap')
+// Jost italic
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap')
 
 :root 
-  font-size: 62.5%;  
+  font-size: 62.5%
   body 
     font-family: fw.$noto
-  
-
 
 .container 
   width: 100%
   margin: 0 auto
   :lang(en) 
     font-family: fw.$jost
-  
   .frame 
     width: 100%
     overflow: hidden
-  
   .contents 
+    width: 100%
     .special 
       display: block
       position: sticky
-      top: 80vh
-      right: 500px
+      top: 83vh
       width: 100%
       height: 0
       text-align: right
@@ -30,21 +34,12 @@
       // none /////////////////////////////////////// none
       // display: none
       img 
-        width: 25%
+        width: 30%
         object-fit: cover
-      
-    
-  
-  + fw.media-query-pc 
-  
-  + fw.media-query-sp 
+  +fw.media-query-sp 
     .main-visual 
       .pc 
         display: none
-      
-    
-  
-
 
 .remove-letter-spacing 
   letter-spacing: 0
@@ -63,28 +58,24 @@ section
       font-weight: 500
       font-style: italic
       letter-spacing: .1em
-    
-  
   .lead-copy 
     margin: 0 auto 10px
     width: max-content
-    padding: 6px
+    padding: 8px
     font-size: 3rem
     font-weight: 700
     letter-spacing: .15em
     line-height: 1
     color: #fff
     background-color: fw.$color-cyan-vivid-blue
-  
   p 
-    margin-top: 40px
+    margin-top: 45px
     text-align: center
     font-size: 1.6rem
     font-weight: 500
-    line-height: 1.8
+    line-height: 2
     letter-spacing: .1em
     color: fw.$color-cyan-vivid-blue
-  
   .more-info-btn 
     display: flex
     justify-content: center
@@ -117,58 +108,82 @@ section
           top: -2.5px
           left: 50%
           transform: translateX(-50%)
-        
         &:nth-of-type(3) 
           top: -2.5px
           left: calc(100% - 2.5px)
-        
         &:nth-of-type(4) 
           top: calc(100% - 2.5px)
           left: -2.5px
-        
         &:nth-of-type(5) 
           top: calc(100% - 2.5px)
           left: 50%
-        
         &:nth-of-type(6) 
           top: calc(100% - 2.5px)
           left: calc(100% - 2.5px)
-        
-      
-    
-  
-
 
 .service 
   +.frame 
-    margin-top: 130px
-  
-
+    margin-top: 166px
 
 .slider 
   position: relative
   width: 3000px
   height: 18vw
-  margin-top: 14px
   background-size: auto 100%
   background-repeat: repeat-x
   animation: gallery 60s linear infinite
   overflow: hidden
   &.pre 
     background-image: url(../img/slide-up.png)
-  
   &.behind 
     background-image: url(../img/slide-down.png)
-  
-
 @keyframes gallery 
   0% 
     background-position: 100% 0
-  
   100% 
     background-position: 0 0
-  
 
+.stroke
+  color: transparent
+  -webkit-text-stroke: 1px #fff
+
+// h2
+//   .colorRuby:nth-of-type(1)
+//     +colorRuby(fw.$colorRed)
+//   .colorRuby:nth-of-type(2)
+//     +colorRuby(fw.$colorOrange)
+//   .colorRuby:nth-of-type(3)
+//     +colorRuby(fw.$colorYellow)
+//   .colorRuby:nth-of-type(4)
+//     +colorRuby(fw.$colorGreen)
+
+h2
+  .colorRuby 
+    position: relative
+    font-family: inherit
+    font-size: inherit
+    font-weight: inherit
+    line-height: inherit
+    font-style: unset
+    &::after 
+      position: absolute
+      top: -8px
+      left: 50%
+      transform: translateX(-70%)
+      content: ""
+      width: 11px
+      height: 11px
+      background-color: fw.$colorRed
+      border-radius: 50%
+
+
+.scrollTrigger
+  transition: .3s
+  opacity: 0
+  transform: translateX(100%)
+.stActive
+  opacity: 1 
+  transform: translate(0)
 
 // 【&nbsp;】半角スペースと同じサイズの空白
 // 【&thinsp;】&nbsp;の空白より小さい空白

@@ -1,71 +1,88 @@
 @use "../../forwards" as fw
 
 .project 
-  position: relative
-  padding: 0 0 145px 120px
+  padding: 125px 0 160px 10%
   background-image: url(../img/project-bg.png)
   background-repeat: no-repeat
   background-size: 100%
   background-position: bottom left
   z-index: -2
-  img 
-    position: absolute
-    &:nth-of-type(1) 
-      top: -115px
-      left: -70px
-      width: 50%
+  .wrapper
+    position: relative
+    > img 
+      position: absolute
+      top: -22%
+      left: -21%
+      width: 44%
       z-index: -1
-    
-    &:nth-of-type(2) 
-      top: 5%
+    .visual-wrapper
+      position: absolute
+      top: 50%
+      transform: translateY(-30%)
       right: 0
-      width: 50%
-      z-index: -1
-    
-    &:nth-of-type(3) 
-      top: 21%
-      left: 55%
-      transform: translateX(-50%)
-      width: 27%
-      z-index: -1
-    
-  
-  h2 
-    margin-top: 130px
-    text-align: left
-  
-  .lead-copy 
-    margin: 0 0 10px
-  
-  p 
-    text-align: left
-  
-  .more-info-btn.left 
-    margin: 40px 0 0
-  
+      width: 55vw
+      height: 34vw
+      li
+        position: relative
+        width: 100%
+        height: 100%
+        img:first-of-type
+          position: absolute
+          bottom: 0%
+          right: 0
+          width: 100%
+        img:last-of-type
+          position: absolute
+          bottom: -3%
+          left: -8%
+          width: 48%
+    h2 
+      margin-bottom: 55px
+      text-align: left
+    .lead-copy 
+      margin: 0 0 10px
+    p 
+      text-align: left
+    .more-info-btn.left 
+      margin: 40px 0 0
   .point 
     display: flex
     justify-content: space-between
     align-items: flex-start
-    gap: 2rem
-    margin-top: 210px
+    gap: 1.5rem
+    margin-top: 195px
     li 
       position: relative
       width: 100%
       aspect-ratio: 1/1.4
       background-repeat: no-repeat
-      background-size: 100%
+      background-size: cover
       &:nth-of-type(1) 
         background-image: url(../img/project01.jpg)
-      
+        .eye-catch
+          font-size: 45px
+          line-height: 1
       &:nth-of-type(2) 
-        margin-top: 40px
+        margin-top: 50px
         background-image: url(../img/project02.jpg)
-      
       &:nth-of-type(3) 
-        margin-top: 80px
+        margin-top: 100px
         background-image: url(../img/project03.jpg)
-      
+      .eye-catch
+        position: absolute
+        top: 0
+        right: 0
+        width: 100%
+        padding: 20px 15px 0 0
+        writing-mode: vertical-rl 
+        font-family: fw.$jost
+        font-weight: 600
+        font-size: 73px
+        -webkit-text-stroke: 1px #fff
+        color: transparent
+        text-transform: uppercase
+
+        background-color: transparent
       div 
         position: absolute
         bottom: 8%
@@ -75,18 +92,21 @@
         background-color: fw.$color-cyan-vivid-blue
         h4, p 
           margin: 0
-          font-size: 1.3rem
+          text-align: left
+          font-size: 1.15rem
+          font-weight: 700
           line-height: 1
+          letter-spacing: .2em
           color: #fff
-        
         h4 
           margin-bottom: 15px
           font-size: 1.15rem
+          font-weight: 600
           font-style: italic
           letter-spacing: .15em
-        
         p:nth-of-type(1) 
-          font-size: 2.3rem
+          font-size: 1.9rem
+          font-weight: 700
           margin-bottom: 10px
         
       

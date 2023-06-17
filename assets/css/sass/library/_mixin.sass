@@ -1,0 +1,37 @@
+@use "../library/function" as fn
+@use "../variables" as var
+
+=caption-with-visual 
+  writing-mode: vertical-rl
+  font-family: "Lato", sans-serif
+  font-weight: 900
+  font-style: italic
+
+
+=dl-container 
+  display: flex
+  margin-bottom: 12px
+  padding-bottom: 12px
+  border-bottom: 1px dotted var.$color-gray
+  dt, dd 
+    font-weight: 300
+    line-height: 1.7
+  dt 
+    min-width: 85px
+
+=hoverAnimation($transition-duraiton: .3s) 
+  transition: $transition-duraiton
+  @media (hover: hover) 
+    &:hover 
+      @content
+
+=scroll-trigger-curtains 
+  .curtains 
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    content: ""
+    background-color: #fff
+    z-index: fn.get_index(curtains)

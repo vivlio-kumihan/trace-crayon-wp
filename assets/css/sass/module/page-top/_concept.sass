@@ -13,38 +13,39 @@
   background-position: 50% 42%
   z-index: -3
   .composed-visual 
-    position: relative
-    height: 64vh
-    img 
-      position: absolute
-      &.copy-one 
-        bottom: 30%
-        left: 50%
-        transform: translateX(-95%)
-        width: 15%
-      
-      &.copy-two 
-        bottom: 20%
-        left: 50%
-        transform: translateX(-5%)
-        width: 15%
-      
-      &.catch-copy 
-        bottom: -1%
-        left: 50%
-        transform: translateX(-50%)
-        width: 32%
-      
-      &.frame 
-        bottom: 5%
-        left: 50%
-        transform: translateX(-50%)
-        width: 40%
-      
-    
-  
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100%
+    .visual-container
+      position: relative
+      width: 60%
+      height: 60vw
+      img 
+        position: absolute
+        &.copy-one 
+          top: 42%
+          left: 50%
+          transform: translateX(-83%)
+          width: 28%
+        &.copy-two 
+          top: 56%
+          left: 50%
+          transform: translateX(5%)
+          width: 26%
+        &.catch-copy 
+          top: 74%
+          left: 50%
+          transform: translateX(-48%)
+          width: 52%
+        &.frame 
+          top: 57%
+          left: 50%
+          transform: translateX(-50%)
+          width: 63%
+
   p 
-    margin-top: 45px
+    margin-top: 0
     text-align: center
     font-size: 1.8rem
     letter-spacing: 0.15em

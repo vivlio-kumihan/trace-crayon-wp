@@ -1,0 +1,10 @@
+@use '../_variables' as var
+
+// 多分こちらの設定は不要だと思われる。
+// = media-query-pc() 
+//   @media screen and (min-width: var.$bk-point-pc) 
+//     @content
+
+= media-query-sp() 
+  @media screen and (max-width: var.$bk-point-sp) 
+    @content

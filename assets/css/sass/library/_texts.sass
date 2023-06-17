@@ -1,0 +1,28 @@
+@use '../variables' as var
+  
+// // Font Awesomeのmixin 引数は、"ユニコード"、"フォントサイズ"、"FreeかBlandsか？"、"ウェイト"
+// =fontAwesome($unicode, $fontSize: inherit, $fontFamily: Free, $fontWeight: 900)
+//   content: $unicode
+//   font-size: $fontSize
+//   font-family: "Font Awesome 6 " + $fontFamily
+//   font-weight: $fontWeight
+
+// // ドキュメントで使う書体の整理も兼ねてmixin化しておく場所として使う。
+
+=colorRuby($color) 
+  position: relative
+  font-family: inherit
+  font-size: inherit
+  font-weight: inherit
+  line-height: inherit
+  font-style: unset
+  &::after 
+    position: absolute
+    top: -8px
+    left: 50%
+    transform: translateX(-70%)
+    content: ""
+    width: 11px
+    height: 11px
+    background-color: $color
+    border-radius: 50%
