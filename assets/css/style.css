@@ -1041,41 +1041,47 @@ header .menu-link ul:last-of-type {
   gap: 0.75rem;
 }
 .other-links ul li {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+.other-links ul li .hoverArgBgImg {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 0.3s;
+}
+.other-links ul li .hoverArgBgImg a {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
   font-size: 3.4rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   color: #fff;
-  aspect-ratio: 1;
 }
-.other-links ul li span {
+.other-links ul li .hoverArgBgImg a span {
   margin-top: 10px;
   font-size: 2rem;
   font-weight: 600;
   font-style: italic;
 }
-.other-links ul li:nth-last-of-type(1) {
-  background-image: url(../img/other-recruit.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-@media screen and (max-width: 896px) {
-  .other-links ul li:nth-last-of-type(1) {
-    background-image: url(../img/sp-other-message.jpg);
-  }
-}
-.other-links ul li:nth-last-of-type(2) {
-  background-image: url(../img/other-company.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.other-links ul li:nth-last-of-type(3) {
+.other-links ul li:nth-of-type(1) .hoverArgBgImg {
   background-image: url(../img/other-message.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+}
+.other-links ul li:nth-of-type(1) .hoverArgBgImg:hover {
+  transform: scale(1.2);
+}
+.other-links ul li:nth-of-type(2) .hoverArgBgImg {
+  background-image: url(../img/other-company.jpg);
+}
+.other-links ul li:nth-of-type(3) .hoverArgBgImg {
+  background-image: url(../img/other-recruit.jpg);
 }
 
 .contact {

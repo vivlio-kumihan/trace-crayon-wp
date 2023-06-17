@@ -25,7 +25,15 @@
       img
         transform: scale($scale)      
 
-
+=hoverArgBgImg($width, $height, $transition, $scale)
+  width: percentage(calc($width / 100))
+  height: percentage(calc(height / 100))
+  background-repeat: no-repeat
+  background-size: cover
+  transition: $transition + s
+  @content
+  &:hover
+    transform: scale($scale)
 
 
 // =caption-with-visual 

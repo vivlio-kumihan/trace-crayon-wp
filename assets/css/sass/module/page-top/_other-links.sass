@@ -6,32 +6,37 @@
     grid-template-columns: repeat(3, 1fr)
     gap: .75rem
     li 
-      display: flex
-      flex-direction: column
-      align-items: center
-      justify-content: center
-      font-size: 3.4rem
-      font-weight: 700
-      letter-spacing: 0.05em
-      color: #fff
+      width: 100%
       aspect-ratio: 1
-      // +fw.hoverInnerScale(100, 1.1)
-      span 
-        margin-top: 10px
-        font-size: 2rem
-        font-weight: 600
-        font-style: italic
-      &:nth-last-of-type(1) 
-        background-image: url(../img/other-recruit.jpg)
+      overflow: hidden
+      .hoverArgBgImg
+        width: 100%
+        height: 100%
         background-repeat: no-repeat
         background-size: cover
-        +fw.media-query-sp 
-          background-image: url(../img/sp-other-message.jpg)
-      &:nth-last-of-type(2) 
-        background-image: url(../img/other-company.jpg)
-        background-repeat: no-repeat
-        background-size: cover
-      &:nth-last-of-type(3) 
+        transition: .3s
+        a
+          display: flex
+          flex-direction: column
+          align-items: center
+          justify-content: center
+          width: 100%
+          height: 100%
+          text-align: center
+          font-size: 3.4rem
+          font-weight: 700
+          letter-spacing: 0.05em
+          color: #fff
+          span 
+            margin-top: 10px
+            font-size: 2rem
+            font-weight: 600
+            font-style: italic
+      &:nth-of-type(1) .hoverArgBgImg
         background-image: url(../img/other-message.jpg)
-        background-repeat: no-repeat
-        background-size: cover
+        &:hover
+          transform: scale(1.2)
+      &:nth-of-type(2) .hoverArgBgImg
+        background-image: url(../img/other-company.jpg)
+      &:nth-of-type(3) .hoverArgBgImg
+        background-image: url(../img/other-recruit.jpg)
