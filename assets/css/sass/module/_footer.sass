@@ -14,9 +14,8 @@ footer
     align-items: center
     justify-content: center
     width: 30%
-    img 
-      width: 55%
-    
+    .logo
+      +fw.hoverTransparent(55, 0.3, 0.7) 
     figcaption 
       width: 80%
       margin-top: 20px
@@ -25,8 +24,6 @@ footer
       font-weight: bold
       line-height: 1.8
       letter-spacing: 0.08em
-    
-  
   .link 
     display: flex
     flex-direction: column
@@ -43,9 +40,6 @@ footer
         letter-spacing: 0.02em
         line-height: 1.5
         color: #fff
-      
-    
-  
   ul:last-of-type 
     display: flex
     justify-content: space-between
@@ -73,16 +67,10 @@ footer
             font-weight: 900
             font-size: 27.5px
             color: #fff
-          
           &.twitter::before 
             content: "\f099"
-          
           &.instagram::before 
             content: "\f16d"
-          
-        
-      
-    
     &:last-of-type 
       li 
         font-size: 1.4rem
@@ -93,10 +81,6 @@ footer
           font-size: 1.2rem
           font-weight: 400
           letter-spacing: 0.02em
-        
-      
-    
-  
   .to-top 
     position: absolute
     top: 20%
@@ -109,8 +93,5 @@ footer
       width: 100%
       object-fit: cover
       margin-bottom: 10px
-    
-  
   img 
     width: 120px
-  

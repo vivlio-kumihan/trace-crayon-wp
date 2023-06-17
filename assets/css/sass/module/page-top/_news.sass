@@ -5,18 +5,18 @@
   background-color: fw.$color-cyan-light-blue
   h2 
     margin-bottom: 50px
-  
   ul 
     display: grid
     grid-template-columns: repeat(3, 1fr)
     gap: 2rem
-    li 
-      img 
-        width: 100%
-        aspect-ratio: 3/2
-        object-fit: cover
-        margin-bottom: 20px
-      
+    li
+      +fw.hoverInnerScale(100, 1.1)
+        img 
+          width: 100%
+          aspect-ratio: 3/2
+          object-fit: cover
+          margin-bottom: 20px
+          transition: .3s
       .header-sub 
         display: flex
         justify-content: flex-start
@@ -49,10 +49,6 @@
         margin-top: 30px
         text-align: left
         line-height: 1.9
-      
-    
-  
   .more-info-btn 
     margin: 80px auto 0
     padding: 25px 80px
-  

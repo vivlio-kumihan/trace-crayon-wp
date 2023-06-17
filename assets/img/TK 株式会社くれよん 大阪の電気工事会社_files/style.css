@@ -320,15 +320,6 @@ h2 .colorRuby::after {
   border-radius: 50%;
 }
 
-.logo {
-  width: 100%;
-  transition: 0.3s;
-  opacity: 1;
-}
-.logo:hover {
-  opacity: 0.7;
-}
-
 .scrollTrigger {
   transition: 0.3s;
 }
@@ -358,9 +349,10 @@ header .ci {
   width: 120px;
   height: 120px;
 }
-header .ci a {
-  display: block;
+header .ci .logo {
   width: 100%;
+  transition: 0.3s;
+  opacity: 1;
 }
 header .ci .catch-copy {
   position: absolute;
@@ -901,23 +893,10 @@ header .menu-link ul:last-of-type {
   width: fit-content;
   line-height: 1;
 }
-.learning ul li a {
-  display: block;
+.learning ul li img {
   width: 100%;
-  aspect-ratio: 1/0.925;
-  overflow: hidden;
-}
-.learning ul li a img {
-  width: 100%;
-  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  -o-object-position: 50% 50%;
-     object-position: 50% 50%;
-  transition: 0.5s;
-}
-.learning ul li a:hover img {
-  transform: scale(1.1);
 }
 .learning ul li h3, .learning ul li p {
   margin: 0;
@@ -975,22 +954,12 @@ header .menu-link ul:last-of-type {
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
-.news ul li a {
-  display: block;
-  width: 100%;
-  aspect-ratio: 1/0.925;
-  overflow: hidden;
-}
-.news ul li a img {
+.news ul li img {
   width: 100%;
   aspect-ratio: 3/2;
   -o-object-fit: cover;
      object-fit: cover;
   margin-bottom: 20px;
-  transition: 0.3s;
-}
-.news ul li a:hover img {
-  transform: scale(1.1);
 }
 .news ul li .header-sub {
   display: flex;
@@ -1062,10 +1031,8 @@ header .menu-link ul:last-of-type {
   background-repeat: no-repeat;
   background-size: cover;
 }
-@media screen and (max-width: 896px) {
-  .other-links ul li:nth-last-of-type(1) {
-    background-image: url(../img/sp-other-message.jpg);
-  }
+.other-links ul li:nth-last-of-type(1) + fw.media-query-sp {
+  background-image: url(../img/sp-other-message.jpg);
 }
 .other-links ul li:nth-last-of-type(2) {
   background-image: url(../img/other-company.jpg);
@@ -1195,13 +1162,8 @@ footer figure {
   justify-content: center;
   width: 30%;
 }
-footer figure .logo {
+footer figure img {
   width: 55%;
-  transition: 0.3s;
-  opacity: 1;
-}
-footer figure .logo:hover {
-  opacity: 0.7;
 }
 footer figure figcaption {
   width: 80%;
