@@ -9,9 +9,9 @@
   // background: url(../img/fv-bg.png) no-repeat center
   background-image: url(../img/fv-bg.png)
   background-repeat: no-repeat
-  background-size: 167%
-  background-position: 50% 42%
-  z-index: -3
+  background-size: 180%
+  background-position: 50% 62%
+  z-index: fw.set-index(concept)
   .composed-visual 
     display: flex
     justify-content: center
@@ -43,7 +43,6 @@
           left: 50%
           transform: translateX(-50%)
           width: 63%
-
   p 
     margin-top: 0
     text-align: center
@@ -51,86 +50,78 @@
     letter-spacing: 0.15em
     line-height: 2.55
     color: #fff
-  
   .philosophy 
     display: flex
     justify-content: center
     align-items: center
     position: relative
     margin: 55px auto 0
-    width: 450px
+    width: 470px
     height: 135px
     background-color: fw.$color-cyan-dark-blue
+    transition: .3s
+    z-index: fw.set-index(philosophy)
     img 
       display: inline-block
-      width: 265px
-    
+      width: 250px
     .border 
       position: absolute
       top: 50%
       left: 50%
       transform: translate(-50%, -50%)
-      width: calc(450px - 20px)
+      width: calc(470px - 20px)
       height: calc(135px - 20px)
-      border: 1px solid fw.$color-cyan-bluish-gray-light
+      border: 1px solid fw.$color-philosofhy-line
       span 
         position: absolute
         top: -2.5px
         left: -2.5px
         width: 5px
         height: 5px
-        background-color: fw.$color-cyan-bluish-gray-light
+        background-color: fw.$color-light-gray
         &:nth-of-type(2) 
           top: -2.5px
           left: 50%
           transform: translateX(-50%)
-        
         &:nth-of-type(3) 
           top: -2.5px
           left: calc(100% - 2.5px)
-        
         &:nth-of-type(4) 
           top: calc(100% - 2.5px)
           left: -2.5px
-        
         &:nth-of-type(5) 
           top: calc(100% - 2.5px)
           left: 50%
-        
         &:nth-of-type(6) 
           top: calc(100% - 2.5px)
           left: calc(100% - 2.5px)
-        
-      
-    
-  
+    &:hover
+      background-color: #fff
+      img
+        mix-blend-mode: difference
+      span
+        background-color: fw.$color-cyan-vivid-blue
+
   // メインのスタッフの集合写真で高さを確保する必要がある。
   // z-index: 0;にする必要あり。
   // なので変数が使えない。set-index(name)
   // どうしたらいいのか？？？
   .composed-staff 
     position: relative
-    height: 50%
-    .main-image 
-      margin-top: -60px
-      img 
-        width: 100%
-      
-    
-    >img 
+    height: 43.5vh
+    overflow: hidden
+    img
       position: absolute
-      top: 0
+      top: -15%
       left: 50%
       transform: translateX(-50%)
       width: 100%
-      &.light 
-        top: -65px
-        width: 45%
-        mix-blend-mode: screen
-        z-index: -1
-      
-      &.behind 
-        z-index: -2
-      
-    
-  
+    .shadow
+      z-index: fw.set-index(composedStaffShadow)
+    .staff
+      z-index: fw.set-index(composedStaffStaff)
+    .light
+      top: -34%
+      width: 50%
+      mix-blend-mode: screen
+      z-index: fw.set-index(composedStaffLight)

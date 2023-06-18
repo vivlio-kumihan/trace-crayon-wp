@@ -32,8 +32,6 @@
       color: transparent
       -webkit-text-stroke: 1px #fff
       opacity: .2
-    
-  
   a 
     position: relative
     display: block
@@ -43,27 +41,28 @@
     font-weight: 700
     letter-spacing: .15em
     border: 2px solid #fff
+    transition: .3s
+    &:hover
+      color: fw.$color-theme-blue
+      background-color: #fff
     &::before 
       position: absolute
       top: 50%
       transform: translateY(-50%)
       left: 6%
-      content: "\f0e0"
-      font-family: "Font Awesome 6 Free"
-      font-size: 1.5rem
+      +fw.fontAwesome("\f0e0", 1.5rem)
       color: #fff
-    
+      &:hover
+        color: fw.$color-theme-blue
     &::after 
       position: absolute
       top: 50%
       transform: translateY(-50%)
       right: 5%
-      content: "\f178"
-      font-family: "Font Awesome 6 Free"
-      font-size: 1.5rem
-      color: #fff
-    
-  
+      +fw.fontAwesome("\f178", 1.5rem)
+      &:hover
+        color: fw.$color-theme-blue
+        right: 0
   ul 
     display: flex
     justify-content: center
@@ -75,7 +74,6 @@
       color: #fff
       &:lang(en) 
         font-weight: 500
-      
       &:last-of-type 
         font-size: 1.4rem
         span:first-of-type 
@@ -90,13 +88,6 @@
             width: 67px
             height: 22px
             border: 1px solid #fff
-
-          
-        
         span:lang(en) 
           font-size: 2rem
           font-weight: 500
-        
-      
-    
-  

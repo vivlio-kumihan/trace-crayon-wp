@@ -39,7 +39,7 @@
   +fw.media-query-sp 
     .main-visual 
       .pc 
-        display: none
+        // display: none
 
 .remove-letter-spacing 
   letter-spacing: 0
@@ -83,19 +83,27 @@ section
     position: relative
     width: max-content
     margin: 40px auto 0
-    padding: 25px 50px
+    padding: 30px 65px
     font-size: 1.8rem
     font-weight: 500
     line-height: 1
     letter-spacing: .15em
     color: fw.$color-cyan-vivid-blue
+    transition: .3s
+    &:hover
+      color: #fff
+      background-color: fw.$color-cyan-vivid-blue
+      .border
+        border: 1px solid #fff
+        span
+          background-color: #fff
     .border 
       position: absolute
       top: 50%
       left: 50%
       transform: translate(-50%, -50%)
-      width: 100%
-      height: 100%
+      width: calc(100% - 12px)
+      height: calc(100% - 12px)
       border: 1px solid fw.$color-cyan-vivid-blue
       span 
         position: absolute
@@ -123,7 +131,7 @@ section
 
 .service 
   +.frame 
-    margin-top: 166px
+    margin-top: 135px
 
 .slider 
   position: relative
@@ -187,8 +195,8 @@ h2
   opacity: 1 
   transform: translate(0)
 
-
-
+.frame.slide-bar-pre
+  margin-top: 15px
 
 // 【&nbsp;】半角スペースと同じサイズの空白
 // 【&thinsp;】&nbsp;の空白より小さい空白

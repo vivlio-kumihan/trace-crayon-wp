@@ -160,19 +160,13 @@ button, input, optgroup, select, textarea {
   width: 100%;
   height: 0;
   text-align: right;
-  z-index: 3;
+  z-index: 8;
 }
 .container .contents .special img {
   width: 30%;
   -o-object-fit: cover;
      object-fit: cover;
 }
-@media screen and (max-width: 896px) {
-  .container .main-visual .pc {
-    display: none;
-  }
-}
-
 .remove-letter-spacing {
   letter-spacing: 0;
 }
@@ -221,20 +215,31 @@ section .more-info-btn {
   width: -moz-max-content;
   width: max-content;
   margin: 40px auto 0;
-  padding: 25px 50px;
+  padding: 30px 65px;
   font-size: 1.8rem;
   font-weight: 500;
   line-height: 1;
   letter-spacing: 0.15em;
   color: #00266a;
+  transition: 0.3s;
+}
+section .more-info-btn:hover {
+  color: #fff;
+  background-color: #00266a;
+}
+section .more-info-btn:hover .border {
+  border: 1px solid #fff;
+}
+section .more-info-btn:hover .border span {
+  background-color: #fff;
 }
 section .more-info-btn .border {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
   border: 1px solid #00266a;
 }
 section .more-info-btn .border span {
@@ -268,7 +273,7 @@ section .more-info-btn .border span:nth-of-type(6) {
 }
 
 .service + .frame {
-  margin-top: 166px;
+  margin-top: 135px;
 }
 
 .slider {
@@ -338,6 +343,10 @@ h2 .colorRuby::after {
   transform: translate(0);
 }
 
+.frame.slide-bar-pre {
+  margin-top: 15px;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -349,7 +358,7 @@ header {
   height: 120px;
   padding-right: 5%;
   color: #fff;
-  z-index: 2;
+  z-index: 6;
 }
 header .ci {
   display: flex;
@@ -388,14 +397,83 @@ header .nav-link li a {
   padding: 45px 0;
 }
 header .content-links-btn {
-  position: absolute;
-  top: 50px;
-  right: 50px;
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  right: 0px;
   width: 100px;
   height: 100px;
+  padding-top: 32px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #182e58;
   background-color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 7;
+}
+header .content-links-btn div {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  background-color: #182e58;
+  transition: 0.2s;
+  visibility: visible;
+  opacity: 1;
+}
+header .content-links-btn div:nth-of-type(1) {
+  top: 33%;
+}
+header .content-links-btn div:nth-of-type(2) {
+  top: 42%;
+}
+header .content-links-btn div:nth-of-type(3) {
+  top: 52%;
+  left: 50%;
+  transform: translateX(-25%);
+  width: 20px;
+}
+header .content-links-btn:hover {
+  color: #fff;
+  background-color: #00266a;
+}
+header .content-links-btn:hover div {
+  background-color: #fff;
+}
+header .content-links-btn:hover div:nth-of-type(3) {
+  transform: translateX(-50%);
+  width: 30px;
+}
+header .content-links-btn.active {
+  color: #00266a;
+  background-color: #fff;
+}
+header .content-links-btn.active div {
+  top: 45%;
+  left: 50%;
+  width: 35px;
+  background-color: #182e58;
+}
+header .content-links-btn.active div:nth-of-type(1) {
+  transform: translateX(-50%) rotate(45deg);
+}
+header .content-links-btn.active div:nth-of-type(2) {
   visibility: hidden;
   opacity: 0;
+  transform: translateX(-100%);
+}
+header .content-links-btn.active div:nth-of-type(3) {
+  transform: translateX(-50%) rotate(-45deg);
+}
+header .content-links-btn.active:hover {
+  color: #fff;
+  background-color: #182e58;
+}
+header .content-links-btn.active:hover div {
+  width: 35px;
+  background-color: #fff;
 }
 header .menu-link {
   display: flex;
@@ -409,19 +487,50 @@ header .menu-link {
   height: 100vh;
   color: #fff;
   background-color: #182e58;
-  visibility: hidden;
-  opacity: 0;
 }
 header .menu-link ul:first-of-type {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 1fr;
+  grid-template-rows: repeat(6, 1fr);
+  grid-auto-flow: column;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  width: 85%;
+}
+header .menu-link ul:first-of-type li {
+  position: relative;
+  padding: 16px 8px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  border-bottom: 1px solid #c0c0c0;
+  transition: 0.3s;
+}
+header .menu-link ul:first-of-type li:hover {
+  color: #182e58;
+  background-color: #fff;
+}
+header .menu-link ul:first-of-type li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+header .menu-link ul:first-of-type li::after {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5%;
+  content: "\f178";
+  font-size: inherit;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
 }
 header .menu-link ul:last-of-type {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .cover {
   position: relative;
   width: 100%;
@@ -429,9 +538,6 @@ header .menu-link ul:last-of-type {
   color: #fff;
   background-image: linear-gradient(0deg, #000, #333 5%, #888 13%, #ccc 22%, #ddd 25%, #eee 28%, #fff 32%, #fff);
   overflow: hidden;
-}
-.cover .copy {
-  z-index: 4;
 }
 .cover .copy p {
   position: absolute;
@@ -564,9 +670,9 @@ header .menu-link ul:last-of-type {
   background-color: #000;
   background-image: url(../img/fv-bg.png);
   background-repeat: no-repeat;
-  background-size: 167%;
-  background-position: 50% 42%;
-  z-index: -3;
+  background-size: 180%;
+  background-position: 50% 62%;
+  z-index: 4;
 }
 .concept .composed-visual {
   display: flex;
@@ -620,22 +726,24 @@ header .menu-link ul:last-of-type {
   align-items: center;
   position: relative;
   margin: 55px auto 0;
-  width: 450px;
+  width: 470px;
   height: 135px;
   background-color: #112342;
+  transition: 0.3s;
+  z-index: 5;
 }
 .concept .philosophy img {
   display: inline-block;
-  width: 265px;
+  width: 250px;
 }
 .concept .philosophy .border {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 430px;
+  width: 450px;
   height: 115px;
-  border: 1px solid #c2c3c4;
+  border: 1px solid #74829b;
 }
 .concept .philosophy .border span {
   position: absolute;
@@ -643,7 +751,7 @@ header .menu-link ul:last-of-type {
   left: -2.5px;
   width: 5px;
   height: 5px;
-  background-color: #c2c3c4;
+  background-color: #dbdee2;
 }
 .concept .philosophy .border span:nth-of-type(2) {
   top: -2.5px;
@@ -666,31 +774,38 @@ header .menu-link ul:last-of-type {
   top: calc(100% - 2.5px);
   left: calc(100% - 2.5px);
 }
+.concept .philosophy:hover {
+  background-color: #fff;
+}
+.concept .philosophy:hover img {
+  mix-blend-mode: difference;
+}
+.concept .philosophy:hover span {
+  background-color: #00266a;
+}
 .concept .composed-staff {
   position: relative;
-  height: 50%;
+  height: 43.5vh;
+  overflow: hidden;
 }
-.concept .composed-staff .main-image {
-  margin-top: -60px;
-}
-.concept .composed-staff .main-image img {
-  width: 100%;
-}
-.concept .composed-staff > img {
+.concept .composed-staff img {
   position: absolute;
-  top: 0;
+  top: -15%;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
 }
-.concept .composed-staff > img.light {
-  top: -65px;
-  width: 45%;
-  mix-blend-mode: screen;
-  z-index: -1;
+.concept .composed-staff .shadow {
+  z-index: 3;
 }
-.concept .composed-staff > img.behind {
-  z-index: -2;
+.concept .composed-staff .staff {
+  z-index: 2;
+}
+.concept .composed-staff .light {
+  top: -34%;
+  width: 50%;
+  mix-blend-mode: screen;
+  z-index: 1;
 }
 
 .service {
@@ -718,7 +833,6 @@ header .menu-link ul:last-of-type {
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: bottom left;
-  z-index: -2;
 }
 .project .wrapper {
   position: relative;
@@ -767,6 +881,7 @@ header .menu-link ul:last-of-type {
 }
 .project .wrapper .more-info-btn.left {
   margin: 40px 0 0;
+  padding: 30px 55px;
 }
 .project .point {
   display: flex;
@@ -904,7 +1019,7 @@ header .menu-link ul:last-of-type {
 .learning ul li a {
   display: block;
   width: 100%;
-  aspect-ratio: 1/0.925;
+  aspect-ratio: 3/2;
   overflow: hidden;
 }
 .learning ul li a img {
@@ -978,24 +1093,25 @@ header .menu-link ul:last-of-type {
 .news ul li a {
   display: block;
   width: 100%;
-  aspect-ratio: 1/0.925;
+  aspect-ratio: 3/2;
   overflow: hidden;
 }
-.news ul li a img {
+.news ul li a:hover img {
+  transform: scale(1.1);
+}
+.news ul li img {
   width: 100%;
-  aspect-ratio: 3/2;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   margin-bottom: 20px;
   transition: 0.3s;
 }
-.news ul li a:hover img {
-  transform: scale(1.1);
-}
 .news ul li .header-sub {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin-top: 25px;
 }
 .news ul li .header-sub h5 {
   width: -moz-max-content;
@@ -1045,13 +1161,6 @@ header .menu-link ul:last-of-type {
   aspect-ratio: 1;
   overflow: hidden;
 }
-.other-links ul li .hoverArgBgImg {
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  transition: 0.3s;
-}
 .other-links ul li .hoverArgBgImg a {
   display: flex;
   flex-direction: column;
@@ -1072,16 +1181,37 @@ header .menu-link ul:last-of-type {
   font-style: italic;
 }
 .other-links ul li:nth-of-type(1) .hoverArgBgImg {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 0.3s;
   background-image: url(../img/other-message.jpg);
 }
 .other-links ul li:nth-of-type(1) .hoverArgBgImg:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 .other-links ul li:nth-of-type(2) .hoverArgBgImg {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 0.3s;
   background-image: url(../img/other-company.jpg);
 }
+.other-links ul li:nth-of-type(2) .hoverArgBgImg:hover {
+  transform: scale(1.1);
+}
 .other-links ul li:nth-of-type(3) .hoverArgBgImg {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 0.3s;
   background-image: url(../img/other-recruit.jpg);
+}
+.other-links ul li:nth-of-type(3) .hoverArgBgImg:hover {
+  transform: scale(1.1);
 }
 
 .contact {
@@ -1128,6 +1258,11 @@ header .menu-link ul:last-of-type {
   font-weight: 700;
   letter-spacing: 0.15em;
   border: 2px solid #fff;
+  transition: 0.3s;
+}
+.contact a:hover {
+  color: #182e58;
+  background-color: #fff;
 }
 .contact a::before {
   position: absolute;
@@ -1135,9 +1270,13 @@ header .menu-link ul:last-of-type {
   transform: translateY(-50%);
   left: 6%;
   content: "\f0e0";
-  font-family: "Font Awesome 6 Free";
   font-size: 1.5rem;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
   color: #fff;
+}
+.contact a::before:hover {
+  color: #182e58;
 }
 .contact a::after {
   position: absolute;
@@ -1145,9 +1284,13 @@ header .menu-link ul:last-of-type {
   transform: translateY(-50%);
   right: 5%;
   content: "\f178";
-  font-family: "Font Awesome 6 Free";
   font-size: 1.5rem;
-  color: #fff;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+.contact a::after:hover {
+  color: #182e58;
+  right: 0;
 }
 .contact ul {
   display: flex;

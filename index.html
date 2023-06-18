@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="./assets/css/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
   <script src="./assets/js/behavior.js" defer></script>
 </head>
 
@@ -21,7 +22,7 @@
         </a>
         <figcaption class="catch-copy">電気工事業界を<br>色めく仕事に</figcaption>
       </figure>
-      <ul class="nav-link scrollTrigger">
+      <ul id="nav-link" class="nav-link">
         <li><a href="#">ブログ</a></li>
         <li><a href="#">企業理念</a></li>
         <li><a href="#">事業紹介</a></li>
@@ -30,20 +31,20 @@
         <li><a href="#">採用情報</a></li>
         <li><a href="#">お問い合わせ</a></li>
       </ul>
-      <button class="content-links-btn"></button>
+      <button id="content-links-btn" class="content-links-btn active">MENU</button>
       <div class="menu-link">
         <ul>
-          <li>トップページ</li>
-          <li>ブログ</li>
-          <li>建物に電気が通るまで</li>
-          <li>企業理念</li>
-          <li>ビジョンマップができるまで</li>
-          <li>代表挨拶</li>
-          <li>電気工事対談</li>
-          <li>事業紹介</li>
-          <li>施工事例</li>
-          <li>会社情報</li>
-          <li>採用情報</li>
+          <li><a href="#">トップページ</a></li>
+          <li><a href="#">ブログ</a></li>
+          <li><a href="#">建物に電気が通るまで</a></li>
+          <li><a href="#">企業理念</a></li>
+          <li><a href="#">ビジョンマップができるまで</a></li>
+          <li><a href="#">代表挨拶</a></li>
+          <li><a href="#">電気工事対談</a></li>
+          <li><a href="#">事業紹介</a></li>
+          <li><a href="#">施工事例</a></li>
+          <li><a href="#">会社情報</a></li>
+          <li><a href="#">採用情報</a></li>
         </ul>
         <a class="contact" href="#">お問い合わせ</a>
         <ul>
@@ -80,7 +81,7 @@
         </div>
       </section>
 
-      <section class="concept">
+      <section id="concept" class="concept">
         <div class="composed-visual">
           <div class="visual-container">
             <img class="copy-one" src="assets/img/copy01.png" alt="">
@@ -95,28 +96,20 @@
           そして、電気工事業界を色めく仕事へ変えていく。<br class="for-pc">
           私たちくれよんの、揺らぐことのない使命です。
         </p>
-        <div class="philosophy">
+        <a class="philosophy" href="#">
           <img src="assets/img/philosophy-txt.png" alt="">
           <div class="border">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
           </div>
-        </div>
+        </a>
         <div class="composed-staff">
-          <img class="behind" src="assets/img/people-bg02.png" alt="">
-          <img class="light" src="assets/img/rainbow.png" alt="">
           <img class="shadow" src="assets/img/people-shadow.png" alt="">
-          <div class="main-image">
-            <img class="staff" src="assets/img/people-only.png" alt="">
-          </div>
+          <img class="staff" src="assets/img/people-only.png" alt="">
+          <img class="light" src="assets/img/rainbow.png" alt="">
+          <img class="behind" src="assets/img/people-bg02.png" alt="">
         </div>
       </section>
 
-      <div class="frame">
+      <div class="frame slide-bar-pre">
         <div class="slider pre"></div>
       </div>
 
@@ -126,21 +119,14 @@
         <p class="lead-copy">電気工事の“0→100”を担い</p>
         <p class="lead-copy">日常生活に光を灯していく</p>
         <p>建物における電気工事の全てを手がける、<br>くれよんの事業をご紹介します。</p>
-        <div class="more-info-btn">
+        <a class="more-info-btn" href="#">
           事業紹介を見る
           <div class="border">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
           </div>
-        </div>
+        </a>
       </section>
 
-      <div class="frame">
+      <div class="frame slide-bar-hehind">
         <div class="slider behind"></div>
       </div>
 
@@ -160,13 +146,6 @@
           <div class="more-info-btn left">
             施工事例を見る
             <div class="border">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
             </div>
           </div>
         </div>
@@ -222,13 +201,6 @@
             <div class="more-info-btn left">
               詳しく見る
               <div class="border">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
               </div>
             </div>
           </li>
@@ -244,13 +216,6 @@
               <div class="more-info-btn left">
                 詳しく見る
                 <div class="border">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
                 </div>
               </div>
             </div>
@@ -322,13 +287,6 @@
         <div class="more-info-btn">
           一覧を見る
           <div class="border">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
           </div>
         </div>
       </section>

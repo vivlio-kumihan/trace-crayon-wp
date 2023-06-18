@@ -160,7 +160,6 @@ button, input, optgroup, select, textarea {
   width: 100%;
   height: 0;
   text-align: right;
-  z-index: 3;
 }
 .container .contents .special img {
   width: 30%;
@@ -423,7 +422,6 @@ header .menu-link ul:last-of-type {
   overflow: hidden;
 }
 .cover .copy {
-  z-index: 4;
 }
 .cover .copy p {
   position: absolute;

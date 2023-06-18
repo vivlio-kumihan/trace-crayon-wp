@@ -1,4 +1,5 @@
 @use "../library/function" as fn
+@use "../library/texts" as tx
 @use "../variables" as var
 
 =hoverAnimation($transition-duraiton: .3s) 
@@ -18,7 +19,7 @@
   a
     display: block
     width: percentage(calc($width / 100))
-    aspect-ratio: 1/.925
+    aspect-ratio: 3/2
     overflow: hidden
     @content
     &:hover
@@ -26,15 +27,127 @@
         transform: scale($scale)      
 
 =hoverArgBgImg($width, $height, $transition, $scale)
-  width: percentage(calc($width / 100))
-  height: percentage(calc(height / 100))
-  background-repeat: no-repeat
-  background-size: cover
-  transition: $transition + s
-  @content
-  &:hover
-    transform: scale($scale)
+  .hoverArgBgImg
+    width: percentage(calc($width / 100))
+    height: percentage(calc($height / 100))
+    background-repeat: no-repeat
+    background-size: cover
+    transition: $transition + s
+    @content
+    &:hover
+      transform: scale($scale)
 
+=contentLinkBtn
+  .content-links-btn
+    display: inline-block
+    position: fixed
+    top: 0
+    right: 0px
+    width: 100px
+    height: 100px
+    padding-top: 32px
+    font-weight: 700
+    letter-spacing: .15em
+    color: var.$color-theme-blue
+    background-color: #fff
+    cursor: pointer
+    transition: .3s
+    z-index: fn.set-index(contentLinkBtn)
+    div 
+      position: absolute
+      left: 50%
+      transform: translateX(-50%)
+      width: 30px
+      height: 2px
+      background-color: var.$color-theme-blue
+      transition: .2s
+      visibility: visible
+      opacity: 1
+      &:nth-of-type(1) 
+        top: 33%
+      &:nth-of-type(2) 
+        top: 42%
+      &:nth-of-type(3) 
+        top: 52%
+        left: 50%
+        transform: translateX(-25%)
+        width: 20px
+    &:hover
+      color: #fff
+      background-color: var.$color-cyan-vivid-blue
+      div
+        background-color: #fff
+        &:nth-of-type(3) 
+          transform: translateX(-50%)
+          width: 30px
+    &.active 
+      color: var.$color-cyan-vivid-blue
+      background-color: #fff
+      div 
+        top: 45%
+        left: 50%
+        width: 35px
+        background-color: var.$color-theme-blue
+        &:nth-of-type(1) 
+          transform: translateX(-50%) rotate(45deg)
+        &:nth-of-type(2) 
+          visibility: hidden
+          opacity: 0
+          transform: translateX(-100%)
+        &:nth-of-type(3)
+          transform: translateX(-50%) rotate(-45deg)
+      &:hover
+        color: #fff
+        background-color: var.$color-theme-blue
+        div
+          width: 35px
+          background-color: #fff
+
+=menuLink
+  .menu-link 
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    position: fixed
+    top: 0
+    right: 0
+    width: 70vw
+    height: 100vh
+    color: #fff
+    background-color: var.$color-theme-blue
+    ul:first-of-type 
+      display: grid
+      grid-template-columns: repeat(2, 1fr)
+      grid-template-rows: repeat(6, 1fr)
+      grid-auto-flow: column
+      column-gap: 20px
+      width: 85%
+      li
+        position: relative
+        padding: 16px 8px
+        font-size: 16px
+        font-weight: 500
+        line-height: 1
+        border-bottom: 1px solid var.$color-light-gray-mid
+        transition: .3s
+        &:hover
+          color: var.$color-theme-blue
+          background-color: #fff
+        a
+          display: block
+          width: 100%
+          height: 100%
+        &::after
+          position: absolute
+          top: 50%
+          transform: translateY(-50%)
+          right: 5%
+          +tx.fontAwesome("\f178")
+    ul:last-of-type 
+      display: flex
+      justify-content: space-between
+      align-items: center
 
 // =caption-with-visual 
 //   writing-mode: vertical-rl
