@@ -1,3 +1,7 @@
+// chatGPTに教えられたが効果なし。
+gsap.registerPlugin(ScrollTrigger);
+
+
 // ////////////
 // // ローディング・アニメーション
 // function loaded() {
@@ -41,6 +45,7 @@
 //    'afterbegin'   要素の最初の子要素として追加
 //    'beforeend'    要素の最後の子要素として追加
 //    'afterend'     要素の直後に追加
+
 // for content-links-btn div
 document.getElementById('content-links-btn').insertAdjacentHTML('afterbegin', '<div></div><div></div><div></div>')
 
@@ -48,6 +53,103 @@ document.getElementById('content-links-btn').insertAdjacentHTML('afterbegin', '<
 document.querySelectorAll('.border').forEach(elem => {
   elem.insertAdjacentHTML('afterbegin', '<span></span><span></span><span></span><span></span><span></span><span></span>')
 })
+
+
+// GSAP
+// TimelineMaxインスタンスを作成
+const timeline = gsap.timeline();
+
+// 要素のアニメーションを追加
+timeline
+  // id="nav-link"
+  // id="concept"
+  .fromTo('#nav-link', .2, { 
+    x: 0
+  }, {
+    x: '110%',
+    ease: 'power1.inOut',
+    scrollTrigger: {
+      trigger: '#concept',
+      start: '0% 10%',
+      end: '15% 10%',
+      scrub: .2,
+      // markers: true
+    }
+  })
+  // id="content-links-btn"
+  .fromTo('#content-links-btn', {
+    x: '100%'
+  }, {
+    x: 0,
+    ease: 'power1.inout',
+    scrollTrigger: {
+      trigger: '#concept',
+      start: '40% 50%',
+      end: '40% 50%',
+      scrub: 0,
+      // markers: true
+    }
+  })
+
+////////////
+// #content-links-btn, #menu-link ハンバーガーメニュー
+const contentLinksBtn = document.getElementById('content-links-btn')
+const menuLink = document.getElementById('menu-link')
+contentLinksBtn.addEventListener('click', function() {
+  this.classList.toggle('active')
+  menuLink.classList.toggle('active')
+})
+
+
+// id="philosophy"
+gsap.fromTo('#philosophy', .7, {
+  opacity: 0,
+}, {
+  opacity: 1,
+  ease: 'power1.easeInOut',
+  scrollTrigger: {
+    trigger: '#philosophy',
+    start: 'top center',
+    // 一度アニメーションしたら終わり       
+    once: true,
+    // markers: true
+  }
+})
+
+// id="composed-staff"
+// id="shadow"
+// 『img要素』は『トリガー』に『できない』が、『効果』は『効く』
+gsap.fromTo('#shadow', .7, {
+  opacity: 1,
+}, {
+  opacity: 0,
+  ease: 'power1.easeInOut',
+  scrollTrigger: {
+    trigger: '#composed-staff',
+    // 画像の上端10%をトリガーに、スクリーンの25%上の地点から
+    // アニメーションを開始するという意味。
+    start: '10% 25%',
+    end: '85% 25%',
+    scrub: 1,
+    // markers: true
+  }
+})
+
+// id="behind"
+gsap.fromTo('#behind', .7, {
+  opacity: 0,
+}, {
+  opacity: 1,
+  ease: 'power1.easeInOut',
+  scrollTrigger: {
+    trigger: '#composed-staff',
+    start: '10% 25%',
+    end: '85% 25%',
+    scrub: 1,      
+    // markers: true
+  }
+})
+
 
 // const navLink = document.getElementById('nav-link')
 // const concept = document.getElementById('concept')

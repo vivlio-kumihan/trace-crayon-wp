@@ -13,25 +13,7 @@
   background-repeat: no-repeat
   background-position: center
   background-size: cover
-  p 
-    position: relative
-    font-size: 2rem
-    font-weight: bold
-    line-height: 1
-    letter-spacing: 0.18em
-    color: #fff
-    &::after 
-      position: absolute
-      top: 80%
-      left: 50%
-      transform: translate(-50%, -50%)
-      content: "CONTACT"
-      font-family: fw.$jost
-      font-size: 80px
-      font-style: italic
-      color: transparent
-      -webkit-text-stroke: 1px #fff
-      opacity: .2
+  +fw.toContactAnchor(20, 80)
   a 
     position: relative
     display: block
@@ -45,13 +27,14 @@
     &:hover
       color: fw.$color-theme-blue
       background-color: #fff
+      &::after
+        right: 2%
     &::before 
       position: absolute
       top: 50%
       transform: translateY(-50%)
       left: 6%
       +fw.fontAwesome("\f0e0", 1.5rem)
-      color: #fff
       &:hover
         color: fw.$color-theme-blue
     &::after 
@@ -60,9 +43,7 @@
       transform: translateY(-50%)
       right: 5%
       +fw.fontAwesome("\f178", 1.5rem)
-      &:hover
-        color: fw.$color-theme-blue
-        right: 0
+      transition: .3s
   ul 
     display: flex
     justify-content: center

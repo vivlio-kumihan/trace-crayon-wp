@@ -56,21 +56,15 @@ footer
           width: 27.5px
           height: 27.5px
           margin-right: 30px
-          &::before 
-            position: absolute
-            top: 50%
-            left: 50%
-            transform: translate(-50%, -50%)
+          &::before
+            +fw.positionAbsoluteTateYokoCenter
             width: 27.5px
             height: 27.5px
-            font-family: "Font Awesome 6 Brands"
-            font-weight: 900
-            font-size: 27.5px
             color: #fff
           &.twitter::before 
-            content: "\f099"
+            +fw.fontAwesome("\f099", 27.5px, Brands)
           &.instagram::before 
-            content: "\f16d"
+            +fw.fontAwesome("\f16d", 27.5px, Brands)
     &:last-of-type 
       li 
         font-size: 1.4rem

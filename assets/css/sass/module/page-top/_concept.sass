@@ -59,16 +59,12 @@
     width: 470px
     height: 135px
     background-color: fw.$color-cyan-dark-blue
-    transition: .3s
     z-index: fw.set-index(philosophy)
     img 
       display: inline-block
       width: 250px
-    .border 
-      position: absolute
-      top: 50%
-      left: 50%
-      transform: translate(-50%, -50%)
+    .border
+      +fw.positionAbsoluteTateYokoCenter
       width: calc(470px - 20px)
       height: calc(135px - 20px)
       border: 1px solid fw.$color-philosofhy-line
@@ -102,26 +98,37 @@
       span
         background-color: fw.$color-cyan-vivid-blue
 
+  // 質問
   // メインのスタッフの集合写真で高さを確保する必要がある。
-  // z-index: 0;にする必要あり。
-  // なので変数が使えない。set-index(name)
-  // どうしたらいいのか？？？
+  // 見本と同じような高さを確保できない。
   .composed-staff 
     position: relative
-    height: 43.5vh
+    width: 100%
+    height: 49.5vw
     overflow: hidden
-    img
-      position: absolute
-      top: -15%
-      left: 50%
-      transform: translateX(-50%)
-      width: 100%
-    .shadow
-      z-index: fw.set-index(composedStaffShadow)
+    background-image: url(../img/people-bg02.png)
+    background-repeat: no-repeat
+    background-size: cover
+    background-position: 50% 100%
     .staff
-      z-index: fw.set-index(composedStaffStaff)
+      +fw.positionAbsoluteYokoCenter
+      bottom: 0
+      width: 100%
+      z-index: fw.set-index(composedStaff)
+    .shadow
+      +fw.positionAbsoluteYokoCenter
+      bottom: 0
+      width: 100%
+      z-index: fw.set-index(composedStaffShadow)
     .light
-      top: -34%
+      +fw.positionAbsoluteYokoCenter
+      bottom: 14%
       width: 50%
       mix-blend-mode: screen
       z-index: fw.set-index(composedStaffLight)
+    .behind
+      +fw.positionAbsoluteYokoCenter
+      bottom: 0
+      width: 100%
+      mix-blend-mode: screen
+      z-index: fw.set-index(composedStaffBehind)

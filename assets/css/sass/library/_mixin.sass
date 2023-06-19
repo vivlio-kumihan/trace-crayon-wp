@@ -51,7 +51,7 @@
     color: var.$color-theme-blue
     background-color: #fff
     cursor: pointer
-    transition: .3s
+    transition: .5s
     z-index: fn.set-index(contentLinkBtn)
     div 
       position: absolute
@@ -60,9 +60,7 @@
       width: 30px
       height: 2px
       background-color: var.$color-theme-blue
-      transition: .2s
-      visibility: visible
-      opacity: 1
+      transition: .3s
       &:nth-of-type(1) 
         top: 33%
       &:nth-of-type(2) 
@@ -81,27 +79,22 @@
           transform: translateX(-50%)
           width: 30px
     &.active 
-      color: var.$color-cyan-vivid-blue
-      background-color: #fff
+      color: #fff
+      background-color: var.$color-cyan-vivid-blue
       div 
         top: 45%
         left: 50%
         width: 35px
-        background-color: var.$color-theme-blue
+        background-color: #fff
         &:nth-of-type(1) 
           transform: translateX(-50%) rotate(45deg)
         &:nth-of-type(2) 
           visibility: hidden
           opacity: 0
-          transform: translateX(-100%)
+          transform: translateX(100%)
         &:nth-of-type(3)
-          transform: translateX(-50%) rotate(-45deg)
-      &:hover
-        color: #fff
-        background-color: var.$color-theme-blue
-        div
           width: 35px
-          background-color: #fff
+          transform: translateX(-50%) rotate(-45deg)
 
 =menuLink
   .menu-link 
@@ -116,6 +109,10 @@
     height: 100vh
     color: #fff
     background-color: var.$color-theme-blue
+    transition: .5s
+    transform: translateX(100%)
+    &.active
+      transform: translateX(0)
     ul:first-of-type 
       display: grid
       grid-template-columns: repeat(2, 1fr)
@@ -130,7 +127,6 @@
         font-weight: 500
         line-height: 1
         border-bottom: 1px solid var.$color-light-gray-mid
-        transition: .3s
         &:hover
           color: var.$color-theme-blue
           background-color: #fff
@@ -144,10 +140,59 @@
           transform: translateY(-50%)
           right: 5%
           +tx.fontAwesome("\f178")
+    .contact
+      width: 85%
+      margin-top: 40px
+      padding: 30px 0
+      background-image: none
+      background-color: var.$color-cyan-dark-blue2
+      +toContactAnchor(16.5, 50)
+      p::before
+        +positionAbsoluteTateCenter
+        left: -25px
+        +tx.fontAwesome("\f0e0", 1.8rem)
     ul:last-of-type 
       display: flex
       justify-content: space-between
       align-items: center
+
+=positionAbsoluteTateYokoCenter
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+=positionAbsoluteYokoCenter
+  position: absolute
+  left: 50%
+  transform: translateX(-50%)
+
+=positionAbsoluteTateCenter
+  position: absolute
+  top: 50%
+  transform: translateY(-50%)
+
+
+=toContactAnchor($mainFontSZ, $subFontSZ)
+  p 
+    position: relative
+    font-size: $mainFontSZ + px
+    font-weight: bold
+    line-height: 1
+    letter-spacing: 0.18em
+    color: #fff
+    &::after 
+      position: absolute
+      top: 40%
+      left: 50%
+      transform: translate(-50%, -50%)
+      content: "CONTACT"
+      font-family: var.$jost
+      font-size: $subFontSZ + px
+      font-style: italic
+      color: transparent
+      -webkit-text-stroke: 1px #fff
+      opacity: .2
 
 // =caption-with-visual 
 //   writing-mode: vertical-rl

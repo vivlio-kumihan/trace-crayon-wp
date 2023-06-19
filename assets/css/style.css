@@ -160,7 +160,7 @@ button, input, optgroup, select, textarea {
   width: 100%;
   height: 0;
   text-align: right;
-  z-index: 8;
+  z-index: 9;
 }
 .container .contents .special img {
   width: 30%;
@@ -358,7 +358,7 @@ header {
   height: 120px;
   padding-right: 5%;
   color: #fff;
-  z-index: 6;
+  z-index: 7;
 }
 header .ci {
   display: flex;
@@ -409,8 +409,8 @@ header .content-links-btn {
   color: #182e58;
   background-color: #fff;
   cursor: pointer;
-  transition: 0.3s;
-  z-index: 7;
+  transition: 0.5s;
+  z-index: 8;
 }
 header .content-links-btn div {
   position: absolute;
@@ -419,9 +419,7 @@ header .content-links-btn div {
   width: 30px;
   height: 2px;
   background-color: #182e58;
-  transition: 0.2s;
-  visibility: visible;
-  opacity: 1;
+  transition: 0.3s;
 }
 header .content-links-btn div:nth-of-type(1) {
   top: 33%;
@@ -447,14 +445,14 @@ header .content-links-btn:hover div:nth-of-type(3) {
   width: 30px;
 }
 header .content-links-btn.active {
-  color: #00266a;
-  background-color: #fff;
+  color: #fff;
+  background-color: #00266a;
 }
 header .content-links-btn.active div {
   top: 45%;
   left: 50%;
   width: 35px;
-  background-color: #182e58;
+  background-color: #fff;
 }
 header .content-links-btn.active div:nth-of-type(1) {
   transform: translateX(-50%) rotate(45deg);
@@ -462,18 +460,11 @@ header .content-links-btn.active div:nth-of-type(1) {
 header .content-links-btn.active div:nth-of-type(2) {
   visibility: hidden;
   opacity: 0;
-  transform: translateX(-100%);
+  transform: translateX(100%);
 }
 header .content-links-btn.active div:nth-of-type(3) {
-  transform: translateX(-50%) rotate(-45deg);
-}
-header .content-links-btn.active:hover {
-  color: #fff;
-  background-color: #182e58;
-}
-header .content-links-btn.active:hover div {
   width: 35px;
-  background-color: #fff;
+  transform: translateX(-50%) rotate(-45deg);
 }
 header .menu-link {
   display: flex;
@@ -487,6 +478,11 @@ header .menu-link {
   height: 100vh;
   color: #fff;
   background-color: #182e58;
+  transition: 0.5s;
+  transform: translateX(100%);
+}
+header .menu-link.active {
+  transform: translateX(0);
 }
 header .menu-link ul:first-of-type {
   display: grid;
@@ -504,7 +500,6 @@ header .menu-link ul:first-of-type li {
   font-weight: 500;
   line-height: 1;
   border-bottom: 1px solid #c0c0c0;
-  transition: 0.3s;
 }
 header .menu-link ul:first-of-type li:hover {
   color: #182e58;
@@ -522,6 +517,44 @@ header .menu-link ul:first-of-type li::after {
   right: 5%;
   content: "\f178";
   font-size: inherit;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+header .menu-link .contact {
+  width: 85%;
+  margin-top: 40px;
+  padding: 30px 0;
+  background-image: none;
+  background-color: #02112d;
+}
+header .menu-link .contact p {
+  position: relative;
+  font-size: 16.5px;
+  font-weight: bold;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  color: #fff;
+}
+header .menu-link .contact p::after {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: "CONTACT";
+  font-family: "Jost", sans-serif;
+  font-size: 50px;
+  font-style: italic;
+  color: transparent;
+  -webkit-text-stroke: 1px #fff;
+  opacity: 0.2;
+}
+header .menu-link .contact p::before {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -25px;
+  content: "\f0e0";
+  font-size: 1.8rem;
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
 }
@@ -672,7 +705,7 @@ header .menu-link ul:last-of-type {
   background-repeat: no-repeat;
   background-size: 180%;
   background-position: 50% 62%;
-  z-index: 4;
+  z-index: 1;
 }
 .concept .composed-visual {
   display: flex;
@@ -729,8 +762,7 @@ header .menu-link ul:last-of-type {
   width: 470px;
   height: 135px;
   background-color: #112342;
-  transition: 0.3s;
-  z-index: 5;
+  z-index: 6;
 }
 .concept .philosophy img {
   display: inline-block;
@@ -785,27 +817,47 @@ header .menu-link ul:last-of-type {
 }
 .concept .composed-staff {
   position: relative;
-  height: 43.5vh;
-  overflow: hidden;
-}
-.concept .composed-staff img {
-  position: absolute;
-  top: -15%;
-  left: 50%;
-  transform: translateX(-50%);
   width: 100%;
-}
-.concept .composed-staff .shadow {
-  z-index: 3;
+  height: 49.5vw;
+  overflow: hidden;
+  background-image: url(../img/people-bg02.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 100%;
 }
 .concept .composed-staff .staff {
-  z-index: 2;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 100%;
+  z-index: 4;
+}
+.concept .composed-staff .shadow {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 100%;
+  z-index: 5;
 }
 .concept .composed-staff .light {
-  top: -34%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 14%;
   width: 50%;
   mix-blend-mode: screen;
-  z-index: 1;
+  z-index: 3;
+}
+.concept .composed-staff .behind {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 100%;
+  mix-blend-mode: screen;
+  z-index: 2;
 }
 
 .service {
@@ -966,7 +1018,8 @@ header .menu-link ul:last-of-type {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 55.5vh;
+  width: 100%;
+  height: 63vw;
   padding-top: 150px;
   background-image: url(../img/learning-bg.png);
   background-repeat: no-repeat;
@@ -1230,7 +1283,7 @@ header .menu-link ul:last-of-type {
 }
 .contact p {
   position: relative;
-  font-size: 2rem;
+  font-size: 20px;
   font-weight: bold;
   line-height: 1;
   letter-spacing: 0.18em;
@@ -1238,7 +1291,7 @@ header .menu-link ul:last-of-type {
 }
 .contact p::after {
   position: absolute;
-  top: 80%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   content: "CONTACT";
@@ -1264,6 +1317,9 @@ header .menu-link ul:last-of-type {
   color: #182e58;
   background-color: #fff;
 }
+.contact a:hover::after {
+  right: 2%;
+}
 .contact a::before {
   position: absolute;
   top: 50%;
@@ -1273,7 +1329,6 @@ header .menu-link ul:last-of-type {
   font-size: 1.5rem;
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
-  color: #fff;
 }
 .contact a::before:hover {
   color: #182e58;
@@ -1287,10 +1342,7 @@ header .menu-link ul:last-of-type {
   font-size: 1.5rem;
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
-}
-.contact a::after:hover {
-  color: #182e58;
-  right: 0;
+  transition: 0.3s;
 }
 .contact ul {
   display: flex;
@@ -1402,16 +1454,19 @@ footer ul:last-of-type li:first-of-type .icon::before {
   transform: translate(-50%, -50%);
   width: 27.5px;
   height: 27.5px;
-  font-family: "Font Awesome 6 Brands";
-  font-weight: 900;
-  font-size: 27.5px;
   color: #fff;
 }
 footer ul:last-of-type li:first-of-type .icon.twitter::before {
   content: "\f099";
+  font-size: 27.5px;
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 900;
 }
 footer ul:last-of-type li:first-of-type .icon.instagram::before {
   content: "\f16d";
+  font-size: 27.5px;
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 900;
 }
 footer ul:last-of-type:last-of-type li {
   font-size: 1.4rem;
