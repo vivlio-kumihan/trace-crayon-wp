@@ -209,161 +209,157 @@
 
 
 // 収縮する下線を持つ見出し
+  
+// 配列を変数として入れることができればリファクタリングできる。どうする？？？
+//       LeftToRight: ['left top', 'left top']
+//       RightToLeft: ['right top', 'right top']
+//       LeftToLeft: ['right top', 'left top']
+//       RightToRight: ['left top', 'right top']
+//       Center: ['center top', 'center top']
 // 左から右
-=shrinkHeaderLeftToRight($fontSize, $bottom, $height, $boderColor)
-  .leftToRight 
+=shrinkHeaderLeftToRight($fontSize, $bottom, $lineHeight, $boderColor)
+  .shrinkLine
+    display: block
     position: relative
-    padding: 20px 0
+    width: 100%
     font-size: $fontSize
+    letter-spacing: .04em
+    font-weight: 700
     line-height: 1
-    @content
-    &:hover::after 
-      transform: scale(1, 1)
-      @content
-    &::after 
+    transition: .3s
+    &:hover
+      color: var.$colorLinkHover
+    &::after
       position: absolute
-      left: 0
+      display: block
       bottom: $bottom + px
-      content: ""
+      left: 0
       width: 100%
-      height: $height + px
+      height: $lineHeight + px
+      content: ""
       background-color: $boderColor
       transform: scale(0, 1)
       transform-origin: left top
-      transition: .3s
+      transition: transform .3s
+    &:hover::after
+      transform: scale(1, 1)
+      transform-origin: left top
 
 // 右から左
-=shrinkHeaderRightToLeft($fontSize, $bottom, $height, $boderColor)
-  .leftToRight 
+=shrinkHeaderRightToLeft($fontSize, $bottom, $lineHeight, $boderColor)
+  .shrinkLine
+    display: block
     position: relative
-    padding: 20px 0
+    width: 100%
     font-size: $fontSize
+    letter-spacing: .04em
+    font-weight: 700
     line-height: 1
-    @content
-    &:hover::after 
-      transform: scale(1, 1)
-      @content
-    &::after 
+    transition: .3s
+    &:hover
+      color: var.$colorLinkHover
+    &::after
       position: absolute
-      left: 0
+      display: block
       bottom: $bottom + px
-      content: ""
+      left: 0
       width: 100%
-      height: $height + px
+      height: $lineHeight + px
+      content: ""
       background-color: $boderColor
       transform: scale(0, 1)
       transform-origin: right top
-      transition: .3s
+      transition: transform .3s
+    &:hover::after
+      transform: scale(1, 1)
+      transform-origin: right top
 
 // 左から左
-=shrinkHeaderLeftToLeft($fontSize, $bottom, $height, $boderColor)
-  .leftToRight 
+=shrinkHeaderLeftToLeft($fontSize, $bottom, $lineHeight, $boderColor)
+  .shrinkLine
+    display: block
     position: relative
-    padding: 20px 0
+    width: 100%
     font-size: $fontSize
+    letter-spacing: .04em
+    font-weight: 700
     line-height: 1
-    @content
-    &:hover::after 
-      transform: scale(1, 1)
-      transform-origin: left top
-      @content
-    &::after 
+    transition: .3s
+    &:hover
+      color: var.$colorLinkHover
+    &::after
       position: absolute
-      left: 0
+      display: block
       bottom: $bottom + px
-      content: ""
+      left: 0
       width: 100%
-      height: $height + px
+      height: $lineHeight + px
+      content: ""
       background-color: $boderColor
       transform: scale(0, 1)
       transform-origin: right top
-      transition: transform .3
+      transition: transform .3s
+    &:hover::after
+      transform: scale(1, 1)
+      transform-origin: left top
 
+// 右から右
+=shrinkHeaderRightToRight($fontSize, $bottom, $lineHeight, $boderColor)
+  .shrinkLine
+    display: block
+    position: relative
+    width: 100%
+    font-size: $fontSize
+    letter-spacing: .04em
+    font-weight: 700
+    line-height: 1
+    transition: .3s
+    &:hover
+      color: var.$colorLinkHover
+    &::after
+      position: absolute
+      display: block
+      bottom: $bottom + px
+      left: 0
+      width: 100%
+      height: $lineHeight + px
+      content: ""
+      background-color: $boderColor
+      transform: scale(0, 1)
+      transform-origin: left top
+      transition: transform .3s
+    &:hover::after
+      transform: scale(1, 1)
+      transform-origin: right top
 
-
-
-.two 
-  position: relative
-  margin-bottom: 50px
-  font-size: 30px
-  font-weight: 900
-  line-height: 1
-  text-transform: uppercase
-
-
-.two::after 
-  position: absolute
-  left: 0
-  bottom: -10px
-  content: ""
-  width: 100%
-  height: 3px
-  background-color: #333
-  transform: scale(0, 1)
-  transform-origin: right top
-  transition: .3s
-
-
-.two:hover::after 
-  transform: scale(1, 1)
-
-
-
-.three 
-  position: relative
-  margin-bottom: 50px
-  font-size: 30px
-  font-weight: 900
-  line-height: 1
-  text-transform: uppercase
-
-
-.three::after 
-  position: absolute
-  left: 0
-  bottom: -10px
-  content: ""
-  width: 100%
-  height: 3px
-  background-color: #333
-  transform: scale(0, 1)
-  transform-origin: right top
-  transition: transform .3s
-
-
-.three:hover::after 
-  transform: scale(1, 1)
-  transform-origin: left top
-
-
-
-.four 
-  position: relative
-  margin-bottom: 50px
-  font-size: 30px
-  font-weight: 900
-  line-height: 1
-  text-transform: uppercase
-
-
-.four::after 
-  position: absolute
-  left: 0
-  bottom: -10px
-  content: ""
-  width: 100%
-  height: 3px
-  background-color: #333
-  transform: scale(0, 1)
-  transform-origin: left top
-  transition: transform .3s
-
-
-.four:hover::after 
-  transform: scale(1, 1)
-  transform-origin: right top
-
-
+// センター
+=shrinkHeaderCenter($fontSize, $bottom, $lineHeight, $boderColor)
+  .shrinkLine
+    display: block
+    position: relative
+    width: 100%
+    font-size: $fontSize
+    letter-spacing: .04em
+    font-weight: 700
+    line-height: 1
+    transition: .3s
+    &:hover
+      color: var.$colorLinkHover
+    &::after
+      position: absolute
+      display: block
+      bottom: $bottom + px
+      left: 0
+      width: 100%
+      height: $lineHeight + px
+      content: ""
+      background-color: $boderColor
+      transform: scale(0, 1)
+      transform-origin: center top
+      transition: transform .3s
+    &:hover::after
+      transform: scale(1, 1)
+      transform-origin: center top
 
 .five 
   position: relative

@@ -33,19 +33,53 @@ header
   .nav-link
     li 
       display: inline-block
-      font-size: 1.4rem
-      font-weight: 700
-      letter-spacing: .04em
       &+ li 
         margin-left: 28px
-        padding-left: 0
-      +fw.shrinkHeaderLeftToLeft(1.4rem, 14, 1, fw.$colorLinkHover)
-        display: block
-        font-weight: 700
-        line-height: 1
-        transition: .3s
-        &:hover
-          color: fw.$colorLinkHover
+
+      // +fw.shrinkHeaderLeftToRight(1.4rem, 14, 1, fw.$colorLinkHover)
+      // +fw.shrinkHeaderRightToLeft(1.4rem, 14, 1, fw.$colorLinkHover)
+      // +fw.shrinkHeaderLeftToLeft(1.4rem, 14, 1, fw.$colorLinkHover)
+      //   display: block
+      //   font-weight: 700
+      //   line-height: 1
+      //   transition: .3s
+      //   &:hover
+      //     color: fw.$colorLinkHover
+
+      // .shrinkLine
+      //   display: block
+      //   position: relative
+      //   width: 100%
+      //   font-size: 14px
+      //   letter-spacing: .04em
+      //   font-weight: 700
+      //   line-height: 1
+      //   transition: .3s
+      //   &:hover
+      //     color: fw.$colorLinkHover
+      //   &::after
+      //     position: absolute
+      //     bottom: -8px
+      //     left: 0
+      //     width: 100%
+      //     height: 1px
+      //     content: ""
+      //     background-color: fw.$colorLinkHover
+      //     transform: scale(0, 1)
+      //     transform-origin: right top
+      //     transition: transform .3s
+      //   &:hover::after
+      //     transform: scale(1, 1)
+      //     transform-origin: left top 
+
+      // +fw.shrinkHeaderLeftToLeft2
+      
+      // +fw.shrinkHeaderLeftToRight(1.4rem, -5, 1, fw.$colorLinkHover)
+      // +fw.shrinkHeaderRightToLeft(1.4rem, -5, 1, fw.$colorLinkHover)
+      +fw.shrinkHeaderLeftToLeft(1.4rem, -5, 1, fw.$colorLinkHover)
+      // +fw.shrinkHeaderRightToRight(1.4rem, -5, 1, fw.$colorLinkHover)
+      // +fw.shrinkHeaderCenter(1.4rem, -5, 1, fw.$colorLinkHover)
+
   +fw.contentLinkBtn
   +fw.menuLink
     .contact
