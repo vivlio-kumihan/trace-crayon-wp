@@ -445,14 +445,14 @@ header .content-links-btn:hover div:nth-of-type(3) {
   width: 30px;
 }
 header .content-links-btn.active {
-  color: #fff;
-  background-color: #00266a;
+  color: #00266a;
+  background-color: #fff;
 }
 header .content-links-btn.active div {
   top: 45%;
   left: 50%;
   width: 35px;
-  background-color: #fff;
+  background-color: #00266a;
 }
 header .content-links-btn.active div:nth-of-type(1) {
   transform: translateX(-50%) rotate(45deg);
@@ -545,7 +545,7 @@ header .menu-link .contact p::after {
   font-size: 50px;
   font-style: italic;
   color: transparent;
-  -webkit-text-stroke: 1px #fff;
+  -webkit-text-stroke: 1.2px #fff;
   opacity: 0.2;
 }
 header .menu-link .contact p::before {
@@ -562,6 +562,41 @@ header .menu-link ul:last-of-type {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 85%;
+  padding: 30px 0 0;
+}
+header .menu-link ul:last-of-type li:first-of-type {
+  font-size: 15px;
+  font-weight: 700;
+}
+header .menu-link ul:last-of-type li:last-of-type .icon {
+  display: inline-block;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin-left: 20px;
+  margin-right: 0px;
+}
+header .menu-link ul:last-of-type li:last-of-type .icon::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  color: #fff;
+}
+header .menu-link ul:last-of-type li:last-of-type .icon.twitter::before {
+  content: "\f099";
+  font-size: 24px;
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 900;
+}
+header .menu-link ul:last-of-type li:last-of-type .icon.instagram::before {
+  content: "\f16d";
+  font-size: 24px;
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 900;
 }
 
 .cover {
@@ -1299,7 +1334,7 @@ header .menu-link ul:last-of-type {
   font-size: 80px;
   font-style: italic;
   color: transparent;
-  -webkit-text-stroke: 1px #fff;
+  -webkit-text-stroke: 1.2px #fff;
   opacity: 0.2;
 }
 .contact a {
@@ -1445,6 +1480,7 @@ footer ul:last-of-type li:first-of-type .icon {
   position: relative;
   width: 27.5px;
   height: 27.5px;
+  margin-left: 0px;
   margin-right: 30px;
 }
 footer ul:last-of-type li:first-of-type .icon::before {

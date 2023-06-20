@@ -2,6 +2,22 @@
 @use "../library/texts" as tx
 @use "../variables" as var
 
+=positionAbsoluteTateYokoCenter
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+=positionAbsoluteYokoCenter
+  position: absolute
+  left: 50%
+  transform: translateX(-50%)
+
+=positionAbsoluteTateCenter
+  position: absolute
+  top: 50%
+  transform: translateY(-50%)
+
 =hoverAnimation($transition-duraiton: .3s) 
   transition: $transition-duraiton
   @media (hover: hover) 
@@ -79,13 +95,13 @@
           transform: translateX(-50%)
           width: 30px
     &.active 
-      color: #fff
-      background-color: var.$color-cyan-vivid-blue
+      color: var.$color-cyan-vivid-blue
+      background-color: #fff
       div 
         top: 45%
         left: 50%
         width: 35px
-        background-color: #fff
+        background-color: var.$color-cyan-vivid-blue
         &:nth-of-type(1) 
           transform: translateX(-50%) rotate(45deg)
         &:nth-of-type(2) 
@@ -140,37 +156,26 @@
           transform: translateY(-50%)
           right: 5%
           +tx.fontAwesome("\f178")
-    .contact
-      width: 85%
-      margin-top: 40px
-      padding: 30px 0
-      background-image: none
-      background-color: var.$color-cyan-dark-blue2
-      +toContactAnchor(16.5, 50)
-      p::before
-        +positionAbsoluteTateCenter
-        left: -25px
-        +tx.fontAwesome("\f0e0", 1.8rem)
-    ul:last-of-type 
-      display: flex
-      justify-content: space-between
-      align-items: center
+    @content
 
-=positionAbsoluteTateYokoCenter
-  position: absolute
-  top: 50%
-  left: 50%
-  transform: translate(-50%, -50%)
-
-=positionAbsoluteYokoCenter
-  position: absolute
-  left: 50%
-  transform: translateX(-50%)
-
-=positionAbsoluteTateCenter
-  position: absolute
-  top: 50%
-  transform: translateY(-50%)
+    // .contact
+    //   width: 85%
+    //   margin-top: 40px
+    //   padding: 30px 0
+    //   background-image: none
+    //   background-color: var.$color-cyan-dark-blue2
+    //   +toContactAnchor(16.5, 50)
+    //   p::before
+    //     +positionAbsoluteTateCenter
+    //     left: -25px
+    //     +tx.fontAwesome("\f0e0", 1.8rem)
+    // ul:last-of-type 
+    //   display: flex
+    //   justify-content: space-between
+    //   align-items: center
+    //   li:last-of-type
+    //     .icon
+    //       +snsLinks(20, 20, #fff)      
 
 
 =toContactAnchor($mainFontSZ, $subFontSZ)
@@ -191,8 +196,25 @@
       font-size: $subFontSZ + px
       font-style: italic
       color: transparent
-      -webkit-text-stroke: 1px #fff
+      -webkit-text-stroke: 1.2px #fff
       opacity: .2
+
+=snsLinks($widthHeight, $marginleft, $marginRight, $color)
+  display: inline-block
+  position: relative
+  width: $widthHeight + px
+  height: $widthHeight + px
+  margin-left: $marginleft + px
+  margin-right: $marginRight + px
+  &::before
+    +positionAbsoluteTateYokoCenter
+    width: $widthHeight + px
+    height: $widthHeight + px
+    color: #fff
+  &.twitter::before 
+    +tx.fontAwesome("\f099", $widthHeight + px, Brands)
+  &.instagram::before 
+    +tx.fontAwesome("\f16d", $widthHeight + px, Brands)
 
 // =caption-with-visual 
 //   writing-mode: vertical-rl

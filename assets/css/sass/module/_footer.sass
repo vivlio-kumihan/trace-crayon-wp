@@ -47,24 +47,24 @@ footer
     width: 100%
     padding: 30px 10% 30px 0
     border-top: 1px solid fw.$color-cyan-bluish-gray
-    // #363e45
     li 
       &:first-of-type 
         .icon 
-          display: inline-block
-          position: relative
-          width: 27.5px
-          height: 27.5px
-          margin-right: 30px
-          &::before
-            +fw.positionAbsoluteTateYokoCenter
-            width: 27.5px
-            height: 27.5px
-            color: #fff
-          &.twitter::before 
-            +fw.fontAwesome("\f099", 27.5px, Brands)
-          &.instagram::before 
-            +fw.fontAwesome("\f16d", 27.5px, Brands)
+          +fw.snsLinks(27.5, 0, 30, #fff)
+          // display: inline-block
+          // position: relative
+          // width: 27.5px
+          // height: 27.5px
+          // margin-right: 30px
+          // &::before
+          //   +fw.positionAbsoluteTateYokoCenter
+          //   width: 27.5px
+          //   height: 27.5px
+          //   color: #fff
+          // &.twitter::before 
+          //   +fw.fontAwesome("\f099", 27.5px, Brands)
+          // &.instagram::before 
+          //   +fw.fontAwesome("\f16d", 27.5px, Brands)
     &:last-of-type 
       li 
         font-size: 1.4rem

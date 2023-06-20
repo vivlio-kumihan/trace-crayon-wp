@@ -45,3 +45,26 @@ header
         padding: 45px 0
   +fw.contentLinkBtn
   +fw.menuLink
+    .contact
+      width: 85%
+      margin-top: 40px
+      padding: 30px 0
+      background-image: none
+      background-color: fw.$color-cyan-dark-blue2
+      +fw.toContactAnchor(16.5, 50)
+      p::before
+        +fw.positionAbsoluteTateCenter
+        left: -25px
+        +fw.fontAwesome("\f0e0", 1.8rem)
+    ul:last-of-type 
+      display: flex
+      justify-content: space-between
+      align-items: center
+      width: 85%
+      padding: 30px 0 0
+      li:first-of-type
+        font-size: 15px
+        font-weight: 700
+      li:last-of-type
+        .icon
+          +fw.snsLinks(24, 20, 0, #fff)  
