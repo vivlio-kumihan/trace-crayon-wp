@@ -33,16 +33,19 @@ header
   .nav-link
     li 
       display: inline-block
-      padding: 50px 0
       font-size: 1.4rem
       font-weight: 700
       letter-spacing: .04em
       &+ li 
         margin-left: 28px
         padding-left: 0
-      a 
+      +fw.shrinkHeaderLeftToLeft(1.4rem, 14, 1, fw.$colorLinkHover)
         display: block
-        padding: 45px 0
+        font-weight: 700
+        line-height: 1
+        transition: .3s
+        &:hover
+          color: fw.$colorLinkHover
   +fw.contentLinkBtn
   +fw.menuLink
     .contact

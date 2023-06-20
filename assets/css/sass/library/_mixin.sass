@@ -2,21 +2,25 @@
 @use "../library/texts" as tx
 @use "../variables" as var
 
+
 =positionAbsoluteTateYokoCenter
   position: absolute
   top: 50%
   left: 50%
   transform: translate(-50%, -50%)
 
+
 =positionAbsoluteYokoCenter
   position: absolute
   left: 50%
   transform: translateX(-50%)
 
+
 =positionAbsoluteTateCenter
   position: absolute
   top: 50%
   transform: translateY(-50%)
+
 
 =hoverAnimation($transition-duraiton: .3s) 
   transition: $transition-duraiton
@@ -24,12 +28,14 @@
     &:hover 
       @content 
 
+
 =hoverTransparent($width, $transition, $opacity)
   width: percentage(calc($width / 100))
   transition: $transition + s
   opacity: 1
   &:hover
     opacity: $opacity
+
 
 =hoverInnerScale($width, $scale)
   a
@@ -42,6 +48,7 @@
       img
         transform: scale($scale)      
 
+
 =hoverArgBgImg($width, $height, $transition, $scale)
   .hoverArgBgImg
     width: percentage(calc($width / 100))
@@ -52,6 +59,7 @@
     @content
     &:hover
       transform: scale($scale)
+
 
 =contentLinkBtn
   .content-links-btn
@@ -112,6 +120,7 @@
           width: 35px
           transform: translateX(-50%) rotate(-45deg)
 
+
 =menuLink
   .menu-link 
     display: flex
@@ -156,26 +165,7 @@
           transform: translateY(-50%)
           right: 5%
           +tx.fontAwesome("\f178")
-    @content
-
-    // .contact
-    //   width: 85%
-    //   margin-top: 40px
-    //   padding: 30px 0
-    //   background-image: none
-    //   background-color: var.$color-cyan-dark-blue2
-    //   +toContactAnchor(16.5, 50)
-    //   p::before
-    //     +positionAbsoluteTateCenter
-    //     left: -25px
-    //     +tx.fontAwesome("\f0e0", 1.8rem)
-    // ul:last-of-type 
-    //   display: flex
-    //   justify-content: space-between
-    //   align-items: center
-    //   li:last-of-type
-    //     .icon
-    //       +snsLinks(20, 20, #fff)      
+    @content    
 
 
 =toContactAnchor($mainFontSZ, $subFontSZ)
@@ -199,6 +189,7 @@
       -webkit-text-stroke: 1.2px #fff
       opacity: .2
 
+
 =snsLinks($widthHeight, $marginleft, $marginRight, $color)
   display: inline-block
   position: relative
@@ -215,6 +206,190 @@
     +tx.fontAwesome("\f099", $widthHeight + px, Brands)
   &.instagram::before 
     +tx.fontAwesome("\f16d", $widthHeight + px, Brands)
+
+
+// 収縮する下線を持つ見出し
+// 左から右
+=shrinkHeaderLeftToRight($fontSize, $bottom, $height, $boderColor)
+  .leftToRight 
+    position: relative
+    padding: 20px 0
+    font-size: $fontSize
+    line-height: 1
+    @content
+    &:hover::after 
+      transform: scale(1, 1)
+      @content
+    &::after 
+      position: absolute
+      left: 0
+      bottom: $bottom + px
+      content: ""
+      width: 100%
+      height: $height + px
+      background-color: $boderColor
+      transform: scale(0, 1)
+      transform-origin: left top
+      transition: .3s
+
+// 右から左
+=shrinkHeaderRightToLeft($fontSize, $bottom, $height, $boderColor)
+  .leftToRight 
+    position: relative
+    padding: 20px 0
+    font-size: $fontSize
+    line-height: 1
+    @content
+    &:hover::after 
+      transform: scale(1, 1)
+      @content
+    &::after 
+      position: absolute
+      left: 0
+      bottom: $bottom + px
+      content: ""
+      width: 100%
+      height: $height + px
+      background-color: $boderColor
+      transform: scale(0, 1)
+      transform-origin: right top
+      transition: .3s
+
+// 左から左
+=shrinkHeaderLeftToLeft($fontSize, $bottom, $height, $boderColor)
+  .leftToRight 
+    position: relative
+    padding: 20px 0
+    font-size: $fontSize
+    line-height: 1
+    @content
+    &:hover::after 
+      transform: scale(1, 1)
+      transform-origin: left top
+      @content
+    &::after 
+      position: absolute
+      left: 0
+      bottom: $bottom + px
+      content: ""
+      width: 100%
+      height: $height + px
+      background-color: $boderColor
+      transform: scale(0, 1)
+      transform-origin: right top
+      transition: transform .3
+
+
+
+
+.two 
+  position: relative
+  margin-bottom: 50px
+  font-size: 30px
+  font-weight: 900
+  line-height: 1
+  text-transform: uppercase
+
+
+.two::after 
+  position: absolute
+  left: 0
+  bottom: -10px
+  content: ""
+  width: 100%
+  height: 3px
+  background-color: #333
+  transform: scale(0, 1)
+  transform-origin: right top
+  transition: .3s
+
+
+.two:hover::after 
+  transform: scale(1, 1)
+
+
+
+.three 
+  position: relative
+  margin-bottom: 50px
+  font-size: 30px
+  font-weight: 900
+  line-height: 1
+  text-transform: uppercase
+
+
+.three::after 
+  position: absolute
+  left: 0
+  bottom: -10px
+  content: ""
+  width: 100%
+  height: 3px
+  background-color: #333
+  transform: scale(0, 1)
+  transform-origin: right top
+  transition: transform .3s
+
+
+.three:hover::after 
+  transform: scale(1, 1)
+  transform-origin: left top
+
+
+
+.four 
+  position: relative
+  margin-bottom: 50px
+  font-size: 30px
+  font-weight: 900
+  line-height: 1
+  text-transform: uppercase
+
+
+.four::after 
+  position: absolute
+  left: 0
+  bottom: -10px
+  content: ""
+  width: 100%
+  height: 3px
+  background-color: #333
+  transform: scale(0, 1)
+  transform-origin: left top
+  transition: transform .3s
+
+
+.four:hover::after 
+  transform: scale(1, 1)
+  transform-origin: right top
+
+
+
+.five 
+  position: relative
+  margin-bottom: 50px
+  font-size: 30px
+  font-weight: 900
+  line-height: 1
+  text-transform: uppercase
+
+
+.five::after 
+  position: absolute
+  left: 0
+  bottom: -10px
+  content: ""
+  width: 100%
+  height: 3px
+  background-color: #333
+  transform: scale(0, 1)
+  transform-origin: center top
+  transition: .3s
+
+
+.five:hover::after 
+  transform: scale(1, 1)
+
 
 // =caption-with-visual 
 //   writing-mode: vertical-rl
