@@ -3,25 +3,33 @@
 @use "../variables" as var
 
 
-=positionAbsoluteTateYokoCenter
+// 便利だけれど私の理解力がついていかず引数の入れ方でいちいち迷うので改変する。
+// =positionAbsoluteCenter($useTop: true, $useLeft: true, $translateX: -50%, $translateY: -50%)
+//   position: absolute
+//   @if $useTop
+//     top: 50%
+//   @if $useLeft
+//     left: 50%
+//   transform: translate($translateX, $translateY)
+
+// デフォルトの引数なしで縦横センター
+// $topで縦ON、$leftで横ON
+=positionAbsoluteCTL($top: false, $left: false)
   position: absolute
-  top: 50%
-  left: 50%
-  transform: translate(-50%, -50%)
+  @if $top
+    top: 50%
+    transform: translateY(-50%)
+  @else if $left
+    left: 50%
+    transform: translateX(-50%)
+  @else 
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
 
 
-=positionAbsoluteYokoCenter
-  position: absolute
-  left: 50%
-  transform: translateX(-50%)
-
-
-=positionAbsoluteTateCenter
-  position: absolute
-  top: 50%
-  transform: translateY(-50%)
-
-
+// PC版で効果を表現するホバーのアニメーションをSP版では切る設定
+// transitionを切ることが肝のよう。
 =hoverAnimation($transition-duraiton: .3s) 
   transition: $transition-duraiton
   @media (hover: hover) 
@@ -29,144 +37,52 @@
       @content 
 
 
-=hoverTransparent($width, $transition, $opacity)
-  width: percentage(calc($width / 100))
-  transition: $transition + s
-  opacity: 1
-  &:hover
+// Sassの引数の変数は超グローバルで驚き
+// なお、[opacity: 1]がデフォルト
+=hoverTransparent($width: 100%, $transition: 0.3s, $opacity: 0.7)
+  width: $width
+  +hoverAnimation($transition)
     opacity: $opacity
 
 
-=hoverInnerScale($width, $scale)
+// 質問　+hoverAnimation($transition)の入れどころがわからないです。
+  // L.24で教えていただいたとおり、ここも修正しようとしています。ただ、
+  // 現状でも、スマホ表示にしてカーソルをかざして変な挙動はしません。。。
+  // なんか教えてもらったことを勘違いしてますかね？
+
+  // なお、この部分は授業後にHTMLを修正してます。（_news.sass）
+  // ホバーすると画像と一緒に文字も拡大されていた挙動を直すためです。
+  // よろしくお願いします。
+
+=anchorHoverInnerScale($width: 100%, $transition: 0.3s, $scale: 1.1)
   a
     display: block
-    width: percentage(calc($width / 100))
-    aspect-ratio: 3/2
+    width: $width
     overflow: hidden
     @content
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+      transition: $transition
+      @content
     &:hover
       img
-        transform: scale($scale)      
+        transform: scale($scale)
 
 
-=hoverArgBgImg($width, $height, $transition, $scale)
-  .hoverArgBgImg
-    width: percentage(calc($width / 100))
-    height: percentage(calc($height / 100))
-    background-repeat: no-repeat
-    background-size: cover
-    transition: $transition + s
-    @content
-    &:hover
-      transform: scale($scale)
-
-
-=contentLinkBtn
-  .content-links-btn
-    display: inline-block
-    position: fixed
-    top: 0
-    right: 0px
-    width: 100px
-    height: 100px
-    padding-top: 32px
-    font-weight: 700
-    letter-spacing: .15em
-    color: var.$color-theme-blue
-    background-color: #fff
-    cursor: pointer
-    transition: .5s
-    z-index: fn.set-index(contentLinkBtn)
-    div 
-      position: absolute
-      left: 50%
-      transform: translateX(-50%)
-      width: 30px
-      height: 2px
-      background-color: var.$color-theme-blue
-      transition: .3s
-      &:nth-of-type(1) 
-        top: 33%
-      &:nth-of-type(2) 
-        top: 42%
-      &:nth-of-type(3) 
-        top: 52%
-        left: 50%
-        transform: translateX(-25%)
-        width: 20px
-    &:hover
-      color: #fff
-      background-color: var.$color-cyan-vivid-blue
-      div
-        background-color: #fff
-        &:nth-of-type(3) 
-          transform: translateX(-50%)
-          width: 30px
-    &.active 
-      color: var.$color-cyan-vivid-blue
-      background-color: #fff
-      div 
-        top: 45%
-        left: 50%
-        width: 35px
-        background-color: var.$color-cyan-vivid-blue
-        &:nth-of-type(1) 
-          transform: translateX(-50%) rotate(45deg)
-        &:nth-of-type(2) 
-          visibility: hidden
-          opacity: 0
-          transform: translateX(100%)
-        &:nth-of-type(3)
-          width: 35px
-          transform: translateX(-50%) rotate(-45deg)
-
-
-=menuLink
-  .menu-link 
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
-    position: fixed
-    top: 0
-    right: 0
-    width: 70vw
-    height: 100vh
-    color: #fff
-    background-color: var.$color-theme-blue
-    transition: .5s
-    transform: translateX(100%)
-    &.active
-      transform: translateX(0)
-    ul:first-of-type 
-      display: grid
-      grid-template-columns: repeat(2, 1fr)
-      grid-template-rows: repeat(6, 1fr)
-      grid-auto-flow: column
-      column-gap: 20px
-      width: 85%
-      li
-        position: relative
-        padding: 16px 8px
-        font-size: 16px
-        font-weight: 500
-        line-height: 1
-        border-bottom: 1px solid var.$color-light-gray-mid
-        &:hover
-          color: var.$color-theme-blue
-          background-color: #fff
-        a
-          display: block
-          width: 100%
-          height: 100%
-        &::after
-          position: absolute
-          top: 50%
-          transform: translateY(-50%)
-          right: 5%
-          +tx.fontAwesome("\f178")
-    @content    
-
+=anchorHoverArgBgImg($transition: 0.3s, $scale: 1.25)
+  .imgWrap
+    width: 100%
+    height: 100%
+    overflow: hidden
+    .bgImage
+      height: 100%
+      background-repeat: no-repeat
+      background-size: cover
+      +hoverAnimation($transition)
+        transform: scale($scale)
+        
 
 =toContactAnchor($mainFontSZ, $subFontSZ)
   p 
@@ -198,7 +114,7 @@
   margin-left: $marginleft + px
   margin-right: $marginRight + px
   &::before
-    +positionAbsoluteTateYokoCenter
+    +positionAbsoluteCTL
     width: $widthHeight + px
     height: $widthHeight + px
     color: #fff
@@ -209,15 +125,19 @@
 
 
 // 収縮する下線を持つ見出し
-  
-// 配列を変数として入れることができればリファクタリングできる。どうする？？？
-//       LeftToRight: ['left top', 'left top']
-//       RightToLeft: ['right top', 'right top']
-//       LeftToLeft: ['right top', 'left top']
-//       RightToRight: ['left top', 'right top']
-//       Center: ['center top', 'center top']
-// 左から右
-=shrinkHeaderLeftToRight($fontSize, $bottom, $lineHeight, $boderColor)
+// どのような方向で下線が変化するかを指定するオプション
+// 左から伸びて、左へ縮まる
+$left_left: left, left
+// 右から伸びて、右へ縮まる
+$right_right: right, right
+// 右へ伸びて、左から縮まる
+$left_right: right, left
+// 左へ伸びて、右から縮まる
+$right_left: left, right
+// 中央から伸びて、中央へ縮まる
+$center: center, center
+
+=shrinkBorderHeader($fontSize, $bottom, $lineHeight, $boderColor, $direction)
   .shrinkLine
     display: block
     position: relative
@@ -232,185 +152,15 @@
     &::after
       position: absolute
       display: block
-      bottom: $bottom + px
+      bottom: $bottom
       left: 0
       width: 100%
-      height: $lineHeight + px
+      height: $lineHeight
       content: ""
       background-color: $boderColor
       transform: scale(0, 1)
-      transform-origin: left top
+      transform-origin: nth($direction, 1) top
       transition: transform .3s
     &:hover::after
       transform: scale(1, 1)
-      transform-origin: left top
-
-// 右から左
-=shrinkHeaderRightToLeft($fontSize, $bottom, $lineHeight, $boderColor)
-  .shrinkLine
-    display: block
-    position: relative
-    width: 100%
-    font-size: $fontSize
-    letter-spacing: .04em
-    font-weight: 700
-    line-height: 1
-    transition: .3s
-    &:hover
-      color: var.$colorLinkHover
-    &::after
-      position: absolute
-      display: block
-      bottom: $bottom + px
-      left: 0
-      width: 100%
-      height: $lineHeight + px
-      content: ""
-      background-color: $boderColor
-      transform: scale(0, 1)
-      transform-origin: right top
-      transition: transform .3s
-    &:hover::after
-      transform: scale(1, 1)
-      transform-origin: right top
-
-// 左から左
-=shrinkHeaderLeftToLeft($fontSize, $bottom, $lineHeight, $boderColor)
-  .shrinkLine
-    display: block
-    position: relative
-    width: 100%
-    font-size: $fontSize
-    letter-spacing: .04em
-    font-weight: 700
-    line-height: 1
-    transition: .3s
-    &:hover
-      color: var.$colorLinkHover
-    &::after
-      position: absolute
-      display: block
-      bottom: $bottom + px
-      left: 0
-      width: 100%
-      height: $lineHeight + px
-      content: ""
-      background-color: $boderColor
-      transform: scale(0, 1)
-      transform-origin: right top
-      transition: transform .3s
-    &:hover::after
-      transform: scale(1, 1)
-      transform-origin: left top
-
-// 右から右
-=shrinkHeaderRightToRight($fontSize, $bottom, $lineHeight, $boderColor)
-  .shrinkLine
-    display: block
-    position: relative
-    width: 100%
-    font-size: $fontSize
-    letter-spacing: .04em
-    font-weight: 700
-    line-height: 1
-    transition: .3s
-    &:hover
-      color: var.$colorLinkHover
-    &::after
-      position: absolute
-      display: block
-      bottom: $bottom + px
-      left: 0
-      width: 100%
-      height: $lineHeight + px
-      content: ""
-      background-color: $boderColor
-      transform: scale(0, 1)
-      transform-origin: left top
-      transition: transform .3s
-    &:hover::after
-      transform: scale(1, 1)
-      transform-origin: right top
-
-// センター
-=shrinkHeaderCenter($fontSize, $bottom, $lineHeight, $boderColor)
-  .shrinkLine
-    display: block
-    position: relative
-    width: 100%
-    font-size: $fontSize
-    letter-spacing: .04em
-    font-weight: 700
-    line-height: 1
-    transition: .3s
-    &:hover
-      color: var.$colorLinkHover
-    &::after
-      position: absolute
-      display: block
-      bottom: $bottom + px
-      left: 0
-      width: 100%
-      height: $lineHeight + px
-      content: ""
-      background-color: $boderColor
-      transform: scale(0, 1)
-      transform-origin: center top
-      transition: transform .3s
-    &:hover::after
-      transform: scale(1, 1)
-      transform-origin: center top
-
-.five 
-  position: relative
-  margin-bottom: 50px
-  font-size: 30px
-  font-weight: 900
-  line-height: 1
-  text-transform: uppercase
-
-
-.five::after 
-  position: absolute
-  left: 0
-  bottom: -10px
-  content: ""
-  width: 100%
-  height: 3px
-  background-color: #333
-  transform: scale(0, 1)
-  transform-origin: center top
-  transition: .3s
-
-
-.five:hover::after 
-  transform: scale(1, 1)
-
-
-// =caption-with-visual 
-//   writing-mode: vertical-rl
-//   font-family: "Lato", sans-serif
-//   font-weight: 900
-//   font-style: italic
-
-// =dl-container 
-//   display: flex
-//   margin-bottom: 12px
-//   padding-bottom: 12px
-//   border-bottom: 1px dotted var.$color-gray
-//   dt, dd 
-//     font-weight: 300
-//     line-height: 1.7
-//   dt 
-//     min-width: 85px
-
-// =scroll-trigger-curtains 
-//   .curtains 
-//     position: absolute
-//     top: 0
-//     left: 0
-//     width: 100%
-//     height: 100%
-//     content: ""
-//     background-color: #fff
-//     z-index: fn.get_index(curtains)
+      transform-origin: nth($direction, 2) top

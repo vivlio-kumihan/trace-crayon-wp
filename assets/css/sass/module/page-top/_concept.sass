@@ -64,33 +64,39 @@
       display: inline-block
       width: 250px
     .border
-      +fw.positionAbsoluteTateYokoCenter
+      +fw.positionAbsoluteCTL
       width: calc(470px - 20px)
       height: calc(135px - 20px)
       border: 1px solid fw.$color-philosofhy-line
       span 
+        $size: 5px
+        // 変数内に単位『px』が含まれているから
+        // 下に式はその単位付きの値を引き継ぐわけ。
+        // 微妙に不思議な書き方。
+        $adjustHaflfVal: $size * -0.5
         position: absolute
-        top: -2.5px
-        left: -2.5px
-        width: 5px
-        height: 5px
+        width: $size
+        height: $size
         background-color: fw.$color-light-gray
+        &:nth-of-type(1)
+          top: $adjustHaflfVal
+          left: $adjustHaflfVal
         &:nth-of-type(2) 
-          top: -2.5px
+          top: $adjustHaflfVal
           left: 50%
           transform: translateX(-50%)
         &:nth-of-type(3) 
-          top: -2.5px
-          left: calc(100% - 2.5px)
+          top: $adjustHaflfVal
+          right: $adjustHaflfVal
         &:nth-of-type(4) 
-          top: calc(100% - 2.5px)
-          left: -2.5px
+          bottom: $adjustHaflfVal
+          left: $adjustHaflfVal
         &:nth-of-type(5) 
-          top: calc(100% - 2.5px)
+          bottom: $adjustHaflfVal
           left: 50%
         &:nth-of-type(6) 
-          top: calc(100% - 2.5px)
-          left: calc(100% - 2.5px)
+          bottom: $adjustHaflfVal
+          right: $adjustHaflfVal
     &:hover
       background-color: #fff
       img
@@ -111,24 +117,23 @@
     background-size: cover
     background-position: 50% 100%
     .staff
-      +fw.positionAbsoluteYokoCenter
+      +fw.positionAbsoluteCTL($left: true)
       bottom: 0
       width: 100%
       z-index: fw.set-index(composedStaff)
     .shadow
-      +fw.positionAbsoluteYokoCenter
+      +fw.positionAbsoluteCTL($left: true)
       bottom: 0
       width: 100%
       z-index: fw.set-index(composedStaffShadow)
     .light
-      +fw.positionAbsoluteYokoCenter
+      +fw.positionAbsoluteCTL($left: true)
       bottom: 14%
       width: 50%
       mix-blend-mode: screen
       z-index: fw.set-index(composedStaffLight)
     .behind
-      +fw.positionAbsoluteYokoCenter
+      +fw.positionAbsoluteCTL($left: true)
       bottom: 0
       width: 100%
-      mix-blend-mode: screen
       z-index: fw.set-index(composedStaffBehind)

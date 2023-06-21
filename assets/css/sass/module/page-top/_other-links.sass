@@ -7,32 +7,37 @@
     gap: .75rem
     li 
       width: 100%
-      aspect-ratio: 1
+      aspect-ratio: 1/.98
       overflow: hidden
-      .hoverArgBgImg
-        a
-          display: flex
-          flex-direction: column
-          align-items: center
-          justify-content: center
-          width: 100%
-          height: 100%
+      .anchorHoverArgBgImg
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        position: relative
+        width: 100%
+        height: 100%
+        p, .imgWrap
+          +fw.positionAbsoluteCTL
+        p
+          margin: 0
           text-align: center
           font-size: 3.4rem
           font-weight: 700
+          line-height: .95
           letter-spacing: 0.05em
           color: #fff
+          z-index: 1
           span 
             margin-top: 10px
             font-size: 2rem
             font-weight: 600
             font-style: italic
-      &:nth-of-type(1)
-        +fw.hoverArgBgImg(100, 100, 0.3, 1.1)
-          background-image: url(../img/other-message.jpg)
-      &:nth-of-type(2)
-        +fw.hoverArgBgImg(100, 100, 0.3, 1.1)
-          background-image: url(../img/other-company.jpg)
-      &:nth-of-type(3)
-        +fw.hoverArgBgImg(100, 100, 0.3, 1.1)
-          background-image: url(../img/other-recruit.jpg)
+        +fw.anchorHoverArgBgImg(0.5s, 1.1)
+      $pictNames: message, company, recruit
+      // eachで写真レイアウトの効率化をする。
+      @each $name in $pictNames
+        // 要素の引数に値を入れる場合は『#{}』で変数展開する必要あり。ややこしいので注意。
+        &:nth-of-type(#{ index($pictNames, $name) })
+          .bgImage
+            background-image: url(../img/other-#{ $name }.jpg)

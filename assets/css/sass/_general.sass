@@ -31,16 +31,10 @@
       height: 0
       text-align: right
       z-index: fw.set-index(special)
-      // none /////////////////////////////////////// none
-      // display: none
       img 
         width: 30%
         object-fit: cover
   +fw.media-query-sp 
-    .main-visual 
-      .pc 
-        // display: none
-
 .remove-letter-spacing 
   letter-spacing: 0
 
@@ -89,7 +83,6 @@ section
     line-height: 1
     letter-spacing: .15em
     color: fw.$color-cyan-vivid-blue
-    transition: .3s
     &:hover
       color: #fff
       background-color: fw.$color-cyan-vivid-blue
@@ -98,7 +91,7 @@ section
         span
           background-color: #fff
     .border
-      +fw.positionAbsoluteTateYokoCenter
+      +fw.positionAbsoluteCTL
       width: calc(100% - 12px)
       height: calc(100% - 12px)
       border: 1px solid fw.$color-cyan-vivid-blue
@@ -182,12 +175,11 @@ h2
       border-radius: 50%
 
 .logo
-  +fw.hoverTransparent(100, 0.3, 0.7)
+  +fw.hoverTransparent
 
 .scrollTrigger
   transition: .3s
-  // opacity: 0
-  // transform: translateX(100%)
+  
 .stActive
   opacity: 1 
   transform: translate(0)

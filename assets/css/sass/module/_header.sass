@@ -21,10 +21,8 @@ header
     a
       display: block
       width: 100%
-    .catch-copy 
-      position: absolute
-      top: 50%
-      transform: translateY(-50%)
+    .catch-copy
+      +fw.positionAbsoluteCTL($top: true)
       right: -120px
       font-size: 1.2rem
       font-weight: 700
@@ -35,51 +33,7 @@ header
       display: inline-block
       &+ li 
         margin-left: 28px
-
-      // +fw.shrinkHeaderLeftToRight(1.4rem, 14, 1, fw.$colorLinkHover)
-      // +fw.shrinkHeaderRightToLeft(1.4rem, 14, 1, fw.$colorLinkHover)
-      // +fw.shrinkHeaderLeftToLeft(1.4rem, 14, 1, fw.$colorLinkHover)
-      //   display: block
-      //   font-weight: 700
-      //   line-height: 1
-      //   transition: .3s
-      //   &:hover
-      //     color: fw.$colorLinkHover
-
-      // .shrinkLine
-      //   display: block
-      //   position: relative
-      //   width: 100%
-      //   font-size: 14px
-      //   letter-spacing: .04em
-      //   font-weight: 700
-      //   line-height: 1
-      //   transition: .3s
-      //   &:hover
-      //     color: fw.$colorLinkHover
-      //   &::after
-      //     position: absolute
-      //     bottom: -8px
-      //     left: 0
-      //     width: 100%
-      //     height: 1px
-      //     content: ""
-      //     background-color: fw.$colorLinkHover
-      //     transform: scale(0, 1)
-      //     transform-origin: right top
-      //     transition: transform .3s
-      //   &:hover::after
-      //     transform: scale(1, 1)
-      //     transform-origin: left top 
-
-      // +fw.shrinkHeaderLeftToLeft2
-      
-      // +fw.shrinkHeaderLeftToRight(1.4rem, -5, 1, fw.$colorLinkHover)
-      // +fw.shrinkHeaderRightToLeft(1.4rem, -5, 1, fw.$colorLinkHover)
-      +fw.shrinkHeaderLeftToLeft(1.4rem, -5, 1, fw.$colorLinkHover)
-      // +fw.shrinkHeaderRightToRight(1.4rem, -5, 1, fw.$colorLinkHover)
-      // +fw.shrinkHeaderCenter(1.4rem, -5, 1, fw.$colorLinkHover)
-
+      +fw.shrinkBorderHeader(1.4rem, -5px, 1px, fw.$colorLinkHover, fw.$left_right)
   +fw.contentLinkBtn
   +fw.menuLink
     .contact
@@ -90,7 +44,7 @@ header
       background-color: fw.$color-cyan-dark-blue2
       +fw.toContactAnchor(16.5, 50)
       p::before
-        +fw.positionAbsoluteTateCenter
+        +fw.positionAbsoluteCTL($top: true)
         left: -25px
         +fw.fontAwesome("\f0e0", 1.8rem)
     ul:last-of-type 

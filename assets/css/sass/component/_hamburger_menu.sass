@@ -1,0 +1,110 @@
+@use "../library/function" as fn
+@use "../library/texts" as tx
+@use "../library/mixin" as mx
+@use "../variables" as var
+
+
+=contentLinkBtn
+  .content-links-btn
+    display: inline-block
+    position: fixed
+    top: 0
+    right: 0px
+    width: 100px
+    height: 100px
+    padding-top: 32px
+    font-weight: 700
+    letter-spacing: .15em
+    color: var.$color-theme-blue
+    background-color: #fff
+    cursor: pointer
+    transition: .5s
+    z-index: fn.set-index(contentLinkBtn)
+    div 
+      +mx.positionAbsoluteCTL($left: true)
+      width: 30px
+      height: 2px
+      background-color: var.$color-theme-blue
+      transition: .3s
+      &:nth-of-type(1) 
+        top: 33%
+      &:nth-of-type(2) 
+        top: 42%
+      &:nth-of-type(3) 
+        top: 52%
+        left: 50%
+        transform: translateX(-25%)
+        width: 20px
+    &:hover
+      color: #fff
+      background-color: var.$color-cyan-vivid-blue
+      div
+        background-color: #fff
+        &:nth-of-type(3) 
+          transform: translateX(-50%)
+          width: 30px
+    &.active 
+      color: var.$color-cyan-vivid-blue
+      background-color: #fff
+      div 
+        top: 45%
+        left: 50%
+        width: 35px
+        background-color: var.$color-cyan-vivid-blue
+        &:nth-of-type(1) 
+          transform: translateX(-50%) rotate(45deg)
+        &:nth-of-type(2) 
+          visibility: hidden
+          opacity: 0
+          transform: translateX(100%)
+        &:nth-of-type(3)
+          width: 35px
+          transform: translateX(-50%) rotate(-45deg)
+
+
+=menuLink
+  .menu-link 
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    position: fixed
+    top: 0
+    right: 0
+    width: 70vw
+    height: 100vh
+    color: #fff
+    background-color: var.$color-theme-blue
+    transition: .5s
+    transform: translateX(100%)
+    &.active
+      transform: translateX(0)
+    ul:first-of-type 
+      display: grid
+      grid-template-columns: repeat(2, 1fr)
+      grid-template-rows: repeat(6, 1fr)
+      grid-auto-flow: column
+      column-gap: 20px
+      width: 85%
+      li
+        position: relative
+        padding: 16px 8px
+        font-size: 16px
+        font-weight: 500
+        line-height: 1
+        border-bottom: 1px solid var.$color-light-gray-mid
+        &:hover
+          color: var.$color-theme-blue
+          background-color: #fff
+        a
+          display: block
+          width: 100%
+          height: 100%
+        &::after
+          +mx.positionAbsoluteCTL($top: true)
+          position: absolute
+          top: 50%
+          transform: translateY(-50%)
+          right: 5%
+          +tx.fontAwesome("\f178")
+    @content
