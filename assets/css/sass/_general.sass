@@ -83,6 +83,7 @@ section
     line-height: 1
     letter-spacing: .15em
     color: fw.$color-cyan-vivid-blue
+    transition: .5s
     &:hover
       color: #fff
       background-color: fw.$color-cyan-vivid-blue
@@ -146,14 +147,7 @@ section
   -webkit-text-stroke: 1px #fff
 
 // h2
-//   .colorRuby:nth-of-type(1)
-//     +colorRuby(fw.$colorRed)
-//   .colorRuby:nth-of-type(2)
-//     +colorRuby(fw.$colorOrange)
-//   .colorRuby:nth-of-type(3)
-//     +colorRuby(fw.$colorYellow)
-//   .colorRuby:nth-of-type(4)
-//     +colorRuby(fw.$colorGreen)
+
 
 h2
   .colorRuby 
@@ -173,6 +167,15 @@ h2
       height: 11px
       background-color: fw.$colorRed
       border-radius: 50%
+  .colorRuby:nth-of-type(1)::after
+      background-color: fw.$colorRed
+  .colorRuby:nth-of-type(2)::after
+      background-color: fw.$colorOrange
+  .colorRuby:nth-of-type(3)::after
+      background-color: fw.$colorYellow
+  .colorRuby:nth-of-type(4)::after
+      background-color: fw.$colorGreen
+
 
 .logo
   +fw.hoverTransparent

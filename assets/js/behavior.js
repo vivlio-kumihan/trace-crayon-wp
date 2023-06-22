@@ -156,7 +156,7 @@ gsap.fromTo(elems, .7, {
     start: '30% 40%',
     end: '60% 40%',
     scrub: 1,
-    markers: true
+    // markers: true
   }
 })
 

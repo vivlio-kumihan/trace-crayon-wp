@@ -221,6 +221,7 @@ section .more-info-btn {
   line-height: 1;
   letter-spacing: 0.15em;
   color: #00266a;
+  transition: 0.5s;
 }
 section .more-info-btn:hover {
   color: #fff;
@@ -322,6 +323,18 @@ h2 .colorRuby::after {
   height: 11px;
   background-color: #e60012;
   border-radius: 50%;
+}
+h2 .colorRuby:nth-of-type(1)::after {
+  background-color: #e60012;
+}
+h2 .colorRuby:nth-of-type(2)::after {
+  background-color: #f39800;
+}
+h2 .colorRuby:nth-of-type(3)::after {
+  background-color: #fdd000;
+}
+h2 .colorRuby:nth-of-type(4)::after {
+  background-color: #90c31f;
 }
 
 .logo {
@@ -822,6 +835,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon.instagram::before {
   height: 135px;
   background-color: #112342;
   z-index: 6;
+  transition: 0.3s;
 }
 .concept .philosophy img {
   display: inline-block;
