@@ -42,11 +42,19 @@ header
       padding: 30px 0
       background-image: none
       background-color: fw.$color-cyan-dark-blue2
+      transition: .3s
       +fw.toContactAnchor(16.5, 50)
-      p::before
-        +fw.positionAbsoluteCTL($top: true)
-        left: -25px
-        +fw.fontAwesome("\f0e0", 1.8rem)
+      &:hover
+        background-color: #fff
+        p
+          color: #333
+      p
+        color: #fff
+        &::before
+          position: absolute
+          top: 15%
+          left: -25px
+          +fw.fontAwesome("\f0e0", 1.8rem)
     ul:last-of-type 
       display: flex
       justify-content: space-between
@@ -54,8 +62,8 @@ header
       width: 85%
       padding: 30px 0 0
       li:first-of-type
-        font-size: 15px
-        font-weight: 700
+        +fw.shrinkBorderHeader(15px, -5px, 1px, fw.$colorLinkHover, fw.$left_right)
+          font-weight: 700
       li:last-of-type
         .icon
           +fw.snsLinks(24, 20, 0, #fff)  

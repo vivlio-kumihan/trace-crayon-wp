@@ -75,8 +75,9 @@
     height: 100vh
     color: #fff
     background-color: var.$color-theme-blue
-    transition: .5s
     transform: translateX(100%)
+    transition: .5s
+    z-index: fn.set-index(menuLink)
     &.active
       transform: translateX(0)
     ul:first-of-type 
@@ -93,6 +94,7 @@
         font-weight: 500
         line-height: 1
         border-bottom: 1px solid var.$color-light-gray-mid
+        transition: .5s
         &:hover
           color: var.$color-theme-blue
           background-color: #fff

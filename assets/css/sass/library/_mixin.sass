@@ -137,7 +137,7 @@ $right_left: left, right
 // 中央から伸びて、中央へ縮まる
 $center: center, center
 
-=shrinkBorderHeader($fontSize, $bottom, $lineHeight, $boderColor, $direction)
+=shrinkBorderHeader($fontSize: 1.4rem, $bottom: -5px, $lineHeight: 1px, $boderColor: fw.$colorLinkHover, $direction: fw.$left_right)
   .shrinkLine
     display: block
     position: relative
@@ -147,8 +147,10 @@ $center: center, center
     font-weight: 700
     line-height: 1
     transition: .3s
+    @content
     &:hover
       color: var.$colorLinkHover
+      @content
     &::after
       position: absolute
       display: block

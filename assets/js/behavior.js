@@ -1,10 +1,14 @@
-// chatGPTに教えられたが効果なし。
+// chatGPTに教えられたが効果なし。消してしまう予定。
 gsap.registerPlugin(ScrollTrigger);
+// GSAP
+// TimelineMaxインスタンスを作成
+const tl = gsap.timeline()
 
-// コンソールに出力をする。mountedみたいなんもんか？
+// コンソールに出力をする。mountedみたいなものか？
 // onEnter: () => console.log('コンソール出力はできる')
 
-// 配列を合体させたい場合のconcat()関数
+
+// 配列を合体させたい場合のconcat()関数の例
 // const moreInfoBtn = Array.from(document.querySelectorAll('.more-info-btn'))
 // const arg = leadCopy.concat(moreInfoBtn)
 
@@ -40,10 +44,82 @@ document.querySelectorAll('.border').forEach(elem => {
   elem.insertAdjacentHTML('afterbegin', '<span></span><span></span><span></span><span></span><span></span><span></span>')
 })
 
+// 質問
+// 振る舞いをコピーできない。/////////////////////////////////////
+const specialLink = document.getElementById('special')
+gsap.fromTo(specialLink, .5, {
+  autoAlpha: 0
+}, {
+  autoAlpha: 1,
+  scrollTrigger: {
+    trigger: '#concept',
+    start: '0% 50%',
+    // markers: true
+  }
+})
 
-// GSAP
-// TimelineMaxインスタンスを作成
-const tl = gsap.timeline()
+
+////////////
+// 一文字ずつ現れる
+// ドキュメント上の該当文章を一文字ごとバラバラにしていく。
+function splitText(className) {
+  className.forEach(elem => {
+    let htmlContent = elem.innerHTML
+    let result = ""
+    htmlContent.split('<br>').forEach((part, index, array) => {
+      Array.from(part).forEach((char) => {
+        result += `<span>${char}</span>`
+      })
+      // 最後の部分以外はbrタグを追加
+      if (index < array.length - 1) {
+        result += '<br>'
+      }
+    })
+    elem.innerHTML = result
+  })
+}
+
+const preChar = document.querySelectorAll('.per-char')
+splitText(preChar)
+
+preChar.forEach(elem => {
+  // 質問　timelineを使ってやれるはずだができない。 /////////////////////
+  gsap.from(elem, .3, {
+    autoAlpha: 0, ease: 'Power1.easeInOut',
+    scrollTrigger: {
+      trigger: elem,
+      start: '50% 50%',
+      // markers: true
+    }
+  })
+  gsap.from(elem.children, .3, {
+    autoAlpha: 0,
+    ease: 'Power1.easeInOut',
+    stagger: .1,
+    scrollTrigger: {
+      trigger: elem,
+      start: '50% 50%',
+      // markers: true
+    }
+  })
+})
+
+const upAppear = document.querySelectorAll('.up-appear')
+upAppear.forEach(elem => {
+  gsap.fromTo(elem, .7, {
+    y: 20,
+    autoAlpha: 0,
+  }, {
+    y: 0,
+    autoAlpha: 1,
+    scrollTrigger: {
+      trigger: elem,
+      start: '0% 50%',
+      // markers:true
+    }
+  })
+})
+
 
 // 要素のアニメーションを追加
 // id="nav-link" /////////////////////////////
@@ -92,6 +168,19 @@ ScrollTrigger.create({
   animation: tl, // 実行するアニメーション
   start: '100% 100%',
   // markers: true
+})
+const para =  document.querySelector('#concept > p')
+gsap.fromTo(para, .7, {
+  y: 20,
+  autoAlpha: 0
+}, {
+  y: 0,
+  autoAlpha: 1,
+  scrollTrigger: {
+    trigger: para,
+    start: '0% 70%',
+    // markers: true
+  }
 })
 
 
@@ -160,31 +249,33 @@ gsap.fromTo(elems, .7, {
   }
 })
 
-// // id="behind"
-// gsap.fromTo('#behind-dark', .7, {
-//   opacity: 1,
-// }, {
-//   opacity: 0,
-//   ease: 'power1.easeInOut',
-//   scrollTrigger: {
-//     trigger: '#composed-staff',
-//     start: '10% 25%',
-//     end: '85% 25%',
-//     scrub: 1,      
-//     // markers: true
-//   }
-// })
 
-
-////////////
-// 属性『letter-spacing: .5em;』を最後の文字だけ取り去る
-function killLetterSpace(arr) {
-  arr.forEach(elem => {
-    let lastChar = elem.textContent.slice(-1)
-    let preText = elem.textContent.slice(0, -1)
-    elem.innerHTML = `${ preText }<span class='remove-letter-spacing'>${ lastChar }</span>`
+const header2 = Array.from(document.querySelectorAll('.header-block-appear h2'))
+const header3 = Array.from(document.querySelectorAll('.header-block-appear h3'))
+const headerAppear = header2.concat(header3)
+headerAppear.forEach(elem => {
+  gsap.from(elem, .7, {
+    autoAlpha: 0,
+    scrollTrigger: {
+      trigger: elem,
+      start: '0% 70%',
+      ease: 'Power1.easeInOut',
+      // markers: true
+    }
   })
-}
+})
 
-const leadCopy = Array.from(document.querySelectorAll('.lead-copy'))
-killLetterSpace(leadCopy)
+
+// ////////////
+// // 便利だと思ったが、色々なスクリプトの邪魔をするのでとりあえず止める
+// // 属性『letter-spacing: .5em;』を最後の文字だけ取り去る
+// function killLetterSpace(arr) {
+//   arr.forEach(elem => {
+//     let lastChar = elem.textContent.slice(-1)
+//     let preText = elem.textContent.slice(0, -1)
+//     elem.innerHTML = `${ preText }<span class='remove-letter-spacing'>${ lastChar }</span>`
+//   })
+// }
+
+// const leadCopy = Array.from(document.querySelectorAll('.lead-copy'))
+// killLetterSpace(leadCopy)
