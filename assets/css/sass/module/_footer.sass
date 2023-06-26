@@ -34,12 +34,13 @@ footer
       li 
         display: inline-block
         padding: 0 30px 30px 0
-        text-align: left
-        font-size: 1.4rem
-        font-weight: 700
-        letter-spacing: 0.02em
-        line-height: 1.5
-        color: #fff
+        +fw.shrinkBorderHeader($bottom: -7px)
+          text-align: left
+          letter-spacing: 0.02em
+          line-height: 1.5
+          color: #fff
+          &:hover
+            color: fw.$colorLinkHover
   ul:last-of-type 
     display: flex
     justify-content: space-between
@@ -73,5 +74,8 @@ footer
       width: 100%
       object-fit: cover
       margin-bottom: 10px
+      transform-origin: 50% 45.5%
+      &:hover
+        rotate: 180deg
   img 
     width: 120px

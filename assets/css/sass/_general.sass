@@ -10,6 +10,7 @@
 
 :root 
   font-size: 62.5%
+  scroll-behavior: smooth
   body 
     font-family: fw.$noto
 
@@ -120,34 +121,9 @@ section
           top: calc(100% - 2.5px)
           left: calc(100% - 2.5px)
 
-.service 
-  +.frame 
-    margin-top: 135px
-
-.slider 
-  position: relative
-  width: 3000px
-  height: 18vw
-  background-size: auto 100%
-  background-repeat: repeat-x
-  animation: gallery 60s linear infinite
-  overflow: hidden
-  &.pre 
-    background-image: url(../img/slide-up.png)
-  &.behind 
-    background-image: url(../img/slide-down.png)
-@keyframes gallery 
-  0% 
-    background-position: 100% 0
-  100% 
-    background-position: 0 0
-
 .stroke
   color: transparent
   -webkit-text-stroke: 1px #fff
-
-// h2
-
 
 h2
   .colorRuby 
@@ -173,7 +149,6 @@ h2
     .colorRuby:nth-of-type(#{ $idx })::after
       background-color: #{ nth($colors, $idx) }      
 
-
 .logo
   +fw.hoverTransparent
 
@@ -184,8 +159,21 @@ h2
   opacity: 1 
   transform: translate(0)
 
-.frame.slide-bar-pre
-  margin-top: 15px
+.swiper
+  width: 100%
+  height: 18vw
+  &:first-of-type
+    margin-top: 15px
+  &:last-of-type
+    margin-top: 130px
+  .swiper-wrapper
+    transition-timing-function: linear
+    .swiper-slide
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+
 
 // 【&nbsp;】半角スペースと同じサイズの空白
 // 【&thinsp;】&nbsp;の空白より小さい空白

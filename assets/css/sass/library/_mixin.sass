@@ -113,6 +113,7 @@
   height: $widthHeight + px
   margin-left: $marginleft + px
   margin-right: $marginRight + px
+  transition: .3s
   &::before
     +positionAbsoluteCTL
     width: $widthHeight + px
@@ -122,6 +123,8 @@
     +tx.fontAwesome("\f099", $widthHeight + px, Brands)
   &.instagram::before 
     +tx.fontAwesome("\f16d", $widthHeight + px, Brands)
+  &:hover
+    opacity: .7
 
 
 // 収縮する下線を持つ見出し
@@ -137,7 +140,7 @@ $right_left: left, right
 // 中央から伸びて、中央へ縮まる
 $center: center, center
 
-=shrinkBorderHeader($fontSize: 1.4rem, $bottom: -5px, $lineHeight: 1px, $boderColor: fw.$colorLinkHover, $direction: fw.$left_right)
+=shrinkBorderHeader($fontSize: 1.4rem, $bottom: -5px, $lineHeight: 1px, $boderColor: var.$colorLinkHover, $direction: $left_right)
   .shrinkLine
     display: block
     position: relative

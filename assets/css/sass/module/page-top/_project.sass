@@ -57,6 +57,18 @@
       aspect-ratio: 1/1.4
       background-repeat: no-repeat
       background-size: cover
+      &::before
+        position: absolute
+        top: 0
+        right: 0
+        width: 100%
+        height: 100%
+        content: ""
+        background-color: fw.$color-cyan-vivid-blue
+        z-index: fw.set-index(pointCover)
+        transition: .3s
+      &.open::before
+        width: 0
       &:nth-of-type(1) 
         background-image: url(../img/project01.jpg)
         .eye-catch
@@ -89,6 +101,8 @@
         width: max-content
         padding: 1.5rem 2rem
         background-color: fw.$color-cyan-vivid-blue
+        visibility: hidden
+        opacity: 0
         h4, p 
           margin: 0
           text-align: left
@@ -97,6 +111,8 @@
           line-height: 1
           letter-spacing: .2em
           color: #fff
+          visibility: hidden
+          opacity: 0
         h4 
           margin-bottom: 15px
           font-size: 1.15rem

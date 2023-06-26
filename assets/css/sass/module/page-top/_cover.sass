@@ -18,14 +18,14 @@
       line-height: 1
       color: #fff
       &:nth-of-type(3) 
-        top: 287px
+        top: 39vw
         padding: 6px
         font-size: 2rem
         font-weight: 700
         letter-spacing: .15em
         border: 1px solid #fff
       &:nth-of-type(4) 
-        top: 350px
+        top: 47vw
         letter-spacing: 0.08em
         line-height: 1.4
         text-align: left
@@ -54,7 +54,17 @@
           right: 5%
           letter-spacing: .2em
           writing-mode: vertical-rl
-          &:after 
+          &::before 
+            position: absolute
+            top: 135%
+            right: 3px
+            content: ""
+            width: 2px
+            height: 150px
+            background-color: fw.$colorLinkHover
+            animation: shrinkLine  3s infinite
+            z-index: fw.set-index(headerRBShrinkLine)
+          &::after 
             position: absolute
             top: 135%
             right: 3px
@@ -62,6 +72,19 @@
             width: 2px
             height: 150px
             background-color: #fff
+          @keyframes shrinkLine
+            0%
+              transform: scale(1, 0)
+              transform-origin: left top
+            50%
+              transform: scale(1, 1)
+              transform-origin: left top
+            51%
+              transform: scale(1, 1)
+              transform-origin: left bottom
+            100%
+              transform: scale(1, 0)
+              transform-origin: left bottom
     .what-new 
       position: absolute
       bottom: 7%

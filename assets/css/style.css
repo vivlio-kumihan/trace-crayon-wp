@@ -134,6 +134,7 @@ button, input, optgroup, select, textarea {
 
 :root {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 :root body {
   font-family: "Noto Sans JP", sans-serif;
@@ -159,7 +160,7 @@ button, input, optgroup, select, textarea {
   bottom: 4%;
   right: 0;
   width: 272px;
-  z-index: 6;
+  z-index: 9;
 }
 .container .contents .special img {
   width: 100%;
@@ -271,34 +272,6 @@ section .more-info-btn .border span:nth-of-type(6) {
   left: calc(100% - 2.5px);
 }
 
-.service + .frame {
-  margin-top: 135px;
-}
-
-.slider {
-  position: relative;
-  width: 3000px;
-  height: 18vw;
-  background-size: auto 100%;
-  background-repeat: repeat-x;
-  animation: gallery 60s linear infinite;
-  overflow: hidden;
-}
-.slider.pre {
-  background-image: url(../img/slide-up.png);
-}
-.slider.behind {
-  background-image: url(../img/slide-down.png);
-}
-
-@keyframes gallery {
-  0% {
-    background-position: 100% 0;
-  }
-  100% {
-    background-position: 0 0;
-  }
-}
 .stroke {
   color: transparent;
   -webkit-text-stroke: 1px #fff;
@@ -355,8 +328,47 @@ h2 .colorRuby:nth-of-type(4)::after {
   transform: translate(0);
 }
 
-.frame.slide-bar-pre {
+.swiper {
+  width: 100%;
+  height: 18vw;
+}
+.swiper:first-of-type {
   margin-top: 15px;
+}
+.swiper:last-of-type {
+  margin-top: 130px;
+}
+.swiper .swiper-wrapper {
+  transition-timing-function: linear;
+}
+.swiper .swiper-wrapper .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #00266a;
+  transition: 1.5s;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 14;
+}
+.loading .logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40mm;
+  height: 40mm;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 header {
@@ -370,7 +382,7 @@ header {
   height: 120px;
   padding-right: 5%;
   color: #fff;
-  z-index: 8;
+  z-index: 11;
 }
 header .ci {
   display: flex;
@@ -443,7 +455,7 @@ header .content-links-btn {
   background-color: #fff;
   cursor: pointer;
   transition: 0.5s;
-  z-index: 10;
+  z-index: 13;
 }
 header .content-links-btn div {
   position: absolute;
@@ -513,7 +525,7 @@ header .menu-link {
   background-color: #182e58;
   transform: translateX(100%);
   transition: 0.5s;
-  z-index: 9;
+  z-index: 12;
 }
 header .menu-link.active {
   transform: translateX(0);
@@ -651,6 +663,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon {
   height: 24px;
   margin-left: 20px;
   margin-right: 0px;
+  transition: 0.3s;
 }
 header .menu-link ul:last-of-type li:last-of-type .icon::before {
   position: absolute;
@@ -673,6 +686,9 @@ header .menu-link ul:last-of-type li:last-of-type .icon.instagram::before {
   font-family: "Font Awesome 6 Brands";
   font-weight: 900;
 }
+header .menu-link ul:last-of-type li:last-of-type .icon:hover {
+  opacity: 0.7;
+}
 
 .cover {
   position: relative;
@@ -693,7 +709,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon.instagram::before {
   color: #fff;
 }
 .cover .copy p:nth-of-type(3) {
-  top: 287px;
+  top: 39vw;
   padding: 6px;
   font-size: 2rem;
   font-weight: 700;
@@ -701,7 +717,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon.instagram::before {
   border: 1px solid #fff;
 }
 .cover .copy p:nth-of-type(4) {
-  top: 350px;
+  top: 47vw;
   letter-spacing: 0.08em;
   line-height: 1.4;
   text-align: left;
@@ -738,7 +754,18 @@ header .menu-link ul:last-of-type li:last-of-type .icon.instagram::before {
   letter-spacing: 0.2em;
   writing-mode: vertical-rl;
 }
-.cover .copy p[lang=en]:nth-of-type(5):after {
+.cover .copy p[lang=en]:nth-of-type(5)::before {
+  position: absolute;
+  top: 135%;
+  right: 3px;
+  content: "";
+  width: 2px;
+  height: 150px;
+  background-color: #1bc9f5;
+  animation: shrinkLine 3s infinite;
+  z-index: 3;
+}
+.cover .copy p[lang=en]:nth-of-type(5)::after {
   position: absolute;
   top: 135%;
   right: 3px;
@@ -746,6 +773,24 @@ header .menu-link ul:last-of-type li:last-of-type .icon.instagram::before {
   width: 2px;
   height: 150px;
   background-color: #fff;
+}
+@keyframes shrinkLine {
+  0% {
+    transform: scale(1, 0);
+    transform-origin: left top;
+  }
+  50% {
+    transform: scale(1, 1);
+    transform-origin: left top;
+  }
+  51% {
+    transform: scale(1, 1);
+    transform-origin: left bottom;
+  }
+  100% {
+    transform: scale(1, 0);
+    transform-origin: left bottom;
+  }
 }
 .cover .copy .what-new {
   position: absolute;
@@ -815,7 +860,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon.instagram::before {
   background-repeat: no-repeat;
   background-size: 180%;
   background-position: 50% 62%;
-  z-index: 1;
+  z-index: 4;
 }
 .concept .composed-visual {
   display: flex;
@@ -872,7 +917,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon.instagram::before {
   width: 470px;
   height: 135px;
   background-color: #112342;
-  z-index: 7;
+  z-index: 10;
   transition: 0.3s;
 }
 .concept .philosophy img {
@@ -944,7 +989,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon.instagram::before {
   transform: translateX(-50%);
   bottom: 0;
   width: 100%;
-  z-index: 4;
+  z-index: 7;
 }
 .concept .composed-staff .shadow {
   position: absolute;
@@ -952,7 +997,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon.instagram::before {
   transform: translateX(-50%);
   bottom: 0;
   width: 100%;
-  z-index: 5;
+  z-index: 8;
 }
 .concept .composed-staff .light {
   position: absolute;
@@ -961,7 +1006,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon.instagram::before {
   bottom: 14%;
   width: 50%;
   mix-blend-mode: screen;
-  z-index: 3;
+  z-index: 6;
 }
 .concept .composed-staff .behind {
   position: absolute;
@@ -969,7 +1014,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon.instagram::before {
   transform: translateX(-50%);
   bottom: 0;
   width: 100%;
-  z-index: 2;
+  z-index: 5;
 }
 
 .service {
@@ -1061,6 +1106,20 @@ header .menu-link ul:last-of-type li:last-of-type .icon.instagram::before {
   background-repeat: no-repeat;
   background-size: cover;
 }
+.project .point li::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background-color: #00266a;
+  z-index: 1;
+  transition: 0.3s;
+}
+.project .point li.open::before {
+  width: 0;
+}
 .project .point li:nth-of-type(1) {
   background-image: url(../img/project01.jpg);
 }
@@ -1099,6 +1158,8 @@ header .menu-link ul:last-of-type li:last-of-type .icon.instagram::before {
   width: max-content;
   padding: 1.5rem 2rem;
   background-color: #00266a;
+  visibility: hidden;
+  opacity: 0;
 }
 .project .point li div h4, .project .point li div p {
   margin: 0;
@@ -1108,6 +1169,8 @@ header .menu-link ul:last-of-type li:last-of-type .icon.instagram::before {
   line-height: 1;
   letter-spacing: 0.2em;
   color: #fff;
+  visibility: hidden;
+  opacity: 0;
 }
 .project .point li div h4 {
   margin-bottom: 15px;
@@ -1163,6 +1226,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon.instagram::before {
   font-weight: 500;
   font-style: italic;
   color: #fff;
+  z-index: 2;
 }
 .learning ul li span:lang("en").right-side {
   margin-top: 60px;
@@ -1586,12 +1650,50 @@ footer .link .menu-link {
 footer .link .menu-link li {
   display: inline-block;
   padding: 0 30px 30px 0;
-  text-align: left;
+}
+footer .link .menu-link li .shrinkLine {
+  display: block;
+  position: relative;
+  width: 100%;
   font-size: 1.4rem;
+  letter-spacing: 0.04em;
   font-weight: 700;
+  line-height: 1;
+  transition: 0.3s;
+  text-align: left;
   letter-spacing: 0.02em;
   line-height: 1.5;
   color: #fff;
+}
+footer .link .menu-link li .shrinkLine:hover {
+  color: #1bc9f5;
+}
+footer .link .menu-link li .shrinkLine:hover {
+  color: #1bc9f5;
+  text-align: left;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  color: #fff;
+}
+footer .link .menu-link li .shrinkLine:hover:hover {
+  color: #1bc9f5;
+}
+footer .link .menu-link li .shrinkLine::after {
+  position: absolute;
+  display: block;
+  bottom: -7px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  content: "";
+  background-color: #1bc9f5;
+  transform: scale(0, 1);
+  transform-origin: right top;
+  transition: transform 0.3s;
+}
+footer .link .menu-link li .shrinkLine:hover::after {
+  transform: scale(1, 1);
+  transform-origin: left top;
 }
 footer ul:last-of-type {
   display: flex;
@@ -1608,6 +1710,7 @@ footer ul:last-of-type li:first-of-type .icon {
   height: 27.5px;
   margin-left: 0px;
   margin-right: 30px;
+  transition: 0.3s;
 }
 footer ul:last-of-type li:first-of-type .icon::before {
   position: absolute;
@@ -1629,6 +1732,9 @@ footer ul:last-of-type li:first-of-type .icon.instagram::before {
   font-size: 27.5px;
   font-family: "Font Awesome 6 Brands";
   font-weight: 900;
+}
+footer ul:last-of-type li:first-of-type .icon:hover {
+  opacity: 0.7;
 }
 footer ul:last-of-type:last-of-type li {
   font-size: 1.4rem;
@@ -1655,6 +1761,10 @@ footer .to-top img {
   -o-object-fit: cover;
      object-fit: cover;
   margin-bottom: 10px;
+  transform-origin: 50% 45.5%;
+}
+footer .to-top img:hover {
+  rotate: 180deg;
 }
 footer img {
   width: 120px;

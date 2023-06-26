@@ -13,19 +13,19 @@ const tl = gsap.timeline()
 // const arg = leadCopy.concat(moreInfoBtn)
 
 
-// ////////////
-// // ローディング・アニメーション
-// function loaded() {
-//   const loading = document.getElementById('loading')
-//   loading.classList.remove('keep')
-// }
-// // ウィンドウを読み込んで2秒後には次に遷移する。
-// window.addEventListener('load', () => {
-//   setTimeout(loaded, 1500)
-// })
+////////////
+// ローディング・アニメーション
+function loaded() {
+  const loading = document.getElementById('loading')
+  loading.classList.remove('keep')
+}
+// ウィンドウを読み込んで2秒後には次に遷移する。
+window.addEventListener('load', () => {
+  setTimeout(loaded, 2000)
+})
 
-// // 最低でも５秒後には表示
-// setTimeout(loaded, 5000)
+// 最低でも５秒後には表示
+setTimeout(loaded, 5000)
 
 
 ////////////
@@ -38,6 +38,11 @@ const tl = gsap.timeline()
 
 // for content-links-btn div
 document.getElementById('content-links-btn').insertAdjacentHTML('afterbegin', '<div></div><div></div><div></div>')
+
+// for .more-info-btn .boder
+document.querySelectorAll('.border').forEach(elem => {
+  elem.insertAdjacentHTML('afterbegin', '<span></span><span></span><span></span><span></span><span></span><span></span>')
+})
 
 // for .more-info-btn .boder
 document.querySelectorAll('.border').forEach(elem => {
@@ -169,6 +174,7 @@ ScrollTrigger.create({
   start: '100% 100%',
   // markers: true
 })
+
 const para =  document.querySelector('#concept > p')
 gsap.fromTo(para, .7, {
   y: 20,
@@ -196,7 +202,7 @@ moreInfoBtn.forEach((elem, idx) => {
   ScrollTrigger.create({
     trigger: elem,
     animation: tl,
-    start: '50% 50%',
+    start: '0% 90%',
     // markers: true
   })
 })
@@ -265,7 +271,59 @@ headerAppear.forEach(elem => {
   })
 })
 
+// 質問　結局、タイムラインは個別で作らないといけないの？ 理解できてない。/////////////////////////////////////
+tlContact = gsap.timeline()
+tlContact.fromTo('#contact > a', .3, { autoAlpha: 0 }, { autoAlpha: 1 })
+  .from('#contact > p', .3, { autoAlpha: 0 }, 1)
+  .from('#contact > ul', .3, { autoAlpha: 0 }, 1)
 
+ScrollTrigger.create({
+  trigger: '#contact',
+  animation: tlContact, // 実行するtimeline
+  start: '0% 50%',
+  // markers: true
+})
+
+
+const swiper = new Swiper('.swiper', {
+  loop: true,
+  slidesPerView: 3,
+  speed: 10000,
+  spaceBetween: '.8%',
+  // スクリーンを叩いてスライドが止まるのを防ぐ。
+  allowTouchMove: false,
+  // ５つのスライド、３つの表示、残り２つの場合などスライドの動きがおかしくなるのを防ぐトリッキーな技
+  // スライド量をHTMLでn倍にするのではなく、JSからコントロールする。
+  loopedSlides: 2,
+  autoplay: {
+    delay: 0
+  }
+})
+
+const points = Array.from(document.getElementById('point').children)
+points.forEach(elem => {
+  tlPoint = gsap.timeline()
+  let el = gsap.utils.selector(elem);
+  tlPoint.to(elem, .3, { onUpdate: () => { elem.classList.add('open') } })
+    .to(el('div'), .3, { autoAlpha: 1 })
+    .to(el('h4'), .3, { autoAlpha: 1 })
+    .to(el('p:first-of-type'), .3, { autoAlpha: 1 })
+    .to(el('p:last-of-type'), .3, { autoAlpha: 1 })
+  ScrollTrigger.create({
+    trigger: elem,
+    animation: tlPoint,
+    start: '0% 50%',
+    pused: true,
+    markers: true
+  })
+})
+
+// scrollTrigger: {
+//   trigger: elem,
+//   start: '0% 50%',
+//   ease: 'Power1.easeInOut',
+//   markers: true
+// }
 // ////////////
 // // 便利だと思ったが、色々なスクリプトの邪魔をするのでとりあえず止める
 // // 属性『letter-spacing: .5em;』を最後の文字だけ取り去る
