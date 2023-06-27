@@ -49,20 +49,6 @@ document.querySelectorAll('.border').forEach(elem => {
   elem.insertAdjacentHTML('afterbegin', '<span></span><span></span><span></span><span></span><span></span><span></span>')
 })
 
-// 質問
-// 振る舞いをコピーできない。/////////////////////////////////////
-const specialLink = document.getElementById('special')
-gsap.fromTo(specialLink, .5, {
-  autoAlpha: 0
-}, {
-  autoAlpha: 1,
-  scrollTrigger: {
-    trigger: '#concept',
-    start: '0% 50%',
-    // markers: true
-  }
-})
-
 
 ////////////
 // 一文字ずつ現れる
@@ -314,16 +300,37 @@ points.forEach(elem => {
     animation: tlPoint,
     start: '0% 50%',
     pused: true,
-    markers: true
+    // markers: true
   })
 })
 
-// scrollTrigger: {
-//   trigger: elem,
-//   start: '0% 50%',
-//   ease: 'Power1.easeInOut',
-//   markers: true
-// }
+
+// 質問 下まで行き切ったらanchorは消える。引き上げても消えたまま。
+//     引き上げたらまた現れるをどう表現するのか？
+const contents = document.getElementById('contents') 
+const anchorSpecial = document.getElementById('special') 
+
+gsap.to(anchorSpecial, .3, {
+  autoAlpha: 1,
+  scrollTrigger: {
+    trigger: contents,
+    start: '10% 70%',
+    ease: 'power1.easeinOut',
+  }
+})
+
+gsap.from(anchorSpecial, .7, {
+  autoAlpha: 0,
+  scrollTrigger: {
+    trigger: contents,
+    start: '95% 50%',
+    ease: 'power1.easeinOut',
+    // markers: true
+  }
+})
+
+
+
 // ////////////
 // // 便利だと思ったが、色々なスクリプトの邪魔をするのでとりあえず止める
 // // 属性『letter-spacing: .5em;』を最後の文字だけ取り去る

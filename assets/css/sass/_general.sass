@@ -2,11 +2,10 @@
 
 // WEBフォントのインポート
 // Noto Sans JP
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap')
 // Jost
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700;800;900&display=swap')
-// Jost italic
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@500;600&display=swap')
+
 
 :root 
   font-size: 62.5%
@@ -29,9 +28,10 @@
       position: fixed
       bottom: 4%
       right: 0
-      // width: 30%
       width: 272px
       z-index: fw.set-index(special)
+      visibility: hidden
+      opacity: 0
       img 
         width: 100%
         object-fit: cover
@@ -121,6 +121,7 @@ section
           top: calc(100% - 2.5px)
           left: calc(100% - 2.5px)
 
+// 質問 SVGの振る舞いを変更するためのもの
 .stroke
   color: transparent
   -webkit-text-stroke: 1px #fff
@@ -143,11 +144,20 @@ h2
       height: 11px
       background-color: fw.$colorRed
       border-radius: 50%
-  // 配列のインデックスに紐づいた値の呼び出しにめちゃめちゃ癖ある。。。
+  // // 強調するためにつける圏点
+  // // 配列として初期化
+  // // 配列のインデックスに紐づいた値の呼び出しに癖あり。
+  // $colors: fw.$colorRed, fw.$colorOrange, fw.$colorYellow, fw.$colorGreen
+  // // @eachで回せなかったので@forで解決する。
+  // @for $idx from 1 through length($colors)
+  //   .colorRuby:nth-of-type(#{ $idx })::after
+  //     background-color: #{ nth($colors, $idx) }      
+  // @eachでやる。
   $colors: fw.$colorRed, fw.$colorOrange, fw.$colorYellow, fw.$colorGreen
-  @for $idx from 1 through length($colors)
+  @each $col in $colors
+    $idx : index($colors, $col)
     .colorRuby:nth-of-type(#{ $idx })::after
-      background-color: #{ nth($colors, $idx) }      
+      background-color: #{ nth($colors, $idx) }
 
 .logo
   +fw.hoverTransparent

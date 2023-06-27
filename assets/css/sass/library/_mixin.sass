@@ -87,7 +87,7 @@
 =toContactAnchor($mainFontSZ, $subFontSZ)
   p 
     position: relative
-    font-size: $mainFontSZ + px
+    font-size: $mainFontSZ
     font-weight: bold
     line-height: 1
     letter-spacing: 0.18em
@@ -99,7 +99,7 @@
       transform: translate(-50%, -50%)
       content: "CONTACT"
       font-family: var.$jost
-      font-size: $subFontSZ + px
+      font-size: $subFontSZ
       font-style: italic
       color: transparent
       -webkit-text-stroke: 1.2px #fff
@@ -109,20 +109,20 @@
 =snsLinks($widthHeight, $marginleft, $marginRight, $color)
   display: inline-block
   position: relative
-  width: $widthHeight + px
-  height: $widthHeight + px
-  margin-left: $marginleft + px
-  margin-right: $marginRight + px
+  width: $widthHeight
+  height: $widthHeight
+  margin-left: $marginleft
+  margin-right: $marginRight
   transition: .3s
   &::before
     +positionAbsoluteCTL
-    width: $widthHeight + px
-    height: $widthHeight + px
+    width: $widthHeight
+    height: $widthHeight
     color: #fff
   &.twitter::before 
-    +tx.fontAwesome("\f099", $widthHeight + px, Brands)
+    +tx.fontAwesome("\f099", $widthHeight, Brands)
   &.instagram::before 
-    +tx.fontAwesome("\f16d", $widthHeight + px, Brands)
+    +tx.fontAwesome("\f16d", $widthHeight, Brands)
   &:hover
     opacity: .7
 

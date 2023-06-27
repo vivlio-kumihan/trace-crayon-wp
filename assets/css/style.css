@@ -1,137 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700;800;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-/* destyle.css v3.0.2 | MIT License | https://github.com/nicolas-cusan/destyle.css */
-*, ::before, ::after {
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 0;
-}
-
-/* Document */
-html {
-  line-height: 1.15;
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* Sections */
-body {
-  margin: 0;
-}
-
-/* Render the `main` element consistently in IE. */
-main {
-  display: block;
-}
-
-/* Vertical rhythm */
-p, table, blockquote, address, pre, iframe, form, figure, dl {
-  margin: 0;
-}
-
-/* Headings */
-h1, h2, h3, h4, h5, h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
-
-/* Lists (enumeration) */
-ul, ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Lists (definition) */
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
-}
-
-/* Grouping content */
-hr {
-  box-sizing: content-box;
-  height: 0;
-  overflow: visible;
-  border-top-width: 1px;
-  margin: 0;
-  clear: both;
-  color: inherit;
-}
-
-pre {
-  font-family: monospace, monospace;
-  font-size: inherit;
-}
-
-address {
-  font-style: inherit;
-}
-
-/* Text-level semantics */
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-
-abbr[title] {
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
-}
-
-b, strong {
-  font-weight: bolder;
-}
-
-code, kbd, samp {
-  font-family: monospace, monospace;
-  font-size: inherit;
-}
-
-small {
-  font-size: 80%;
-}
-
-sub, sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Replaced content */
-svg, img, embed, object, iframe {
-  vertical-align: bottom;
-}
-
-/* Forms */
-button, input, optgroup, select, textarea {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-       appearance: none;
-  vertical-align: middle;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-}
-
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@500;600&display=swap");
 :root {
   font-size: 62.5%;
   scroll-behavior: smooth;
@@ -161,6 +29,8 @@ button, input, optgroup, select, textarea {
   right: 0;
   width: 272px;
   z-index: 9;
+  visibility: hidden;
+  opacity: 0;
 }
 .container .contents .special img {
   width: 100%;
@@ -449,6 +319,7 @@ header .content-links-btn {
   width: 100px;
   height: 100px;
   padding-top: 32px;
+  text-align: center;
   font-weight: 700;
   letter-spacing: 0.15em;
   color: #182e58;
@@ -662,7 +533,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon {
   width: 24px;
   height: 24px;
   margin-left: 20px;
-  margin-right: 0px;
+  margin-right: 0;
   transition: 0.3s;
 }
 header .menu-link ul:last-of-type li:last-of-type .icon::before {
@@ -1708,7 +1579,7 @@ footer ul:last-of-type li:first-of-type .icon {
   position: relative;
   width: 27.5px;
   height: 27.5px;
-  margin-left: 0px;
+  margin-left: 0;
   margin-right: 30px;
   transition: 0.3s;
 }
