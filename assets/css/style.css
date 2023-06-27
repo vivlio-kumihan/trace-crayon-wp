@@ -6,6 +6,7 @@
 }
 :root body {
   font-family: "Noto Sans JP", sans-serif;
+  border: none;
 }
 
 .container {
@@ -144,7 +145,7 @@ section .more-info-btn .border span:nth-of-type(6) {
 
 .stroke {
   color: transparent;
-  -webkit-text-stroke: 1px #fff;
+  -webkit-text-stroke: 2px #fff;
 }
 
 h2 .colorRuby {
@@ -229,6 +230,10 @@ h2 .colorRuby:nth-of-type(4)::after {
   visibility: hidden;
   opacity: 0;
   z-index: 14;
+}
+.loading.keep {
+  visibility: visible;
+  opacity: 1;
 }
 .loading .logo {
   position: absolute;

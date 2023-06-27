@@ -329,7 +329,14 @@ gsap.from(anchorSpecial, .7, {
   }
 })
 
-
+// // 質問
+// // ↓ deSVGというJSのライブラリが使えるそうだが上手くいかない。
+// // SVGをimgで読み込めるコード　CSSが効く
+// window.addEventListener('load', function () {
+//   // 1. selector for the <img /> tags to replace
+//   // 2. whether to strip inline style tags from SVG paths
+//   deSVG('.replace-svg', true);
+// })
 
 // ////////////
 // // 便利だと思ったが、色々なスクリプトの邪魔をするのでとりあえず止める

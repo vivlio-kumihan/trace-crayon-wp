@@ -9,16 +9,24 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/desvg@1.0.2/mob.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/CSSRulePlugin.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <!-- ↓ deSVGというJSのライブラリが使えるそうだが上手くいかない。 -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/desvg@1.0.2/desvg.min.js"></script> -->
   <script src="./assets/js/behavior.js" defer></script>
 </head>
 
 <body>
   <div id="loading" class="loading keep">
-    <img class="logo" src="assets/img/logo.svg" alt="">
+    <!-- この線画の線を描画するアニメーションをしてから、 -->
+    <img class="logo" src="assets/img/logo_line.svg" alt="">
+    <!-- tlか@keyfralmeで制御して、ロゴを浮き上がらせるアニメーションをつける作戦。 -->
+    <!-- <img class="logo" src="assets/img/logo.svg" alt=""> -->
+    <!-- ↓ deSVGというJSのライブラリが使えるそうだが上手くいかない。 -->
+    <!-- <img class="logo replace-svg" data-src="assets/img/logo_line.svg" alt=""> -->
   </div>
   <div class="container">
     <header>

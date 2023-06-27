@@ -12,10 +12,19 @@
   opacity: 0
   z-index: fw.set_index(loading)
   &.keep 
-    // visibility: visible
-    // opacity: 1
+    visibility: visible
+    opacity: 1
   .logo
     +fw.positionAbsoluteCTL
     width: 40mm
     height: 40mm
     object-fit: contain
+
+
+// 質問 SVGをimgで扱えるそうだが上手くいかない。
+// .ico-svg path
+//   -webkit-transition: all ease-in-out 1s
+//   transition: all ease-in-out 1s
+
+// .logo.replace-svg path
+//   fill: red

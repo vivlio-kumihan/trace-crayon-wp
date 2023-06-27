@@ -12,6 +12,17 @@
   scroll-behavior: smooth
   body 
     font-family: fw.$noto
+    border: none
+    // ↑ こんなことしないといけなくなった。
+    // 質問　index.htmlのヘッダーに<script src="https://cdn.jsdelivr.net/npm/desvg@1.0.2/desvg.min.js"></script>を入れたからかも？
+    //  /**
+    //    * Minified by jsDelivr using clean-css v4.2.3.
+    //    * Original file: /npm/desvg@1.0.2/mob.css
+    //    *
+    //    * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
+    //    */
+    //   body{border:5px solid #fff}.wrap{padding:0 24px}.ctas a{margin:0 6px}
+    //  /*# sourceMappingURL=/sm/8bf26cbc876f5785869d7b40425eefaed627694d704a5cb62ce0c8393cb03d2b.map */
 
 .container 
   width: 100%
@@ -124,7 +135,7 @@ section
 // 質問 SVGの振る舞いを変更するためのもの
 .stroke
   color: transparent
-  -webkit-text-stroke: 1px #fff
+  -webkit-text-stroke: 2px #fff
 
 h2
   .colorRuby 
