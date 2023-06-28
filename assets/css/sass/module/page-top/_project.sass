@@ -57,6 +57,7 @@
       aspect-ratio: 1/1.4
       background-repeat: no-repeat
       background-size: cover
+      opacity: 0
       &::before
         position: absolute
         top: 0
@@ -69,31 +70,25 @@
         transition: .3s
       &.open::before
         width: 0
-      &:nth-of-type(1) 
+      &:nth-of-type(1)
         background-image: url(../img/project01.jpg)
-        .eye-catch
-          font-size: 45px
-          line-height: 1
+        svg
+          width: 38%
       &:nth-of-type(2) 
         margin-top: 50px
         background-image: url(../img/project02.jpg)
       &:nth-of-type(3) 
         margin-top: 100px
         background-image: url(../img/project03.jpg)
-      .eye-catch
+      svg
         position: absolute
         top: 0
         right: 0
-        width: 100%
+        width: 27%
         padding: 20px 15px 0 0
-        writing-mode: vertical-rl 
-        font-family: fw.$jost
-        font-weight: 600
-        font-size: 73px
-        -webkit-text-stroke: 1px #fff
-        color: transparent
-        text-transform: uppercase
-        background-color: transparent
+        writing-mode: vertical-rl
+        path
+          stroke-dashoffset: 0px 
       div 
         position: absolute
         bottom: 8%
@@ -101,7 +96,6 @@
         width: max-content
         padding: 1.5rem 2rem
         background-color: fw.$color-cyan-vivid-blue
-        visibility: hidden
         opacity: 0
         h4, p 
           margin: 0
@@ -111,7 +105,6 @@
           line-height: 1
           letter-spacing: .2em
           color: #fff
-          visibility: hidden
           opacity: 0
         h4 
           margin-bottom: 15px

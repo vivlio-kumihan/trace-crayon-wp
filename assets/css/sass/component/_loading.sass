@@ -11,14 +11,24 @@
   visibility: hidden
   opacity: 0
   z-index: fw.set_index(loading)
-  &.keep 
-    visibility: visible
-    opacity: 1
-  .logo
+  // &.keep 
+  //   visibility: visible
+  //   opacity: 1
+  svg
+    +fw.positionAbsoluteCTL
+    width: 40mm
+      
+    .outer_frame, .logo_svg
+      fill: none
+      stroke: #fff
+      stroke-width: 3px
+      stroke-dasharray: 1300px
+  .org_logo
     +fw.positionAbsoluteCTL
     width: 40mm
     height: 40mm
     object-fit: contain
+    opacity: 0
 
 
 // 質問 SVGをimgで扱えるそうだが上手くいかない。

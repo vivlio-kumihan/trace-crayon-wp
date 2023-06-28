@@ -12,6 +12,11 @@ header
   padding-right: 5%
   color: #fff
   z-index: fw.set-index(header)
+  &.toggleButtonMenu
+    .nav-link
+      transform: translateX(110%)
+    // .content-links-btn
+      
   .ci 
     display: flex
     align-items: flex-start
@@ -29,11 +34,11 @@ header
       letter-spacing: .08em
       line-height: 2
   .nav-link
+    transition: .4s
     li 
       display: inline-block
       &+ li 
         margin-left: 28px
-      // +fw.shrinkBorderHeader(1.4rem, -5px, 1px, fw.$colorLinkHover, fw.$left_right)
       +fw.shrinkBorderHeader
   +fw.contentLinkBtn
   +fw.menuLink

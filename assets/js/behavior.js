@@ -1,8 +1,4 @@
-// chatGPTに教えられたが効果なし。消してしまう予定。
-gsap.registerPlugin(ScrollTrigger);
 // GSAP
-// TimelineMaxインスタンスを作成
-const tl = gsap.timeline()
 
 // コンソールに出力をする。mountedみたいなものか？
 // onEnter: () => console.log('コンソール出力はできる')
@@ -13,19 +9,34 @@ const tl = gsap.timeline()
 // const arg = leadCopy.concat(moreInfoBtn)
 
 
-////////////
-// ローディング・アニメーション
-function loaded() {
-  const loading = document.getElementById('loading')
-  loading.classList.remove('keep')
-}
-// ウィンドウを読み込んで2秒後には次に遷移する。
-window.addEventListener('load', () => {
-  setTimeout(loaded, 2000)
-})
+// ////////////
+// // ローディング・アニメーション
+// function loaded() {
+//   const loading = document.getElementById('loading')
+//   loading.classList.remove('keep')
+// }
+// // ウィンドウを読み込んで2秒後には次に遷移する。
+// window.addEventListener('load', () => {
+//   setTimeout(loaded, 4500)
+// })
+// // 最低でも５秒後には表示
+// setTimeout(loaded, 5000)
 
-// 最低でも５秒後には表示
-setTimeout(loaded, 5000)
+
+// loading animationのロゴ
+gsap.timeline()
+  .fromTo('.outer_frame', 
+    { 'stroke-dashoffset': '-1300px' },
+    { 'stroke-dashoffset': '0', duration: 1, delay: 1, stagger: .2 })
+  .fromTo('.logo_svg', 
+    { 'stroke-dashoffset': '1300px' },
+    { 'stroke-dashoffset': '0', duration: 2.5 }, '-=0.2')
+  .to('.outer_frame',
+    { opacity: 0, duration: .5, ease: 'power.inOut' }, 2.5)
+  .to('.logo_svg',
+    { opacity: 0, duration: .5, ease: 'power.inOut' }, 2.5)
+  .to('.org_logo',
+    { opacity: 1, duration: 1, ease: 'power.inOut'}, 3.5)
 
 
 ////////////
@@ -76,7 +87,7 @@ splitText(preChar)
 preChar.forEach(elem => {
   // 質問　timelineを使ってやれるはずだができない。 /////////////////////
   gsap.from(elem, .3, {
-    autoAlpha: 0, ease: 'Power1.easeInOut',
+    autoAlpha: 0, ease: 'power1.inOut',
     scrollTrigger: {
       trigger: elem,
       start: '50% 50%',
@@ -85,7 +96,7 @@ preChar.forEach(elem => {
   })
   gsap.from(elem.children, .3, {
     autoAlpha: 0,
-    ease: 'Power1.easeInOut',
+    ease: 'power1.inOut',
     stagger: .1,
     scrollTrigger: {
       trigger: elem,
@@ -105,7 +116,7 @@ upAppear.forEach(elem => {
     autoAlpha: 1,
     scrollTrigger: {
       trigger: elem,
-      start: '0% 50%',
+      start: '0% 70%',
       // markers:true
     }
   })
@@ -115,48 +126,135 @@ upAppear.forEach(elem => {
 // 要素のアニメーションを追加
 // id="nav-link" /////////////////////////////
 // id="concept" /////////////////////////////
-tl.fromTo('#nav-link', .2, { 
-  x: 0
-}, {
-  x: '110%',
-  ease: 'power1.easeInOut',
+// TimelineMaxインスタンスを作成
+gsap.to('#special', {
   scrollTrigger: {
-    trigger: '#concept',
-    start: '0% 20%',
-    end: '5% 20%',
-    scrub: .3,
-    // markers: true
+    trigger: '#main',
+    start: '13% 8%',
+    toggleClass: {
+      targets: ['header', '#content-links-btn', '#special'],
+      className: 'toggleButtonMenu'
+    }
   }
 })
 
-// id="content-links-btn" ////////////////////
-.fromTo('#content-links-btn', {
-  x: '100%'
-}, {
-  x: 0,
-  ease: 'power1.easeInOut',
-  scrollTrigger: {
-    trigger: '#concept',
-    start: '30% 40%',
-    end: '30% 40%',
-    scrub: 0,
-    // markers: true
-  }
+ScrollTrigger.create({
+  trigger: "#special",
+  // 見た目がわかりやすいので、まずobjectのtopとしておいて、スクリーンの高さの何%の位置かを決める。
+  start: "top 80%",
+  endTrigger: "footer",
+  // ここでくっついて行く位置を決める。
+  // footerのtopで、次の値は見ながら適宜決める。
+  end: "top 90.5%",
+  pin: true,
+  pinSpacing: false,
+  markers: true
 })
+
+// gsap.to('#special', .4, {
+//   scrollTrigger: {
+//     trigger: '#concept',
+//     start: '0% 20%',
+//     endTrigger: 'html',
+//     end: 'bottom top',
+//     toggleClass: {
+//       targets: 'header',
+//       className: 'toggleButtonMenu'
+//     },
+//     toggleClass: {
+//       targets: '#special',
+//       className: 'active'
+//     },
+//     // markers: true
+//   }
+// })
+
+
+
+
+
+
+
+// gsap.fromTo('special', {
+//   scrollTrigger: {
+//     // 見た目がわかりやすいので、まずobjectのtopとしておいて、スクリーンの高さの何%の位置かを決める。
+//     start: '0% 80%',
+//     endTrigger: 'footer'
+//   }, {
+//     // ここでくっついて行く位置を決める。
+//     // footerのtopで、次の値は見ながら適宜決める。
+//     end: "top 100%",
+//     pin: true,
+//     markers: true
+//   }
+//   }
+// )
+
+// ScrollTrigger.create({
+//   trigger: "#special",
+//   start: "0% 80%",
+//   endTrigger: "footer",
+// })
+
+
+
+// const tl = gsap.timeline()
+// tl.to('#special', .4, {
+//   scrollTrigger: {
+//     trigger: '#concept',
+//     start: '0% 20%',
+//     toggleClass: {
+//       targets: 'header',
+//       className: 'toggleButtonMenu'
+//     },
+//     },
+//     markers: true
+//   }
+// })
+
+// const tl = gsap.timeline()
+// tl.to('#nav-link', { 
+//   x: '110%',
+//   ease: 'power1.inOut',
+//   scrollTrigger: {
+//     trigger: '#concept',
+//     start: '0% 20%',
+//     end: '0% 20%',
+//     scrub: 2,
+//     markers: true
+//   }
+// })
+
+// id="content-links-btn" ////////////////////
+
+// gsap.timeline().fromTo('#content-links-btn', {
+//   x: '100%'
+// }, {
+//   x: 0,
+//   ease: 'power1.inOut',
+//   scrollTrigger: {
+//     trigger: '#concept',
+//     start: '30% 40%',
+//     end: '30% 40%',
+//     scrub: 0,
+//     // markers: true
+//   }
+// })
 
 
 // #concept ////////////////////////////////////
 //    #visual-container ////////////////////////
 // 質問
 // とりあえずやってみましたが、こんなやり方でいいのですか？
-tl.fromTo('#visual-containe-frame', 1, { autoAlpha: 0 }, { autoAlpha: 1, ease: 'Power1.easeInOut' })
-tl.fromTo('#copy-one', 1, { autoAlpha: 0 }, { autoAlpha: 1, ease: 'Power1.easeInOut' })
-tl.fromTo('#copy-two', .75, { autoAlpha: 0 }, { autoAlpha: 1, ease: 'Power1.easeInOut' }, '-=0.65')
-tl.fromTo('#catch-copy', 1, { autoAlpha: 0 }, { autoAlpha: 1, ease: 'Power1.easeInOut' })
+const tlConcept = gsap.timeline()
+.fromTo('#visual-containe-frame', 1, { autoAlpha: 0 }, { autoAlpha: 1, ease: 'power1.inOut' })
+.fromTo('#copy-one', 1, { autoAlpha: 0 }, { autoAlpha: 1, ease: 'power1.inOut' })
+.fromTo('#copy-two', .75, { autoAlpha: 0 }, { autoAlpha: 1, ease: 'power1.inOut' }, '-=0.65')
+.fromTo('#catch-copy', 1, { autoAlpha: 0 }, { autoAlpha: 1, ease: 'power1.inOut' })
 
 ScrollTrigger.create({
   trigger: '#copy-one',
-  animation: tl, // 実行するアニメーション
+  animation: tlConcept, // 実行するアニメーション
   start: '100% 100%',
   // markers: true
 })
@@ -184,7 +282,7 @@ moreInfoBtn.forEach((elem, idx) => {
   // classで要素を集めてforEachで回す場合は、timelineのインスタンスをこのスコープ内で生成させる。
   const tl = gsap.timeline()
   tl.fromTo(elem, 1.25, { autoAlpha: 0 }, { autoAlpha: 1, ease: 'power1.easeOut' })
-  tl.fromTo(border[idx], .5, { autoAlpha: 0 }, { autoAlpha: 1, ease: 'power1.easeInOut' }, '-=1')
+  tl.fromTo(border[idx], .5, { autoAlpha: 0 }, { autoAlpha: 1, ease: 'power1.inOut' }, '-=1')
   ScrollTrigger.create({
     trigger: elem,
     animation: tl,
@@ -209,7 +307,7 @@ gsap.fromTo('#philosophy', .7, {
   opacity: 0,
 }, {
   opacity: 1,
-  ease: 'power1.easeInOut',
+  ease: 'power1.inOut',
   scrollTrigger: {
     trigger: '#philosophy',
     start: 'top center',
@@ -229,7 +327,7 @@ gsap.fromTo(elems, .7, {
   opacity: 1,
 }, {
   opacity: 0,
-  ease: 'power1.easeInOut',
+  ease: 'power1.inOut',
   scrollTrigger: {
     trigger: '#composed-staff',
     // 画像の上端10%をトリガーに、スクリーンの25%上の地点から
@@ -251,7 +349,7 @@ headerAppear.forEach(elem => {
     scrollTrigger: {
       trigger: elem,
       start: '0% 70%',
-      ease: 'Power1.easeInOut',
+      ease: 'power1.inOut',
       // markers: true
     }
   })
@@ -286,57 +384,65 @@ const swiper = new Swiper('.swiper', {
   }
 })
 
+
+
+// projectのpoint
 const points = Array.from(document.getElementById('point').children)
 points.forEach(elem => {
-  tlPoint = gsap.timeline()
   let el = gsap.utils.selector(elem);
-  tlPoint.to(elem, .3, { onUpdate: () => { elem.classList.add('open') } })
-    .to(el('div'), .3, { autoAlpha: 1 })
-    .to(el('h4'), .3, { autoAlpha: 1 })
-    .to(el('p:first-of-type'), .3, { autoAlpha: 1 })
-    .to(el('p:last-of-type'), .3, { autoAlpha: 1 })
-  ScrollTrigger.create({
-    trigger: elem,
-    animation: tlPoint,
-    start: '0% 50%',
-    pused: true,
-    // markers: true
-  })
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: elem,
+      start: '0% 50%',
+      pused: true,
+      // markers: true
+    }
+  }).to(elem, .3, { opacity: 1 })
+    .to(elem, .3, { onUpdate: () => { elem.classList.add('open') } })
+    .fromTo(el('svg path'), .7, { 'stroke-dasharray': '1000px', 'stroke-dashoffset': '1000px' },
+                                { 'stroke-dashoffset': '2000px' }, '-=0.7')
+})
+points.forEach(elem => {
+  let el = gsap.utils.selector(elem);
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: elem,
+      start: '40% 47%',
+      pused: true,
+      // markers: true
+    }
+  }).to(el('div'), .3, { opacity: 1 })
+    .to(el('h4'), .3, { opacity: 1 })
+    .to(el('p:first-of-type'), .3, { opacity: 1 })
+    .to(el('p:last-of-type'), .3, { opacity: 1 })
 })
 
 
 // 質問 下まで行き切ったらanchorは消える。引き上げても消えたまま。
 //     引き上げたらまた現れるをどう表現するのか？
-const contents = document.getElementById('contents') 
-const anchorSpecial = document.getElementById('special') 
+// const contents = document.getElementById('contents') 
+// const anchorSpecial = document.getElementById('special') 
 
-gsap.to(anchorSpecial, .3, {
-  autoAlpha: 1,
-  scrollTrigger: {
-    trigger: contents,
-    start: '10% 70%',
-    ease: 'power1.easeinOut',
-  }
-})
-
-gsap.from(anchorSpecial, .7, {
-  autoAlpha: 0,
-  scrollTrigger: {
-    trigger: contents,
-    start: '95% 50%',
-    ease: 'power1.easeinOut',
-    // markers: true
-  }
-})
-
-// // 質問
-// // ↓ deSVGというJSのライブラリが使えるそうだが上手くいかない。
-// // SVGをimgで読み込めるコード　CSSが効く
-// window.addEventListener('load', function () {
-//   // 1. selector for the <img /> tags to replace
-//   // 2. whether to strip inline style tags from SVG paths
-//   deSVG('.replace-svg', true);
+// gsap.to(anchorSpecial, .3, {
+//   autoAlpha: 1,
+//   scrollTrigger: {
+//     trigger: contents,
+//     start: '10% 70%',
+//     ease: 'power1.inOut',
+//   }
 // })
+
+// gsap.from(anchorSpecial, .7, {
+//   autoAlpha: 0,
+//   scrollTrigger: {
+//     trigger: contents,
+//     start: '95% 50%',
+//     ease: 'power1.inOut',
+//     // markers: true
+//   }
+// })
+
+
 
 // ////////////
 // // 便利だと思ったが、色々なスクリプトの邪魔をするのでとりあえず止める

@@ -9,35 +9,40 @@
   border: none;
 }
 
-.container {
-  width: 100%;
-  margin: 0 auto;
-}
-.container :lang(en) {
+[lang=en] {
   font-family: "Jost", sans-serif;
 }
-.container .frame {
+
+.frame {
   width: 100%;
   overflow: hidden;
 }
-.container .contents {
+
+.contents {
+  position: relative;
   width: 100%;
 }
-.container .contents .special {
+.contents .special {
   display: block;
-  position: fixed;
-  bottom: 4%;
+  position: absolute;
+  top: 21.5%;
   right: 0;
   width: 272px;
   z-index: 9;
+  transition: 0.3s;
   visibility: hidden;
   opacity: 0;
 }
-.container .contents .special img {
+.contents .special img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
+.contents .special.toggleButtonMenu {
+  visibility: visible;
+  opacity: 1;
+}
+
 .remove-letter-spacing {
   letter-spacing: 0;
 }
@@ -145,7 +150,7 @@ section .more-info-btn .border span:nth-of-type(6) {
 
 .stroke {
   color: transparent;
-  -webkit-text-stroke: 2px #fff;
+  -webkit-text-stroke: 1.2px #fff;
 }
 
 h2 .colorRuby {
@@ -231,11 +236,20 @@ h2 .colorRuby:nth-of-type(4)::after {
   opacity: 0;
   z-index: 14;
 }
-.loading.keep {
-  visibility: visible;
-  opacity: 1;
+.loading svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40mm;
 }
-.loading .logo {
+.loading svg .outer_frame, .loading svg .logo_svg {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 3px;
+  stroke-dasharray: 1300px;
+}
+.loading .org_logo {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -244,6 +258,7 @@ h2 .colorRuby:nth-of-type(4)::after {
   height: 40mm;
   -o-object-fit: contain;
      object-fit: contain;
+  opacity: 0;
 }
 
 header {
@@ -258,6 +273,9 @@ header {
   padding-right: 5%;
   color: #fff;
   z-index: 11;
+}
+header.toggleButtonMenu .nav-link {
+  transform: translateX(110%);
 }
 header .ci {
   display: flex;
@@ -279,6 +297,9 @@ header .ci .catch-copy {
   font-weight: 700;
   letter-spacing: 0.08em;
   line-height: 2;
+}
+header .nav-link {
+  transition: 0.4s;
 }
 header .nav-link li {
   display: inline-block;
@@ -320,7 +341,7 @@ header .content-links-btn {
   display: inline-block;
   position: fixed;
   top: 0;
-  right: 0px;
+  right: -100%;
   width: 100px;
   height: 100px;
   padding-top: 32px;
@@ -330,8 +351,11 @@ header .content-links-btn {
   color: #182e58;
   background-color: #fff;
   cursor: pointer;
-  transition: 0.5s;
   z-index: 13;
+  transition: 0.4s;
+}
+header .content-links-btn.toggleButtonMenu {
+  right: 0;
 }
 header .content-links-btn div {
   position: absolute;
@@ -981,6 +1005,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   aspect-ratio: 1/1.4;
   background-repeat: no-repeat;
   background-size: cover;
+  opacity: 0;
 }
 .project .point li::before {
   position: absolute;
@@ -999,9 +1024,8 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
 .project .point li:nth-of-type(1) {
   background-image: url(../img/project01.jpg);
 }
-.project .point li:nth-of-type(1) .eye-catch {
-  font-size: 45px;
-  line-height: 1;
+.project .point li:nth-of-type(1) svg {
+  width: 38%;
 }
 .project .point li:nth-of-type(2) {
   margin-top: 50px;
@@ -1011,20 +1035,16 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   margin-top: 100px;
   background-image: url(../img/project03.jpg);
 }
-.project .point li .eye-catch {
+.project .point li svg {
   position: absolute;
   top: 0;
   right: 0;
-  width: 100%;
+  width: 27%;
   padding: 20px 15px 0 0;
   writing-mode: vertical-rl;
-  font-family: "Jost", sans-serif;
-  font-weight: 600;
-  font-size: 73px;
-  -webkit-text-stroke: 1px #fff;
-  color: transparent;
-  text-transform: uppercase;
-  background-color: transparent;
+}
+.project .point li svg path {
+  stroke-dashoffset: 0px;
 }
 .project .point li div {
   position: absolute;
@@ -1034,7 +1054,6 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   width: max-content;
   padding: 1.5rem 2rem;
   background-color: #00266a;
-  visibility: hidden;
   opacity: 0;
 }
 .project .point li div h4, .project .point li div p {
@@ -1045,7 +1064,6 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   line-height: 1;
   letter-spacing: 0.2em;
   color: #fff;
-  visibility: hidden;
   opacity: 0;
 }
 .project .point li div h4 {
@@ -1094,7 +1112,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   position: relative;
   width: 50%;
 }
-.learning ul li span:lang("en") {
+.learning ul li span[lang=en] {
   position: absolute;
   top: -55px;
   right: 20px;
@@ -1104,10 +1122,10 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   color: #fff;
   z-index: 2;
 }
-.learning ul li span:lang("en").right-side {
+.learning ul li span[lang=en].right-side {
   margin-top: 60px;
 }
-.learning ul li span:lang("en")::after {
+.learning ul li span[lang=en]::after {
   position: absolute;
   top: 100px;
   right: 0;

@@ -9,7 +9,7 @@
     display: inline-block
     position: fixed
     top: 0
-    right: 0px
+    right: -100%
     width: 100px
     height: 100px
     padding-top: 32px
@@ -19,8 +19,10 @@
     color: var.$color-theme-blue
     background-color: #fff
     cursor: pointer
-    transition: .5s
     z-index: fn.set-index(contentLinkBtn)
+    transition: .4s
+    &.toggleButtonMenu
+      right: 0
     div 
       +mx.positionAbsoluteCTL($left: true)
       width: 30px
