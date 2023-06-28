@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Jost:wght@500;600&display=swap");
 :root {
   font-size: 62.5%;
@@ -25,12 +25,10 @@
 .contents .special {
   display: block;
   position: absolute;
-  top: 21.5%;
+  top: 0;
   right: 0;
   width: 272px;
   z-index: 9;
-  transition: 0.3s;
-  visibility: hidden;
   opacity: 0;
 }
 .contents .special img {
@@ -150,7 +148,7 @@ section .more-info-btn .border span:nth-of-type(6) {
 
 .stroke {
   color: transparent;
-  -webkit-text-stroke: 1.2px #fff;
+  -webkit-text-stroke: 1px #fff;
 }
 
 h2 .colorRuby {
@@ -235,6 +233,10 @@ h2 .colorRuby:nth-of-type(4)::after {
   visibility: hidden;
   opacity: 0;
   z-index: 14;
+}
+.loading.keep {
+  visibility: visible;
+  opacity: 1;
 }
 .loading svg {
   position: absolute;
@@ -603,13 +605,13 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   left: 10%;
   margin: 0;
   font-family: "Noto Sans JP", sans-serif;
-  font-size: 6rem;
-  font-weight: 900;
+  font-size: 5.5rem;
+  font-weight: 600;
   line-height: 1;
   color: #fff;
 }
 .cover .copy p:nth-of-type(3) {
-  top: 39vw;
+  top: 350px;
   padding: 6px;
   font-size: 2rem;
   font-weight: 700;
@@ -617,7 +619,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   border: 1px solid #fff;
 }
 .cover .copy p:nth-of-type(4) {
-  top: 47vw;
+  top: 415px;
   letter-spacing: 0.08em;
   line-height: 1.4;
   text-align: left;

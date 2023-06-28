@@ -2,7 +2,7 @@
 
 // WEBフォントのインポート
 // Noto Sans JP
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;900&display=swap')
 // Jost
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@500;600&display=swap')
 
@@ -37,12 +37,10 @@
   .special 
     display: block
     position: absolute
-    top: 21.5%
+    top: 0
     right: 0
     width: 272px
     z-index: fw.set-index(special)
-    transition: .3s
-    visibility: hidden
     opacity: 0
     img 
       width: 100%
@@ -139,7 +137,7 @@ section
 // 質問 SVGの振る舞いを変更するためのもの
 .stroke
   color: transparent
-  -webkit-text-stroke: 1.2px #fff
+  -webkit-text-stroke: 1px #fff
 
 h2
   .colorRuby 

@@ -9,18 +9,18 @@
 // const arg = leadCopy.concat(moreInfoBtn)
 
 
-// ////////////
-// // ローディング・アニメーション
-// function loaded() {
-//   const loading = document.getElementById('loading')
-//   loading.classList.remove('keep')
-// }
-// // ウィンドウを読み込んで2秒後には次に遷移する。
-// window.addEventListener('load', () => {
-//   setTimeout(loaded, 4500)
-// })
-// // 最低でも５秒後には表示
-// setTimeout(loaded, 5000)
+////////////
+// ローディング・アニメーション
+function loaded() {
+  const loading = document.getElementById('loading')
+  loading.classList.remove('keep')
+}
+// ウィンドウを読み込んで2秒後には次に遷移する。
+window.addEventListener('load', () => {
+  setTimeout(loaded, 4500)
+})
+// 最低でも５秒後には表示
+setTimeout(loaded, 5000)
 
 
 // loading animationのロゴ
@@ -126,30 +126,59 @@ upAppear.forEach(elem => {
 // 要素のアニメーションを追加
 // id="nav-link" /////////////////////////////
 // id="concept" /////////////////////////////
-// TimelineMaxインスタンスを作成
-gsap.to('#special', {
-  scrollTrigger: {
-    trigger: '#main',
-    start: '13% 8%',
-    toggleClass: {
-      targets: ['header', '#content-links-btn', '#special'],
-      className: 'toggleButtonMenu'
-    }
+ScrollTrigger.create({
+  trigger: '#main',
+  start: '11% 8%',
+  toggleClass: {
+    targets: ['header', '#content-links-btn'],
+    className: 'toggleButtonMenu'
   }
 })
 
+// .special
+// sassに設定するtransitionの影響で、
+// リロードすると元にあった位置から指定位置までゴーストする。
+// クラス指定追加の作戦で一つにまとめるのは避ける。
+// 出現する処理
+// フワッとを表現するためstart, endをscrubで設定する。
+gsap.to('#special', {
+  opacity: 1,
+  ease: 'power1.inOut',
+  scrollTrigger: {
+    trigger: '#main',
+    start: '11% 15%',
+    end: '12% 15%',
+    scrub: true,
+    // markers: true
+  }
+})
+// 任意の位置でくっつく処理
 ScrollTrigger.create({
-  trigger: "#special",
+  trigger: ".special",
   // 見た目がわかりやすいので、まずobjectのtopとしておいて、スクリーンの高さの何%の位置かを決める。
-  start: "top 80%",
+  start: "top 75%",
   endTrigger: "footer",
   // ここでくっついて行く位置を決める。
   // footerのtopで、次の値は見ながら適宜決める。
-  end: "top 90.5%",
+  end: "top 95%",
   pin: true,
   pinSpacing: false,
-  markers: true
+  // markers: true
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // gsap.to('#special', .4, {
 //   scrollTrigger: {
