@@ -9,7 +9,7 @@
 // const arg = leadCopy.concat(moreInfoBtn)
 
 
-////////////
+////////////////////////////////////////////////
 // ローディング・アニメーション
 function loaded() {
   const loading = document.getElementById('loading')
@@ -23,6 +23,7 @@ window.addEventListener('load', () => {
 setTimeout(loaded, 5000)
 
 
+// ////////////////////////////////////////////////
 // loading animationのロゴ
 gsap.timeline()
   .fromTo('.outer_frame', 
@@ -39,7 +40,7 @@ gsap.timeline()
     { opacity: 1, duration: 1, ease: 'power.inOut'}, 3.5)
 
 
-////////////
+// ////////////////////////////////////////////////
 // span, divなど親要素を起点に要素を追加する。
 // // 引数の意味
 //    'beforebegin'  要素の直前に追加
@@ -55,13 +56,10 @@ document.querySelectorAll('.border').forEach(elem => {
   elem.insertAdjacentHTML('afterbegin', '<span></span><span></span><span></span><span></span><span></span><span></span>')
 })
 
-// for .more-info-btn .boder
-document.querySelectorAll('.border').forEach(elem => {
-  elem.insertAdjacentHTML('afterbegin', '<span></span><span></span><span></span><span></span><span></span><span></span>')
-})
 
+// ////////////////////////////////////////////////
+// .lead-copy.per-char
 
-////////////
 // 一文字ずつ現れる
 // ドキュメント上の該当文章を一文字ごとバラバラにしていく。
 function splitText(className) {
@@ -81,39 +79,39 @@ function splitText(className) {
   })
 }
 
-const preChar = document.querySelectorAll('.per-char')
-splitText(preChar)
+// .lead-copy.per-charを収集する。
+const leadCopy = document.querySelectorAll('.lead-copy.per-char')
+// textContentをspanで1文字ずばバラバラにして要素へ格納する。
+splitText(leadCopy)
 
-preChar.forEach(elem => {
-  // 質問　timelineを使ってやれるはずだができない。 /////////////////////
-  gsap.from(elem, .3, {
-    autoAlpha: 0, ease: 'power1.inOut',
+leadCopy.forEach(elem => {
+  const tl = gsap.timeline({
+    defaults: {
+      opacity: 0,
+      ease: 'power1.inOut',
+      stagger: .1
+    },
     scrollTrigger: {
       trigger: elem,
       start: '50% 50%',
       // markers: true
     }
   })
-  gsap.from(elem.children, .3, {
-    autoAlpha: 0,
-    ease: 'power1.inOut',
-    stagger: .1,
-    scrollTrigger: {
-      trigger: elem,
-      start: '50% 50%',
-      // markers: true
-    }
-  })
+  tl.from(elem, {})
+    .from(elem.children, {}, '-=0.25')
 })
 
+
+// ////////////////////////////////////////////////
+// .up-appear
 const upAppear = document.querySelectorAll('.up-appear')
 upAppear.forEach(elem => {
   gsap.fromTo(elem, .7, {
     y: 20,
-    autoAlpha: 0,
+    opacity: 0,
   }, {
     y: 0,
-    autoAlpha: 1,
+    opacity: 1,
     scrollTrigger: {
       trigger: elem,
       start: '0% 70%',
@@ -123,9 +121,9 @@ upAppear.forEach(elem => {
 })
 
 
-// 要素のアニメーションを追加
-// id="nav-link" /////////////////////////////
-// id="concept" /////////////////////////////
+// ////////////////////////////////////////////////
+// id="nav-link"
+// id="concept"
 ScrollTrigger.create({
   trigger: '#main',
   start: '11% 8%',
@@ -135,13 +133,14 @@ ScrollTrigger.create({
   }
 })
 
-// .special
+// ////////////////////////////////////////////////
+// .anchor-special
 // sassに設定するtransitionの影響で、
 // リロードすると元にあった位置から指定位置までゴーストする。
 // クラス指定追加の作戦で一つにまとめるのは避ける。
 // 出現する処理
 // フワッとを表現するためstart, endをscrubで設定する。
-gsap.to('#special', {
+gsap.to('#anchor-special', {
   opacity: 1,
   ease: 'power1.inOut',
   scrollTrigger: {
@@ -152,149 +151,41 @@ gsap.to('#special', {
     // markers: true
   }
 })
+
 // 任意の位置でくっつく処理
+// 簡単に見えるけど辿り着くまで時間かかった。
 ScrollTrigger.create({
-  trigger: ".special",
-  // 見た目がわかりやすいので、まずobjectのtopとしておいて、スクリーンの高さの何%の位置かを決める。
-  start: "top 75%",
-  endTrigger: "footer",
-  // ここでくっついて行く位置を決める。
-  // footerのtopで、次の値は見ながら適宜決める。
-  end: "top 95%",
-  pin: true,
-  pinSpacing: false,
+  trigger: '#contents',
+  start: 'top top',
+  end: '90.5%',
+  pin: '#anchor-special',
   // markers: true
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// gsap.to('#special', .4, {
-//   scrollTrigger: {
-//     trigger: '#concept',
-//     start: '0% 20%',
-//     endTrigger: 'html',
-//     end: 'bottom top',
-//     toggleClass: {
-//       targets: 'header',
-//       className: 'toggleButtonMenu'
-//     },
-//     toggleClass: {
-//       targets: '#special',
-//       className: 'active'
-//     },
-//     // markers: true
-//   }
-// })
-
-
-
-
-
-
-
-// gsap.fromTo('special', {
-//   scrollTrigger: {
-//     // 見た目がわかりやすいので、まずobjectのtopとしておいて、スクリーンの高さの何%の位置かを決める。
-//     start: '0% 80%',
-//     endTrigger: 'footer'
-//   }, {
-//     // ここでくっついて行く位置を決める。
-//     // footerのtopで、次の値は見ながら適宜決める。
-//     end: "top 100%",
-//     pin: true,
-//     markers: true
-//   }
-//   }
-// )
-
-// ScrollTrigger.create({
-//   trigger: "#special",
-//   start: "0% 80%",
-//   endTrigger: "footer",
-// })
-
-
-
-// const tl = gsap.timeline()
-// tl.to('#special', .4, {
-//   scrollTrigger: {
-//     trigger: '#concept',
-//     start: '0% 20%',
-//     toggleClass: {
-//       targets: 'header',
-//       className: 'toggleButtonMenu'
-//     },
-//     },
-//     markers: true
-//   }
-// })
-
-// const tl = gsap.timeline()
-// tl.to('#nav-link', { 
-//   x: '110%',
-//   ease: 'power1.inOut',
-//   scrollTrigger: {
-//     trigger: '#concept',
-//     start: '0% 20%',
-//     end: '0% 20%',
-//     scrub: 2,
-//     markers: true
-//   }
-// })
-
-// id="content-links-btn" ////////////////////
-
-// gsap.timeline().fromTo('#content-links-btn', {
-//   x: '100%'
-// }, {
-//   x: 0,
-//   ease: 'power1.inOut',
-//   scrollTrigger: {
-//     trigger: '#concept',
-//     start: '30% 40%',
-//     end: '30% 40%',
-//     scrub: 0,
-//     // markers: true
-//   }
-// })
-
-
-// #concept ////////////////////////////////////
-//    #visual-container ////////////////////////
-// 質問
-// とりあえずやってみましたが、こんなやり方でいいのですか？
-const tlConcept = gsap.timeline()
-.fromTo('#visual-containe-frame', 1, { autoAlpha: 0 }, { autoAlpha: 1, ease: 'power1.inOut' })
-.fromTo('#copy-one', 1, { autoAlpha: 0 }, { autoAlpha: 1, ease: 'power1.inOut' })
-.fromTo('#copy-two', .75, { autoAlpha: 0 }, { autoAlpha: 1, ease: 'power1.inOut' }, '-=0.65')
-.fromTo('#catch-copy', 1, { autoAlpha: 0 }, { autoAlpha: 1, ease: 'power1.inOut' })
-
-ScrollTrigger.create({
-  trigger: '#copy-one',
-  animation: tlConcept, // 実行するアニメーション
-  start: '100% 100%',
-  // markers: true
+// //////////////////////////////////////////////// 
+// #concept
+//    #visual-container
+const tlConcept = gsap.timeline({
+  scrollTrigger: {
+    trigger: '#copy-one',
+    start: '100% 100%',
+    // markers: true
+  }
 })
+tlConcept.fromTo('#visual-containe-frame', 1, { opacity: 0 }, { opacity: 1, ease: 'power1.inOut' })
+  .fromTo('#copy-one', 1, { opacity: 0 }, { opacity: 1, ease: 'power1.inOut' })
+  .fromTo('#copy-two', .75, { opacity: 0 }, { opacity: 1, ease: 'power1.inOut' }, '-=0.65')
+  .fromTo('#catch-copy', 1, { opacity: 0 }, { opacity: 1, ease: 'power1.inOut' })
+
 
 const para =  document.querySelector('#concept > p')
 gsap.fromTo(para, .7, {
   y: 20,
-  autoAlpha: 0
+  opacity: 0
 }, {
   y: 0,
-  autoAlpha: 1,
+  opacity: 1,
   scrollTrigger: {
     trigger: para,
     start: '0% 70%',
@@ -303,15 +194,16 @@ gsap.fromTo(para, .7, {
 })
 
 
-// .more-info-btn ////////////////////////////////////
+// ////////////////////////////////////////////////
+// .more-info-btn
 const moreInfoBtn = document.querySelectorAll('.more-info-btn')
 const border = document.querySelectorAll('.more-info-btn > .border')
 
 moreInfoBtn.forEach((elem, idx) => {
   // classで要素を集めてforEachで回す場合は、timelineのインスタンスをこのスコープ内で生成させる。
   const tl = gsap.timeline()
-  tl.fromTo(elem, 1.25, { autoAlpha: 0 }, { autoAlpha: 1, ease: 'power1.easeOut' })
-  tl.fromTo(border[idx], .5, { autoAlpha: 0 }, { autoAlpha: 1, ease: 'power1.inOut' }, '-=1')
+  tl.fromTo(elem, 1.25, { opacity: 0 }, { opacity: 1, ease: 'power1.easeOut' })
+  tl.fromTo(border[idx], .5, { opacity: 0 }, { opacity: 1, ease: 'power1.inOut' }, '-=1')
   ScrollTrigger.create({
     trigger: elem,
     animation: tl,
@@ -321,7 +213,7 @@ moreInfoBtn.forEach((elem, idx) => {
 })
 
 
-////////////
+// ////////////////////////////////////////////////
 // #content-links-btn, #menu-link ハンバーガーメニュー
 const contentLinksBtn = document.getElementById('content-links-btn')
 const menuLink = document.getElementById('menu-link')
@@ -331,6 +223,7 @@ contentLinksBtn.addEventListener('click', function() {
 })
 
 
+// ////////////////////////////////////////////////
 // id="philosophy"
 gsap.fromTo('#philosophy', .7, {
   opacity: 0,
@@ -346,6 +239,7 @@ gsap.fromTo('#philosophy', .7, {
   }
 })
 
+// ////////////////////////////////////////////////
 // id="composed-staff"
 // id="shadow"
 // 『img要素』は『トリガー』に『できない』が、『効果』は『効く』
@@ -369,12 +263,14 @@ gsap.fromTo(elems, .7, {
 })
 
 
+// ////////////////////////////////////////////////
+// .service .header-block-appear
 const header2 = Array.from(document.querySelectorAll('.header-block-appear h2'))
 const header3 = Array.from(document.querySelectorAll('.header-block-appear h3'))
 const headerAppear = header2.concat(header3)
 headerAppear.forEach(elem => {
   gsap.from(elem, .7, {
-    autoAlpha: 0,
+    opacity: 0,
     scrollTrigger: {
       trigger: elem,
       start: '0% 70%',
@@ -384,20 +280,26 @@ headerAppear.forEach(elem => {
   })
 })
 
-// 質問　結局、タイムラインは個別で作らないといけないの？ 理解できてない。/////////////////////////////////////
-tlContact = gsap.timeline()
-tlContact.fromTo('#contact > a', .3, { autoAlpha: 0 }, { autoAlpha: 1 })
-  .from('#contact > p', .3, { autoAlpha: 0 }, 1)
-  .from('#contact > ul', .3, { autoAlpha: 0 }, 1)
 
-ScrollTrigger.create({
-  trigger: '#contact',
-  animation: tlContact, // 実行するtimeline
-  start: '0% 50%',
-  // markers: true
+// ////////////////////////////////////////////////
+// #contact
+const tlContact = gsap.timeline({
+  defaults: {
+    duration: 0.3
+  },
+  scrollTrigger: {
+    trigger: '#contact',
+    start: '0% 50%',
+    // markers: true
+  }
 })
+tlContact.fromTo('#contact > a', { opacity: 0 }, { opacity: 1 })
+.from('#contact > p', { opacity: 0 }, .5)
+.from('#contact > ul', { opacity: 0 }, .5)
 
 
+// ////////////////////////////////////////////////
+// slide
 const swiper = new Swiper('.swiper', {
   loop: true,
   slidesPerView: 3,
@@ -414,7 +316,7 @@ const swiper = new Swiper('.swiper', {
 })
 
 
-
+// ////////////////////////////////////////////////
 // projectのpoint
 const points = Array.from(document.getElementById('point').children)
 points.forEach(elem => {
@@ -445,32 +347,6 @@ points.forEach(elem => {
     .to(el('p:first-of-type'), .3, { opacity: 1 })
     .to(el('p:last-of-type'), .3, { opacity: 1 })
 })
-
-
-// 質問 下まで行き切ったらanchorは消える。引き上げても消えたまま。
-//     引き上げたらまた現れるをどう表現するのか？
-// const contents = document.getElementById('contents') 
-// const anchorSpecial = document.getElementById('special') 
-
-// gsap.to(anchorSpecial, .3, {
-//   autoAlpha: 1,
-//   scrollTrigger: {
-//     trigger: contents,
-//     start: '10% 70%',
-//     ease: 'power1.inOut',
-//   }
-// })
-
-// gsap.from(anchorSpecial, .7, {
-//   autoAlpha: 0,
-//   scrollTrigger: {
-//     trigger: contents,
-//     start: '95% 50%',
-//     ease: 'power1.inOut',
-//     // markers: true
-//   }
-// })
-
 
 
 // ////////////

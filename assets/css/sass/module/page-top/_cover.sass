@@ -128,8 +128,46 @@
       object-fit: cover
       &.sp 
         display: none
-      + fw.media-query-sp 
-        &.pc 
+
+.cover
+  +fw.media-query-sp
+    z-index: -2
+    .bg-visual
+      aspect-ratio: unset
+      z-index: -1
+      video
+        transform: scale(1.1)
+        &.pc
           display: none
-        &.sp 
+        &.sp
           display: block
+    .copy
+      width: 100%
+      margin-top: 215px
+      padding: 0 5%
+      p
+        position: unset
+        text-align: left
+        &:nth-of-type(3)
+          display: inline-block
+          margin-bottom: 20px
+          font-size: 1.6rem
+          letter-spacing: .15em
+        &:nth-of-type(4)
+          font-size: 3.2rem
+      p[lang='en']
+        margin-bottom: 10px
+        letter-spacing: .2em
+        &:nth-of-type(1)
+          padding-left: 0
+          &::before
+            display: none
+        &:nth-of-type(2)
+          writing-mode: horizontal-tb
+        &.shrinkLine
+          display: none
+      .what-new
+        bottom: 20%
+        left: 10%
+        h4
+          font-size: 1.3rem

@@ -5,8 +5,6 @@ header
   justify-content: space-between
   align-items: center
   position: fixed
-  top: 0
-  left: 0
   width: 100%
   height: 120px
   padding-right: 5%
@@ -15,8 +13,6 @@ header
   &.toggleButtonMenu
     .nav-link
       transform: translateX(110%)
-    // .content-links-btn
-      
   .ci 
     display: flex
     align-items: flex-start
@@ -26,6 +22,7 @@ header
     a
       display: block
       width: 100%
+      z-index: fw.set_index(logo)
     .catch-copy
       +fw.positionAbsoluteCTL($top: true)
       right: -120px
@@ -72,4 +69,14 @@ header
           font-weight: 700
       li:last-of-type
         .icon
-          +fw.snsLinks(24px, 20px, 0, #fff)  
+          +fw.snsLinks(24px, 20px, 0, #fff) 
+
+header
+  +fw.media-query-sp
+    .ci
+      width: 90px
+      aspect-ratio: 1
+      .catch-copy
+        display: none
+    .nav-link
+      display: none
