@@ -8,6 +8,8 @@
   background-position: bottom left
   .wrapper
     position: relative
+    .lead-copy
+      margin: 0 0 10px
     > img 
       position: absolute
       top: -22%
@@ -38,8 +40,6 @@
     h2 
       margin-bottom: 55px
       text-align: left
-    .lead-copy 
-      margin: 0 0 10px
     p 
       text-align: left
     .more-info-btn.left
@@ -116,3 +116,45 @@
           font-size: 1.9rem
           font-weight: 700
           margin-bottom: 10px
+
+.project 
+  +fw.media-query-sp
+    padding: 60px 5% 0
+    .wrapper
+      .visual-wrapper
+        display: none
+      h2
+        margin-bottom: 30px
+        text-align: center
+      p
+        text-align: center
+        br
+          display: none
+      .more-info-btn.left
+        margin: 25px auto 0
+        padding: 25px 65px
+    .point
+      flex-direction: column
+      gap: 0
+      margin-top: 45px
+      li
+        aspect-ratio: 1/1.35
+        margin-top: 35px
+        svg
+          top: -2%
+          right: -1%
+          width: 17%
+        &:nth-of-type(1) svg
+          width: 22%
+        &:nth-of-type(2), &:nth-of-type(3)
+          margin-top: 45px
+        div
+          bottom: 0%
+          h4
+            font-size: 1.4rem
+          p
+            font-size: 1.7rem
+            &:nth-of-type(1)
+              font-size: 2.2rem
+              
+          

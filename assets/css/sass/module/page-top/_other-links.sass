@@ -41,3 +41,19 @@
         &:nth-of-type(#{ index($pictNames, $name) })
           .bgImage
             background-image: url(../img/other-#{ $name }.jpg)
+
+.other-links
+  +fw.media-query-sp
+    ul
+      grid-template-columns: 1fr
+      gap: 1rem
+      li
+        aspect-ratio: 3/2.25
+        &:first-of-type .bgImage
+          background-image: url(../img/sp-other-message.jpg)
+        .anchorHoverArgBgImg
+          p          
+            font-size: 2.3rem
+            line-height: 1
+            span
+              font-size: 1.5rem

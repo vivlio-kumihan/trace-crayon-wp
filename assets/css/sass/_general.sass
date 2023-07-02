@@ -156,7 +156,7 @@ h2
       transform: translateX(-70%)
       content: ""
       width: 11px
-      height: 11px
+      aspect-ratio: 1
       background-color: fw.$colorRed
       border-radius: 50%
   // // 強調するためにつける圏点
@@ -200,11 +200,36 @@ h2
         height: 100%
         object-fit: cover
 
+// for sp /////////////////////////////////////
+section
+  +fw.media-query-sp
+    .lead-copy
+      font-size: 2.2rem
+      width: fit-content
+      margin-bottom: 5px
+    p
+      margin-top: 20px
+    .more-info-btn
+      margin: 25px auto 0
+      padding: 25px 65px
+    h2
+      font-size: 2.6rem
+      line-height: 1.5
+      span
+        font-size: 1.58rem
+        &.colorRuby
+          font-size: 2.5rem
+          &::after
+            top: -5px
+            width: 9px
+
 .swiper
   +fw.media-query-sp
+    height: 30vw
     &:first-of-type
       margin-top: 15px
-
+    &:last-of-type
+      margin-top: 35px
 
 // 【&nbsp;】半角スペースと同じサイズの空白
 // 【&thinsp;】&nbsp;の空白より小さい空白

@@ -9,6 +9,7 @@
 // const arg = leadCopy.concat(moreInfoBtn)
 
 
+//////////////////////////////////////////////////// switch
 ////////////////////////////////////////////////
 // ローディング・アニメーション
 function loaded() {
@@ -300,9 +301,20 @@ tlContact.fromTo('#contact > a', { opacity: 0 }, { opacity: 1 })
 
 // ////////////////////////////////////////////////
 // slide
+const windowWidth = window.innerWidth
 const swiper = new Swiper('.swiper', {
   loop: true,
   slidesPerView: 3,
+  breakpoints: {
+    // スライドの表示枚数：360px以上の場合
+    360: {
+      slidesPerView: 1.9,
+    },
+    // スライドの表示枚数：897px以上の場合
+    897: {
+      slidesPerView: 3,
+    },
+  },
   speed: 10000,
   spaceBetween: '.8%',
   // スクリーンを叩いてスライドが止まるのを防ぐ。

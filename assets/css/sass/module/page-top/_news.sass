@@ -51,3 +51,38 @@
   .more-info-btn 
     margin: 80px auto 0
     padding: 25px 80px
+
+.news 
+  +fw.media-query-sp
+    padding: 60px 5% 55px
+    h2
+      margin-bottom: 25px
+    ul
+      grid-template-columns: 1fr
+      gap: 0
+      li
+        + li
+          margin-top: 45px
+        &:nth-of-type(2), &:nth-of-type(3)
+          a
+            aspect-ratio: 3/2.05
+        a
+          aspect-ratio: 1/1.4
+        h4
+          .shrinkLine
+            margin-top: 10px
+            padding-bottom: 15px
+            font-size: 1.8rem
+            aspect-ratio: unset
+        p
+          margin-top: 15px
+          font-size: 1.5rem
+        .header-sub
+          margin-top: 10px
+          h5
+            font-size: 1.4rem
+          time
+            font-size: 1.2rem
+            font-weight: 700
+    .more-info-btn
+      margin: 50px auto 0
