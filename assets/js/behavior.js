@@ -117,6 +117,8 @@ gsap.to('#anchor-special', {
   scrollTrigger: {
     trigger: '#anchor-special',
     start: 'top 82%',
+    // relativeは#concept
+    // この場所で出現させて下へ繋げる。
     end: 'bottom 82%',
     scrub: true,
     // markers: true
@@ -126,6 +128,8 @@ gsap.to('#anchor-special', {
 ScrollTrigger.create({
   trigger: '#anchor-special',
   start: 'top 82%',
+  // endTriggerでrelativeをスイッチできる。
+  // 上から引き継いだ場所からpinする。
   endTrigger: '#main',
   end: '99.2% 82%',
   pin: true,
