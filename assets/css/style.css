@@ -24,7 +24,7 @@
 .contents .anchor-special {
   display: block;
   position: absolute;
-  top: 7.5%;
+  top: 82vh;
   right: 0;
   width: 272px;
   z-index: 9;
@@ -208,8 +208,6 @@ h2 .colorRuby:nth-of-type(4)::after {
 .swiper {
   width: 100%;
   height: 18vw;
-}
-.swiper:first-of-type {
   margin-top: 15px;
 }
 .swiper:last-of-type {
@@ -258,9 +256,6 @@ h2 .colorRuby:nth-of-type(4)::after {
 @media screen and (max-width: 896px) {
   .swiper {
     height: 30vw;
-  }
-  .swiper:first-of-type {
-    margin-top: 15px;
   }
   .swiper:last-of-type {
     margin-top: 35px;

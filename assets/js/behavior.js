@@ -9,6 +9,21 @@
 // const arg = leadCopy.concat(moreInfoBtn)
 
 
+// ////////////
+// // 便利だと思ったが、色々なスクリプトの邪魔をするのでとりあえず止める
+// // 属性『letter-spacing: .5em;』を最後の文字だけ取り去る
+// function killLetterSpace(arr) {
+//   arr.forEach(elem => {
+//     let lastChar = elem.textContent.slice(-1)
+//     let preText = elem.textContent.slice(0, -1)
+//     elem.innerHTML = `${ preText }<span class='remove-letter-spacing'>${ lastChar }</span>`
+//   })
+// }
+
+// const leadCopy = Array.from(document.querySelectorAll('.lead-copy'))
+// killLetterSpace(leadCopy)
+
+
 //////////////////////////////////////////////////// switch
 ////////////////////////////////////////////////
 // ローディング・アニメーション
@@ -59,51 +74,6 @@ document.querySelectorAll('.border').forEach(elem => {
 
 
 // ////////////////////////////////////////////////
-// .lead-copy.per-char
-
-// 一文字ずつ現れる
-// ドキュメント上の該当文章を一文字ごとバラバラにしていく。
-function splitText(className) {
-  className.forEach(elem => {
-    let htmlContent = elem.innerHTML
-    let result = ""
-    htmlContent.split('<br>').forEach((part, index, array) => {
-      Array.from(part).forEach((char) => {
-        result += `<span>${char}</span>`
-      })
-      // 最後の部分以外はbrタグを追加
-      if (index < array.length - 1) {
-        result += '<br>'
-      }
-    })
-    elem.innerHTML = result
-  })
-}
-
-// .lead-copy.per-charを収集する。
-const leadCopy = document.querySelectorAll('.lead-copy.per-char')
-// textContentをspanで1文字ずばバラバラにして要素へ格納する。
-splitText(leadCopy)
-
-leadCopy.forEach(elem => {
-  const tl = gsap.timeline({
-    defaults: {
-      opacity: 0,
-      ease: 'power1.inOut',
-      stagger: .1
-    },
-    scrollTrigger: {
-      trigger: elem,
-      start: '50% 50%',
-      // markers: true
-    }
-  })
-  tl.from(elem, {})
-    .from(elem.children, {}, '-=0.25')
-})
-
-
-// ////////////////////////////////////////////////
 // .up-appear
 const upAppear = document.querySelectorAll('.up-appear')
 upAppear.forEach(elem => {
@@ -115,7 +85,7 @@ upAppear.forEach(elem => {
     opacity: 1,
     scrollTrigger: {
       trigger: elem,
-      start: '0% 70%',
+      start: '0% 80%',
       // markers:true
     }
   })
@@ -158,7 +128,7 @@ gsap.to('#anchor-special', {
 ScrollTrigger.create({
   trigger: '#contents',
   start: 'top top',
-  end: '90.5%',
+  end: '90%',
   pin: '#anchor-special',
   // markers: true
 })
@@ -167,32 +137,25 @@ ScrollTrigger.create({
 // //////////////////////////////////////////////// 
 // #concept
 //    #visual-container
+//    #philosophy
 const tlConcept = gsap.timeline({
+  defaults: {
+    opacity: 0
+  },
   scrollTrigger: {
     trigger: '#copy-one',
-    start: '100% 100%',
+    start: 'top 60%',
     // markers: true
   }
 })
-tlConcept.fromTo('#visual-containe-frame', 1, { opacity: 0 }, { opacity: 1, ease: 'power1.inOut' })
-  .fromTo('#copy-one', 1, { opacity: 0 }, { opacity: 1, ease: 'power1.inOut' })
-  .fromTo('#copy-two', .75, { opacity: 0 }, { opacity: 1, ease: 'power1.inOut' }, '-=0.65')
-  .fromTo('#catch-copy', 1, { opacity: 0 }, { opacity: 1, ease: 'power1.inOut' })
+tlConcept
+  .fromTo('#visual-containe-frame', .7, {}, { opacity: 1, ease: 'power1.inOut' })
+  .fromTo('#copy-one', .3, {}, { opacity: 1, ease: 'power1.in' }, '+=0.3')
+  .fromTo('#copy-two', .5, {}, { opacity: 1, ease: 'power1.in' })
+  .fromTo('#catch-copy', 1.3, {}, { opacity: 1, ease: 'power1.inOut' })
+  .fromTo('#concept > p', 1.3, { y: 20 }, { y: 0, opacity: 1 }, '-=0.3')
+  .fromTo('#philosophy', 1.3, {}, { opacity: 1 }, '-=1')
 
-
-const para =  document.querySelector('#concept > p')
-gsap.fromTo(para, .7, {
-  y: 20,
-  opacity: 0
-}, {
-  y: 0,
-  opacity: 1,
-  scrollTrigger: {
-    trigger: para,
-    start: '0% 70%',
-    // markers: true
-  }
-})
 
 
 // ////////////////////////////////////////////////
@@ -225,22 +188,6 @@ contentLinksBtn.addEventListener('click', function() {
 
 
 // ////////////////////////////////////////////////
-// id="philosophy"
-gsap.fromTo('#philosophy', .7, {
-  opacity: 0,
-}, {
-  opacity: 1,
-  ease: 'power1.inOut',
-  scrollTrigger: {
-    trigger: '#philosophy',
-    start: 'top center',
-    // 一度アニメーションしたら終わり       
-    once: true,
-    // markers: true
-  }
-})
-
-// ////////////////////////////////////////////////
 // id="composed-staff"
 // id="shadow"
 // 『img要素』は『トリガー』に『できない』が、『効果』は『効く』
@@ -256,8 +203,8 @@ gsap.fromTo(elems, .7, {
     trigger: '#composed-staff',
     // 画像の上端10%をトリガーに、スクリーンの25%上の地点から
     // アニメーションを開始するという意味。
-    start: '30% 40%',
-    end: '60% 40%',
+    start: '30% 60%',
+    end: '60% 50%',
     scrub: 1,
     // markers: true
   }
@@ -283,10 +230,61 @@ headerAppear.forEach(elem => {
 
 
 // ////////////////////////////////////////////////
+// .lead-copy.per-char
+
+// 一文字ずつ現れる
+// ドキュメント上の該当文章を一文字ごとバラバラにしていく。
+// 属性『letter-spacing: none;』を最後の文字だけ字間のアキを取り去る
+function splitText(className) {
+  className.forEach(elem => {
+    let htmlContent = elem.innerHTML
+    let tmpText = ""
+    htmlContent.split('<br>').forEach((sentence, idx, arr) => {
+      let preText = Array.from(sentence).slice(0, -1)
+      let lastChar = Array.from(sentence).slice(-1)
+      preText.forEach((char) => {
+        tmpText += `<span>${char}</span>`
+      })
+      tmpText = `${ tmpText }<span class='remove-letter-spacing'>${ lastChar }</span>`
+      // 最後の部分以外はbrタグを追加
+      if (idx < arr.length - 1) {
+        tmpText += '<br>'
+      }
+    })
+    elem.innerHTML = tmpText
+  })
+}
+
+// .lead-copy.per-charを収集する。
+const leadCopy = document.querySelectorAll('.lead-copy.per-char')
+// textContentをspanで1文字ずばバラバラにして要素へ格納する。
+splitText(leadCopy)
+
+leadCopy.forEach(elem => {
+  const tl = gsap.timeline({
+    defaults: {
+      opacity: 0,
+      ease: 'power1.inOut',
+      stagger: .1
+    },
+    scrollTrigger: {
+      trigger: elem,
+      start: '50% 80%',
+      // markers: true
+    }
+  })
+  tl.from(elem, {})
+    .from(elem.children, {}, '-=0.25')
+})
+
+
+// ////////////////////////////////////////////////
 // #contact
 const tlContact = gsap.timeline({
   defaults: {
-    duration: 0.3
+    duration: 1,
+    opacity: 0,
+    ease: 'power3.out'
   },
   scrollTrigger: {
     trigger: '#contact',
@@ -294,23 +292,22 @@ const tlContact = gsap.timeline({
     // markers: true
   }
 })
-tlContact.fromTo('#contact > a', { opacity: 0 }, { opacity: 1 })
-.from('#contact > p', { opacity: 0 }, .5)
-.from('#contact > ul', { opacity: 0 }, .5)
+tlContact.fromTo('#contact > a', { }, { opacity: 1 })
+.from('#contact > p', { }, .5)
+.from('#contact > ul', { }, .5)
 
 
 // ////////////////////////////////////////////////
 // slide
-const windowWidth = window.innerWidth
 const swiper = new Swiper('.swiper', {
   loop: true,
   slidesPerView: 3,
   breakpoints: {
-    // スライドの表示枚数：360px以上の場合
+    // スライドの表示枚数：スクリーン幅360px以上の場合
     360: {
       slidesPerView: 1.9,
     },
-    // スライドの表示枚数：897px以上の場合
+    // スライドの表示枚数：スクリーン幅897px以上の場合
     897: {
       slidesPerView: 3,
     },
@@ -338,13 +335,14 @@ points.forEach(elem => {
       trigger: elem,
       start: '0% 50%',
       pused: true,
-      // markers: true
+      markers: true
     }
-  }).to(elem, .3, { opacity: 1 })
-    .to(elem, .3, { onUpdate: () => { elem.classList.add('open') } })
-    .fromTo(el('svg path'), .7, { 'stroke-dasharray': '1000px', 'stroke-dashoffset': '1000px' },
-                                { 'stroke-dashoffset': '2000px' }, '-=0.7')
+  }).to(elem, .4, { opacity: 1 })
+    .to(elem, .4, { onUpdate: () => { elem.classList.add('open') } })
+    .fromTo(el('svg path'), 1.5,  { 'stroke-dasharray': '1000px', 'stroke-dashoffset': '1000px' },
+                                  { 'stroke-dashoffset': '2000px' }, '-=0.8')
 })
+
 points.forEach(elem => {
   let el = gsap.utils.selector(elem);
   gsap.timeline({
@@ -354,23 +352,8 @@ points.forEach(elem => {
       pused: true,
       // markers: true
     }
-  }).to(el('div'), .3, { opacity: 1 })
-    .to(el('h4'), .3, { opacity: 1 })
-    .to(el('p:first-of-type'), .3, { opacity: 1 })
-    .to(el('p:last-of-type'), .3, { opacity: 1 })
+  }).to(el('div'), .7, { opacity: 1 })
+    .to(el('h4'), .7, { opacity: 1 })
+    .to(el('p:first-of-type'), .7, { opacity: 1 })
+    .to(el('p:last-of-type'), .7, { opacity: 1 }, '-=0.3')
 })
-
-
-// ////////////
-// // 便利だと思ったが、色々なスクリプトの邪魔をするのでとりあえず止める
-// // 属性『letter-spacing: .5em;』を最後の文字だけ取り去る
-// function killLetterSpace(arr) {
-//   arr.forEach(elem => {
-//     let lastChar = elem.textContent.slice(-1)
-//     let preText = elem.textContent.slice(0, -1)
-//     elem.innerHTML = `${ preText }<span class='remove-letter-spacing'>${ lastChar }</span>`
-//   })
-// }
-
-// const leadCopy = Array.from(document.querySelectorAll('.lead-copy'))
-// killLetterSpace(leadCopy)
