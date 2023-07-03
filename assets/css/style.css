@@ -18,29 +18,22 @@
   overflow: hidden;
 }
 
-.contents {
-  position: relative;
-}
-.contents .anchor-special {
+.anchor-special {
   display: block;
   position: absolute;
-  top: 82vh;
+  top: 68%;
   right: 0;
   width: 272px;
-  z-index: 9;
+  z-index: 13;
   opacity: 0;
 }
-.contents .anchor-special img {
+.anchor-special img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   transition: 0.3s;
 }
-.contents .anchor-special.toggleButtonMenu {
-  visibility: visible;
-  opacity: 1;
-}
-.contents .anchor-special:hover img {
+.anchor-special:hover img {
   transform: scale(0.9);
 }
 
@@ -254,6 +247,13 @@ h2 .colorRuby:nth-of-type(4)::after {
 }
 
 @media screen and (max-width: 896px) {
+  .anchor-special {
+    top: 50%;
+    width: 175px;
+  }
+}
+
+@media screen and (max-width: 896px) {
   .swiper {
     height: 30vw;
   }
@@ -303,6 +303,12 @@ h2 .colorRuby:nth-of-type(4)::after {
   opacity: 0;
 }
 
+@media screen and (max-width: 896px) {
+  .loading svg, .loading .org_logo {
+    width: 35mm;
+  }
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -312,7 +318,7 @@ header {
   height: 120px;
   padding-right: 5%;
   color: #fff;
-  z-index: 11;
+  z-index: 10;
 }
 header.toggleButtonMenu .nav-link {
   transform: translateX(110%);
@@ -392,11 +398,16 @@ header .content-links-btn {
   color: #182e58;
   background-color: #fff;
   cursor: pointer;
-  z-index: 13;
+  z-index: 12;
   transition: 0.4s;
 }
 header .content-links-btn.toggleButtonMenu {
   right: 0;
+}
+@media screen and (max-width: 896px) {
+  header .content-links-btn.toggleButtonMenu {
+    right: 5%;
+  }
 }
 header .content-links-btn div {
   position: absolute;
@@ -421,7 +432,7 @@ header .content-links-btn div:nth-of-type(3) {
 }
 header .content-links-btn:hover {
   color: #fff;
-  background-color: #00266a;
+  background-color: #182e58;
 }
 header .content-links-btn:hover div {
   background-color: #fff;
@@ -429,6 +440,19 @@ header .content-links-btn:hover div {
 header .content-links-btn:hover div:nth-of-type(3) {
   transform: translateX(-50%);
   width: 30px;
+}
+@media screen and (max-width: 896px) {
+  header .content-links-btn:hover {
+    color: #00266a;
+    background-color: #fff;
+  }
+  header .content-links-btn:hover div {
+    background-color: #00266a;
+  }
+  header .content-links-btn:hover div:nth-of-type(3) {
+    transform: translateX(-42%);
+    width: 30px;
+  }
 }
 header .content-links-btn.active {
   color: #00266a;
@@ -487,7 +511,7 @@ header .menu-link {
   background-color: #182e58;
   transform: translateX(100%);
   transition: 0.5s;
-  z-index: 12;
+  z-index: 11;
 }
 header .menu-link.active {
   transform: translateX(0);
@@ -660,7 +684,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
     grid-template-columns: 1fr;
     grid-auto-flow: unset;
     width: 90%;
-    margin-top: 450px;
+    margin-top: 550px;
   }
   header .menu-link .contact {
     width: 90%;
@@ -999,7 +1023,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   width: 470px;
   height: 135px;
   background-color: #112342;
-  z-index: 10;
+  z-index: 9;
   transition: 0.3s;
 }
 .concept .philosophy img {
@@ -1332,6 +1356,9 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   .project .wrapper h2 {
     margin-bottom: 30px;
     text-align: center;
+  }
+  .project .wrapper .lead-copy {
+    margin: 0 auto 7px;
   }
   .project .wrapper p {
     text-align: center;
@@ -1928,7 +1955,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
 @media screen and (max-width: 896px) {
   .contact {
     margin-top: 10px;
-    padding: 70px 0;
+    padding: 85px 0;
     background-position: 72%;
   }
   .contact p {

@@ -25,6 +25,8 @@
     transition: .4s
     &.toggleButtonMenu
       right: 0
+      +mqy.media-query-sp
+        right: 5%
     div 
       +mx.positionAbsoluteCTL($left: true)
       width: 30px
@@ -42,12 +44,20 @@
         width: 20px
     &:hover
       color: #fff
-      background-color: var.$color-cyan-vivid-blue
+      background-color: var.$color-theme-blue
       div
         background-color: #fff
         &:nth-of-type(3) 
           transform: translateX(-50%)
           width: 30px
+      +mqy.media-query-sp
+        color: var.$color-cyan-vivid-blue
+        background-color: #fff
+        div
+          background-color: var.$color-cyan-vivid-blue
+          &:nth-of-type(3) 
+            transform: translateX(-42%)
+            width: 30px
     &.active 
       color: var.$color-cyan-vivid-blue
       background-color: #fff
@@ -137,7 +147,7 @@
         grid-template-columns: 1fr
         grid-auto-flow: unset
         width: 90%
-        margin-top: 450px
+        margin-top: 550px
       .contact
         width: 90%
         margin-top: 30px
@@ -159,6 +169,3 @@
               
             + .icon
               margin-left: 30px
-        
-
-

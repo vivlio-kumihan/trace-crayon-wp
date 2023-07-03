@@ -115,21 +115,20 @@ gsap.to('#anchor-special', {
   opacity: 1,
   ease: 'power1.inOut',
   scrollTrigger: {
-    trigger: '#main',
-    start: '11% 15%',
-    end: '12% 15%',
+    trigger: '#anchor-special',
+    start: 'top 82%',
+    end: 'bottom 82%',
     scrub: true,
     // markers: true
   }
 })
-
-// 任意の位置でくっつく処理
-// 簡単に見えるけど辿り着くまで時間かかった。
+// // 任意の位置でくっつく処理
 ScrollTrigger.create({
-  trigger: '#contents',
-  start: 'top top',
-  end: '90%',
-  pin: '#anchor-special',
+  trigger: '#anchor-special',
+  start: 'top 82%',
+  endTrigger: '#main',
+  end: '99.2% 82%',
+  pin: true,
   // markers: true
 })
 
@@ -335,7 +334,7 @@ points.forEach(elem => {
       trigger: elem,
       start: '0% 50%',
       pused: true,
-      markers: true
+      // markers: true
     }
   }).to(elem, .4, { opacity: 1 })
     .to(elem, .4, { onUpdate: () => { elem.classList.add('open') } })
@@ -357,3 +356,50 @@ points.forEach(elem => {
     .to(el('p:first-of-type'), .7, { opacity: 1 })
     .to(el('p:last-of-type'), .7, { opacity: 1 }, '-=0.3')
 })
+
+// news
+const news = document.getElementById('news')
+const el = gsap.utils.selector(news)
+const lists = document.querySelectorAll('#news li')
+let mm = gsap.matchMedia();
+
+mm.add("(min-width: 897px)", () => {
+  // desktop setup code here...
+  gsap.timeline({
+    defaults: {
+      opacity: 0, 
+      ease: 'power1.inOut'
+    },
+    scrollTrigger: {
+      trigger: news,
+      start: 'top 40%',
+      // markers: true
+    }
+  }).from(el('h2'), .7, {})
+    .from(el('ul'), .7, { y: 50 })
+})
+  
+mm.add("(max-width: 896px)", () => {
+  gsap.from(el('h2'), .4, {
+    opacity: 0,
+    scrollTrigger: {
+      trigger: news,
+      start: 'top 80%'
+    }
+  })
+  lists.forEach(li => {
+    gsap.from(li, .7, {
+      opacity: 0,
+      y: 50,
+      scrollTrigger: {
+        trigger: li,
+        start: 'top 80%',
+        stagger: true,
+        // markers: true
+      }
+    })
+  })
+})
+
+
+
