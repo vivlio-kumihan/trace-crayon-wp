@@ -290,7 +290,7 @@ h2 .colorRuby:nth-of-type(4)::after {
 .anchor-special {
   display: block;
   position: absolute;
-  top: 58%;
+  top: 0%;
   right: 0;
   width: 272px;
   z-index: 101;
@@ -307,7 +307,7 @@ h2 .colorRuby:nth-of-type(4)::after {
 }
 @media screen and (max-width: 896px) {
   .anchor-special {
-    top: 50%;
+    top: 0%;
     width: 175px;
   }
 }
@@ -1945,7 +1945,7 @@ header .nav-link li a:hover::after {
 @media screen and (max-width: 896px) {
   .contact {
     margin-top: 10px;
-    padding: 80px 0 150px;
+    padding: 95px 0;
     background-position: 72%;
   }
   .contact p {
