@@ -18,23 +18,8 @@
   overflow: hidden;
 }
 
-.anchor-special {
-  display: block;
-  position: absolute;
-  top: 68%;
-  right: 0;
-  width: 272px;
-  z-index: 13;
-  opacity: 0;
-}
-.anchor-special img {
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  transition: 0.3s;
-}
-.anchor-special:hover img {
-  transform: scale(0.9);
+.pin-spacer {
+  display: none;
 }
 
 .remove-letter-spacing {
@@ -247,13 +232,6 @@ h2 .colorRuby:nth-of-type(4)::after {
 }
 
 @media screen and (max-width: 896px) {
-  .anchor-special {
-    top: 50%;
-    width: 175px;
-  }
-}
-
-@media screen and (max-width: 896px) {
   .swiper {
     height: 30vw;
   }
@@ -272,7 +250,7 @@ h2 .colorRuby:nth-of-type(4)::after {
   transition: 1.5s;
   visibility: hidden;
   opacity: 0;
-  z-index: 15;
+  z-index: 106;
 }
 .loading.keep {
   visibility: visible;
@@ -309,6 +287,244 @@ h2 .colorRuby:nth-of-type(4)::after {
   }
 }
 
+.anchor-special {
+  display: block;
+  position: absolute;
+  top: 68%;
+  right: 0;
+  width: 272px;
+  z-index: 101;
+  opacity: 0;
+}
+.anchor-special img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: 0.3s;
+}
+.anchor-special:hover img {
+  transform: scale(0.9);
+}
+@media screen and (max-width: 896px) {
+  .anchor-special {
+    top: 50%;
+    width: 175px;
+  }
+}
+
+.content-links-btn {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: -100%;
+  width: 100px;
+  aspect-ratio: 1;
+  padding-top: 32px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #182e58;
+  background-color: #fff;
+  cursor: pointer;
+  z-index: 104;
+  transition: 0.4s;
+}
+.content-links-btn.toggleButtonMenu {
+  right: 0;
+}
+@media screen and (max-width: 896px) {
+  .content-links-btn.toggleButtonMenu {
+    right: 5%;
+  }
+}
+.content-links-btn div {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  background-color: #182e58;
+  transition: 0.3s;
+}
+.content-links-btn div:nth-of-type(1) {
+  top: 33%;
+}
+.content-links-btn div:nth-of-type(2) {
+  top: 42%;
+}
+.content-links-btn div:nth-of-type(3) {
+  top: 52%;
+  left: 50%;
+  transform: translateX(-25%);
+  width: 20px;
+}
+.content-links-btn:hover {
+  color: #fff;
+  background-color: #182e58;
+}
+.content-links-btn:hover div {
+  background-color: #fff;
+}
+.content-links-btn:hover div:nth-of-type(3) {
+  transform: translateX(-50%);
+  width: 30px;
+}
+@media screen and (max-width: 896px) {
+  .content-links-btn:hover {
+    color: #00266a;
+    background-color: #fff;
+  }
+  .content-links-btn:hover div {
+    background-color: #00266a;
+  }
+  .content-links-btn:hover div:nth-of-type(3) {
+    transform: translateX(-42%);
+    width: 30px;
+  }
+}
+.content-links-btn.active {
+  color: #00266a;
+  background-color: #fff;
+}
+.content-links-btn.active div {
+  top: 45%;
+  left: 50%;
+  width: 35px;
+  background-color: #00266a;
+}
+.content-links-btn.active div:nth-of-type(1) {
+  transform: translateX(-50%) rotate(45deg);
+}
+.content-links-btn.active div:nth-of-type(2) {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(100%);
+}
+.content-links-btn.active div:nth-of-type(3) {
+  width: 35px;
+  transform: translateX(-50%) rotate(-45deg);
+}
+@media screen and (max-width: 896px) {
+  .content-links-btn {
+    top: 15px;
+    right: 5%;
+    width: 60px;
+  }
+  .content-links-btn.active div:nth-of-type(1), .content-links-btn.active div:nth-of-type(3) {
+    top: 40%;
+  }
+  .content-links-btn div {
+    width: 35px;
+  }
+  .content-links-btn div:nth-of-type(1) {
+    top: 27%;
+  }
+  .content-links-btn div:nth-of-type(3) {
+    top: 57%;
+    left: 50%;
+    transform: translateX(-15%);
+  }
+}
+
+.menu-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 70vw;
+  height: 100vh;
+  color: #fff;
+  background-color: #182e58;
+  transform: translateX(100%);
+  transition: 0.5s;
+  z-index: 103;
+}
+.menu-link.active {
+  transform: translateX(0);
+}
+.menu-link ul:first-of-type {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-auto-flow: column;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  width: 85%;
+}
+.menu-link ul:first-of-type li {
+  position: relative;
+  padding: 16px 8px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  border-bottom: 1px solid #c0c0c0;
+  transition: 0.5s;
+}
+.menu-link ul:first-of-type li:hover {
+  color: #182e58;
+  background-color: #fff;
+}
+.menu-link ul:first-of-type li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.menu-link ul:first-of-type li::after {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  content: "\f178";
+  font-size: inherit;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5%;
+}
+@media screen and (max-width: 896px) {
+  .menu-link {
+    width: 100vw;
+    overflow: auto;
+  }
+  .menu-link ul:first-of-type {
+    grid-template-columns: 1fr;
+    grid-auto-flow: unset;
+    width: 90%;
+    margin-top: 550px;
+  }
+  .menu-link .contact {
+    width: 90%;
+    margin-top: 30px;
+    padding-bottom: 30px;
+  }
+  .menu-link .contact p {
+    letter-spacing: 0;
+  }
+  .menu-link ul:last-of-type {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+    margin-top: 30px;
+    border-top: 1px solid #fff;
+  }
+  .menu-link ul:last-of-type li:last-of-type {
+    margin: 20px 0 170px;
+  }
+  .menu-link ul:last-of-type li:last-of-type .icon {
+    margin: 0;
+  }
+  .menu-link ul:last-of-type li:last-of-type .icon.twitter::before, .menu-link ul:last-of-type li:last-of-type .icon.instagram::before {
+    font-size: 40px;
+  }
+  .menu-link ul:last-of-type li:last-of-type .icon + .icon {
+    margin-left: 30px;
+  }
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -318,14 +534,13 @@ header {
   height: 120px;
   padding-right: 5%;
   color: #fff;
-  z-index: 10;
+  z-index: 102;
 }
 header.toggleButtonMenu .nav-link {
   transform: translateX(110%);
 }
 header .ci {
   display: flex;
-  align-items: flex-start;
   position: relative;
   width: 120px;
   height: 120px;
@@ -333,7 +548,7 @@ header .ci {
 header .ci a {
   display: block;
   width: 100%;
-  z-index: 14;
+  z-index: 105;
 }
 header .ci .catch-copy {
   position: absolute;
@@ -354,7 +569,7 @@ header .nav-link li {
 header .nav-link li + li {
   margin-left: 28px;
 }
-header .nav-link li .shrinkLine {
+header .nav-link li a {
   display: block;
   position: relative;
   width: 100%;
@@ -364,10 +579,10 @@ header .nav-link li .shrinkLine {
   line-height: 1;
   transition: 0.3s;
 }
-header .nav-link li .shrinkLine:hover {
+header .nav-link li a:hover {
   color: #1bc9f5;
 }
-header .nav-link li .shrinkLine::after {
+header .nav-link li a::after {
   position: absolute;
   display: block;
   bottom: -5px;
@@ -380,7 +595,7 @@ header .nav-link li .shrinkLine::after {
   transform-origin: right top;
   transition: transform 0.3s;
 }
-header .nav-link li .shrinkLine:hover::after {
+header .nav-link li a:hover::after {
   transform: scale(1, 1);
   transform-origin: left top;
 }
@@ -398,7 +613,7 @@ header .content-links-btn {
   color: #182e58;
   background-color: #fff;
   cursor: pointer;
-  z-index: 12;
+  z-index: 104;
   transition: 0.4s;
 }
 header .content-links-btn.toggleButtonMenu {
@@ -511,7 +726,7 @@ header .menu-link {
   background-color: #182e58;
   transform: translateX(100%);
   transition: 0.5s;
-  z-index: 11;
+  z-index: 103;
 }
 header .menu-link.active {
   transform: translateX(0);
@@ -547,14 +762,14 @@ header .menu-link ul:first-of-type li::after {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 5%;
   content: "\f178";
   font-size: inherit;
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5%;
 }
 header .menu-link .contact {
   width: 85%;
@@ -595,13 +810,13 @@ header .menu-link .contact p {
   color: #fff;
 }
 header .menu-link .contact p::before {
-  position: absolute;
-  top: 15%;
-  left: -25px;
   content: "\f0e0";
   font-size: 1.8rem;
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
+  position: absolute;
+  top: 15%;
+  left: -25px;
 }
 header .menu-link ul:last-of-type {
   display: flex;
@@ -623,7 +838,6 @@ header .menu-link ul:last-of-type li:first-of-type .shrinkLine {
 }
 header .menu-link ul:last-of-type li:first-of-type .shrinkLine:hover {
   color: #1bc9f5;
-  font-weight: 700;
 }
 header .menu-link ul:last-of-type li:first-of-type .shrinkLine::after {
   position: absolute;
@@ -761,7 +975,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   line-height: 1;
   color: #fff;
 }
-.cover .copy p:nth-of-type(3) {
+.cover .copy p.catch-sub {
   top: 350px;
   padding: 6px;
   font-size: 2rem;
@@ -769,7 +983,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   letter-spacing: 0.15em;
   border: 1px solid #fff;
 }
-.cover .copy p:nth-of-type(4) {
+.cover .copy p.catch-main {
   top: 415px;
   letter-spacing: 0.08em;
   line-height: 1.4;
@@ -782,11 +996,11 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   font-style: italic;
   letter-spacing: 0.08em;
 }
-.cover .copy p[lang=en]:nth-of-type(1) {
+.cover .copy p[lang=en].catch-sub-en {
   top: 200px;
   padding-left: 3.75em;
 }
-.cover .copy p[lang=en]:nth-of-type(1)::before {
+.cover .copy p[lang=en].catch-sub-en::before {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -796,18 +1010,18 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   height: 1px;
   background-color: #fff;
 }
-.cover .copy p[lang=en]:nth-of-type(2) {
+.cover .copy p[lang=en].catch-main-en {
   top: 200px;
   right: 5%;
   writing-mode: vertical-rl;
 }
-.cover .copy p[lang=en]:nth-of-type(5) {
+.cover .copy p[lang=en].shrinkLine {
   bottom: 16%;
   right: 5%;
   letter-spacing: 0.2em;
   writing-mode: vertical-rl;
 }
-.cover .copy p[lang=en]:nth-of-type(5)::before {
+.cover .copy p[lang=en].shrinkLine::before {
   position: absolute;
   top: 135%;
   right: 3px;
@@ -816,9 +1030,9 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   height: 150px;
   background-color: #1bc9f5;
   animation: shrinkLine 3s infinite;
-  z-index: 3;
+  z-index: 1;
 }
-.cover .copy p[lang=en]:nth-of-type(5)::after {
+.cover .copy p[lang=en].shrinkLine::after {
   position: absolute;
   top: 135%;
   right: 3px;
@@ -924,26 +1138,26 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
     position: unset;
     text-align: left;
   }
-  .cover .copy p:nth-of-type(3) {
+  .cover .copy p.catch-sub {
     display: inline-block;
     margin-bottom: 20px;
     font-size: 1.6rem;
     letter-spacing: 0.15em;
   }
-  .cover .copy p:nth-of-type(4) {
+  .cover .copy p.catch-main {
     font-size: 3.2rem;
   }
   .cover .copy p[lang=en] {
     margin-bottom: 10px;
     letter-spacing: 0.2em;
   }
-  .cover .copy p[lang=en]:nth-of-type(1) {
+  .cover .copy p[lang=en].catch-sub-en {
     padding-left: 0;
   }
-  .cover .copy p[lang=en]:nth-of-type(1)::before {
+  .cover .copy p[lang=en].catch-sub-en::before {
     display: none;
   }
-  .cover .copy p[lang=en]:nth-of-type(2) {
+  .cover .copy p[lang=en].catch-main-en {
     writing-mode: horizontal-tb;
   }
   .cover .copy p[lang=en].shrinkLine {
@@ -959,15 +1173,14 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
 }
 
 .concept {
+  background-image: url(../img/fv-bg.png);
+  background-size: 180%;
+  background-position: 50% 62%;
+  background-repeat: no-repeat;
   position: relative;
   width: 100%;
   color: #fff;
   background-color: #000;
-  background-image: url(../img/fv-bg.png);
-  background-repeat: no-repeat;
-  background-size: 180%;
-  background-position: 50% 62%;
-  z-index: 4;
 }
 .concept .composed-visual {
   display: flex;
@@ -1023,7 +1236,6 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   width: 470px;
   height: 135px;
   background-color: #112342;
-  z-index: 9;
   transition: 0.3s;
 }
 .concept .philosophy img {
@@ -1080,14 +1292,14 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   background-color: #00266a;
 }
 .concept .composed-staff {
+  background-image: url(../img/people-bg02.png);
+  background-size: cover;
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
   position: relative;
   width: 100%;
   height: 49.5vw;
   overflow: hidden;
-  background-image: url(../img/people-bg02.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 100%;
 }
 .concept .composed-staff .staff {
   position: absolute;
@@ -1095,7 +1307,6 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   transform: translateX(-50%);
   bottom: 0;
   width: 100%;
-  z-index: 7;
 }
 .concept .composed-staff .shadow {
   position: absolute;
@@ -1103,7 +1314,6 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   transform: translateX(-50%);
   bottom: 0;
   width: 100%;
-  z-index: 8;
 }
 .concept .composed-staff .light {
   position: absolute;
@@ -1112,7 +1322,6 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   bottom: 14%;
   width: 50%;
   mix-blend-mode: screen;
-  z-index: 6;
 }
 .concept .composed-staff .behind {
   position: absolute;
@@ -1120,7 +1329,6 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   transform: translateX(-50%);
   bottom: 0;
   width: 100%;
-  z-index: 5;
 }
 
 @media screen and (max-width: 896px) {
@@ -1206,9 +1414,9 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
 .project {
   padding: 125px 0 160px 10%;
   background-image: url(../img/project-bg.png);
-  background-repeat: no-repeat;
   background-size: 100%;
   background-position: bottom left;
+  background-repeat: no-repeat;
 }
 .project .wrapper {
   position: relative;
@@ -1231,18 +1439,18 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   width: 55vw;
   height: 34vw;
 }
-.project .wrapper .visual-wrapper li {
+.project .wrapper .visual-wrapper .inner-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
 }
-.project .wrapper .visual-wrapper li img:first-of-type {
+.project .wrapper .visual-wrapper .inner-wrapper img:first-of-type {
   position: absolute;
   bottom: 0%;
   right: 0;
   width: 100%;
 }
-.project .wrapper .visual-wrapper li img:last-of-type {
+.project .wrapper .visual-wrapper .inner-wrapper img:last-of-type {
   position: absolute;
   bottom: -3%;
   left: -8%;
@@ -1408,16 +1616,16 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   padding-bottom: 130px;
 }
 .learning .lead {
+  background-image: url(../img/learning-bg.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
   width: 100%;
   height: 63vw;
   padding-top: 150px;
-  background-image: url(../img/learning-bg.png);
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 .learning .lead h2, .learning .lead p {
   margin: 0;
@@ -1432,7 +1640,6 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
 .learning ul {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
   margin-top: -70px;
 }
 .learning ul li {
@@ -1447,7 +1654,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   font-weight: 500;
   font-style: italic;
   color: #fff;
-  z-index: 2;
+  z-index: 1;
 }
 .learning ul li span[lang=en].right-side {
   margin-top: 60px;
@@ -1623,7 +1830,6 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
 }
 .news ul li .header-sub {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   margin-top: 25px;
 }
@@ -1837,6 +2043,10 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
 }
 
 .contact {
+  background-image: url(../img/contact-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1845,10 +2055,6 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   padding: 62px 0;
   width: 100%;
   color: #fff;
-  background-image: url(../img/contact-bg.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
 }
 .contact p {
   position: relative;
@@ -1896,11 +2102,11 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: 6%;
   content: "\f0e0";
   font-size: 1.5rem;
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
+  left: 6%;
 }
 .contact a::before:hover {
   color: #182e58;
@@ -1909,11 +2115,11 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 5%;
   content: "\f178";
   font-size: 1.5rem;
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
+  right: 5%;
   transition: 0.3s;
 }
 .contact ul {
@@ -2031,17 +2237,16 @@ footer figure figcaption {
 footer .link {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   width: 70%;
 }
-footer .link .menu-link {
+footer .link .menu-link.shrinkLine {
   padding: 20px 20% 0px 0;
 }
-footer .link .menu-link li {
+footer .link .menu-link.shrinkLine li {
   display: inline-block;
   padding: 0 30px 30px 0;
 }
-footer .link .menu-link li .shrinkLine {
+footer .link .menu-link.shrinkLine li a {
   display: block;
   position: relative;
   width: 100%;
@@ -2055,20 +2260,20 @@ footer .link .menu-link li .shrinkLine {
   line-height: 1.5;
   color: #fff;
 }
-footer .link .menu-link li .shrinkLine:hover {
+footer .link .menu-link.shrinkLine li a:hover {
   color: #1bc9f5;
 }
-footer .link .menu-link li .shrinkLine:hover {
+footer .link .menu-link.shrinkLine li a:hover {
   color: #1bc9f5;
   text-align: left;
   letter-spacing: 0.02em;
   line-height: 1.5;
   color: #fff;
 }
-footer .link .menu-link li .shrinkLine:hover:hover {
+footer .link .menu-link.shrinkLine li a:hover:hover {
   color: #1bc9f5;
 }
-footer .link .menu-link li .shrinkLine::after {
+footer .link .menu-link.shrinkLine li a::after {
   position: absolute;
   display: block;
   bottom: -7px;
@@ -2081,11 +2286,11 @@ footer .link .menu-link li .shrinkLine::after {
   transform-origin: right top;
   transition: transform 0.3s;
 }
-footer .link .menu-link li .shrinkLine:hover::after {
+footer .link .menu-link.shrinkLine li a:hover::after {
   transform: scale(1, 1);
   transform-origin: left top;
 }
-footer ul:last-of-type {
+footer .link .another-link {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -2093,7 +2298,7 @@ footer ul:last-of-type {
   padding: 30px 10% 30px 0;
   border-top: 1px solid #363e45;
 }
-footer ul:last-of-type li:first-of-type .icon {
+footer .link .another-link li:first-of-type .icon {
   display: inline-block;
   position: relative;
   width: 27.5px;
@@ -2102,7 +2307,7 @@ footer ul:last-of-type li:first-of-type .icon {
   margin-right: 30px;
   transition: 0.3s;
 }
-footer ul:last-of-type li:first-of-type .icon::before {
+footer .link .another-link li:first-of-type .icon::before {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -2111,28 +2316,28 @@ footer ul:last-of-type li:first-of-type .icon::before {
   height: 27.5px;
   color: #fff;
 }
-footer ul:last-of-type li:first-of-type .icon.twitter::before {
+footer .link .another-link li:first-of-type .icon.twitter::before {
   content: "\f099";
   font-size: 27.5px;
   font-family: "Font Awesome 6 Brands";
   font-weight: 900;
 }
-footer ul:last-of-type li:first-of-type .icon.instagram::before {
+footer .link .another-link li:first-of-type .icon.instagram::before {
   content: "\f16d";
   font-size: 27.5px;
   font-family: "Font Awesome 6 Brands";
   font-weight: 900;
 }
-footer ul:last-of-type li:first-of-type .icon:hover {
+footer .link .another-link li:first-of-type .icon:hover {
   opacity: 0.7;
 }
-footer ul:last-of-type:last-of-type li {
+footer .link .another-link:last-of-type li {
   font-size: 1.4rem;
   font-weight: 500;
   letter-spacing: 0.02em;
   color: #707483;
 }
-footer ul:last-of-type:last-of-type li span {
+footer .link .another-link:last-of-type li span {
   font-size: 1.2rem;
   font-weight: 400;
   letter-spacing: 0.02em;

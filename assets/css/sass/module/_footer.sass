@@ -15,7 +15,7 @@ footer
     justify-content: center
     width: 30%
     .logo
-      +fw.hoverTransparent($width: 55%) 
+      +fw.hoverTransparent(55%) 
     figcaption 
       width: 80%
       margin-top: 20px
@@ -27,41 +27,41 @@ footer
   .link 
     display: flex
     flex-direction: column
-    align-items: flex-start
     width: 70%
-    .menu-link 
+    .menu-link.shrinkLine
       padding: 20px 20% 0px 0
       li 
         display: inline-block
         padding: 0 30px 30px 0
-        +fw.shrinkBorderHeader($bottom: -7px)
-          text-align: left
-          letter-spacing: 0.02em
-          line-height: 1.5
-          color: #fff
-          &:hover
-            color: fw.$colorLinkHover
-  ul:last-of-type 
-    display: flex
-    justify-content: space-between
-    align-items: center
-    width: 100%
-    padding: 30px 10% 30px 0
-    border-top: 1px solid fw.$color-cyan-bluish-gray
-    li 
-      &:first-of-type 
-        .icon 
-          +fw.snsLinks(27.5px, 0, 30px, #fff)
-    &:last-of-type 
+        a
+          +fw.shrinkBorderHeader($bottom: -7px)
+            text-align: left
+            letter-spacing: 0.02em
+            line-height: 1.5
+            color: #fff
+            &:hover
+              color: fw.$colorLinkHover
+    .another-link 
+      display: flex
+      justify-content: space-between
+      align-items: center
+      width: 100%
+      padding: 30px 10% 30px 0
+      border-top: 1px solid fw.$color-cyan-bluish-gray
       li 
-        font-size: 1.4rem
-        font-weight: 500
-        letter-spacing: 0.02em
-        color: fw.$color-cyan-dark-blue-lomid
-        span 
-          font-size: 1.2rem
-          font-weight: 400
+        &:first-of-type 
+          .icon 
+            +fw.snsLinks(27.5px, 0, 30px, #fff)
+      &:last-of-type 
+        li 
+          font-size: 1.4rem
+          font-weight: 500
           letter-spacing: 0.02em
+          color: fw.$color-cyan-dark-blue-lomid
+          span 
+            font-size: 1.2rem
+            font-weight: 400
+            letter-spacing: 0.02em
   .to-top 
     position: absolute
     top: 20%

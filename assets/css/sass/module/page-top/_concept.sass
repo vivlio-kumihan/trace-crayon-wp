@@ -1,18 +1,11 @@
 @use "../../forwards" as fw
 
-// ここの編集をする。
 .concept 
+  +fw.bgImage('../img/fv-bg.png', 180%, $position: 50% 62%)
   position: relative
   width: 100%
   color: #fff
   background-color: #000
-  // なぜかグラデーション的に天へ向かってフェイドアウトする？？？
-  // background: url(../img/fv-bg.png) no-repeat center
-  background-image: url(../img/fv-bg.png)
-  background-repeat: no-repeat
-  background-size: 180%
-  background-position: 50% 62%
-  z-index: fw.set-index(concept)
   .composed-visual 
     display: flex
     justify-content: center
@@ -59,7 +52,6 @@
     width: 470px
     height: 135px
     background-color: fw.$color-cyan-dark-blue
-    z-index: fw.set-index(philosophy)
     transition: .3s
     img 
       display: inline-block
@@ -107,35 +99,28 @@
 
 
   .composed-staff 
+    +fw.bgImage('../img/people-bg02.png', $size: cover, $position: 50% 100%)
     position: relative
     width: 100%
     height: 49.5vw
     overflow: hidden
-    background-image: url(../img/people-bg02.png)
-    background-repeat: no-repeat
-    background-size: cover
-    background-position: 50% 100%
     .staff
       +fw.positionAbsoluteCTL($left: true)
       bottom: 0
       width: 100%
-      z-index: fw.set-index(composedStaff)
     .shadow
       +fw.positionAbsoluteCTL($left: true)
       bottom: 0
       width: 100%
-      z-index: fw.set-index(composedStaffShadow)
     .light
       +fw.positionAbsoluteCTL($left: true)
       bottom: 14%
       width: 50%
       mix-blend-mode: screen
-      z-index: fw.set-index(composedStaffLight)
     .behind
       +fw.positionAbsoluteCTL($left: true)
       bottom: 0
       width: 100%
-      z-index: fw.set-index(composedStaffBehind)
 
 .concept
   +fw.media-query-sp
@@ -144,18 +129,19 @@
       .visual-container
         width: 100%
         height: 75vw
-        img.copy-one
-          top: 25%
-          width: 33%
-        img.copy-two
-          top: 43%
-          width: 32%
-        img.catch-copy
-          top: 72.5%
-          width: 65%
-        img.frame
-          top: 45%
-          width: 76%
+        img
+          &.copy-one
+            top: 25%
+            width: 33%
+          &.copy-two
+            top: 43%
+            width: 32%
+          &.catch-copy
+            top: 72.5%
+            width: 65%
+          &.frame
+            top: 45%
+            width: 76%
     p
       padding: 0 5%
       text-align: justify

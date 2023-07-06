@@ -1,6 +1,8 @@
 @use "../../forwards" as fw
 
 .contact 
+  +fw.bgImage('../img/contact-bg.jpg')
+  +fw.toContactAnchor(20px, 80px)
   display: flex
   flex-direction: column
   align-items: center
@@ -9,11 +11,6 @@
   padding: 62px 0
   width: 100%
   color: #fff
-  background-image: url(../img/contact-bg.jpg)
-  background-repeat: no-repeat
-  background-position: center
-  background-size: cover
-  +fw.toContactAnchor(20px, 80px)
   .for-sp
     display: none
   a 
@@ -32,15 +29,15 @@
       &::after
         right: 2%
     &::before 
-      +fw.positionAbsoluteCTL($top: true)
-      left: 6%
+      +fw.positionAbsoluteCTL(true)
       +fw.fontAwesome("\f0e0", 1.5rem)
+      left: 6%
       &:hover
         color: fw.$color-theme-blue
     &::after 
-      +fw.positionAbsoluteCTL($top: true)
-      right: 5%
+      +fw.positionAbsoluteCTL(true)
       +fw.fontAwesome("\f178", 1.5rem)
+      right: 5%
       transition: .3s
   ul 
     display: flex
@@ -59,7 +56,7 @@
           position: relative
           font-size: 1.2rem
           &::before 
-            +fw.positionAbsoluteCTL($top: true)
+            +fw.positionAbsoluteCTL(true)
             left: -7px
             content: ""
             width: 67px

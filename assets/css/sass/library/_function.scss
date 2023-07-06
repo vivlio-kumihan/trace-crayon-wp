@@ -1,0 +1,15 @@
+// 質問 z-indexの数が多すぎるので整理
+$index-map:
+  anchor-special,
+  header,
+  menuLink,
+  contentLinkBtn,
+  logo,
+  loading;
+
+// z-index属性へ代入する関数を定義する。
+// 配列と値の名称を引数とする。
+@function set_index($name) {
+  @return index($index-map, $name) + 100
+}
+

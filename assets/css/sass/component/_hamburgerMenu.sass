@@ -1,0 +1,163 @@
+@use "../forwards" as fw
+
+
+.content-links-btn
+  display: inline-block
+  position: absolute
+  top: 0
+  right: -100%
+  width: 100px
+  aspect-ratio: 1
+  padding-top: 32px
+  text-align: center
+  font-weight: 700
+  letter-spacing: .15em
+  color: fw.$color-theme-blue
+  background-color: #fff
+  cursor: pointer
+  z-index: fw.set-index(contentLinkBtn)
+  transition: .4s
+  &.toggleButtonMenu
+    right: 0
+    +fw.media-query-sp
+      right: 5%
+  div 
+    +fw.positionAbsoluteCTL($left: true)
+    width: 30px
+    height: 2px
+    background-color: fw.$color-theme-blue
+    transition: .3s
+    &:nth-of-type(1) 
+      top: 33%
+    &:nth-of-type(2) 
+      top: 42%
+    &:nth-of-type(3) 
+      top: 52%
+      left: 50%
+      transform: translateX(-25%)
+      width: 20px
+  &:hover
+    color: #fff
+    background-color: fw.$color-theme-blue
+    div
+      background-color: #fff
+      &:nth-of-type(3) 
+        transform: translateX(-50%)
+        width: 30px
+    +fw.media-query-sp
+      color: fw.$color-cyan-vivid-blue
+      background-color: #fff
+      div
+        background-color: fw.$color-cyan-vivid-blue
+        &:nth-of-type(3) 
+          transform: translateX(-42%)
+          width: 30px
+  &.active 
+    color: fw.$color-cyan-vivid-blue
+    background-color: #fff
+    div 
+      top: 45%
+      left: 50%
+      width: 35px
+      background-color: fw.$color-cyan-vivid-blue
+      &:nth-of-type(1) 
+        transform: translateX(-50%) rotate(45deg)
+      &:nth-of-type(2) 
+        visibility: hidden
+        opacity: 0
+        transform: translateX(100%)
+      &:nth-of-type(3)
+        width: 35px
+        transform: translateX(-50%) rotate(-45deg)
+  +fw.media-query-sp
+    top: 15px
+    right: 5%
+    width: 60px
+    &.active
+      div
+        &:nth-of-type(1), &:nth-of-type(3)
+          top: 40%
+    div
+      width: 35px
+      &:nth-of-type(1)
+        top: 27%
+      &:nth-of-type(3)
+        top: 57%
+        left: 50%
+        transform: translateX(-15%)
+
+.menu-link 
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  position: fixed
+  top: 0
+  right: 0
+  width: 70vw
+  height: 100vh
+  color: #fff
+  background-color: fw.$color-theme-blue
+  transform: translateX(100%)
+  transition: .5s
+  z-index: fw.set-index(menuLink)
+  &.active
+    transform: translateX(0)
+  ul:first-of-type 
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    grid-template-rows: repeat(6, 1fr)
+    grid-auto-flow: column
+    column-gap: 20px
+    width: 85%
+    li
+      position: relative
+      padding: 16px 8px
+      font-size: 16px
+      font-weight: 500
+      line-height: 1
+      border-bottom: 1px solid fw.$color-light-gray-mid
+      transition: .5s
+      &:hover
+        color: fw.$color-theme-blue
+        background-color: #fff
+      a
+        display: block
+        width: 100%
+        height: 100%
+      &::after
+        +fw.positionAbsoluteCTL(true)
+        +fw.fontAwesome("\f178")
+        position: absolute
+        top: 50%
+        transform: translateY(-50%)
+        right: 5%
+  
+  +fw.media-query-sp
+    width: 100vw
+    overflow: auto
+    ul:first-of-type
+      grid-template-columns: 1fr
+      grid-auto-flow: unset
+      width: 90%
+      margin-top: 550px
+    .contact
+      width: 90%
+      margin-top: 30px
+      padding-bottom: 30px
+      p
+        letter-spacing: 0
+    ul:last-of-type
+      flex-direction: column
+      align-items: flex-start
+      width: 90%
+      margin-top: 30px
+      border-top: 1px solid #fff
+      li:last-of-type
+        margin: 20px 0 170px
+        .icon
+          margin: 0
+          &.twitter::before, &.instagram::before
+            font-size: 40px
+          + .icon
+            margin-left: 30px

@@ -2,10 +2,7 @@
 
 .project 
   padding: 125px 0 160px 10%
-  background-image: url(../img/project-bg.png)
-  background-repeat: no-repeat
-  background-size: 100%
-  background-position: bottom left
+  +fw.bgImage('../img/project-bg.png', $size: 100%, $position: bottom left)
   .wrapper
     position: relative
     .lead-copy
@@ -23,20 +20,21 @@
       right: 0
       width: 55vw
       height: 34vw
-      li
+      .inner-wrapper
         position: relative
         width: 100%
         height: 100%
-        img:first-of-type
-          position: absolute
-          bottom: 0%
-          right: 0
-          width: 100%
-        img:last-of-type
-          position: absolute
-          bottom: -3%
-          left: -8%
-          width: 48%
+        img
+          &:first-of-type
+            position: absolute
+            bottom: 0%
+            right: 0
+            width: 100%
+          &:last-of-type
+            position: absolute
+            bottom: -3%
+            left: -8%
+            width: 48%
     h2 
       margin-bottom: 55px
       text-align: left
@@ -66,7 +64,7 @@
         height: 100%
         content: ""
         background-color: fw.$color-cyan-vivid-blue
-        z-index: fw.set-index(pointCover)
+        z-index: 1
         transition: .3s
       &.open::before
         width: 0
@@ -148,6 +146,7 @@
           width: 17%
         &:nth-of-type(1) svg
           width: 22%
+        // &:nth-of-type(n+2)
         &:nth-of-type(2), &:nth-of-type(3)
           margin-top: 45px
         div

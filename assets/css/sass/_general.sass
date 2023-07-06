@@ -31,21 +31,8 @@
   width: 100%
   overflow: hidden
   
-
-.anchor-special 
-  display: block
-  position: absolute
-  top: 68%
-  right: 0
-  width: 272px
-  z-index: fw.set-index(anchor-special)
-  opacity: 0  
-  img 
-    width: 100%
-    object-fit: cover
-    transition: .3s
-  &:hover img
-    transform: scale(.9)
+.pin-spacer
+  display: none
 
 
 .remove-letter-spacing 
@@ -225,12 +212,6 @@ section
           &::after
             top: -5px
             width: 9px
-
-
-.anchor-special 
-  +fw.media-query-sp
-    top: 50%
-    width: 175px
 
 
 .swiper

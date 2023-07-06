@@ -141,31 +141,30 @@ $right_left: left, right
 $center: center, center
 
 =shrinkBorderHeader($fontSize: 1.4rem, $bottom: -5px, $lineHeight: 1px, $boderColor: var.$colorLinkHover, $direction: $left_right)
-  .shrinkLine
-    display: block
-    position: relative
-    width: 100%
-    font-size: $fontSize
-    letter-spacing: .04em
-    font-weight: 700
-    line-height: 1
-    transition: .3s
+  display: block
+  position: relative
+  width: 100%
+  font-size: $fontSize
+  letter-spacing: .04em
+  font-weight: 700
+  line-height: 1
+  transition: .3s
+  @content
+  &:hover
+    color: var.$colorLinkHover
     @content
-    &:hover
-      color: var.$colorLinkHover
-      @content
-    &::after
-      position: absolute
-      display: block
-      bottom: $bottom
-      left: 0
-      width: 100%
-      height: $lineHeight
-      content: ""
-      background-color: $boderColor
-      transform: scale(0, 1)
-      transform-origin: nth($direction, 1) top
-      transition: transform .3s
-    &:hover::after
-      transform: scale(1, 1)
-      transform-origin: nth($direction, 2) top
+  &::after
+    position: absolute
+    display: block
+    bottom: $bottom
+    left: 0
+    width: 100%
+    height: $lineHeight
+    content: ""
+    background-color: $boderColor
+    transform: scale(0, 1)
+    transform-origin: nth($direction, 1) top
+    transition: transform .3s
+  &:hover::after
+    transform: scale(1, 1)
+    transform-origin: nth($direction, 2) top
