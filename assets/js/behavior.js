@@ -112,14 +112,15 @@ ScrollTrigger.create({
 // 出現する処理
 // フワッとを表現するためstart, endをscrubで設定する。
 gsap.to('#anchor-special', {
+  duration: 10,
   opacity: 1,
   ease: 'power1.inOut',
   scrollTrigger: {
     trigger: '#anchor-special',
-    start: 'top 82%',
+    start: 'top 90%',
     // relativeは#concept
     // この場所で出現させて下へ繋げる。
-    end: 'bottom 82%',
+    end: 'top bottom',
     scrub: true,
     // markers: true
   }
@@ -127,13 +128,13 @@ gsap.to('#anchor-special', {
 // // 任意の位置でくっつく処理
 ScrollTrigger.create({
   trigger: '#anchor-special',
-  start: 'top 82%',
+  start: 'top 83%',
   // endTriggerでrelativeをスイッチできる。
   // 上から引き継いだ場所からpinする。
   endTrigger: '#main',
-  end: '99.2% 82%',
+  end: '100% 100%',
   pin: true,
-  // markers: true
+  markers: true
 })
 
 
@@ -404,6 +405,3 @@ mm.add("(max-width: 896px)", () => {
     })
   })
 })
-
-
-

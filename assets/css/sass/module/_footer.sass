@@ -29,7 +29,14 @@ footer
     flex-direction: column
     width: 70%
     .menu-link.shrinkLine
+      display: block
+      position: unset
+      width: 100%
+      height: 100%
       padding: 20px 20% 0px 0
+      background-color: transparent
+      transform: translateX(0)
+      z-index: 1
       li 
         display: inline-block
         padding: 0 30px 30px 0
@@ -98,7 +105,7 @@ footer
         line-height: 1.5
     .link
       width: 100%
-      .menu-link
+      .menu-link.shrinkLine
         display: grid
         grid-template-columns: repeat(2, 1fr)
         grid-auto-rows: auto
@@ -110,26 +117,26 @@ footer
           margin-bottom: 26px
           padding: 0 0 8px
           border-bottom: 1px solid fw.$color-footer-link
-          .shrinkLine
+          a
             font-size: 1.2rem
-    ul:last-of-type
-      flex-direction: column
-      padding: 35px 0 30px
-      border: unset
-      li:first-of-type
-        .icon
-          +fw.snsLinks(27px, 0, 25px, #fff)
-        &.instagram
-          +fw.snsLinks(27px, 0, 0, #fff)
-      li:last-of-type
-        margin-top: 35px
-        padding: 0 5%
-        width: 100%
-        font-size: 1.2rem
-        line-height: 2.5
-        text-align: left
-        a
-          span
-            display: block
+      .another-link
+        flex-direction: column
+        padding: 35px 0 30px
+        border: unset
+        li:first-of-type
+          .icon
+            +fw.snsLinks(27px, 0, 25px, #fff)
+          &.instagram
+            +fw.snsLinks(27px, 0, 0, #fff)
+        li:last-of-type
+          margin-top: 35px
+          padding: 0 5%
+          width: 100%
+          font-size: 1.2rem
+          line-height: 2.5
+          text-align: left
+          a
+            span
+              display: block
 
 

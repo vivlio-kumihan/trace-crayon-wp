@@ -1,0 +1,23 @@
+// 便利だけれど私の理解力がついていかず引数の入れ方でいちいち迷うので改変する。
+// =positionAbsoluteCenter($useTop: true, $useLeft: true, $translateX: -50%, $translateY: -50%)
+//   position: absolute
+//   @if $useTop
+//     top: 50%
+//   @if $useLeft
+//     left: 50%
+//   transform: translate($translateX, $translateY)
+
+// デフォルトの引数なしで縦横センター
+// $topで縦ON、$leftで横ON
+=positionAbsoluteCTL($top: false, $left: false)
+  position: absolute
+  @if $top
+    top: 50%
+    transform: translateY(-50%)
+  @else if $left
+    left: 50%
+    transform: translateX(-50%)
+  @else 
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)

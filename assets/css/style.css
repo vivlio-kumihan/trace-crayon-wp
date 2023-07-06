@@ -290,7 +290,7 @@ h2 .colorRuby:nth-of-type(4)::after {
 .anchor-special {
   display: block;
   position: absolute;
-  top: 68%;
+  top: 58%;
   right: 0;
   width: 272px;
   z-index: 101;
@@ -485,6 +485,124 @@ h2 .colorRuby:nth-of-type(4)::after {
   transform: translateY(-50%);
   right: 5%;
 }
+.menu-link .contact {
+  width: 85%;
+  margin-top: 40px;
+  padding: 30px 0;
+  background-image: none;
+  background-color: #02112d;
+  transition: 0.3s;
+}
+.menu-link .contact p {
+  position: relative;
+  font-size: 16.5px;
+  font-weight: bold;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  color: #fff;
+}
+.menu-link .contact p::after {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: "CONTACT";
+  font-family: "Jost", sans-serif;
+  font-size: 50px;
+  font-style: italic;
+  color: transparent;
+  -webkit-text-stroke: 1.2px rgba(255, 255, 255, 0.65);
+  opacity: 0.2;
+}
+.menu-link .contact:hover {
+  background-color: #fff;
+}
+.menu-link .contact:hover p {
+  color: #333;
+}
+.menu-link .contact p {
+  color: #fff;
+}
+.menu-link .contact p::before {
+  content: "\f0e0";
+  font-size: 1.8rem;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  top: 15%;
+  left: -25px;
+}
+.menu-link ul:last-of-type {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  padding: 30px 0 0;
+}
+.menu-link ul:last-of-type li:first-of-type .shrinkLine {
+  display: block;
+  position: relative;
+  width: 100%;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  line-height: 1;
+  transition: 0.3s;
+  font-weight: 700;
+}
+.menu-link ul:last-of-type li:first-of-type .shrinkLine:hover {
+  color: #1bc9f5;
+}
+.menu-link ul:last-of-type li:first-of-type .shrinkLine::after {
+  position: absolute;
+  display: block;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  content: "";
+  background-color: #1bc9f5;
+  transform: scale(0, 1);
+  transform-origin: right top;
+  transition: transform 0.3s;
+}
+.menu-link ul:last-of-type li:first-of-type .shrinkLine:hover::after {
+  transform: scale(1, 1);
+  transform-origin: left top;
+}
+.menu-link ul:last-of-type li:last-of-type .icon {
+  display: inline-block;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin-left: 20px;
+  margin-right: 0;
+  transition: 0.3s;
+}
+.menu-link ul:last-of-type li:last-of-type .icon::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  color: #fff;
+}
+.menu-link ul:last-of-type li:last-of-type .icon.twitter::before {
+  content: "\f099";
+  font-size: 24px;
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 900;
+}
+.menu-link ul:last-of-type li:last-of-type .icon.instagram::before {
+  content: "\f16d";
+  font-size: 24px;
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 900;
+}
+.menu-link ul:last-of-type li:last-of-type .icon:hover {
+  opacity: 0.7;
+}
 @media screen and (max-width: 896px) {
   .menu-link {
     width: 100vw;
@@ -499,10 +617,20 @@ h2 .colorRuby:nth-of-type(4)::after {
   .menu-link .contact {
     width: 90%;
     margin-top: 30px;
-    padding-bottom: 30px;
+    padding: 25px 25px 30px 25px;
   }
   .menu-link .contact p {
+    padding-left: 25px;
     letter-spacing: 0;
+  }
+  .menu-link .contact p::before {
+    left: 0px;
+  }
+  .menu-link .contact p::after {
+    top: 45%;
+    font-size: 45px;
+    letter-spacing: 0.07em;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.65);
   }
   .menu-link ul:last-of-type {
     flex-direction: column;
@@ -599,335 +727,6 @@ header .nav-link li a:hover::after {
   transform: scale(1, 1);
   transform-origin: left top;
 }
-header .content-links-btn {
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  right: -100%;
-  width: 100px;
-  aspect-ratio: 1;
-  padding-top: 32px;
-  text-align: center;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  color: #182e58;
-  background-color: #fff;
-  cursor: pointer;
-  z-index: 104;
-  transition: 0.4s;
-}
-header .content-links-btn.toggleButtonMenu {
-  right: 0;
-}
-@media screen and (max-width: 896px) {
-  header .content-links-btn.toggleButtonMenu {
-    right: 5%;
-  }
-}
-header .content-links-btn div {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 30px;
-  height: 2px;
-  background-color: #182e58;
-  transition: 0.3s;
-}
-header .content-links-btn div:nth-of-type(1) {
-  top: 33%;
-}
-header .content-links-btn div:nth-of-type(2) {
-  top: 42%;
-}
-header .content-links-btn div:nth-of-type(3) {
-  top: 52%;
-  left: 50%;
-  transform: translateX(-25%);
-  width: 20px;
-}
-header .content-links-btn:hover {
-  color: #fff;
-  background-color: #182e58;
-}
-header .content-links-btn:hover div {
-  background-color: #fff;
-}
-header .content-links-btn:hover div:nth-of-type(3) {
-  transform: translateX(-50%);
-  width: 30px;
-}
-@media screen and (max-width: 896px) {
-  header .content-links-btn:hover {
-    color: #00266a;
-    background-color: #fff;
-  }
-  header .content-links-btn:hover div {
-    background-color: #00266a;
-  }
-  header .content-links-btn:hover div:nth-of-type(3) {
-    transform: translateX(-42%);
-    width: 30px;
-  }
-}
-header .content-links-btn.active {
-  color: #00266a;
-  background-color: #fff;
-}
-header .content-links-btn.active div {
-  top: 45%;
-  left: 50%;
-  width: 35px;
-  background-color: #00266a;
-}
-header .content-links-btn.active div:nth-of-type(1) {
-  transform: translateX(-50%) rotate(45deg);
-}
-header .content-links-btn.active div:nth-of-type(2) {
-  visibility: hidden;
-  opacity: 0;
-  transform: translateX(100%);
-}
-header .content-links-btn.active div:nth-of-type(3) {
-  width: 35px;
-  transform: translateX(-50%) rotate(-45deg);
-}
-@media screen and (max-width: 896px) {
-  header .content-links-btn {
-    top: 15px;
-    right: 5%;
-    width: 60px;
-  }
-  header .content-links-btn.active div:nth-of-type(1), header .content-links-btn.active div:nth-of-type(3) {
-    top: 40%;
-  }
-  header .content-links-btn div {
-    width: 35px;
-  }
-  header .content-links-btn div:nth-of-type(1) {
-    top: 27%;
-  }
-  header .content-links-btn div:nth-of-type(3) {
-    top: 57%;
-    left: 50%;
-    transform: translateX(-15%);
-  }
-}
-header .menu-link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 70vw;
-  height: 100vh;
-  color: #fff;
-  background-color: #182e58;
-  transform: translateX(100%);
-  transition: 0.5s;
-  z-index: 103;
-}
-header .menu-link.active {
-  transform: translateX(0);
-}
-header .menu-link ul:first-of-type {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  grid-auto-flow: column;
-  -moz-column-gap: 20px;
-       column-gap: 20px;
-  width: 85%;
-}
-header .menu-link ul:first-of-type li {
-  position: relative;
-  padding: 16px 8px;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1;
-  border-bottom: 1px solid #c0c0c0;
-  transition: 0.5s;
-}
-header .menu-link ul:first-of-type li:hover {
-  color: #182e58;
-  background-color: #fff;
-}
-header .menu-link ul:first-of-type li a {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-header .menu-link ul:first-of-type li::after {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  content: "\f178";
-  font-size: inherit;
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 5%;
-}
-header .menu-link .contact {
-  width: 85%;
-  margin-top: 40px;
-  padding: 30px 0;
-  background-image: none;
-  background-color: #02112d;
-  transition: 0.3s;
-}
-header .menu-link .contact p {
-  position: relative;
-  font-size: 16.5px;
-  font-weight: bold;
-  line-height: 1;
-  letter-spacing: 0.18em;
-  color: #fff;
-}
-header .menu-link .contact p::after {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  content: "CONTACT";
-  font-family: "Jost", sans-serif;
-  font-size: 50px;
-  font-style: italic;
-  color: transparent;
-  -webkit-text-stroke: 1.2px rgba(255, 255, 255, 0.65);
-  opacity: 0.2;
-}
-header .menu-link .contact:hover {
-  background-color: #fff;
-}
-header .menu-link .contact:hover p {
-  color: #333;
-}
-header .menu-link .contact p {
-  color: #fff;
-}
-header .menu-link .contact p::before {
-  content: "\f0e0";
-  font-size: 1.8rem;
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  position: absolute;
-  top: 15%;
-  left: -25px;
-}
-header .menu-link ul:last-of-type {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 85%;
-  padding: 30px 0 0;
-}
-header .menu-link ul:last-of-type li:first-of-type .shrinkLine {
-  display: block;
-  position: relative;
-  width: 100%;
-  font-size: 15px;
-  letter-spacing: 0.04em;
-  font-weight: 700;
-  line-height: 1;
-  transition: 0.3s;
-  font-weight: 700;
-}
-header .menu-link ul:last-of-type li:first-of-type .shrinkLine:hover {
-  color: #1bc9f5;
-}
-header .menu-link ul:last-of-type li:first-of-type .shrinkLine::after {
-  position: absolute;
-  display: block;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  content: "";
-  background-color: #1bc9f5;
-  transform: scale(0, 1);
-  transform-origin: right top;
-  transition: transform 0.3s;
-}
-header .menu-link ul:last-of-type li:first-of-type .shrinkLine:hover::after {
-  transform: scale(1, 1);
-  transform-origin: left top;
-}
-header .menu-link ul:last-of-type li:last-of-type .icon {
-  display: inline-block;
-  position: relative;
-  width: 24px;
-  height: 24px;
-  margin-left: 20px;
-  margin-right: 0;
-  transition: 0.3s;
-}
-header .menu-link ul:last-of-type li:last-of-type .icon::before {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 24px;
-  height: 24px;
-  color: #fff;
-}
-header .menu-link ul:last-of-type li:last-of-type .icon.twitter::before {
-  content: "\f099";
-  font-size: 24px;
-  font-family: "Font Awesome 6 Brands";
-  font-weight: 900;
-}
-header .menu-link ul:last-of-type li:last-of-type .icon.instagram::before {
-  content: "\f16d";
-  font-size: 24px;
-  font-family: "Font Awesome 6 Brands";
-  font-weight: 900;
-}
-header .menu-link ul:last-of-type li:last-of-type .icon:hover {
-  opacity: 0.7;
-}
-@media screen and (max-width: 896px) {
-  header .menu-link {
-    width: 100vw;
-    overflow: auto;
-  }
-  header .menu-link ul:first-of-type {
-    grid-template-columns: 1fr;
-    grid-auto-flow: unset;
-    width: 90%;
-    margin-top: 550px;
-  }
-  header .menu-link .contact {
-    width: 90%;
-    margin-top: 30px;
-    padding-bottom: 30px;
-  }
-  header .menu-link .contact p {
-    letter-spacing: 0;
-  }
-  header .menu-link ul:last-of-type {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 90%;
-    margin-top: 30px;
-    border-top: 1px solid #fff;
-  }
-  header .menu-link ul:last-of-type li:last-of-type {
-    margin: 20px 0 170px;
-  }
-  header .menu-link ul:last-of-type li:last-of-type .icon {
-    margin: 0;
-  }
-  header .menu-link ul:last-of-type li:last-of-type .icon.twitter::before, header .menu-link ul:last-of-type li:last-of-type .icon.instagram::before {
-    font-size: 40px;
-  }
-  header .menu-link ul:last-of-type li:last-of-type .icon + .icon {
-    margin-left: 30px;
-  }
-}
 
 @media screen and (max-width: 896px) {
   header .ci {
@@ -939,21 +738,6 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   }
   header .nav-link {
     display: none;
-  }
-  header .menu-link .contact {
-    padding: 25px;
-  }
-  header .menu-link .contact p {
-    padding-left: 25px;
-  }
-  header .menu-link .contact p::before {
-    left: 0px;
-  }
-  header .menu-link .contact p::after {
-    top: 45%;
-    font-size: 45px;
-    letter-spacing: 0.07em;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.65);
   }
 }
 
@@ -2052,7 +1836,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
   align-items: center;
   justify-content: center;
   margin-top: 7.5px;
-  padding: 62px 0;
+  padding: 30px 0 120px;
   width: 100%;
   color: #fff;
 }
@@ -2161,7 +1945,7 @@ header .menu-link ul:last-of-type li:last-of-type .icon:hover {
 @media screen and (max-width: 896px) {
   .contact {
     margin-top: 10px;
-    padding: 85px 0;
+    padding: 80px 0 150px;
     background-position: 72%;
   }
   .contact p {
@@ -2240,7 +2024,14 @@ footer .link {
   width: 70%;
 }
 footer .link .menu-link.shrinkLine {
+  display: block;
+  position: unset;
+  width: 100%;
+  height: 100%;
   padding: 20px 20% 0px 0;
+  background-color: transparent;
+  transform: translateX(0);
+  z-index: 1;
 }
 footer .link .menu-link.shrinkLine li {
   display: inline-block;
@@ -2389,7 +2180,7 @@ footer img {
   footer .link {
     width: 100%;
   }
-  footer .link .menu-link {
+  footer .link .menu-link.shrinkLine {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: auto;
@@ -2399,20 +2190,20 @@ footer img {
     margin-top: 50px;
     padding: 0 5%;
   }
-  footer .link .menu-link li {
+  footer .link .menu-link.shrinkLine li {
     margin-bottom: 26px;
     padding: 0 0 8px;
     border-bottom: 1px solid #253244;
   }
-  footer .link .menu-link li .shrinkLine {
+  footer .link .menu-link.shrinkLine li a {
     font-size: 1.2rem;
   }
-  footer ul:last-of-type {
+  footer .link .another-link {
     flex-direction: column;
     padding: 35px 0 30px;
     border: unset;
   }
-  footer ul:last-of-type li:first-of-type .icon {
+  footer .link .another-link li:first-of-type .icon {
     display: inline-block;
     position: relative;
     width: 27px;
@@ -2421,7 +2212,7 @@ footer img {
     margin-right: 25px;
     transition: 0.3s;
   }
-  footer ul:last-of-type li:first-of-type .icon::before {
+  footer .link .another-link li:first-of-type .icon::before {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -2430,22 +2221,22 @@ footer img {
     height: 27px;
     color: #fff;
   }
-  footer ul:last-of-type li:first-of-type .icon.twitter::before {
+  footer .link .another-link li:first-of-type .icon.twitter::before {
     content: "\f099";
     font-size: 27px;
     font-family: "Font Awesome 6 Brands";
     font-weight: 900;
   }
-  footer ul:last-of-type li:first-of-type .icon.instagram::before {
+  footer .link .another-link li:first-of-type .icon.instagram::before {
     content: "\f16d";
     font-size: 27px;
     font-family: "Font Awesome 6 Brands";
     font-weight: 900;
   }
-  footer ul:last-of-type li:first-of-type .icon:hover {
+  footer .link .another-link li:first-of-type .icon:hover {
     opacity: 0.7;
   }
-  footer ul:last-of-type li:first-of-type.instagram {
+  footer .link .another-link li:first-of-type.instagram {
     display: inline-block;
     position: relative;
     width: 27px;
@@ -2454,7 +2245,7 @@ footer img {
     margin-right: 0;
     transition: 0.3s;
   }
-  footer ul:last-of-type li:first-of-type.instagram::before {
+  footer .link .another-link li:first-of-type.instagram::before {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -2463,22 +2254,22 @@ footer img {
     height: 27px;
     color: #fff;
   }
-  footer ul:last-of-type li:first-of-type.instagram.twitter::before {
+  footer .link .another-link li:first-of-type.instagram.twitter::before {
     content: "\f099";
     font-size: 27px;
     font-family: "Font Awesome 6 Brands";
     font-weight: 900;
   }
-  footer ul:last-of-type li:first-of-type.instagram.instagram::before {
+  footer .link .another-link li:first-of-type.instagram.instagram::before {
     content: "\f16d";
     font-size: 27px;
     font-family: "Font Awesome 6 Brands";
     font-weight: 900;
   }
-  footer ul:last-of-type li:first-of-type.instagram:hover {
+  footer .link .another-link li:first-of-type.instagram:hover {
     opacity: 0.7;
   }
-  footer ul:last-of-type li:last-of-type {
+  footer .link .another-link li:last-of-type {
     margin-top: 35px;
     padding: 0 5%;
     width: 100%;
@@ -2486,7 +2277,7 @@ footer img {
     line-height: 2.5;
     text-align: left;
   }
-  footer ul:last-of-type li:last-of-type a span {
+  footer .link .another-link li:last-of-type a span {
     display: block;
   }
 }/*# sourceMappingURL=style.css.map */
