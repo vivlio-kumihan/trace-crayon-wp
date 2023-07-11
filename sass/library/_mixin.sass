@@ -1,0 +1,174 @@
+@use "../library/function" as fn
+@use "../library/texts" as tx
+@use "../library/mixin/_positionAbsoluteCTL" as pab
+@use "../variables" as var
+
+
+// 便利だけれど私の理解力がついていかず引数の入れ方でいちいち迷うので改変する。
+// =positionAbsoluteCenter($useTop: true, $useLeft: true, $translateX: -50%, $translateY: -50%)
+//   position: absolute
+//   @if $useTop
+//     top: 50%
+//   @if $useLeft
+//     left: 50%
+//   transform: translate($translateX, $translateY)
+
+// // デフォルトの引数なしで縦横センター
+// // $topで縦ON、$leftで横ON
+// =positionAbsoluteCTL($top: false, $left: false)
+//   position: absolute
+//   @if $top
+//     top: 50%
+//     transform: translateY(-50%)
+//   @else if $left
+//     left: 50%
+//     transform: translateX(-50%)
+//   @else 
+//     top: 50%
+//     left: 50%
+//     transform: translate(-50%, -50%)
+
+
+// PC版で効果を表現するホバーのアニメーションをSP版では切る設定
+// transitionを切ることが肝のよう。
+=hoverAnimation($transition-duraiton: .3s) 
+  transition: $transition-duraiton
+  @media (hover: hover) 
+    &:hover 
+      @content 
+
+
+// Sassの引数の変数は超グローバルで驚き
+// なお、[opacity: 1]がデフォルト
+=hoverTransparent($width: 100%, $transition: 0.3s, $opacity: 0.7)
+  width: $width
+  +hoverAnimation($transition)
+    opacity: $opacity
+
+=anchorHoverInnerScale($width: 100%, $transition: 0.3s, $scale: 1.1)
+  a
+    display: block
+    width: $width
+    overflow: hidden
+    @content
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+      transition: $transition
+    &:hover
+      img
+        transform: scale($scale)
+
+=hoverInnerScale($width: 100%, $transition: 0.3s, $scale: 1.1)
+  display: block
+  width: $width
+  overflow: hidden
+  @content
+  img
+    width: 100%
+    height: 100%
+    object-fit: cover
+    transition: $transition
+  &:hover
+    img
+      transform: scale($scale)
+
+
+=anchorHoverArgBgImg($transition: 0.3s, $scale: 1.25)
+  .imgWrap
+    width: 100%
+    height: 100%
+    overflow: hidden
+    .bgImage
+      height: 100%
+      background-repeat: no-repeat
+      background-size: cover
+      +hoverAnimation($transition)
+        transform: scale($scale)
+        
+
+=toContactAnchor($mainFontSZ, $subFontSZ)
+  p 
+    position: relative
+    font-size: $mainFontSZ
+    font-weight: bold
+    line-height: 1
+    letter-spacing: 0.18em
+    color: #fff
+    &::after 
+      position: absolute
+      top: 40%
+      left: 50%
+      transform: translate(-50%, -50%)
+      content: "CONTACT"
+      font-family: var.$jost
+      font-size: $subFontSZ
+      font-style: italic
+      color: transparent
+      -webkit-text-stroke: 1.2px rgba(255, 255, 255, .65)
+      opacity: .2
+
+
+=snsLinks($widthHeight, $marginleft, $marginRight, $color)
+  display: inline-block
+  position: relative
+  width: $widthHeight
+  height: $widthHeight
+  margin-left: $marginleft
+  margin-right: $marginRight
+  transition: .3s
+  &::before
+    +pab.positionAbsoluteCTL
+    width: $widthHeight
+    height: $widthHeight
+    color: #fff
+  &.twitter::before 
+    +tx.fontAwesome("\f099", $widthHeight, Brands)
+  &.instagram::before 
+    +tx.fontAwesome("\f16d", $widthHeight, Brands)
+  &:hover
+    opacity: .7
+
+
+// 収縮する下線を持つ見出し
+// どのような方向で下線が変化するかを指定するオプション
+// 左から伸びて、左へ縮まる
+$left_left: left, left
+// 右から伸びて、右へ縮まる
+$right_right: right, right
+// 右へ伸びて、左から縮まる
+$left_right: right, left
+// 左へ伸びて、右から縮まる
+$right_left: left, right
+// 中央から伸びて、中央へ縮まる
+$center: center, center
+
+=shrinkBorderHeader($fontSize: 1.4rem, $bottom: -5px, $lineHeight: 1px, $boderColor: var.$colorLinkHover, $direction: $left_right)
+  display: block
+  position: relative
+  width: 100%
+  font-size: $fontSize
+  letter-spacing: .04em
+  font-weight: 700
+  line-height: 1
+  transition: .3s
+  @content
+  &:hover
+    color: var.$colorLinkHover
+    @content
+  &::after
+    position: absolute
+    display: block
+    bottom: $bottom
+    left: 0
+    width: 100%
+    height: $lineHeight
+    content: ""
+    background-color: $boderColor
+    transform: scale(0, 1)
+    transform-origin: nth($direction, 1) top
+    transition: transform .3s
+  &:hover::after
+    transform: scale(1, 1)
+    transform-origin: nth($direction, 2) top

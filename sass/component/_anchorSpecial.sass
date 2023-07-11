@@ -1,0 +1,25 @@
+@use "../forwards" as fw
+  
+.anchor-special 
+  display: block
+  position: fixed
+  bottom: 40px
+  right: 0
+  width: 272px
+  z-index: fw.set-index(anchor-special)
+  transition: .5s
+  opacity: 0
+  &.active
+    opacity: 1
+  &.fixed
+    position: absolute
+    bottom: 0
+  img 
+    width: 100%
+    object-fit: cover
+    transition: .3s
+  &:hover img
+    transform: scale(.9)
+  +fw.media-query-sp
+    top: 0%
+    width: 175px
