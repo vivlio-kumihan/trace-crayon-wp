@@ -1,7 +1,4 @@
 <?php get_header(); ?>
-<!-- <main>
-  ここにcontent入れる
-</main> -->
 
 <section class="cover">
   <div id="bg-visual" class="bg-visual">
@@ -247,7 +244,6 @@
     <?php endwhile;
     endif; ?>
   </ul>
-
   <div class="more-info-btn">
     一覧を見る
     <div class="border"></div>
