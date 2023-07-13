@@ -290,34 +290,35 @@ h2 .colorRuby:nth-of-type(4)::after {
   }
 }
 
-.anchor-special {
+.anchor-special-frame {
+  position: relative;
+  width: 100%;
+  height: 0;
+  z-index: 101;
+}
+.anchor-special-frame .anchor-special {
   display: block;
-  position: fixed;
-  bottom: 40px;
+  position: absolute;
+  bottom: 0px;
   right: 0;
   width: 272px;
-  z-index: 101;
   transition: 0.5s;
   opacity: 0;
 }
-.anchor-special.active {
+.anchor-special-frame .anchor-special.active {
   opacity: 1;
 }
-.anchor-special.fixed {
-  position: absolute;
-  bottom: 0;
-}
-.anchor-special img {
+.anchor-special-frame .anchor-special img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   transition: 0.3s;
 }
-.anchor-special:hover img {
+.anchor-special-frame .anchor-special:hover img {
   transform: scale(0.9);
 }
 @media screen and (max-width: 896px) {
-  .anchor-special {
+  .anchor-special-frame .anchor-special {
     top: 0%;
     width: 175px;
   }
@@ -1678,6 +1679,7 @@ header .menu-nav_link-container .menu li a:hover::after {
   display: flex;
   align-items: center;
   width: 100%;
+  margin-bottom: 10px;
 }
 .news ul li .header-sub h5 .post-categories {
   display: block;

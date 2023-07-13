@@ -24,9 +24,6 @@
 </section>
 
 <section id="concept" class="concept">
-  <a id="anchor-special" class="anchor-special" href="">
-    <img src="<?php echo get_template_directory_uri(); ?>/img/anchor-service.png" alt="特集へのリンクを示す画像">
-  </a>
   <div class="composed-visual">
     <div id="visual-container" class="visual-container">
       <img id="copy-one" class="copy-one" src="<?php echo get_template_directory_uri(); ?>/img/copy01.png" alt="ヘッドコピーの最初のフレーズ">
@@ -45,6 +42,11 @@
     <img src="<?php echo get_template_directory_uri(); ?>/img/philosophy-txt.png" alt="企業理念を紹介するページへのリンク画像">
     <div class="border"></div>
   </a>
+  <div id="anchor-special-frame" class="anchor-special-frame">
+    <a id="anchor-special" class="anchor-special" href="">
+      <img src="<?php echo get_template_directory_uri(); ?>/img/anchor-service.png" alt="特集へのリンクを示す画像">
+    </a>
+  </div>
   <div id="composed-staff" class="composed-staff">
     <img id="behind-bright" class="behind" src="<?php echo get_template_directory_uri(); ?>/img/people-bg01.png" alt="光に照らされて明るい背景">
     <img id="behind-dark" class="behind" src="<?php echo get_template_directory_uri(); ?>/img/people-bg02.png" alt="影に閉ざされている背景">
@@ -200,80 +202,59 @@
 <section id="news" class="news">
   <h2>くれよんの<span class="colorRuby">最</span><span class="colorRuby">新</span><span class="colorRuby">情</span><span class="colorRuby">報</span><br><span lang="en">BLOG</span></h2>
   <ul class="postList">
-    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+    <!-- 投稿数を3ページに限定する設定 -->
+    <?php
+    // 3ページだけ取ってくるという状態を変数に格納。
+    $args = array('posts_pre_page' => 3);
+    // このインスタンスで機能しているDBへ引数として渡し、
+    // 該当データを変数へ保存。
+    $my_query = new WP_Query($args);
+    // 非常に違和感がある書き方をするが慣れんと仕方ない。
+    // こういう書き方でデータを収集する。。。
+    if ($my_query->have_posts()) : while ($my_query->have_posts()) : $my_query->the_post();
+    ?>
       <li>
+        <!-- 『the_permalink()』の内側に、
+        リスト要素を発生させるで生成させる
+        『the_category()』を入れ子にすると、
+        『the_permalink()』で生成したa要素の括りの構造を破壊する。
+        回避方法は、『the_category()』を配列にして出力すること。  -->
         <a href="<?php the_permalink(); ?>">
           <div class="frame">
             <?php the_post_thumbnail(); ?>
           </div>
+          <div class="header-sub">
+            <h5>
+              <ul class="post-categories">
+                <?php
+                  // 『the_category()』を配列にして出力すには、
+                  // 『get_the_category()関数』を使う。
+                  // 『the_category()』の属性が配列として取れた。
+                  $category = get_the_category();
+                  // name属性をキーにして値を取り出す。
+                  foreach($category as $attr) {
+                    echo '<li>'.$attr -> name.'</li>';
+                  }
+                ?>
+              </ul>
+            </h5>
+            <time datetime="<?php echo get_the_date("Y-m-d") ?>"><?php echo get_the_date("Y年m月d日") ?></time>
+          </div>
           <h4 class="shrinkLine"><?php the_title(); ?></h4>
           <p><?php the_excerpt(); ?></p>
         </a>
-        <div class="header-sub">
-          <h5><?php the_category(); ?></h5>
-          <time datetime="<?php echo get_the_date("Y-m-d") ?>"><?php echo get_the_date("Y年m月d日") ?></time>
-        </div>
       </li>
-    <?php endwhile; endif; ?>
+    <?php endwhile;
+    endif; ?>
   </ul>
 
-  <!-- <ul class="postList">
-    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-        <li>
-          <a href="<?php the_permalink(); ?>">
-            <?php the_post_thumbnail(); ?>
-            <div class="header-sub">
-              <time datetime="<?php echo get_the_date("Y-m-d") ?>"><?php echo get_the_date("Y年m月d日") ?></time>
-              <h5><?php the_category(); ?></h5>
-            </div>
-            <h4 class="shrinkLine"><?php the_title(); ?></h4>
-            <p><?php the_excerpt(); ?></p>
-          </a>
-        </li>
-    <?php endwhile; endif; ?>
-  </ul> -->
-
-  <!-- <ul>
-    <li>
-      <a href="">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/blog_john-salvino-QXgPXa6ydzg-unsplash-scaled.jpg" alt="工事現場の足場を登る社員のイメージ">
-      </a>
-      <div class="header-sub">
-        <h5>採用関連</h5>
-        <time datetime="2023-06-06">2023.06.06</time>
-      </div>
-      <h4 class="shrinkLine">「くれよんで働く」ってどうゆうこと…？</h4>
-      <p>季節の変わり目！と感じるような天候が続く今日この頃、皆さんいかがお過ごしですか？暑くなったり、寒く……</p>
-    </li>
-    <li>
-      <a href="">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/blog_220326_group_photo_002.jpg" alt="制服を着てリラックスした様子の社員の集合写真">
-      </a>
-      <div class="header-sub">
-        <h5>職人の素顔</h5>
-        <time datetime="2023-05-30">2023.05.30</time>
-      </div>
-      <h4><a href="" class="shrinkLine">小さな積み重ねが実を結ぶ…</a></h4>
-      <p>今回のBlogは、職人達が現場で何気なくしている事からお褒めの言葉を頂いた件について書いてみようと……</p>
-    </li>
-    <li>
-      <a href="">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/blog_sonja-langford-eIkbSc3SDtI-unsplash-scaled.jpg" alt="時計の文字盤のイメージ">
-      </a>
-      <div class="header-sub">
-        <h5>電気工事</h5>
-        <time datetime="2023-05-23">2023.05.23</time>
-      </div>
-      <h4><a href="" class="shrinkLine">職人の一日って…？</a></h4>
-      <p>職人の仕事は現場で基本仕事をしている。現場は安全管理の観点から死角になっている場合が多い。だから職…… </p>
-    </li>
-  </ul> -->
   <div class="more-info-btn">
     一覧を見る
     <div class="border"></div>
   </div>
 </section>
 
+<!-- 書き方を省略する ---------------------------------------- -->
 <section class="other-links">
   <ul>
     <li>
@@ -302,6 +283,7 @@
     </li>
   </ul>
 </section>
+<!-- 書き方を省略する ---------------------------------------- -->
 
 <section id="contact" class="contact">
   <p>電気のことでお困りの際は<br class="for-sp">気軽にご相談ください</p>

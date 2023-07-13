@@ -107,76 +107,81 @@ ScrollTrigger.create({
   // markers: true
 })
 
+
+
+
+
+
+
 // ////////////////////////////////////////////////
-// .anchor-special
-// sassに設定するtransitionの影響で、
-// リロードすると元にあった位置から指定位置までゴーストする。
-// クラス指定追加の作戦で一つにまとめるのは避ける。
-// 出現する処理
-// フワッとを表現するためstart, endをscrubで設定する。
-gsap.to('#anchor-special', {
-  scrollTrigger: {
-    trigger: '#anchor-special',
-    // スクリーンの上辺が『top』
-    start: 'top top',
-    endTrigger: 'html',
-    end: 'bottom top',
-    toggleClass: {
-      targets: '#anchor-special',
-      className: 'active'
-    },
-    // markers: true
-  }
+// #anchor-special-frame
+// 授業後、どうしてもpinのやり方を覚えたくて考案したもの。
+// pinと追従のアニメーションを完全にイメージすることができた。
+
+// trigger要素が、『任意の地点』でpinし、
+// 以降、任意『要素に追従』して、スクロールアウトする効果
+
+ScrollTrigger.create({
+  trigger: '#anchor-special-frame',
+  // sassでも説明したが、
+  // ペラペラのボックスに、
+  // 底辺から20pxということは、
+  // 上の要素の底辺から20px食い込む位置に
+  // レイアウト『出来る』ということ。
+  // これを前提にすると、
+  // start、endそれぞれ100％の意味がわかる。
+  start: 'top 100%',
+  endTrigger: 'footer',
+  end: 'top 100%',
+  pin: true,
+  // pinSpacingありだとtrigger要素の高さと
+  // 同じ高さの空きがその要素の下に発生する。
+  pinSpacing: false,
+  // markers: true
 })
-// こちらだとアイコンが消えるのでダメ
-// ScrollTrigger.create({
-//   trigger: '#anchor-special',
-//   // スクリーンの上辺が『top』
-//   start: 'top top',
-//   endTrigger: 'html',
-//   end: 'bottom top', 
-//   toggleClass: {
-//     targets: '#anchor-special',
-//     className: 'active'
-//   },
-//   // markers: true
+
+ScrollTrigger.create({
+  trigger: '#anchor-special',
+  start: 'top 80%',
+  // ここをページの最後までと指定するのが肝
+  endTrigger: 'html',
+  end: 'bottom top',
+  toggleClass: {
+    targets: ['#anchor-special'],
+    className: 'active'
+  },
+  // markers: true,
+})
+
+// // クラスで切り替えるバージョン。
+// gsap.to('#anchor-special', {
+//   scrollTrigger: {
+//     trigger: '#anchor-special',
+//     start: 'top top',
+//     endTrigger: 'html',
+//     end: 'bottom top',
+//     toggleClass: {
+//       targets: '#anchor-special',
+//       className: 'active'
+//     },
+//     // markers: true
+//   }
 // })
 
-gsap.to('#anchor-special', {
-  scrollTrigger: {
-    trigger: '#main',
-    start: 'bottom bottom',
-    endTrigger: 'html',
-    end: 'bottom top',
-    toggleClass: {
-      targets: '#anchor-special',
-      className: 'fixed'
-    },
-    // markers: true,
-  }
-})
-// ScrollTrigger.create({
-//   trigger: '#main',
-//   start: 'bottom bottom',
-//   endTrigger: 'html',
-//   end: 'bottom top',
-//   toggleClass: {
-//     targets: '#anchor-special',
-//     className: 'fixed'
-//   },
-//   // markers: true 
+// gsap.to('#anchor-special', {
+//   scrollTrigger: {
+//     trigger: '#main',
+//     start: 'bottom bottom',
+//     endTrigger: 'html',
+//     end: 'bottom top',
+//     toggleClass: {
+//       targets: '#anchor-special',
+//       className: 'fixed'
+//     },
+//     // markers: true,
+//   }
 // })
-// // 任意の位置でくっつく処理
-// ScrollTrigger.create({
-//   trigger: '#anchor-special',
-//   start: 'top 88%',
-//   // endTriggerでrelativeをスイッチできる。
-//   // 上から引き継いだ場所からpinする。
-//   endTrigger: '#main',
-//   end: '100% 100%',
-//   pin: true,
-//   // markers: true
-// })
+
 
 // //////////////////////////////////////////////// 
 // #concept
