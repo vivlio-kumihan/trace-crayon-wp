@@ -1,0 +1,15 @@
+@use "../forwards" as fw
+
+.single-page
+  margin: 0 20%
+  .frame
+    width: 100%
+    height: 100%
+    aspect-ratio: 4/3
+    .wp-post-image
+      width: 100%
+      height: 100%
+      object-fit: cover
+  .post-categorie
+    +fw.postCategorie
+      margin-bottom: 20px

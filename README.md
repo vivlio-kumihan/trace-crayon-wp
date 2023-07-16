@@ -158,7 +158,7 @@ img
 
 <div class="header-sub">
   <h5>
-    <ul class="post-categories">
+    <ul class="post-categorie">
       <?php
         // 『the_category()』を配列にして出力すには、
         // 『get_the_category()関数』を使う。

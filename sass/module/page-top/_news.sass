@@ -17,6 +17,18 @@
           +fw.hoverInnerScale
             aspect-ratio: 4/3
             margin-bottom: 25px
+        .header-sub
+          display: flex
+          align-items: center
+          width: 100%
+          margin-bottom: 10px
+          .post-categorie
+            +fw.postCategorie
+          time 
+            font-weight: 500
+            letter-spacing: 0.08em
+            color: fw.$color-cyan-vivid-blue
+            margin-left: 15px
         h4.shrinkLine
           +fw.shrinkBorderHeader(2.2rem, -1px, 3px, fw.$color-cyan-vivid-blue, fw.$left_left)
             padding-bottom: 20px
@@ -31,28 +43,7 @@
           margin-top: 30px
           text-align: left
           line-height: 1.9
-      .header-sub 
-        display: flex
-        align-items: center
-        width: 100%
-        margin-bottom: 10px
-        h5
-          .post-categories
-            display: block
-            li
-              width: max-content
-              padding: 4px 8px 5px 10px
-              font-size: 1.4rem
-              font-weight: 700
-              letter-spacing: 0.02em
-              color: #fff
-              background-color: fw.$color-cyan-vivid-blue
-              font-size: 1.2rem
-        time 
-          font-weight: 500
-          letter-spacing: 0.08em
-          color: fw.$color-cyan-vivid-blue
-          margin-left: 15px
+
   .more-info-btn 
     margin: 80px auto 0
     padding: 25px 80px
@@ -68,12 +59,9 @@
       li
         + li
           margin-top: 45px
-        // &:nth-of-type(n+2)
         &:nth-of-type(2), &:nth-of-type(3)
           a
             aspect-ratio: 3/2.05
-        // a
-        //   aspect-ratio: 1/1.4
         h4
           .shrinkLine
             margin-top: 10px

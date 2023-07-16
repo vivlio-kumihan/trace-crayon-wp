@@ -104,7 +104,7 @@
     </div>
   </div>
 
-  
+
   <!-- リストの書き方をphpで省略する ---------------------------------------- -->
   <!-- id="point" -->
   <?php
@@ -141,15 +141,7 @@
       <li>
         <svg class="<?php echo $value['path_class']; ?>" <?php echo $value['svg']; ?>>
           <style>
-            <?php echo '.' . $value['path_class']; ?>
-            <?php echo '{ fill: none; stroke: #fff; }' ?>
-            <!-- 非常にわかりにくくなっている。 -->
-            <!-- 元は、
-              .Lunch-1 {
-                fill: none;
-                stroke: #fff 
-              }
-            -->
+            <?php echo '.' . $value['path_class']; ?><?php echo '{ fill: none; stroke: #fff; }' ?>
           </style>
           <path <?php echo $value['path']; ?>>
           </path>
@@ -169,7 +161,7 @@
     <h2>電気工事を<span class="colorRuby">学</span><span class="colorRuby">ぶ</span><br><span lang="en">LEARNING</span></h2>
     <p class="up-appear">電気工事ってどんな仕事なの？<br>そんな疑問に答えるコンテンツを<br class="for-sp">ご用意しました。</p>
   </div>
-  
+
   <!-- ２つしか項目ないのでママでいく。かえってわかりにくくなる。 -->
   <ul>
     <li>
@@ -210,7 +202,7 @@
     <!-- 投稿数を3ページに限定する設定 -->
     <?php
     // 3ページだけ取ってくるという状態を変数に格納。
-    $args = array('posts_pre_page' => 3);
+    $args = array('posts_per_page' => 3);
     // このインスタンスで機能しているDBへ引数として渡し、
     // 該当データを変数へ保存。
     $my_query = new WP_Query($args);
@@ -229,28 +221,25 @@
               <?php the_post_thumbnail(); ?>
             </div>
             <div class="header-sub">
-              <h5>
-                <ul class="post-categories">
-                  <?php
-                  // 『the_category()』を配列にして出力すには、
-                  // 『get_the_category()関数』を使う。
-                  // 『the_category()』の属性が配列として取れた。
-                  $category = get_the_category();
-                  // name属性をキーにして値を取り出す。
-                  foreach ($category as $attr) {
-                    echo '<li>' . $attr->name . '</li>';
-                  }
-                  ?>
-                </ul>
-              </h5>
+              <ul class="post-categorie">
+                <?php
+                // 『the_category()』を配列にして出力すには、
+                // 『get_the_category()関数』を使う。
+                // 『the_category()』の属性が配列として取れた。
+                $category = get_the_category();
+                // name属性をキーにして値を取り出す。
+                foreach ($category as $attr) {
+                  echo '<li>' . $attr->name . '</li>';
+                }
+                ?>
+              </ul>
               <time datetime="<?php echo get_the_date("Y-m-d") ?>"><?php echo get_the_date("Y年m月d日") ?></time>
             </div>
             <h4 class="shrinkLine"><?php the_title(); ?></h4>
             <p><?php the_excerpt(); ?></p>
           </a>
         </li>
-    <?php endwhile;
-    endif; ?>
+    <?php endwhile; endif; ?>
   </ul>
   <div class="more-info-btn">
     一覧を見る
