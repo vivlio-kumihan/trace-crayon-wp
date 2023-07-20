@@ -883,7 +883,7 @@ header .menu-nav_link-container .menu li a:hover::after {
   position: absolute;
   top: -25px;
   left: -25px;
-  content: "NEWS";
+  content: "";
   writing-mode: vertical-rl;
   font-family: "Jost", sans-serif;
   font-size: 1.5rem;
@@ -1583,48 +1583,48 @@ header .menu-nav_link-container .menu li a:hover::after {
   }
 }
 
-.home .news {
+.home .posts {
   padding: 150px 10% 130px;
   background-color: #f1f9fc;
 }
-.home .news h2 {
+.home .posts h2 {
   margin-bottom: 50px;
 }
-.home .news ul {
+.home .posts ul {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
-.home .news ul li {
+.home .posts ul li {
   position: relative;
 }
-.home .news ul li a {
+.home .posts ul li a {
   width: 100%;
 }
-.home .news ul li a .frame {
+.home .posts ul li a .frame {
   display: block;
   width: 100%;
   overflow: hidden;
   aspect-ratio: 4/3;
   margin-bottom: 25px;
 }
-.home .news ul li a .frame img {
+.home .posts ul li a .frame img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   transition: 0.3s;
 }
-.home .news ul li a .frame:hover img {
+.home .posts ul li a .frame:hover img {
   transform: scale(1.1);
 }
-.home .news ul li a .header-sub {
+.home .posts ul li a .header-sub {
   display: flex;
   align-items: center;
   width: 100%;
   margin-bottom: 10px;
 }
-.home .news ul li a .header-sub .post-categorie {
+.home .posts ul li a .header-sub .post-categorie {
   display: inline-block;
   width: -moz-max-content;
   width: max-content;
@@ -1636,13 +1636,14 @@ header .menu-nav_link-container .menu li a:hover::after {
   background-color: #00266a;
   font-size: 1.2rem;
 }
-.home .news ul li a .header-sub time {
-  font-weight: 500;
+.home .posts ul li a .header-sub time {
+  margin-left: 15px;
+  font-size: 12px;
+  font-weight: 600;
   letter-spacing: 0.08em;
   color: #00266a;
-  margin-left: 15px;
 }
-.home .news ul li a h4.shrinkLine {
+.home .posts ul li a h4.shrinkLine {
   display: block;
   position: relative;
   width: 100%;
@@ -1658,10 +1659,10 @@ header .menu-nav_link-container .menu li a:hover::after {
   color: #00266a;
   border-bottom: 1px solid #c4cdd9;
 }
-.home .news ul li a h4.shrinkLine:hover {
+.home .posts ul li a h4.shrinkLine:hover {
   color: #00266a;
 }
-.home .news ul li a h4.shrinkLine:hover {
+.home .posts ul li a h4.shrinkLine:hover {
   color: #1bc9f5;
   padding-bottom: 20px;
   letter-spacing: 0.08em;
@@ -1670,10 +1671,10 @@ header .menu-nav_link-container .menu li a:hover::after {
   color: #00266a;
   border-bottom: 1px solid #c4cdd9;
 }
-.home .news ul li a h4.shrinkLine:hover:hover {
+.home .posts ul li a h4.shrinkLine:hover:hover {
   color: #00266a;
 }
-.home .news ul li a h4.shrinkLine::after {
+.home .posts ul li a h4.shrinkLine::after {
   position: absolute;
   display: block;
   bottom: -1px;
@@ -1686,54 +1687,54 @@ header .menu-nav_link-container .menu li a:hover::after {
   transform-origin: left top;
   transition: transform 0.3s;
 }
-.home .news ul li a h4.shrinkLine:hover::after {
+.home .posts ul li a h4.shrinkLine:hover::after {
   transform: scale(1, 1);
   transform-origin: left top;
 }
-.home .news ul li a p {
+.home .posts ul li a p {
   margin-top: 30px;
   text-align: left;
   line-height: 1.9;
 }
-.home .news .more-info-btn {
+.home .posts .more-info-btn {
   margin: 80px auto 0;
   padding: 25px 80px;
 }
 @media screen and (max-width: 896px) {
-  .home .news {
+  .home .posts {
     padding: 60px 5% 55px;
   }
-  .home .news ul {
+  .home .posts ul {
     grid-template-columns: 1fr;
     gap: 0;
   }
-  .home .news ul li + li {
+  .home .posts ul li + li {
     margin-top: 45px;
   }
-  .home .news ul li:nth-of-type(2) a, .home .news ul li:nth-of-type(3) a {
+  .home .posts ul li:nth-of-type(2) a, .home .posts ul li:nth-of-type(3) a {
     aspect-ratio: 3/2.05;
   }
-  .home .news ul li h4 .shrinkLine {
+  .home .posts ul li h4 .shrinkLine {
     margin-top: 10px;
     padding-bottom: 15px;
     font-size: 1.8rem;
     aspect-ratio: unset;
   }
-  .home .news ul li p {
+  .home .posts ul li p {
     margin-top: 15px;
     font-size: 1.5rem;
   }
-  .home .news ul li .header-sub {
+  .home .posts ul li .header-sub {
     margin-top: 10px;
   }
-  .home .news ul li .header-sub h5 {
+  .home .posts ul li .header-sub h5 {
     font-size: 1.4rem;
   }
-  .home .news ul li .header-sub time {
+  .home .posts ul li .header-sub time {
     font-size: 1.2rem;
     font-weight: 700;
   }
-  .home .news .more-info-btn {
+  .home .posts .more-info-btn {
     margin: 50px auto 0;
   }
 }
@@ -2054,11 +2055,74 @@ header .menu-nav_link-container .menu li a:hover::after {
   border-bottom: 1px solid #1bc9f5;
   color: #1bc9f5;
 }
-.archive .news {
-  padding: 90px 10% 0;
+.archive .posts:first-of-type {
+  padding-top: 90px;
 }
-.archive .news h1 {
+.archive .posts .post-archive.lastest-post {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  align-items: center;
+  gap: 70px;
+  background-color: #ececec;
+}
+.archive .posts .post-archive.lastest-post li:first-of-type {
+  position: relative;
+}
+.archive .posts .post-archive.lastest-post li:first-of-type svg {
+  position: absolute;
+  top: -12%;
+  left: -45%;
+  width: 70%;
+  height: 70%;
+}
+.archive .posts .post-archive.lastest-post li a .frame {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 3/1.85;
+  margin-bottom: 0;
+}
+.archive .posts .post-archive.lastest-post li a .frame img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.archive .posts .post-archive.lastest-post li a .header-sub {
+  position: relative;
+}
+.archive .posts .post-archive.lastest-post li a .header-sub .icon-new {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 17px;
+  padding: 3px 8px 2px 10px;
+  color: #fff;
+  background-color: red;
+}
+.archive .posts .post-archive.lastest-post li a .header-sub .post-categorie {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+.archive .posts .post-archive.lastest-post li a .header-sub time {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.archive .posts .post-archive.lastest-post li h4 {
+  margin: 20px 0;
+  font-size: 3.4rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+  color: #00266a;
+}
+.archive .posts .post-archive.lastest-post li p {
+  margin-top: 0;
+  line-height: 2;
+  text-align: justify;
+}
+.archive .posts h1 {
   display: inline-block;
+  margin-left: 10%;
   padding: 8px 8px 8px 10px;
   font-size: 3rem;
   font-weight: 700;
@@ -2067,11 +2131,11 @@ header .menu-nav_link-container .menu li a:hover::after {
   color: #fff;
   background-color: #00266a;
 }
-.archive .news .items {
+.archive .posts .items {
   display: block;
-  margin-top: 40px;
+  margin: 40px 10% 115px;
 }
-.archive .news .items li {
+.archive .posts .items li {
   display: inline-block;
   padding: 0 15px;
   font-size: 1.4rem;
@@ -2079,8 +2143,123 @@ header .menu-nav_link-container .menu li a:hover::after {
   letter-spacing: 0.08em;
   border-left: 1px solid #000;
 }
-.archive .news .items li:last-of-type {
+.archive .posts .items li:last-of-type {
   border-right: 1px solid #000;
+}
+.archive .posts .post-archive {
+  padding: 105px 10%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  grid-template-columns: repeat(3, 32%);
+}
+.archive .posts .post-archive .frame {
+  height: 20vw;
+}
+.archive .posts .post-archive li {
+  position: relative;
+}
+.archive .posts .post-archive li a {
+  width: 100%;
+}
+.archive .posts .post-archive li a .frame {
+  grid-template-columns: repeat(3, 32%);
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  margin-bottom: 25px;
+}
+.archive .posts .post-archive li a .frame .frame {
+  height: 20vw;
+}
+.archive .posts .post-archive li a .frame img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: 0.3s;
+}
+.archive .posts .post-archive li a .frame:hover img {
+  transform: scale(1.1);
+}
+.archive .posts .post-archive li a .header-sub {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.archive .posts .post-archive li a .header-sub .post-categorie {
+  display: inline-block;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 4px 8px 5px 10px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background-color: #00266a;
+  font-size: 1.2rem;
+}
+.archive .posts .post-archive li a .header-sub time {
+  margin-left: 15px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #00266a;
+}
+.archive .posts .post-archive li a h4.shrinkLine {
+  display: block;
+  position: relative;
+  width: 100%;
+  font-size: 2.2rem;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  line-height: 1;
+  transition: 0.3s;
+  padding-bottom: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  font-weight: bold;
+  color: #00266a;
+  border-bottom: 1px solid #c4cdd9;
+}
+.archive .posts .post-archive li a h4.shrinkLine:hover {
+  color: #00266a;
+}
+.archive .posts .post-archive li a h4.shrinkLine:hover {
+  color: #1bc9f5;
+  padding-bottom: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  font-weight: bold;
+  color: #00266a;
+  border-bottom: 1px solid #c4cdd9;
+}
+.archive .posts .post-archive li a h4.shrinkLine:hover:hover {
+  color: #00266a;
+}
+.archive .posts .post-archive li a h4.shrinkLine::after {
+  position: absolute;
+  display: block;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  content: "";
+  background-color: #00266a;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform 0.3s;
+}
+.archive .posts .post-archive li a h4.shrinkLine:hover::after {
+  transform: scale(1, 1);
+  transform-origin: left top;
+}
+.archive .posts .post-archive li a p {
+  margin-top: 30px;
+  text-align: left;
+  line-height: 1.9;
 }
 
 .single-page {

@@ -1,12 +1,13 @@
 @use "../../forwards" as fw
 
 .home
-  .news 
+  .posts 
     padding: 150px 10% 130px
     background-color: fw.$color-cyan-light-blue
     h2 
       margin-bottom: 50px
-    +fw.blogArchive
+    ul
+      +fw.blogArchive
     // ul 
     //   display: grid
     //   grid-template-columns: repeat(3, 1fr)
@@ -45,12 +46,11 @@
     //         margin-top: 30px
     //         text-align: left
     //         line-height: 1.9
-
     .more-info-btn 
       margin: 80px auto 0
       padding: 25px 80px
 
-  .news 
+  .posts 
     +fw.media-query-sp
       padding: 60px 5% 55px
       h2

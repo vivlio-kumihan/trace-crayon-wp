@@ -54,20 +54,74 @@
       span[lang="ja"]
         border-bottom: 1px solid fw.$colorLinkHover
         color: fw.$colorLinkHover
-  .news
-    padding: 90px 10% 0
+  .posts
+    &:first-of-type
+      padding-top: 90px
+    .post-archive.lastest-post
+      grid-template-columns: repeat(2, 1fr)
+      grid-template-rows: 1fr
+      align-items: center
+      gap: 70px
+      background-color: #ececec
+      li
+        &:first-of-type
+          position: relative
+          svg
+            position: absolute
+            top: -12%
+            left: -45%
+            width: 70%
+            height: 70%
+        a
+          .frame
+            width: 100%
+            height: 100%
+            aspect-ratio: 3/1.85
+            margin-bottom: 0
+            img
+              width: 100%
+              object-fit: cover
+          .header-sub
+            position: relative
+            .icon-new
+              position: absolute
+              top: 0
+              right: 0
+              font-size: 17px
+              padding: 3px 8px 2px 10px
+              color: #fff
+              background-color: red
+            .post-categorie
+              font-size: 1.4rem
+              font-weight: 500
+              letter-spacing: .1em
+            time
+              font-size: 1.2rem
+              font-weight: 700
+        h4
+          margin: 20px 0
+          font-size: 3.4rem
+          font-weight: 600
+          letter-spacing: 0.04em
+          line-height: 1.3
+          color: fw.$color-cyan-vivid-blue
+        p
+          margin-top: 0
+          line-height: 2
+          text-align: justify
     h1
       display: inline-block
+      margin-left: 10%
       padding: 8px 8px 8px 10px
       font-size: 3rem
       font-weight: 700
       line-height: 1
       letter-spacing: 0.2em
       color: #fff
-      background-color: #00266a
+      background-color: fw.$color-cyan-vivid-blue
     .items
       display: block
-      margin-top: 40px
+      margin: 40px 10% 115px
       li
         display: inline-block
         padding: 0 15px
@@ -77,3 +131,11 @@
         border-left: 1px solid #000
         &:last-of-type
           border-right: 1px solid #000
+    .post-archive
+      padding: 105px 10%
+      +fw.blogArchive
+        grid-template-columns: repeat(3, 32%)
+        .frame
+          height: 20vw
+
+        

@@ -1,5 +1,4 @@
 <?php 
-
 // 外観以下にメニュー項目を追加
 function theme_slug_widgets_init() {
   register_sidebar(array(
@@ -43,3 +42,10 @@ function post_has_archive($args, $post_type)
   return $args;
 }
 add_filter('register_post_type_args', 'post_has_archive', 10, 2);
+
+
+// 投稿抜粋の末尾記号を変更する。
+function new_excerpt_more( $more ) {
+  return '......' ;
+}
+add_filter( 'excerpt_more' , 'new_excerpt_more' );

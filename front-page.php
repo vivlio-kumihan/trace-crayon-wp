@@ -196,9 +196,9 @@
   </ul>
 </section>
 
-<section id="news" class="news">
+<section id="news" class="posts">
   <h2>くれよんの<span class="colorRuby">最</span><span class="colorRuby">新</span><span class="colorRuby">情</span><span class="colorRuby">報</span><br><span lang="en">BLOG</span></h2>
-  <ul class="postList">
+  <ul class="post-archive">
     <!-- 投稿数を3ページに限定する設定 -->
     <?php
     // 3ページだけ取ってくるという状態を変数に格納。
