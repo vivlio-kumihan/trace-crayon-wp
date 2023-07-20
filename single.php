@@ -2,6 +2,11 @@
 
 
 <section class="single-page">
+  <div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
+    <?php if (function_exists('bcn_display')) {
+      bcn_display();
+    } ?>
+  </div>
   <!-- サムネールを出力する。 -->
   <!-- 投稿された固定ページのID、出力するimg要素に付けるクラス名を引数にする。 -->
   <div class="frame">

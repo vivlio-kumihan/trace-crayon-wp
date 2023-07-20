@@ -72,7 +72,12 @@
         <li><a href="">採用情報</a></li>
         <li><a href="">お問い合わせ</a></li>
       </ul> -->
-      <button id="content-links-btn" class="content-links-btn">MENU</button>
+      <button id="content-links-btn" class="content-links-btn">
+        <div></div>
+        <div></div>
+        <div></div>
+        MENU
+      </button>
       <div id="menu-link" class="menu-link">
         <?php
         wp_nav_menu(array(

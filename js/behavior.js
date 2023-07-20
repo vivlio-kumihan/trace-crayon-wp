@@ -5,7 +5,7 @@
 
 
 // 配列を合体させたい場合のconcat()関数の例
-// const moreInfoBtn = Array.from(document.querySelectorAll('.more-info-btn'))
+// const moreInfoBtn = document.querySelectorAll('.more-info-btn')
 // const arg = leadCopy.concat(moreInfoBtn)
 
 
@@ -20,7 +20,7 @@
 //   })
 // }
 
-// const leadCopy = Array.from(document.querySelectorAll('.lead-copy'))
+// const leadCopy = document.querySelectorAll('.lead-copy')
 // killLetterSpace(leadCopy)
 
 
@@ -67,7 +67,7 @@ gsap.timeline()
 //    'afterend'     要素の直後に追加
 
 // for content-links-btn div
-document.getElementById('content-links-btn').insertAdjacentHTML('afterbegin', '<div></div><div></div><div></div>')
+// document.getElementById('content-links-btn').insertAdjacentHTML('afterbegin', '<div></div><div></div><div></div>')
 
 // for .more-info-btn .boder
 document.querySelectorAll('.border').forEach(elem => {
@@ -108,15 +108,11 @@ ScrollTrigger.create({
 })
 
 
-
-
-
-
-
 // ////////////////////////////////////////////////
 // #anchor-special-frame
 // 授業後、どうしてもpinのやり方を覚えたくて考案したもの。
 // pinと追従のアニメーションを完全にイメージすることができた。
+// こちらでいかせていただいてよろしいでしょうか？
 
 // trigger要素が、『任意の地点』でpinし、
 // 以降、任意『要素に追従』して、スクロールアウトする効果
@@ -254,7 +250,7 @@ gsap.fromTo(elems, .7, {
     // アニメーションを開始するという意味。
     start: '30% 60%',
     end: '60% 50%',
-    scrub: 1,
+    scrub: true,
     // markers: true
   }
 })
@@ -262,9 +258,7 @@ gsap.fromTo(elems, .7, {
 
 // ////////////////////////////////////////////////
 // .service .header-block-appear
-const header2 = Array.from(document.querySelectorAll('.header-block-appear h2'))
-const header3 = Array.from(document.querySelectorAll('.header-block-appear h3'))
-const headerAppear = header2.concat(header3)
+const headerAppear = document.querySelectorAll('.header-block-appear h2, .header-block-appear h3')
 headerAppear.forEach(elem => {
   gsap.from(elem, .7, {
     opacity: 0,
@@ -376,40 +370,49 @@ const swiper = new Swiper('.swiper', {
 
 // ////////////////////////////////////////////////
 // projectのpoint
-const points = Array.from(document.getElementById('point').children)
-points.forEach(elem => {
-  let el = gsap.utils.selector(elem);
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: elem,
-      start: '0% 50%',
-      pused: true,
-      // markers: true
-    }
-  }).to(elem, .4, { opacity: 1 })
-    .to(elem, .4, { onUpdate: () => { elem.classList.add('open') } })
-    .fromTo(el('svg path'), 1.5,  { 'stroke-dasharray': '1000px', 'stroke-dashoffset': '1000px' },
-                                  { 'stroke-dashoffset': '2000px' }, '-=0.8')
-})
 
-points.forEach(elem => {
-  let el = gsap.utils.selector(elem);
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: elem,
-      start: '40% 47%',
-      pused: true,
-      // markers: true
-    }
-  }).to(el('div'), .7, { opacity: 1 })
-    .to(el('h4'), .7, { opacity: 1 })
-    .to(el('p:first-of-type'), .7, { opacity: 1 })
-    .to(el('p:last-of-type'), .7, { opacity: 1 }, '-=0.3')
+// 3つの要素
+// それぞれの要素の中に複数の要素
+// これらを引き金を引いた瞬間に順次アニメーションをしていく。
+
+// 『一つ』の引き金が引きれたら、
+ScrollTrigger.create({
+  trigger: '#point',
+  start: '90% 100%',
+  // markers: true,
+  // 引き金が引きれたタイミングで => onEnterコールバック関数発動
+  onEnter: () => {
+    const points = Array.from(document.getElementById('point').children)
+    // ３つのli要素を順次処理する。
+    points.forEach((elem, idx) => {
+      // forEachで回すごとに『idx * .2』延滞させる。
+      const animationDelay = `+=${ idx * .2 }`
+      // li要素を親要素として内包されている要素へアクセスする準備
+      let parentElem = gsap.utils.selector(elem)
+      // 後は、下記の進行通り効果・動きが処理される。
+      gsap.timeline()
+        // li要素全体に対して延滞効果をつける。
+        // これをつけないと一斉に変化してしまう。効果抜群。
+        // .to(elem, .4, { opacity: 1 })
+        .to(elem, .4, { opacity: 1 }, animationDelay)
+        // 動きが始まるのを合図にクラスをつける。シャッター効果。
+        .to(elem, .4, { onStart: () => elem.classList.add('open') })
+        .fromTo(parentElem('svg path'), 1.5, { 'stroke-dasharray': '1000px', 'stroke-dashoffset': '1000px' },
+          { 'stroke-dashoffset': '2000px' }, '-=0.8')
+        // li > div要素全体に延滞効果をつける。
+        // これをつけないと一斉に変化してしまう。効果抜群。
+        // .to(parentElem('div'), .7, { opacity: 1 })
+        .to(parentElem('div'), .7, { opacity: 1 }, animationDelay)
+        .to(parentElem('h4'), .7, { opacity: 1 })
+        .to(parentElem('p:first-of-type'), .7, { opacity: 1 })
+        .to(parentElem('p:last-of-type'), .7, { opacity: 1 }, '-=0.3')
+    })
+  }
 })
 
 // news
 const news = document.getElementById('news')
-const el = gsap.utils.selector(news)
+const parentElem = gsap.utils.selector(news)
 const lists = document.querySelectorAll('#news li')
 let mm = gsap.matchMedia();
 
@@ -425,8 +428,8 @@ mm.add("(min-width: 897px)", () => {
       start: 'top 40%',
       // markers: true
     }
-  }).from(el('h2'), .7, {})
-    .from(el('ul'), .7, { y: 50 })
+  }).from(parentElem('h2'), .7, {})
+    .from(parentElem('ul'), .7, { y: 50 })
 })
   
 // mm.add("(max-width: 896px)", () => {

@@ -1,173 +1,175 @@
 @use "../../forwards" as fw
 
-.cover 
-  position: relative
-  width: 100%
-  height: 100vh
-  color: #fff
-  background-image: linear-gradient(0deg, #000, #333 5% ,#888 13% , #ccc 22%, #ddd 25%, #eee 28%, #fff 32%, #fff)
-  overflow: hidden
-  .copy 
-    p 
-      position: absolute
-      left: 10%
-      margin: 0
-      font-family: fw.$noto
-      font-size: 5.5rem
-      font-weight: 600
-      line-height: 1
-      color: #fff
-      &.catch-sub 
-        top: 350px
-        padding: 6px
-        font-size: 2rem
-        font-weight: 700
-        letter-spacing: .15em
-        border: 1px solid #fff
-      &.catch-main
-        top: 415px
-        letter-spacing: 0.08em
-        line-height: 1.4
-        text-align: left
-      &[lang="en"] 
-        font-family: fw.$jost
-        font-size: 1rem
-        font-weight: 500
-        font-style: italic
-        letter-spacing: .08em
-        &.catch-sub-en
-          top: 200px
-          padding-left: 3.75em
-          &::before
-            +fw.positionAbsoluteCTL(true)
-            left: 0
-            content: ""
-            width: 3.25em
-            height: 1px
-            background-color: #fff
-        &.catch-main-en 
-          top: 200px
-          right: 5%
-          writing-mode: vertical-rl
-        &.shrinkLine
-          bottom: 16%
-          right: 5%
-          letter-spacing: .2em
-          writing-mode: vertical-rl
-          &::before 
-            position: absolute
-            top: 135%
-            right: 3px
-            content: ""
-            width: 2px
-            height: 150px
-            background-color: fw.$colorLinkHover
-            animation: shrinkLine  3s infinite
-            z-index: 1
-          &::after 
-            position: absolute
-            top: 135%
-            right: 3px
-            content: ""
-            width: 2px
-            height: 150px
-            background-color: #fff
-          @keyframes shrinkLine
-            0%
-              transform: scale(1, 0)
-              transform-origin: left top
-            50%
-              transform: scale(1, 1)
-              transform-origin: left top
-            51%
-              transform: scale(1, 1)
-              transform-origin: left bottom
-            100%
-              transform: scale(1, 0)
-              transform-origin: left bottom
-    .what-new 
-      position: absolute
-      bottom: 7%
-      left: 10%
-      width: fit-content
-      padding-left: 20px
-      h4 
-        position: relative
-        margin-bottom: 10px
-        font-size: 1.2rem
-        line-height: 1
-        letter-spacing: .15em
-        color: fw.$color-cyan-daru-gray
-        &::before 
-          position: absolute
-          top: -5px
-          left: -20px
-          content: "NEWS"
-          writing-mode: vertical-rl
-          font-family: fw.$jost
-          font-size: 1.5rem
-          font-weight: 500
-          line-height: 1
-          letter-spacing: .08em
-          color: #fff
-      p 
-        margin: 0
-        font-size: 1.4rem
-        line-height: 1
-        letter-spacing: .15em
-        white-space: nowrap
-  .bg-visual 
-    position: absolute
-    top: 0
-    left: 0
+.home
+  .cover 
+    position: relative
     width: 100%
-    aspect-ratio: 1/0.735
-    video 
-      width: 100%
-      height: 100%
-      object-fit: cover
-      &.sp 
-        display: none
-
-.cover
-  +fw.media-query-sp
-    z-index: -2
-    .bg-visual
-      aspect-ratio: unset
-      z-index: -1
-      video
-        transform: scale(1.1)
-        &.pc
-          display: none
-        &.sp
-          display: block
-    .copy
-      width: 100%
-      margin-top: 215px
-      padding: 0 5%
-      p
-        position: unset
-        text-align: left
-        &.catch-sub
-          display: inline-block
-          margin-bottom: 20px
-          font-size: 1.6rem
-          letter-spacing: .15em
-        &.catch-main
-          font-size: 3.2rem
-      p[lang='en']
-        margin-bottom: 10px
-        letter-spacing: .2em
-        &.catch-sub-en
-          padding-left: 0
-          &::before
-            display: none
-        &.catch-main-en
-          writing-mode: horizontal-tb
-        &.shrinkLine
-          display: none
-      .what-new
-        bottom: 20%
+    height: 100vh
+    color: #fff
+    background-image: linear-gradient(0deg, #000, #333 5% ,#888 13% , #ccc 22%, #ddd 25%, #eee 28%, #fff 32%, #fff)
+    overflow: hidden
+    .copy 
+      p 
+        position: absolute
         left: 10%
-        h4
-          font-size: 1.3rem
+        margin: 0
+        font-family: fw.$noto
+        font-size: 5.5rem
+        font-weight: 600
+        line-height: 1
+        color: #fff
+        &.catch-sub 
+          top: 350px
+          padding: 6px
+          font-size: 2rem
+          font-weight: 700
+          letter-spacing: .15em
+          border: 1px solid #fff
+        &.catch-main
+          top: 415px
+          letter-spacing: 0.08em
+          line-height: 1.4
+          text-align: left
+        &[lang="en"] 
+          font-family: fw.$jost
+          font-size: 1rem
+          font-weight: 500
+          font-style: italic
+          letter-spacing: .08em
+          &.catch-sub-en
+            top: 200px
+            padding-left: 3.75em
+            &::before
+              +fw.positionAbsoluteCTL(true)
+              left: 0
+              content: ""
+              width: 3.25em
+              height: 1px
+              background-color: #fff
+          &.catch-main-en 
+            top: 200px
+            right: 5%
+            writing-mode: vertical-rl
+          &.shrinkLine
+            bottom: 16%
+            right: 5%
+            letter-spacing: .2em
+            writing-mode: vertical-rl
+            &::before 
+              position: absolute
+              top: 135%
+              right: 3px
+              content: ""
+              width: 2px
+              height: 150px
+              background-color: fw.$colorLinkHover
+              animation: shrinkLine  3s infinite
+              z-index: 1
+            &::after 
+              position: absolute
+              top: 135%
+              right: 3px
+              content: ""
+              width: 2px
+              height: 150px
+              background-color: #fff
+            @keyframes shrinkLine
+              0%
+                transform: scale(1, 0)
+                transform-origin: left top
+              50%
+                transform: scale(1, 1)
+                transform-origin: left top
+              51%
+                transform: scale(1, 1)
+                transform-origin: left bottom
+              100%
+                transform: scale(1, 0)
+                transform-origin: left bottom
+      .what-new 
+        position: absolute
+        bottom: 7%
+        left: 10%
+        width: fit-content
+        padding-left: 20px
+        h4 
+          margin-bottom: 10px
+          font-size: 1.2rem
+          line-height: 1
+          letter-spacing: .15em
+          color: fw.$color-cyan-daru-gray
+        p 
+          position: relative
+          left: 0
+          margin: 0
+          font-size: 1.4rem
+          line-height: 1
+          letter-spacing: .15em
+          white-space: nowrap
+          .eye-catch 
+            position: absolute
+            top: -25px
+            left: -25px
+            content: "NEWS"
+            writing-mode: vertical-rl
+            font-family: fw.$jost
+            font-size: 1.5rem
+            font-weight: 500
+            line-height: 1
+            letter-spacing: .08em
+            color: #fff
+    .bg-visual 
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      aspect-ratio: 1/0.735
+      video 
+        width: 100%
+        height: 100%
+        object-fit: cover
+        &.sp 
+          display: none
+
+  .cover
+    +fw.media-query-sp
+      z-index: -2
+      .bg-visual
+        aspect-ratio: unset
+        z-index: -1
+        video
+          transform: scale(1.1)
+          &.pc
+            display: none
+          &.sp
+            display: block
+      .copy
+        width: 100%
+        margin-top: 215px
+        padding: 0 5%
+        p
+          position: unset
+          text-align: left
+          &.catch-sub
+            display: inline-block
+            margin-bottom: 20px
+            font-size: 1.6rem
+            letter-spacing: .15em
+          &.catch-main
+            font-size: 3.2rem
+        p[lang='en']
+          margin-bottom: 10px
+          letter-spacing: .2em
+          &.catch-sub-en
+            padding-left: 0
+            &::before
+              display: none
+          &.catch-main-en
+            writing-mode: horizontal-tb
+          &.shrinkLine
+            display: none
+        .what-new
+          bottom: 20%
+          left: 10%
+          h4
+            font-size: 1.3rem

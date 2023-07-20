@@ -29,3 +29,17 @@ register_nav_menus(array(
   'nav-link' => 'nav_link',
   'menu-link' => 'menu_link',
 ));
+
+
+// 投稿一覧ページを作成する。
+// カテゴリーやタブのページ生成とは何の関係もないことに留意する。
+function post_has_archive($args, $post_type)
+{
+  if ('post' == $post_type) {
+    $args['rewrite'] = true;
+    // ややこしいのでファイル名と同じ名称にする。
+    $args['has_archive'] = 'archive';
+  }
+  return $args;
+}
+add_filter('register_post_type_args', 'post_has_archive', 10, 2);

@@ -14,7 +14,7 @@
     <div class="what-new">
       <a href="">
         <h4><time datetime="2023-06-06">2023.06.06</time>採用関連</h4>
-        <p>「くれよんで働く」ってどうゆうこと…？</p>
+        <p><span class="eye-catch">NEWS</span>「くれよんで働く」ってどうゆうこと…？</p>
       </a>
     </div>
   </div>
@@ -23,9 +23,9 @@
 <section id="concept" class="concept">
   <div class="composed-visual">
     <div id="visual-container" class="visual-container">
-      <img id="copy-one" class="copy-one" src="<?php echo get_template_directory_uri(); ?>/img/copy01.png" alt="ヘッドコピーの最初のフレーズ">
-      <img id="copy-two" class="copy-two" src="<?php echo get_template_directory_uri(); ?>/img/copy02.png" alt="ヘッドコピーの二番目のフレーズ">
-      <img id="catch-copy" class="catch-copy" src="<?php echo get_template_directory_uri(); ?>/img/copy03.png" alt="キャッチコピー">
+      <img id="copy-one" class="copy-one" src="<?php echo get_template_directory_uri(); ?>/img/copy01.png" alt="灯">
+      <img id="copy-two" class="copy-two" src="<?php echo get_template_directory_uri(); ?>/img/copy02.png" alt="を">
+      <img id="catch-copy" class="catch-copy" src="<?php echo get_template_directory_uri(); ?>/img/copy03.png" alt="生活に光を。職人の心に灯を。">
       <img id="visual-containe-frame" class="frame" src="<?php echo get_template_directory_uri(); ?>/img/copy-box.png" alt="コピーを囲む枠">
     </div>
   </div>
@@ -239,7 +239,8 @@
             <p><?php the_excerpt(); ?></p>
           </a>
         </li>
-    <?php endwhile; endif; ?>
+    <?php endwhile;
+    endif; ?>
   </ul>
   <div class="more-info-btn">
     一覧を見る

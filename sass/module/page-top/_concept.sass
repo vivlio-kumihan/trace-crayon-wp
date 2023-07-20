@@ -1,165 +1,166 @@
 @use "../../forwards" as fw
 
-.concept 
-  +fw.bgImage('img/fv-bg.png', 180%, $position: 50% 62%)
-  width: 100%
-  color: #fff
-  background-color: #000
-  .composed-visual 
-    display: flex
-    justify-content: center
-    align-items: center
-    .visual-container
-      position: relative
-      width: 60%
-      height: 60vw
-      img 
-        position: absolute
-        &.copy-one 
-          top: 40%
-          left: 50%
-          transform: translateX(-83%)
-          width: 28%
-        &.copy-two 
-          top: 56%
-          left: 50%
-          transform: translateX(5%)
-          width: 26%
-        &.catch-copy 
-          top: 74%
-          left: 50%
-          transform: translateX(-48%)
-          width: 52%
-        &.frame 
-          top: 57%
-          left: 50%
-          transform: translateX(-50%)
-          width: 63%
-  p 
-    margin-top: 10px
-    text-align: center
-    font-size: 1.8rem
-    letter-spacing: 0.15em
-    line-height: 2.55
-    color: #fff
-  .philosophy 
-    display: flex
-    justify-content: center
-    align-items: center
-    position: relative
-    margin: 55px auto 0
-    width: 470px
-    height: 135px
-    background-color: fw.$color-cyan-dark-blue
-    transition: .3s
-    img 
-      display: inline-block
-      width: 250px
-    .border
-      +fw.positionAbsoluteCTL
-      width: calc(470px - 20px)
-      height: calc(135px - 20px)
-      border: 1px solid fw.$color-philosofhy-line
-      span 
-        $size: 5px
-        // 変数内に単位『px』が含まれているから
-        // 下に式はその単位付きの値を引き継ぐわけ。
-        // 微妙に不思議な書き方。
-        $adjustHaflfVal: $size * -0.5
-        position: absolute
-        width: $size
-        height: $size
-        background-color: fw.$color-light-gray
-        &:nth-of-type(1)
-          top: $adjustHaflfVal
-          left: $adjustHaflfVal
-        &:nth-of-type(2) 
-          top: $adjustHaflfVal
-          left: 50%
-          transform: translateX(-50%)
-        &:nth-of-type(3) 
-          top: $adjustHaflfVal
-          right: $adjustHaflfVal
-        &:nth-of-type(4) 
-          bottom: $adjustHaflfVal
-          left: $adjustHaflfVal
-        &:nth-of-type(5) 
-          bottom: $adjustHaflfVal
-          left: 50%
-        &:nth-of-type(6) 
-          bottom: $adjustHaflfVal
-          right: $adjustHaflfVal
-    &:hover
-      background-color: #fff
-      img
-        mix-blend-mode: difference
-      span
-        background-color: fw.$color-cyan-vivid-blue
-
-
-  .composed-staff 
-    +fw.bgImage('img/people-bg02.png', $size: cover, $position: 50% 100%)
-    position: relative
+.home
+  .concept 
+    +fw.bgImage('img/fv-bg.png', 180%, $position: 50% 62%)
     width: 100%
-    height: 49.5vw
-    overflow: hidden
-    .staff
-      +fw.positionAbsoluteCTL($left: true)
-      bottom: 0
-      width: 100%
-    .shadow
-      +fw.positionAbsoluteCTL($left: true)
-      bottom: 0
-      width: 100%
-    .light
-      +fw.positionAbsoluteCTL($left: true)
-      bottom: 14%
-      width: 50%
-      mix-blend-mode: screen
-    .behind
-      +fw.positionAbsoluteCTL($left: true)
-      bottom: 0
-      width: 100%
-
-.concept
-  +fw.media-query-sp
-    .composed-visual
-      margin-bottom: 50px
+    color: #fff
+    background-color: #000
+    .composed-visual 
+      display: flex
+      justify-content: center
+      align-items: center
       .visual-container
-        width: 100%
-        height: 75vw
-        img
-          &.copy-one
-            top: 25%
-            width: 33%
-          &.copy-two
-            top: 43%
-            width: 32%
-          &.catch-copy
-            top: 72.5%
-            width: 65%
-          &.frame
-            top: 45%
-            width: 76%
-    p
-      padding: 0 5%
-      text-align: justify
-      font-size: 1.6rem
-      .for-pc
-        display: none
-    .philosophy
-      width: 80%
-      height: 29vw
-      margin-top: 50px
-      img
+        position: relative
         width: 60%
+        height: 60vw
+        img 
+          position: absolute
+          &.copy-one 
+            top: 40%
+            left: 50%
+            transform: translateX(-83%)
+            width: 28%
+          &.copy-two 
+            top: 56%
+            left: 50%
+            transform: translateX(5%)
+            width: 26%
+          &.catch-copy 
+            top: 74%
+            left: 50%
+            transform: translateX(-48%)
+            width: 52%
+          &.frame 
+            top: 57%
+            left: 50%
+            transform: translateX(-50%)
+            width: 63%
+    p 
+      margin-top: 10px
+      text-align: center
+      font-size: 1.8rem
+      letter-spacing: 0.15em
+      line-height: 2.55
+      color: #fff
+    .philosophy 
+      display: flex
+      justify-content: center
+      align-items: center
+      position: relative
+      margin: 55px auto 0
+      width: 470px
+      height: 135px
+      background-color: fw.$color-cyan-dark-blue
+      transition: .3s
+      img 
+        display: inline-block
+        width: 250px
       .border
-        width: 95%
-        height: 90%
-    .composed-staff
-      margin-top: 90px
-      height: 90vw
-      .shadow, .staff, .light, .behind-bright, .behind-dark
-        width: 145%
+        +fw.positionAbsoluteCTL
+        width: calc(470px - 20px)
+        height: calc(135px - 20px)
+        border: 1px solid fw.$color-philosofhy-line
+        span 
+          $size: 5px
+          // 変数内に単位『px』が含まれているから
+          // 下に式はその単位付きの値を引き継ぐわけ。
+          // 微妙に不思議な書き方。
+          $adjustHaflfVal: $size * -0.5
+          position: absolute
+          width: $size
+          height: $size
+          background-color: fw.$color-light-gray
+          &:nth-of-type(1)
+            top: $adjustHaflfVal
+            left: $adjustHaflfVal
+          &:nth-of-type(2) 
+            top: $adjustHaflfVal
+            left: 50%
+            transform: translateX(-50%)
+          &:nth-of-type(3) 
+            top: $adjustHaflfVal
+            right: $adjustHaflfVal
+          &:nth-of-type(4) 
+            bottom: $adjustHaflfVal
+            left: $adjustHaflfVal
+          &:nth-of-type(5) 
+            bottom: $adjustHaflfVal
+            left: 50%
+          &:nth-of-type(6) 
+            bottom: $adjustHaflfVal
+            right: $adjustHaflfVal
+      &:hover
+        background-color: #fff
+        img
+          mix-blend-mode: difference
+        span
+          background-color: fw.$color-cyan-vivid-blue
+
+
+    .composed-staff 
+      +fw.bgImage('img/people-bg02.png', $size: cover, $position: 50% 100%)
+      position: relative
+      width: 100%
+      height: 49.5vw
+      overflow: hidden
+      .staff
+        +fw.positionAbsoluteCTL($left: true)
+        bottom: 0
+        width: 100%
+      .shadow
+        +fw.positionAbsoluteCTL($left: true)
+        bottom: 0
+        width: 100%
       .light
-        bottom: -40%
+        +fw.positionAbsoluteCTL($left: true)
+        bottom: 14%
+        width: 50%
+        mix-blend-mode: screen
+      .behind
+        +fw.positionAbsoluteCTL($left: true)
+        bottom: 0
+        width: 100%
+
+  .concept
+    +fw.media-query-sp
+      .composed-visual
+        margin-bottom: 50px
+        .visual-container
+          width: 100%
+          height: 75vw
+          img
+            &.copy-one
+              top: 25%
+              width: 33%
+            &.copy-two
+              top: 43%
+              width: 32%
+            &.catch-copy
+              top: 72.5%
+              width: 65%
+            &.frame
+              top: 45%
+              width: 76%
+      p
+        padding: 0 5%
+        text-align: justify
+        font-size: 1.6rem
+        .for-pc
+          display: none
+      .philosophy
+        width: 80%
+        height: 29vw
+        margin-top: 50px
+        img
+          width: 60%
+        .border
+          width: 95%
+          height: 90%
+      .composed-staff
+        margin-top: 90px
+        height: 90vw
+        .shadow, .staff, .light, .behind-bright, .behind-dark
+          width: 145%
+        .light
+          bottom: -40%

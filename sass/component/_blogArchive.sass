@@ -1,0 +1,48 @@
+@use "../library/function" as fn
+@use "../library/texts" as tx
+@use "../library/mixin/_positionAbsoluteCTL" as pab
+@use "../library/mixin/_postCategorie" as categorie
+@use "../library/mixin" as mx
+@use "../variables" as var
+@use "../variables" as col
+
+
+=blogArchive
+  ul 
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    gap: 2rem
+    li
+      position: relative
+      a
+        width: 100%
+        .frame
+          +mx.hoverInnerScale
+            aspect-ratio: 4/3
+            margin-bottom: 25px
+        .header-sub
+          display: flex
+          align-items: center
+          width: 100%
+          margin-bottom: 10px
+          .post-categorie
+            +categorie.postCategorie
+          time 
+            font-weight: 500
+            letter-spacing: 0.08em
+            color: col.$color-cyan-vivid-blue
+            margin-left: 15px
+        h4.shrinkLine
+          +mx.shrinkBorderHeader(2.2rem, -1px, 3px, col.$color-cyan-vivid-blue, mx.$left_left)
+            padding-bottom: 20px
+            letter-spacing: 0.08em
+            line-height: 1.3
+            font-weight: bold
+            color: col.$color-cyan-vivid-blue
+            border-bottom: 1px solid col.$color-cyan-dark-blue-light
+            &:hover
+              color: col.$color-cyan-vivid-blue
+        p 
+          margin-top: 30px
+          text-align: left
+          line-height: 1.9
