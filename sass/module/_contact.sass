@@ -1,0 +1,163 @@
+@use "../forwards" as fw
+  
+.page
+  .contact-page
+    .lead
+      margin: 110px 0 40px
+    .call-tel, .office-hours
+      text-align: center
+    .call-tel
+      display: flex
+      justify-content: center
+      align-items: end
+      position: relative
+      margin: 0 auto
+      font-family: fw.$jost
+      font-size: 4.8rem
+      letter-spacing: .1em
+      &::after
+        +fw.positionAbsoluteCTL($left: ture)
+        position: absolute
+        top: 80px
+        width: 300px
+        content: ''
+        border-bottom: 2px solid fw.$color-cyan-vivid-blue
+      .eye-catch
+        padding: 0 15px 8px 0
+        font-size: 2rem
+        letter-spacing: .1em
+    .office-hours
+      margin: 70px 0 100px
+      font-size: 1.6rem
+      font-weight: 500
+      letter-spacing: .1em
+      time
+        &:first-of-type
+          margin-left: 15px
+      time, .hyphone
+        font-size: 2.5rem
+          
+    .contact-container
+      padding: 96px 15% 140px
+      background-color: #f6f7f7
+      .process
+        display: flex
+        justify-content: center
+        align-items: center
+        position: relative
+        width: 100%
+        margin: 0 auto
+        text-align: center
+        &::after
+          +fw.positionAbsoluteCTL($left: ture)
+          position: absolute
+          top: 40%
+          width: 250px
+          content: ''
+          border-top: 1px solid #333
+        li
+          position: relative
+          font-size: 1.4rem
+          font-weight: 700
+          line-height: 1
+          color: fw.$color-cyan-vivid-blue
+          [lang=en]
+            font-family: fw.$jost
+            font-size: 2rem
+            line-height: 3.5
+            &::after
+              +fw.positionAbsoluteCTL($left: ture)
+              position: absolute
+              top: 10%
+              width: 50px
+              height: 50px
+              content: ""
+              color: fw.$color-cyan-vivid-blue
+              background-color: #fff
+              border: 1px solid fw.$color-cyan-vivid-blue
+              border-radius: 50%
+          + li
+            margin-left: 100px
+      .contact-form
+        div
+          display: flex
+          align-items: center
+          dt
+            width: min(300px, 100%) 
+            padding: 30px 0 30px
+            font-size: 1.6rem
+            font-weight: 700
+            line-height: 1
+            letter-spacing: 0.08em
+            span
+              margin-left: 5px
+              padding: 1px 4px
+              font-size: 1.1rem
+              line-height: 1
+              color: #fff
+              background-color: fw.$color-cyan-vivid-blue
+          dd
+            width: 100%
+            input
+              width: 100%
+              padding: 20px
+              background-color: #e7e7e7
+              border: unset
+              font-size: 1.6rem
+              &[type="text"]::placeholder, &[type="email"]::placeholder, &[type="tel"]::placeholder
+                font-size: 1.4rem
+                color: #b5b5b5
+            div
+              input
+                &[type="radio"]
+                  opacity: 0
+                  // // テストする。
+                  // // チェックするとラベルの前と後ろにaがつく。
+                  // input[type="radio"]:checked + label::before,
+                  // input[type="radio"]:checked + label::after
+                  //   content: ''
+                  // // この仕組みを使って、
+              input[type="radio"] + label
+                position: relative
+              input[type="radio"] + label::before
+                position: absolute
+                top: 50%
+                transform: translateY(-50%)
+                left: -30px
+                content: ''
+                width: 25px
+                height: 25px
+                background-color: #fff
+                border: 1px solid #aaa
+                border-radius: 50%
+              input[type="radio"]:checked + label::after
+                position: absolute
+                top: 50%
+                transform: translateY(-50%)
+                content: ''
+                left: -23.5px
+                width: 12px
+                height: 12px
+                background-color: fw.$color-cyan-vivid-blue
+                border-radius: 50%
+          &.input-raido
+            dd
+              display: flex
+              align-items: center
+              gap: 10px
+              padding-left: 20px
+              div
+                .entry
+                  width: unset
+                label
+                  font-size: 1.8rem
+                  font-weight: 500
+                + div
+                  margin-left: 15px
+
+
+
+          
+
+
+    

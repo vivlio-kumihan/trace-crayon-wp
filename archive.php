@@ -1,7 +1,9 @@
+<?php /* Template Name: ブログ　*/ ?>
+
 <?php get_header(); ?>
 
-<div class="frame">
-  <div class="section-title"><span lang="en">BLOG</span><br><span lang="ja">ブログ</span></div>
+<div class="frame-archive-top">
+  <h1 class="section-title"><span lang="en">BLOG</span><br><span lang="ja">ブログ</span></h1>
   <div class="breadcrumb">TOP<span class="middledot">・</span><span lang="ja">ブログ</span></div>
   <img src="<?php echo get_template_directory_uri(); ?>/img/mv-bg.jpg" alt="">
 </div>
@@ -51,9 +53,9 @@
             </div>
             <h4><?php the_title(); ?></h4>
             <?php
-              add_filter('excerpt_length', function ($length) {
-                return 180; //表示する文字数
-              }, 999);
+            add_filter('excerpt_length', function ($length) {
+              return 180; //表示する文字数
+            }, 999);
             ?>
             <p><?php the_excerpt(); ?></p>
           </a>
@@ -62,10 +64,21 @@
     <?php endif; ?>
   </ul>
   <ul class="post-archive">
-    <!-- 投稿数を6ページに限定する設定 -->
     <?php
+    // 三項演算子
+    // 0 to 0 falseとなる数値クラスの性質を使う。phpはクラスあったか？？？
+    // if falseの時は1が入る寸法
+    $recent_page = get_query_var('paged') ? get_query_var('paged') : 1;
+    $args = array(
+      // defaultでは'post'。例えば'mesg'という名称のカスタム投稿を追加した場合は、
+      // 'post_type' => 'mesg'として宣言する。
+      'post_type' => 'post',
+      'posts_per_page' => 3,
+      'paged' => $recent_page
+    );
+    // 投稿数を6ページに限定する設定
     // 3ページだけ取ってくるという状態を変数に格納。
-    $args = array('posts_per_page' => 6);
+    // $args = array('posts_per_page' => 6);
     // このインスタンスで機能しているDBへ引数として渡し、
     // 該当データを変数へ保存。
     $my_query = new WP_Query($args);
@@ -100,9 +113,9 @@
             </div>
             <h4 class="shrinkLine"><?php the_title(); ?></h4>
             <?php
-              add_filter('excerpt_length', function ($length) {
-                return 50; //表示する文字数
-              }, 999);
+            add_filter('excerpt_length', function ($length) {
+              return 50; //表示する文字数
+            }, 999);
             ?>
             <p><?php the_excerpt(); ?></p>
           </a>
@@ -111,13 +124,22 @@
     <?php endif; ?>
   </ul>
 
-  <div class="more-info-btn">
-    一覧を見る
-    <div class="border"></div>
-  </div>
+  <!-- 装飾（<, >, ...）については、
+        WPが書き出した要素を参照してSassで調節している。 -->
+  <?php
+  $args = array(
+    'type' => 'list',
+    'current' => $recent_page,
+    'total' => $my_query->max_num_pages,
+    'prev_text' => '<',
+    'next_text' => '>',
+  );
+  echo paginate_links($args);
+  ?>
 </section>
 
-<section class="posts">
+<section class="posts project-archive">
+  <h2 class="section-title">施工事例<br><span lang="en">PROJECT</span></h2>
   <?php
   $args = array(
     'post_type' => 'project',
@@ -135,12 +157,25 @@
               <?php the_post_thumbnail(); ?>
             </div>
             <time datetime="<?php echo get_the_date('Y-m-d') ?>"><?php echo get_the_date('Y/m/d') ?></time>
-            <h4 class="shrinkLine"><?php the_title(); ?></h4>
+            <h4><?php the_title(); ?></h4>
             <p><?php the_excerpt(); ?></p>
           </a>
         </li>
       <?php endwhile; ?>
     <?php endif; ?>
+  </ul>
+  <a class="more-info-btn" href="">
+    事業紹介を見る
+    <div class="border"></div>
+  </a>
+</section>
+
+<section id="contact" class="contact">
+  <p>電気のことでお困りの際は<br class="for-sp">気軽にご相談ください</p>
+  <a href="">電気工事のご依頼・ご相談はこちら</a>
+  <ul>
+    <li lang="en">0721-23-5658</li>
+    <li><span>受付時間</span>&emsp;平日&nbsp;<span lang="en"><time datetime="09:00">9:00&thinsp;-&thinsp;<time datetime="17:00"></time>17:00</span></li>
   </ul>
 </section>
 

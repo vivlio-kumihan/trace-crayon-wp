@@ -1,0 +1,115 @@
+<?php /* Template Name: お問い合せ */ ?>
+
+<?php get_header(); ?>
+
+<div class="frame-archive-top">
+  <h1 class="section-title"><span lang="en">CONTACT</span><br><span lang="ja">お問い合わせ</span></h1>
+  <div class="breadcrumb">TOP<span class="middledot">・</span><span lang="ja">お問い合わせ</span></div>
+  <img src="<?php echo get_template_directory_uri(); ?>/img/00-page-contact-bg-mv-bg.jpg" alt="">
+</div>
+
+
+<section class="contact-page">
+  <p class="lead">
+    くれよんに興味を持っていただきありがとうございます。<br>
+    電気のことでお困りの方。電気工事士の仕事に興味がある方。<br>
+    お気軽にご相談ください。お電話での問い合わせも受け付けています。
+  </p>
+
+  <div class="call-tel"><span class="eye-catch">TEL</span>0721-23-5658</div>
+  <div class="office-hours">
+    受付時間&nbsp;/&nbsp;平日<time datetime="08:00">8:00</time><span class="hyphone">&nbsp;-&nbsp;</span><time datetime="17:30">17:30</time>
+  </div>
+
+  <div class="contact-container">
+    <ul class="process">
+      <li><span lang="en">1</span><br>入力</li>
+      <li><span lang="en">2</span><br>確認</li>
+      <li><span lang="en">3</span><br>送信</li>
+    </ul>
+
+    <dl class="contact-form">
+      <div class="input-raido">
+        <dt>お問い合わせの区分<span>必須</span></dt>
+        <dd>
+          <div>
+            <input type="radio" id="about-construction" class="entry" name="radio">
+            <label for="about-construction">電気工事について</label>
+          </div>
+          <div>
+            <input type="radio" id="about-recruit" class="entry" name="radio">
+            <label for="about-recruit">採用について</label>
+          </div>
+          <div>
+            <input type="radio" id="about-other" class="entry" name="radio">
+            <label for="about-other">その他お問い合わせ</label>
+          </div>
+        </dd>
+      </div>
+      <div>
+        <dt>お名前<span>必須</span></dt>
+        <dd><input type="text" placeholder="山田太郎"></dd>
+      </div>
+      <div>
+        <dt>フリガナ<span>必須</span></dt>
+        <dd><input type="text" placeholder="ヤマダタロウ"></dd>
+      </div>
+      <div>
+        <dt>メールアドレス<span>必須</span></dt>
+        <dd><input type="email" placeholder="sample@yahoo.co.jp"></dd>
+      </div>
+      <div>
+        <dt>電話番号<span>必須</span></dt>
+        <dd><input type="tel" placeholder="000-000-0000（ハイフンなしでも可）"></dd>
+      </div>
+      <div class="input-raido">
+        <dt>希望連絡手段<span>任意</span></dt>
+        <dd>
+          <div>
+            <input type="radio" id="contact-email" class="entry" name="radio">
+            <label for="contact-email">メール</label>
+          </div>
+          <div>
+            <input type="radio" id="contact-tel" class="entry" name="radio">
+            <label for="contact-tel">電話</label>
+          </div>
+        </dd>
+      </div>
+      <div>
+        <dt>会社名<span>任意</span></dt>
+        <dd><input type="text" placeholder="会社名が入ります"></dd>
+      </div>
+      <div>
+        <dt>住所<span>任意</span></dt>
+        <dd>
+          <label for="postal-code">〒</label>
+          <input type="text" name="postal-code" placeholder="（例）00-123-4567">
+          <input type="text" name="address" placeholder="住所が入ります">
+        </dd>
+      </div>
+      <div>
+        <dt>お問い合わせ内容<span>必須</span></dt>
+        <dd>
+          <textarea name="inquiry-details"></textarea>
+        </dd>
+      </div>
+    </dl>
+
+    <span class="under-line">プライバシーポリシー</span>に同意の上、送信してください。
+    <input type="radio" id="agreement" name="radio">
+    <label for="agreement">プライバシーポリシーに同意する</label>
+
+    <button>確認内容</button>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <p>電気のことでお困りの際は<br class="for-sp">気軽にご相談ください</p>
+  <a href="">電気工事のご依頼・ご相談はこちら</a>
+  <ul>
+    <li lang="en">0721-23-5658</li>
+    <li><span>受付時間</span>&emsp;平日&nbsp;<span lang="en"><time datetime="09:00">9:00&thinsp;-&thinsp;<time datetime="17:00"></time>17:00</span></li>
+  </ul>
+</section>
+
+<?php get_footer(); ?>

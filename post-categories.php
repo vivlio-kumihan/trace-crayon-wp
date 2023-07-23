@@ -1,4 +1,3 @@
-
 <ul class="post-categories">
   <?php
   // 『the_category()』を配列にして出力すには、

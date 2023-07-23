@@ -17,7 +17,7 @@
   <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php echo body_class(); ?>>
   <div id="loading" class="loading keep">
     <!-- ロゴ　白い線画 -->
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 325.5 325.5">
@@ -53,15 +53,15 @@
   <div id="main" class="main">
     <header>
       <figure class="ci">
-        <a href="">
+        <a href="<?php echo home_url('/') ?>">
           <img class="logo" src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="株式会社くれよんのロゴ"></img>
         </a>
         <figcaption class="catch-copy">電気工事業界を<br>色めく仕事に</figcaption>
       </figure>
       <?php
-      wp_nav_menu(array(
-        'theme_location' => 'nav-link'
-      ))
+        wp_nav_menu(array(
+          'theme_location' => 'nav-link'
+        ))
       ?>
       <!-- <ul id="nav-link" class="nav-link">
         <li><a href="">ブログ</a></li>

@@ -291,5 +291,5 @@ $variables_news = array(
     <li><span>受付時間</span>&emsp;平日&nbsp;<span lang="en"><time datetime="09:00">9:00&thinsp;-&thinsp;<time datetime="17:00"></time>17:00</span></li>
   </ul>
 </section>
-</div>
+
 <?php get_footer(); ?>

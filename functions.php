@@ -27,8 +27,8 @@ add_action('wp_enqueue_scripts', 'behavior_js');
 register_nav_menus(array(
   'nav-link' => 'nav_link',
   'menu-link' => 'menu_link',
+  'recommendation-link' => 'recommendation_link',
 ));
-
 
 // 投稿一覧ページを作成する。
 // カテゴリーやタブのページ生成とは何の関係もないことに留意する。
@@ -42,7 +42,6 @@ function post_has_archive($args, $post_type)
   return $args;
 }
 add_filter('register_post_type_args', 'post_has_archive', 10, 2);
-
 
 // 投稿抜粋の末尾記号を変更する。
 function new_excerpt_more( $more ) {

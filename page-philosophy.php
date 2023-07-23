@@ -1,3 +1,5 @@
+<?php /* Template Name: 企業理念 */ ?>
+
 <header>
   <div class="upper">
     <h1><span lang="en">PHILOSOPHY</span><br><span lang="ja">企業理念</span></h1>
@@ -23,7 +25,7 @@
     <div>VALUE</div>
     <div>なぜくれよんなのか？</div>
   </div>
-  
+
   <section class="mission">
     <h2>存在意義<br><span lang="en">MISSION</span></h2>
     <div class="catch">まだ現場にない価値を描く</div>
@@ -44,7 +46,7 @@
       </div>
     </div>
   </section>
-  
+
   <section class="vision">
     <h2>目指すべき将来像<br><span lang="en">VISION</span></h2>
     <div class="catch">電気工事業界を色めく仕事に</div>
@@ -52,20 +54,20 @@
       業界内外からのすべてのネガティブなイメージを払拭し、電気工事の仕事を、<br>
       家族や友人など、すべての関わる人にとって色めくものにする。
     </div>
-  
+
     <h4>くれよんの“色めく”とは</h4>
     <div class="copy">
       色鮮やかに互いの個性（色）が混ざり合い、<br>
       関わるすべての人たちから憧れられている状態。
     </div>
-  
+
     <p class="lead">くれよんの電気工事で</p>
     <ul class="claim">
       <li>元請け企業から<br><span class="main">感謝される</span></li>
       <li>同業他社から<br><span class="main">憧れられる</span></li>
       <li>社員が周囲の人々にとっての<br><span class="main">誇りとなる</span></li>
     </ul>
-  
+
     <h5>2026年までの中期VISION</h5>
     <div class="catch">大阪で1番色めく電気工事屋</div>
     <p class="lead">達成に必要な要件</p>
@@ -76,15 +78,15 @@
     <li>色めく広報戦略</li>
     <li>色めく社長</li>
     </ul>
-  
+
     <img src="" alt="">
   </section>
-  
+
   <section class="value">
     <h2>守るべき価値観<br><span lang="en">VALUE</span></h2>
     <div class="catch">くれよんの「12の原理原色」</div>
     <img src="" alt="">
-  
+
     <ul class="claim">
       <li>
         <div class="sub-title">「12の原理原色」実現のために必要なこと</div>
@@ -98,12 +100,12 @@
       </li>
     </ul>
   </section>
-  
+
   <section class="vision-map">
     <h2>ビジョンマップ<br><span lang="en">VISION MAP</span></h2>
     <img src="" alt="">
   </section>
-  
+
   <section class="why-crayon">
     <h2>なぜ「くれよん」なのか？<br><span lang="en">WHY CAMPANY NAME?</span></h2>
     <div class="copy">
