@@ -19,7 +19,7 @@
         +fw.positionAbsoluteCTL($left: ture)
         position: absolute
         top: 80px
-        width: 300px
+        width: 410px
         content: ''
         border-bottom: 2px solid fw.$color-cyan-vivid-blue
       .eye-catch
@@ -36,7 +36,6 @@
           margin-left: 15px
       time, .hyphone
         font-size: 2.5rem
-          
     .contact-container
       padding: 96px 15% 140px
       background-color: #f6f7f7
@@ -79,12 +78,15 @@
           + li
             margin-left: 100px
       .contact-form
+        margin-top: 100px
         div
           display: flex
-          align-items: center
+          margin-bottom: 30px
+          padding-bottom: 30px
+          border-bottom: 1px dotted #ccc
           dt
             width: min(300px, 100%) 
-            padding: 30px 0 30px
+            padding: 2px 0
             font-size: 1.6rem
             font-weight: 700
             line-height: 1
@@ -96,10 +98,12 @@
               line-height: 1
               color: #fff
               background-color: fw.$color-cyan-vivid-blue
+              &.optional
+                background-color: #aaa
           dd
             width: 100%
             input
-              width: 100%
+              width: 60%
               padding: 20px
               background-color: #e7e7e7
               border: unset
@@ -107,46 +111,51 @@
               &[type="text"]::placeholder, &[type="email"]::placeholder, &[type="tel"]::placeholder
                 font-size: 1.4rem
                 color: #b5b5b5
+            textarea
+              width: 100%
+              height: 325px
+              padding-top: 20px
+              background-color: #e7e7e7
+              padding: 15px 24px 5px
+              border: none
             div
               input
                 &[type="radio"]
                   opacity: 0
-                  // // テストする。
-                  // // チェックするとラベルの前と後ろにaがつく。
-                  // input[type="radio"]:checked + label::before,
-                  // input[type="radio"]:checked + label::after
-                  //   content: ''
-                  // // この仕組みを使って、
-              input[type="radio"] + label
-                position: relative
-              input[type="radio"] + label::before
-                position: absolute
-                top: 50%
-                transform: translateY(-50%)
-                left: -30px
-                content: ''
-                width: 25px
-                height: 25px
-                background-color: #fff
-                border: 1px solid #aaa
-                border-radius: 50%
-              input[type="radio"]:checked + label::after
-                position: absolute
-                top: 50%
-                transform: translateY(-50%)
-                content: ''
-                left: -23.5px
-                width: 12px
-                height: 12px
-                background-color: fw.$color-cyan-vivid-blue
-                border-radius: 50%
-          &.input-raido
+                  + label
+                    position: relative
+                    &::before
+                      position: absolute
+                      top: 50%
+                      transform: translateY(-50%)
+                      left: -30px
+                      content: ''
+                      width: 25px
+                      height: 25px
+                      background-color: #fff
+                      border: 1px solid #aaa
+                      border-radius: 50%
+                  &:checked + label::after
+                    position: absolute
+                    top: 50%
+                    transform: translateY(-50%)
+                    content: ''
+                    left: -23.5px
+                    width: 12px
+                    height: 12px
+                    background-color: fw.$color-cyan-vivid-blue
+                    border-radius: 50%
+          &.input-radio
+            align-items: center
             dd
               display: flex
               align-items: center
               gap: 10px
               padding-left: 20px
               div
+                margin-bottom: 0
+                padding-bottom: 0
+                border: unset
                 .entry
                   width: unset
                 label
@@ -154,10 +163,89 @@
                   font-weight: 500
                 + div
                   margin-left: 15px
-
-
-
-          
-
-
-    
+        .address
+          div
+            display: flex
+            align-items: center
+            margin-bottom: 0
+            padding-bottom: 0
+            border: unset
+            label
+              margin-right: 15px
+              font-size: 1.8rem
+            input
+              margin-top: 0px
+              width: 30%
+          input
+            width: 100%
+            margin-top: 20px
+    .agreement
+      text-align: center
+      p
+        margin: 30px 0 50px
+        font-size: 1.6rem
+        line-height: 1
+        letter-spacing: 0.06em
+      div
+        display: flex
+        justify-content: center
+        align-items: center
+        [type="checkbox"]
+          opacity: 1
+          + label
+            position: relative
+            &::before
+              position: absolute
+              top: 50%
+              transform: translateY(-50%)
+              left: -30px
+              content: ''
+              width: 23px
+              height: 23px
+              background-color: #fff
+              border: 1px solid fw.$color-cyan-vivid-blue
+              border-radius: 2px
+          &:checked + label::after
+            position: absolute
+            top: 1.5px
+            left: -25px
+            content: ''
+            width: 15px
+            height: 10px
+            border-left-width: 3px
+            border-bottom-width: 3px
+            transform: rotate(-45deg)
+        label
+          margin-left: 12px
+          font-size: 1.6rem
+          line-height: 1
+          font-weight: 500
+          letter-spacing: 0.06em
+      button
+        position: relative
+        width: 384px
+        margin-top: 80px
+        padding: 27px 0
+        font-size: 1.8rem
+        font-weight: 700
+        letter-spacing: 0.15em
+        text-align: center
+        color: #fff
+        background-color: #00266a
+        border: 1px solid #00266a
+        transition: .3s
+        &::after
+          +fw.fontAwesome(f178, $fontSize: 20px, $fontFamily: Free, $fontWeight: 900)
+          position: absolute
+          top: 50%
+          transform: translateY(-50%)
+          right: 5%
+          content: '\f178'
+          color: #fff
+          transition: .3s
+        &:hover
+          color: fw.$color-cyan-vivid-blue
+          background-color: #fff
+          &::after
+            right: 2%
+            color: fw.$color-cyan-vivid-blue

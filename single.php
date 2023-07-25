@@ -1,14 +1,13 @@
 <?php get_header(); ?>
 
 <div class="frame-archive-top">
-  <h1 class=" section-title"><span lang="en">BLOG</span><br><span lang="ja">ブログ</span></h1>
-  <div class="breadcrumb">TOP<span class="middledot">・</span><span lang="ja">ブログ</span></div>
-  <img src="<?php echo get_template_directory_uri(); ?>/img/mv-bg.jpg" alt="">
+  <h1 class="section-title"><span lang="en">BLOG</span><br><span lang="ja">ブログ</span></h1>
   <div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
     <?php if (function_exists('bcn_display')) {
       bcn_display();
     } ?>
   </div>
+  <img src="<?php echo get_template_directory_uri(); ?>/img/mv-bg.jpg" alt="">
 </div>
 
 <section class="single-page">
@@ -17,10 +16,13 @@
       <time datetime="<?php the_modified_date("Y-m-d"); ?>"><?php the_modified_date("Y-m-d"); ?></time>
     </li>
     <?php
-    $category = get_the_category();
-    foreach ($category as $attr) {
-      echo '<li class=this-category>#' . $attr->name . '</li>';
-    }
+      // 前の一覧ページからこの記事のリンクをクリックして飛んできた。
+      // この記事に紐づいているカテゴリーの抽出の仕方というのはわかる。
+      // 一つの記事に一つのカテゴリーだったら『the_category()』関数でもいいのか？
+      $category = get_the_category();
+      foreach ($category as $attr) {
+        echo '<li class=this-category>#' . $attr->name . '</li>';
+      }
     ?>
   </ul>
   <h1 class="blog-heading one"><?php the_title(); ?></h1>
@@ -28,9 +30,16 @@
     <p>
       <?php the_content(); ?>
     </p>
-
   </div>
 </section>
+
+<!-- ここ！------------------------------------------------------>
+<!-- クリックしてsingle.php開く。そのカテゴリーの記事一覧の表示のさせ方がわからない -->
+<section>
+  <h1 style="text-align: center; font-size: 3rem;"><?php the_category(); ?></h1>
+</section>
+
+
 
 <section class="banners">
   <ul>
@@ -150,8 +159,6 @@
     </li>
   </ul>
 </section>
-
-
 
 <section id="contact" class="contact">
   <p>電気のことでお困りの際は<br class="for-sp">気軽にご相談ください</p>

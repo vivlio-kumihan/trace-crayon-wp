@@ -63,15 +63,6 @@
           'theme_location' => 'nav-link'
         ))
       ?>
-      <!-- <ul id="nav-link" class="nav-link">
-        <li><a href="">ブログ</a></li>
-        <li><a href="">企業理念</a></li>
-        <li><a href="">事業紹介</a></li>
-        <li><a href="">代表挨拶</a></li>
-        <li><a href="">会社情報</a></li>
-        <li><a href="">採用情報</a></li>
-        <li><a href="">お問い合わせ</a></li>
-      </ul> -->
       <button id="content-links-btn" class="content-links-btn">
         <div></div>
         <div></div>
@@ -84,20 +75,6 @@
           'theme_location' => 'menu-link'
         ))
         ?>
-        <!-- class="menu-menu_link-container" -->
-        <!-- <ul>
-          <li><a href="">トップページ</a></li>
-          <li><a href="">ブログ</a></li>
-          <li><a href="">建物に電気が通るまで</a></li>
-          <li><a href="">企業理念</a></li>
-          <li><a href="">ビジョンマップができるまで</a></li>
-          <li><a href="">代表挨拶</a></li>
-          <li><a href="">電気工事対談</a></li>
-          <li><a href="">事業紹介</a></li>
-          <li><a href="">施工事例</a></li>
-          <li><a href="">会社情報</a></li>
-          <li><a href="">採用情報</a></li>
-        </ul> -->
         <a class="contact" href="">
           <p>お問い合わせ</p>
         </a>

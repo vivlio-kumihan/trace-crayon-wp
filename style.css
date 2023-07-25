@@ -1884,7 +1884,7 @@ header .menu-nav_link-container .menu li a:hover::after {
   align-items: center;
   justify-content: center;
   margin-top: 7.5px;
-  padding: 30px 0 120px;
+  padding: 30px 0 90px;
   width: 100%;
   color: #fff;
 }
@@ -2032,36 +2032,6 @@ header .menu-nav_link-container .menu li a:hover::after {
   }
 }
 
-.archive .breadcrumb {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 100px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  letter-spacing: 0.15em;
-  color: #e6e7eb;
-}
-.archive .breadcrumb::before {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  position: absolute;
-  left: -20px;
-  content: "";
-  width: 12px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background-color: #1bc9f5;
-}
-.archive .breadcrumb .middledot {
-  letter-spacing: 0;
-  margin: 0 5px;
-}
-.archive .breadcrumb span[lang=ja] {
-  border-bottom: 1px solid #1bc9f5;
-  color: #1bc9f5;
-}
 .archive .posts:first-of-type {
   padding-top: 90px;
 }
@@ -2341,7 +2311,7 @@ header .menu-nav_link-container .menu li a:hover::after {
 
 .frame-archive-top {
   position: relative;
-  height: 49vh;
+  height: 46.5vh;
 }
 .frame-archive-top img {
   width: 100%;
@@ -2349,7 +2319,7 @@ header .menu-nav_link-container .menu li a:hover::after {
   -o-object-fit: cover;
      object-fit: cover;
 }
-.frame-archive-top .section-title, .frame-archive-top .breadcrumb {
+.frame-archive-top .section-title {
   position: absolute;
   color: #fff;
 }
@@ -2383,6 +2353,62 @@ header .menu-nav_link-container .menu li a:hover::after {
   background-color: #fff;
 }
 
+.page .breadcrumbs, .archive .breadcrumbs {
+  position: absolute;
+  top: 40%;
+  right: 100px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  color: #e6e7eb;
+}
+.page .breadcrumbs > span:last-of-type, .archive .breadcrumbs > span:last-of-type {
+  pointer-events: none;
+  color: #1bc9f5;
+  border-bottom: 1px solid #1bc9f5;
+}
+.page .breadcrumbs::before, .archive .breadcrumbs::before {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -20px;
+  content: "";
+  width: 12px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: #1bc9f5;
+}
+
+.archive .breadcrumb {
+  position: absolute;
+  top: 40%;
+  right: 100px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  color: #e6e7eb;
+}
+.archive .breadcrumb::before {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  left: -20px;
+  content: "";
+  width: 12px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: #1bc9f5;
+}
+.archive .breadcrumb .middledot {
+  letter-spacing: 0;
+  margin: 0 5px;
+}
+.archive .breadcrumb span[lang=ja] {
+  border-bottom: 1px solid #1bc9f5;
+  color: #1bc9f5;
+}
+
 .page .contact-page .lead {
   margin: 110px 0 40px;
 }
@@ -2405,7 +2431,7 @@ header .menu-nav_link-container .menu li a:hover::after {
   transform: translateX(-50%);
   position: absolute;
   top: 80px;
-  width: 300px;
+  width: 410px;
   content: "";
   border-bottom: 2px solid #00266a;
 }
@@ -2478,13 +2504,18 @@ header .menu-nav_link-container .menu li a:hover::after {
 .page .contact-page .contact-container .process li + li {
   margin-left: 100px;
 }
+.page .contact-page .contact-container .contact-form {
+  margin-top: 100px;
+}
 .page .contact-page .contact-container .contact-form div {
   display: flex;
-  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px dotted #ccc;
 }
 .page .contact-page .contact-container .contact-form div dt {
   width: min(300px, 100%);
-  padding: 30px 0 30px;
+  padding: 2px 0;
   font-size: 1.6rem;
   font-weight: 700;
   line-height: 1;
@@ -2498,11 +2529,14 @@ header .menu-nav_link-container .menu li a:hover::after {
   color: #fff;
   background-color: #00266a;
 }
+.page .contact-page .contact-container .contact-form div dt span.optional {
+  background-color: #aaa;
+}
 .page .contact-page .contact-container .contact-form div dd {
   width: 100%;
 }
 .page .contact-page .contact-container .contact-form div dd input {
-  width: 100%;
+  width: 60%;
   padding: 20px;
   background-color: #e7e7e7;
   border: unset;
@@ -2515,6 +2549,14 @@ header .menu-nav_link-container .menu li a:hover::after {
 .page .contact-page .contact-container .contact-form div dd input[type=text]::placeholder, .page .contact-page .contact-container .contact-form div dd input[type=email]::placeholder, .page .contact-page .contact-container .contact-form div dd input[type=tel]::placeholder {
   font-size: 1.4rem;
   color: #b5b5b5;
+}
+.page .contact-page .contact-container .contact-form div dd textarea {
+  width: 100%;
+  height: 325px;
+  padding-top: 20px;
+  background-color: #e7e7e7;
+  padding: 15px 24px 5px;
+  border: none;
 }
 .page .contact-page .contact-container .contact-form div dd div input[type=radio] {
   opacity: 0;
@@ -2545,21 +2587,133 @@ header .menu-nav_link-container .menu li a:hover::after {
   background-color: #00266a;
   border-radius: 50%;
 }
-.page .contact-page .contact-container .contact-form div.input-raido dd {
+.page .contact-page .contact-container .contact-form div.input-radio {
+  align-items: center;
+}
+.page .contact-page .contact-container .contact-form div.input-radio dd {
   display: flex;
   align-items: center;
   gap: 10px;
   padding-left: 20px;
 }
-.page .contact-page .contact-container .contact-form div.input-raido dd div .entry {
+.page .contact-page .contact-container .contact-form div.input-radio dd div {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border: unset;
+}
+.page .contact-page .contact-container .contact-form div.input-radio dd div .entry {
   width: unset;
 }
-.page .contact-page .contact-container .contact-form div.input-raido dd div label {
+.page .contact-page .contact-container .contact-form div.input-radio dd div label {
   font-size: 1.8rem;
   font-weight: 500;
 }
-.page .contact-page .contact-container .contact-form div.input-raido dd div + div {
+.page .contact-page .contact-container .contact-form div.input-radio dd div + div {
   margin-left: 15px;
+}
+.page .contact-page .contact-container .contact-form .address div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border: unset;
+}
+.page .contact-page .contact-container .contact-form .address div label {
+  margin-right: 15px;
+  font-size: 1.8rem;
+}
+.page .contact-page .contact-container .contact-form .address div input {
+  margin-top: 0px;
+  width: 30%;
+}
+.page .contact-page .contact-container .contact-form .address input {
+  width: 100%;
+  margin-top: 20px;
+}
+.page .contact-page .agreement {
+  text-align: center;
+}
+.page .contact-page .agreement p {
+  margin: 30px 0 50px;
+  font-size: 1.6rem;
+  line-height: 1;
+  letter-spacing: 0.06em;
+}
+.page .contact-page .agreement div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page .contact-page .agreement div [type=checkbox] {
+  opacity: 1;
+}
+.page .contact-page .agreement div [type=checkbox] + label {
+  position: relative;
+}
+.page .contact-page .agreement div [type=checkbox] + label::before {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -30px;
+  content: "";
+  width: 23px;
+  height: 23px;
+  background-color: #fff;
+  border: 1px solid #00266a;
+  border-radius: 2px;
+}
+.page .contact-page .agreement div [type=checkbox]:checked + label::after {
+  position: absolute;
+  top: 1.5px;
+  left: -25px;
+  content: "";
+  width: 15px;
+  height: 10px;
+  border-left-width: 3px;
+  border-bottom-width: 3px;
+  transform: rotate(-45deg);
+}
+.page .contact-page .agreement div label {
+  margin-left: 12px;
+  font-size: 1.6rem;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+.page .contact-page .agreement button {
+  position: relative;
+  width: 384px;
+  margin-top: 80px;
+  padding: 27px 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-align: center;
+  color: #fff;
+  background-color: #00266a;
+  border: 1px solid #00266a;
+  transition: 0.3s;
+}
+.page .contact-page .agreement button::after {
+  content: f178;
+  font-size: 20px;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5%;
+  content: "\f178";
+  color: #fff;
+  transition: 0.3s;
+}
+.page .contact-page .agreement button:hover {
+  color: #00266a;
+  background-color: #fff;
+}
+.page .contact-page .agreement button:hover::after {
+  right: 2%;
+  color: #00266a;
 }
 
 .single .frame-archive-top {

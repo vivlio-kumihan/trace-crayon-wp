@@ -4,7 +4,7 @@
 
 <div class="frame-archive-top">
   <h1 class="section-title"><span lang="en">BLOG</span><br><span lang="ja">ブログ</span></h1>
-  <div class="breadcrumb">TOP<span class="middledot">・</span><span lang="ja">ブログ</span></div>
+  <div class="breadcrumb"><a href="<?php echo home_url('/') ?>">TOP</a><span class="middledot">・</span><span lang="ja">ブログ</span></div>
   <img src="<?php echo get_template_directory_uri(); ?>/img/mv-bg.jpg" alt="">
 </div>
 
@@ -19,6 +19,8 @@
     <li>社長のつぶやき</li>
     <li>広報・人事</li>
   </ul>
+  
+  <!-- とりあえず表示ページ数を1ページだけにして誤魔化している。------------ -->
   <ul class="post-archive lastest-post">
     <?php
     $args = array('posts_per_page' => 1);
@@ -63,6 +65,8 @@
       <?php endwhile; ?>
     <?php endif; ?>
   </ul>
+  <!-- とりあえず表示ページ数を1ページだけにして誤魔化している。------------ -->
+  <!-- そして、ここから表示ページ数を3ページだけにしている。------------ -->
   <ul class="post-archive">
     <?php
     // 三項演算子

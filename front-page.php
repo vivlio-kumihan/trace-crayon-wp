@@ -95,6 +95,7 @@
       </div>
     </div>
     <h2>くれよんの<span class="colorRuby action one">施</span><span class="colorRuby">工</span><span class="colorRuby">事</span><span class="colorRuby">例</span><br><span lang="en">PROJECT</span></h2>
+    <a class="test-wp-feature" style="font-size: 50px font-weight: 900; visibility: hidden; opacity: 0;" href="<?php echo home_url('/contact/'); ?>">contactへのアンカー</a>
     <p class="lead-copy per-char">手がけてきた工事は</p>
     <p class="lead-copy per-char">俺たちの軌跡です</p>
     <p class="up-appear">商業施設、オフィスビル、高速道路。<br>手がけてきた建物を通して、<br>俺たちの軌跡を知ってください。</p>
@@ -212,10 +213,10 @@
     ?>
         <li>
           <!-- 『the_permalink()』の内側に、
-                リスト要素を発生させるで生成させる
-                『the_category()』を入れ子にすると、
-                『the_permalink()』で生成したa要素の括りの構造を破壊する。
-                回避方法は、『the_category()』を配列にして出力すること。  -->
+              リスト要素を発生させるで生成させる
+              『the_category()』を入れ子にすると、
+              『the_permalink()』で生成したa要素の括りの構造を破壊する。
+              回避方法は、『the_category()』を配列にして出力すること。  -->
           <a href="<?php the_permalink(); ?>">
             <div class="frame">
               <?php the_post_thumbnail(); ?>
@@ -237,10 +238,11 @@
             </div>
             <h4 class="shrinkLine"><?php the_title(); ?></h4>
             <p><?php the_excerpt(); ?></p>
+            <p><?php the_category(); ?></p>
           </a>
         </li>
-    <?php endwhile;
-    endif; ?>
+      <?php endwhile; ?>
+    <?php endif; ?>
   </ul>
   <div class="more-info-btn">
     一覧を見る

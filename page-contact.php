@@ -4,10 +4,13 @@
 
 <div class="frame-archive-top">
   <h1 class="section-title"><span lang="en">CONTACT</span><br><span lang="ja">お問い合わせ</span></h1>
-  <div class="breadcrumb">TOP<span class="middledot">・</span><span lang="ja">お問い合わせ</span></div>
+  <div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
+    <?php if (function_exists('bcn_display')) {
+      bcn_display();
+    } ?>
+  </div>
   <img src="<?php echo get_template_directory_uri(); ?>/img/00-page-contact-bg-mv-bg.jpg" alt="">
 </div>
-
 
 <section class="contact-page">
   <p class="lead">
@@ -29,7 +32,7 @@
     </ul>
 
     <dl class="contact-form">
-      <div class="input-raido">
+      <div class="input-radio">
         <dt>お問い合わせの区分<span>必須</span></dt>
         <dd>
           <div>
@@ -62,8 +65,8 @@
         <dt>電話番号<span>必須</span></dt>
         <dd><input type="tel" placeholder="000-000-0000（ハイフンなしでも可）"></dd>
       </div>
-      <div class="input-raido">
-        <dt>希望連絡手段<span>任意</span></dt>
+      <div class="input-radio">
+        <dt>希望連絡手段<span class="optional">任意</span></dt>
         <dd>
           <div>
             <input type="radio" id="contact-email" class="entry" name="radio">
@@ -76,14 +79,16 @@
         </dd>
       </div>
       <div>
-        <dt>会社名<span>任意</span></dt>
+        <dt>会社名<span class="optional">任意</span></dt>
         <dd><input type="text" placeholder="会社名が入ります"></dd>
       </div>
-      <div>
-        <dt>住所<span>任意</span></dt>
+      <div class="address">
+        <dt>住所<span class="optional">任意</span></dt>
         <dd>
-          <label for="postal-code">〒</label>
-          <input type="text" name="postal-code" placeholder="（例）00-123-4567">
+          <div>
+            <label for="postal-code">〒</label>
+            <input type="text" name="postal-code" placeholder="（例）00-123-4567">
+          </div>
           <input type="text" name="address" placeholder="住所が入ります">
         </dd>
       </div>
@@ -94,12 +99,15 @@
         </dd>
       </div>
     </dl>
+    <div class="agreement">
+      <p><span class="under-line">プライバシーポリシー</span>に同意の上、送信してください。</p>
+      <div>
+        <input type="checkbox" id="agreement" name="radio">
+        <label for="agreement">プライバシーポリシーに同意する</label>
+      </div>
+      <button>確認内容</button>
+    </div>
 
-    <span class="under-line">プライバシーポリシー</span>に同意の上、送信してください。
-    <input type="radio" id="agreement" name="radio">
-    <label for="agreement">プライバシーポリシーに同意する</label>
-
-    <button>確認内容</button>
   </div>
 </section>
 
