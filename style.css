@@ -2555,6 +2555,7 @@ header .menu-nav_link-container .menu li a:hover::after {
   width: 100%;
   height: 325px;
   padding-top: 20px;
+  font-size: 1.4rem;
   background-color: #e7e7e7;
   padding: 15px 24px 5px;
   border: none;
@@ -2563,16 +2564,22 @@ header .menu-nav_link-container .menu li a:hover::after {
   display: flex;
 }
 .page .contact-page .contact-container .contact-form div dd .wpcf7-form-control-wrap .wpcf7-checkbox .wpcf7-list-item {
+  position: relative;
   margin: 0;
   padding-left: 28px;
-  cursor: pointer;
 }
 .page .contact-page .contact-container .contact-form div dd .wpcf7-form-control-wrap .wpcf7-checkbox .wpcf7-list-item:not(:first-of-type) {
   margin-left: 28px;
 }
 .page .contact-page .contact-container .contact-form div dd .wpcf7-form-control-wrap .wpcf7-checkbox .wpcf7-list-item input[type=checkbox] {
-  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  left: -5px;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 150%;
   opacity: 0;
+  z-index: 10;
 }
 .page .contact-page .contact-container .contact-form div dd .wpcf7-form-control-wrap .wpcf7-checkbox .wpcf7-list-item input[type=checkbox]:checked + ::after {
   position: absolute;
@@ -2584,7 +2591,6 @@ header .menu-nav_link-container .menu li a:hover::after {
   height: 12px;
   background-color: #00266a;
   border-radius: 50%;
-  z-index: 10;
 }
 .page .contact-page .contact-container .contact-form div dd .wpcf7-form-control-wrap .wpcf7-checkbox .wpcf7-list-item .wpcf7-list-item-label {
   display: block;
@@ -2592,7 +2598,6 @@ header .menu-nav_link-container .menu li a:hover::after {
   text-align: left;
   font-size: 18px;
   font-weight: 500;
-  cursor: pointer;
 }
 .page .contact-page .contact-container .contact-form div dd .wpcf7-form-control-wrap .wpcf7-checkbox .wpcf7-list-item .wpcf7-list-item-label::before {
   position: absolute;
@@ -2629,24 +2634,28 @@ header .menu-nav_link-container .menu li a:hover::after {
 .page .contact-page .contact-container .contact-form div.input-radio dd div + div {
   margin-left: 15px;
 }
-.page .contact-page .contact-container .contact-form .address div {
+.page .contact-page .contact-container .contact-form .address dd div {
   display: flex;
   align-items: center;
   margin-bottom: 0;
   padding-bottom: 0;
   border: unset;
 }
-.page .contact-page .contact-container .contact-form .address div label {
+.page .contact-page .contact-container .contact-form .address dd div label {
   margin-right: 15px;
   font-size: 1.8rem;
 }
-.page .contact-page .contact-container .contact-form .address div input {
-  margin-top: 0px;
-  width: 30%;
+.page .contact-page .contact-container .contact-form .address dd div .wpcf7-form-control-wrap input {
+  margin: 0;
+  width: 40%;
 }
-.page .contact-page .contact-container .contact-form .address input {
-  width: 100%;
+.page .contact-page .contact-container .contact-form .address dd .wpcf7-form-control-wrap input {
   margin-top: 20px;
+  width: 100%;
+}
+.page .contact-page .contact-container .contact-form .details .wpcf7-form-control-wrap input {
+  width: 100%;
+  height: 500px;
 }
 .page .contact-page .agreement {
   text-align: center;

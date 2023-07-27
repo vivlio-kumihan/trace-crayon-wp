@@ -115,6 +115,7 @@
               width: 100%
               height: 325px
               padding-top: 20px
+              font-size: 1.4rem
               background-color: #e7e7e7
               padding: 15px 24px 5px
               border: none
@@ -122,14 +123,20 @@
               .wpcf7-checkbox
                 display: flex
                 .wpcf7-list-item
+                  position: relative
                   margin: 0
                   padding-left: 28px
-                  cursor: pointer
                   &:not(:first-of-type)
                     margin-left: 28px
                   input[type="checkbox"]
-                    visibility: hidden
+                    position: absolute
+                    top: 50%
+                    left: -5px
+                    transform: translateY(-50%)
+                    width: 30px
+                    height: 150%
                     opacity: 0
+                    z-index: 10
                     &:checked + ::after
                       position: absolute
                       top: 50%
@@ -140,14 +147,12 @@
                       height: 12px
                       background-color: fw.$color-cyan-vivid-blue
                       border-radius: 50%
-                      z-index: 10
                   .wpcf7-list-item-label
                     display: block
                     position: relative
                     text-align: left
                     font-size: 18px
                     font-weight: 500
-                    cursor: pointer
                     &::before
                       position: absolute
                       top: 50%
@@ -177,21 +182,29 @@
                 + div
                   margin-left: 15px
         .address
-          div
-            display: flex
-            align-items: center
-            margin-bottom: 0
-            padding-bottom: 0
-            border: unset
-            label
-              margin-right: 15px
-              font-size: 1.8rem
+          dd
+            div
+              display: flex
+              align-items: center
+              margin-bottom: 0
+              padding-bottom: 0
+              border: unset
+              label
+                margin-right: 15px
+                font-size: 1.8rem
+              .wpcf7-form-control-wrap
+                input
+                  margin: 0
+                  width: 40%
+            .wpcf7-form-control-wrap
+              input
+                margin-top: 20px
+                width: 100%
+        .details
+          .wpcf7-form-control-wrap
             input
-              margin-top: 0px
-              width: 30%
-          input
-            width: 100%
-            margin-top: 20px
+              width: 100%
+              height: 500px
     .agreement
       text-align: center
       p
