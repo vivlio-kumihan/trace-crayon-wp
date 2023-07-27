@@ -48,3 +48,10 @@ function new_excerpt_more( $more ) {
   return '......' ;
 }
 add_filter( 'excerpt_more' , 'new_excerpt_more' );
+
+// Contact Form 7の自動『p』タグ無効
+add_filter('wpcf7_autop_or_not', 'wpcf7_autop_return_false');
+function wpcf7_autop_return_false()
+{
+  return false;
+}

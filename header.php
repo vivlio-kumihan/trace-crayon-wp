@@ -48,7 +48,7 @@
       </path>
     </svg>
     <!-- ロゴ　元画像 -->
-    <img class="org_logo" src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="株式会社くれよんのロゴ">
+    <img class=" org_logo" src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="株式会社くれよんのロゴ">
   </div>
   <div id="main" class="main">
     <header>
@@ -59,9 +59,9 @@
         <figcaption class="catch-copy">電気工事業界を<br>色めく仕事に</figcaption>
       </figure>
       <?php
-        wp_nav_menu(array(
-          'theme_location' => 'nav-link'
-        ))
+      wp_nav_menu(array(
+        'theme_location' => 'nav-link'
+      ))
       ?>
       <button id="content-links-btn" class="content-links-btn">
         <div></div>

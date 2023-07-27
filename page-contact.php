@@ -30,7 +30,7 @@
       <li><span lang="en">2</span><br>確認</li>
       <li><span lang="en">3</span><br>送信</li>
     </ul>
-
+    <?php echo do_shortcode('[contact-form-7 id="174" title="contact-form"]') ?>
     <dl class="contact-form">
       <div class="input-radio">
         <dt>お問い合わせの区分<span>必須</span></dt>

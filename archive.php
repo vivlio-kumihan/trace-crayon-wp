@@ -69,16 +69,17 @@
   <!-- そして、ここから表示ページ数を3ページだけにしている。------------ -->
   <ul class="post-archive">
     <?php
-    // 三項演算子
-    // 0 to 0 falseとなる数値クラスの性質を使う。phpはクラスあったか？？？
-    // if falseの時は1が入る寸法
-    $recent_page = get_query_var('paged') ? get_query_var('paged') : 1;
-    $args = array(
-      // defaultでは'post'。例えば'mesg'という名称のカスタム投稿を追加した場合は、
-      // 'post_type' => 'mesg'として宣言する。
-      'post_type' => 'post',
-      'posts_per_page' => 3,
-      'paged' => $recent_page
+      // 三項演算子
+      // 0 to 0 falseとなる数値クラスの性質を使う。phpはクラスあったか？？？
+      // if falseの時は1が入る寸法
+      $recent_page = get_query_var('paged') ? get_query_var('paged') : 1;
+      $args = array(
+        // defaultでは'post'。例えば'mesg'という名称のカスタム投稿を追加した場合は、
+        // 'post_type' => 'mesg'として宣言する。
+        'post_type' => 'post',
+        'posts_per_page' => 3,
+        'paged' => $recent_page,
+        'offset' => 1
     );
     // 投稿数を6ページに限定する設定
     // 3ページだけ取ってくるという状態を変数に格納。
