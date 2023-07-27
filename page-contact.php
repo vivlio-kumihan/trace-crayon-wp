@@ -1,4 +1,4 @@
-<?php /* Template Name: お問い合せ */ ?>
+<?php /* Template Name: お問い合わせ */ ?>
 
 <?php get_header(); ?>
 
@@ -30,83 +30,72 @@
       <li><span lang="en">2</span><br>確認</li>
       <li><span lang="en">3</span><br>送信</li>
     </ul>
+
+    <!-- WPのコンタクトフォームを挿入 -->
     <?php echo do_shortcode('[contact-form-7 id="174" title="contact-form"]') ?>
+
+    <!--
     <dl class="contact-form">
       <div class="input-radio">
         <dt>お問い合わせの区分<span>必須</span></dt>
         <dd>
-          <div>
-            <input type="radio" id="about-construction" class="entry" name="radio">
-            <label for="about-construction">電気工事について</label>
-          </div>
-          <div>
-            <input type="radio" id="about-recruit" class="entry" name="radio">
-            <label for="about-recruit">採用について</label>
-          </div>
-          <div>
-            <input type="radio" id="about-other" class="entry" name="radio">
-            <label for="about-other">その他お問い合わせ</label>
-          </div>
+          [checkbox* about-contact "電気工事について" "採用について" "その他お問合せ"]
         </dd>
       </div>
       <div>
         <dt>お名前<span>必須</span></dt>
-        <dd><input type="text" placeholder="山田太郎"></dd>
+        <dd>[text* sender placeholder "山田太郎"]</dd>
       </div>
       <div>
         <dt>フリガナ<span>必須</span></dt>
-        <dd><input type="text" placeholder="ヤマダタロウ"></dd>
+        <dd>[text* ruby placeholder "ヤマダタロウ"]</dd>
       </div>
       <div>
         <dt>メールアドレス<span>必須</span></dt>
-        <dd><input type="email" placeholder="sample@yahoo.co.jp"></dd>
+        <dd>[email* email placeholder "sample@yahoo.co.jp"]</dd>
       </div>
       <div>
         <dt>電話番号<span>必須</span></dt>
-        <dd><input type="tel" placeholder="000-000-0000（ハイフンなしでも可）"></dd>
+        <dd>[tel* tel placeholder "000-000-0000（ハイフンなしでも可）"]</dd>
       </div>
       <div class="input-radio">
         <dt>希望連絡手段<span class="optional">任意</span></dt>
         <dd>
-          <div>
-            <input type="radio" id="contact-email" class="entry" name="radio">
-            <label for="contact-email">メール</label>
-          </div>
-          <div>
-            <input type="radio" id="contact-tel" class="entry" name="radio">
-            <label for="contact-tel">電話</label>
-          </div>
+          [checkbox* tool "メール" "電話"]
         </dd>
       </div>
       <div>
         <dt>会社名<span class="optional">任意</span></dt>
-        <dd><input type="text" placeholder="会社名が入ります"></dd>
+        <dd>
+          [text company placeholder "会社名が入ります"]
+        </dd>
       </div>
       <div class="address">
         <dt>住所<span class="optional">任意</span></dt>
         <dd>
           <div>
             <label for="postal-code">〒</label>
-            <input type="text" name="postal-code" placeholder="（例）00-123-4567">
+            [text postal-cod placeholder "（例）123-4567"]
           </div>
-          <input type="text" name="address" placeholder="住所が入ります">
+          [text address placeholder "住所が入ります"]
         </dd>
       </div>
       <div>
         <dt>お問い合わせ内容<span>必須</span></dt>
         <dd>
-          <textarea name="inquiry-details"></textarea>
+          [text* contents]
         </dd>
       </div>
     </dl>
     <div class="agreement">
       <p><span class="under-line">プライバシーポリシー</span>に同意の上、送信してください。</p>
       <div>
-        <input type="checkbox" id="agreement" name="radio">
+        [radio agreement "プライバシーポリシーに同意する"]
         <label for="agreement">プライバシーポリシーに同意する</label>
       </div>
-      <button>確認内容</button>
-    </div>
+      <button>[submit "内容確認"]</button>
+    </div> 
+    -->
 
   </div>
 </section>

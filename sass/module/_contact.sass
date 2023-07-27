@@ -118,12 +118,36 @@
               background-color: #e7e7e7
               padding: 15px 24px 5px
               border: none
-            div
-              input
-                &[type="radio"]
-                  opacity: 0
-                  + label
+            .wpcf7-form-control-wrap
+              .wpcf7-checkbox
+                display: flex
+                .wpcf7-list-item
+                  margin: 0
+                  padding-left: 28px
+                  cursor: pointer
+                  &:not(:first-of-type)
+                    margin-left: 28px
+                  input[type="checkbox"]
+                    visibility: hidden
+                    opacity: 0
+                    &:checked + ::after
+                      position: absolute
+                      top: 50%
+                      transform: translateY(-50%)
+                      content: ''
+                      left: -23.5px
+                      width: 12px
+                      height: 12px
+                      background-color: fw.$color-cyan-vivid-blue
+                      border-radius: 50%
+                      z-index: 10
+                  .wpcf7-list-item-label
+                    display: block
                     position: relative
+                    text-align: left
+                    font-size: 18px
+                    font-weight: 500
+                    cursor: pointer
                     &::before
                       position: absolute
                       top: 50%
@@ -135,23 +159,12 @@
                       background-color: #fff
                       border: 1px solid #aaa
                       border-radius: 50%
-                  &:checked + label::after
-                    position: absolute
-                    top: 50%
-                    transform: translateY(-50%)
-                    content: ''
-                    left: -23.5px
-                    width: 12px
-                    height: 12px
-                    background-color: fw.$color-cyan-vivid-blue
-                    border-radius: 50%
           &.input-radio
             align-items: center
             dd
               display: flex
               align-items: center
               gap: 10px
-              padding-left: 20px
               div
                 margin-bottom: 0
                 padding-bottom: 0
@@ -190,8 +203,8 @@
         display: flex
         justify-content: center
         align-items: center
-        [type="checkbox"]
-          opacity: 1
+        input
+          opacity: 0
           + label
             position: relative
             &::before
