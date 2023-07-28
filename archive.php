@@ -11,18 +11,22 @@
 <section id="archive" class="posts">
   <h1>全ての記事</h1>
   <ul class="items">
-    <li>全て</li>
-    <li>電気工事</li>
-    <li>採用関連</li>
-    <li>職人の素顔</li>
-    <li>くれよんの日常</li>
-    <li>社長のつぶやき</li>
-    <li>広報・人事</li>
+    <li><a href="/archive">全て</a></li>
+    <?php
+    $categories_list = get_categories();
+    usort($categories_list, function ($a, $b) {
+      return $a->description - $b->description;
+    });
+    foreach ($categories_list as $value) {
+      echo '<li><a href="' . home_url('/') . 'category/' . $value->slug . '">' . $value->name . '</a></li>';
+    }
+    ?>
   </ul>
-  
-  <!-- とりあえず表示ページ数を1ページだけにして誤魔化している。------------ -->
+
+  <!-- 表示ページ数を1ページだけにする。------------ -->
   <ul class="post-archive lastest-post">
     <?php
+    // ここで1ページと指定
     $args = array('posts_per_page' => 1);
     $my_query = new WP_Query($args);
     ?>
@@ -65,21 +69,21 @@
       <?php endwhile; ?>
     <?php endif; ?>
   </ul>
-  <!-- とりあえず表示ページ数を1ページだけにして誤魔化している。------------ -->
-  <!-- そして、ここから表示ページ数を3ページだけにしている。------------ -->
+  <!-- 'offset' => 1で1ページ目を抜かして出力する。-->
   <ul class="post-archive">
     <?php
-      // 三項演算子
-      // 0 to 0 falseとなる数値クラスの性質を使う。phpはクラスあったか？？？
-      // if falseの時は1が入る寸法
-      $recent_page = get_query_var('paged') ? get_query_var('paged') : 1;
-      $args = array(
-        // defaultでは'post'。例えば'mesg'という名称のカスタム投稿を追加した場合は、
-        // 'post_type' => 'mesg'として宣言する。
-        'post_type' => 'post',
-        'posts_per_page' => 3,
-        'paged' => $recent_page,
-        'offset' => 1
+    // 三項演算子
+    // 0 to 0 falseとなる数値クラスの性質を使う。phpはクラスあったか？？？
+    // if falseの時は1が入る寸法
+    $recent_page = get_query_var('paged') ? get_query_var('paged') : 1;
+    $args = array(
+      // defaultでは'post'。例えば'mesg'という名称のカスタム投稿を追加した場合は、
+      // 'post_type' => 'mesg'として宣言する。
+      'post_type' => 'post',
+      'posts_per_page' => 3,
+      'paged' => $recent_page,
+      // ここで1ページ目を抜かす設定を追加している。
+      'offset' => 1
     );
     // 投稿数を6ページに限定する設定
     // 3ページだけ取ってくるという状態を変数に格納。
@@ -149,6 +153,7 @@
   $args = array(
     'post_type' => 'project',
     'posts_per_page' => 3,
+    'orderby' => 'rand'
   );
   $project_query = new WP_Query($args);
   ?>

@@ -59,9 +59,9 @@
         <figcaption class="catch-copy">電気工事業界を<br>色めく仕事に</figcaption>
       </figure>
       <?php
-      wp_nav_menu(array(
-        'theme_location' => 'nav-link'
-      ))
+        wp_nav_menu(array(
+          'theme_location' => 'nav-link'
+        ))
       ?>
       <button id="content-links-btn" class="content-links-btn">
         <div></div>
@@ -71,9 +71,9 @@
       </button>
       <div id="menu-link" class="menu-link">
         <?php
-        wp_nav_menu(array(
-          'theme_location' => 'menu-link'
-        ))
+          wp_nav_menu(array(
+            'theme_location' => 'menu-link'
+          ))
         ?>
         <a class="contact" href="">
           <p>お問い合わせ</p>

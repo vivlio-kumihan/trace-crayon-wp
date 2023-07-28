@@ -207,8 +207,6 @@
     // このインスタンスで機能しているDBへ引数として渡し、
     // 該当データを変数へ保存。
     $my_query = new WP_Query($args);
-    // 非常に違和感がある書き方をするが慣れんと仕方ない。
-    // こういう書き方でデータを収集する。。。
     if ($my_query->have_posts()) : while ($my_query->have_posts()) : $my_query->the_post();
     ?>
         <li>
@@ -238,7 +236,6 @@
             </div>
             <h4 class="shrinkLine"><?php the_title(); ?></h4>
             <p><?php the_excerpt(); ?></p>
-            <p><?php the_category(); ?></p>
           </a>
         </li>
       <?php endwhile; ?>
@@ -250,7 +247,7 @@
   </div>
 </section>
 
-<!-- リストの書き方をphpで省略する ---------------------------------------- -->
+<!-- リストの書き方をphpで省略 -->
 <?php
 $variables_news = array(
   0 => array(

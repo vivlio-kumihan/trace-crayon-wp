@@ -475,7 +475,7 @@ h2 .colorRuby:nth-of-type(4)::after {
 .menu-link.active .menu-menu_link-container .menu {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   grid-auto-flow: column;
   -moz-column-gap: 20px;
        column-gap: 20px;
@@ -2665,47 +2665,26 @@ header .menu-nav_link-container .menu li a:hover::after {
   font-size: 1.6rem;
   line-height: 1;
   letter-spacing: 0.06em;
+  color: #333;
 }
-.page .contact-page .agreement div {
+.page .contact-page .agreement p .under-line {
+  border-bottom: 2px solid #ccc;
+}
+.page .contact-page .agreement div .wpcf7-list-item.first.last {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.page .contact-page .agreement div input {
-  opacity: 0;
+.page .contact-page .agreement div .wpcf7-list-item.first.last input {
+  opacity: 1;
+  margin-right: 3px;
+  width: 30px;
+  height: 30px;
+  z-index: 100;
 }
-.page .contact-page .agreement div input + label {
-  position: relative;
-}
-.page .contact-page .agreement div input + label::before {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: -30px;
-  content: "";
-  width: 23px;
-  height: 23px;
-  background-color: #fff;
-  border: 1px solid #00266a;
-  border-radius: 2px;
-}
-.page .contact-page .agreement div input:checked + label::after {
-  position: absolute;
-  top: 1.5px;
-  left: -25px;
-  content: "";
-  width: 15px;
-  height: 10px;
-  border-left-width: 3px;
-  border-bottom-width: 3px;
-  transform: rotate(-45deg);
-}
-.page .contact-page .agreement div label {
-  margin-left: 12px;
+.page .contact-page .agreement div .wpcf7-list-item.first.last .wpcf7-list-item-label {
   font-size: 1.6rem;
-  line-height: 1;
   font-weight: 500;
-  letter-spacing: 0.06em;
 }
 .page .contact-page .agreement button {
   position: relative;
@@ -2720,6 +2699,12 @@ header .menu-nav_link-container .menu li a:hover::after {
   background-color: #00266a;
   border: 1px solid #00266a;
   transition: 0.3s;
+}
+.page .contact-page .agreement button input {
+  border: unset;
+}
+.page .contact-page .agreement button .wpcf7-spinner {
+  display: none;
 }
 .page .contact-page .agreement button::after {
   content: f178;
