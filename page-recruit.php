@@ -1,4 +1,8 @@
-<?php /* Template Name: 採用情報 */ ?>
+<?php get_header(); ?>
 
+<div class="sample-page-wrapper">
+  <p>recruit</p>
+  <button onclick="location.href='<?php echo home_url('/') ?>'">to top</a>
+</div>
 
-<h1>採用情報のページ</h1>
+<?php get_footer(); ?>

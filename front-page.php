@@ -105,7 +105,6 @@
     </div>
   </div>
 
-
   <!-- リストの書き方をphpで省略する ---------------------------------------- -->
   <!-- id="point" -->
   <?php
@@ -211,10 +210,10 @@
     ?>
         <li>
           <!-- 『the_permalink()』の内側に、
-              リスト要素を発生させるで生成させる
-              『the_category()』を入れ子にすると、
-              『the_permalink()』で生成したa要素の括りの構造を破壊する。
-              回避方法は、『the_category()』を配列にして出力すること。  -->
+          リスト要素を発生させるで生成させる
+          『the_category()』を入れ子にすると、
+          『the_permalink()』で生成したa要素の括りの構造を破壊する。
+          回避方法は、『the_category()』を配列にして出力すること。  -->
           <a href="<?php the_permalink(); ?>">
             <div class="frame">
               <?php the_post_thumbnail(); ?>
@@ -232,14 +231,19 @@
                 }
                 ?>
               </ul>
-              <time datetime="<?php echo get_the_date("Y-m-d") ?>"><?php echo get_the_date("Y年m月d日") ?></time>
+              <time datetime="<?php echo get_the_date("Y-m-d") ?>"><?php echo get_the_date("Y.m.d") ?></time>
             </div>
             <h4 class="shrinkLine"><?php the_title(); ?></h4>
+            <?php
+            add_filter('excerpt_length', function ($length) {
+              return 50; //表示する文字数
+            }, 999);
+            ?>
             <p><?php the_excerpt(); ?></p>
           </a>
         </li>
-      <?php endwhile; ?>
-    <?php endif; ?>
+    <?php endwhile;
+    endif; ?>
   </ul>
   <div class="more-info-btn">
     一覧を見る
@@ -281,6 +285,8 @@ $variables_news = array(
     <?php endforeach; ?>
   </ul>
 </section>
+
+<?php get_sidebar(('banners')); ?>
 
 <section id="contact" class="contact">
   <p>電気のことでお困りの際は<br class="for-sp">気軽にご相談ください</p>

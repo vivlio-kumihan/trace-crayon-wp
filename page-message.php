@@ -1,3 +1,8 @@
-<?php /* Template Name: 代表挨拶 */ ?>
+<?php get_header(); ?>
 
-<h1>代表挨拶のページ</h1>
+<div class="sample-page-wrapper">
+  <p>message</p>
+  <button onclick="location.href='<?php echo home_url('/') ?>'">to top</a>
+</div>
+
+<?php get_footer(); ?>

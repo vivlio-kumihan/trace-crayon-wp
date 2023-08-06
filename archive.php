@@ -14,9 +14,6 @@
     <li><a href="/archive">全て</a></li>
     <?php
     $categories_list = get_categories();
-    usort($categories_list, function ($a, $b) {
-      return $a->description - $b->description;
-    });
     foreach ($categories_list as $value) {
       echo '<li><a href="' . home_url('/') . 'category/' . $value->slug . '">' . $value->name . '</a></li>';
     }
@@ -72,69 +69,69 @@
   <!-- 'offset' => 1で1ページ目を抜かして出力する。-->
   <ul class="post-archive">
     <?php
-    // 三項演算子
-    // 0 to 0 falseとなる数値クラスの性質を使う。phpはクラスあったか？？？
-    // if falseの時は1が入る寸法
+    // 一覧の後、ページネーションで必要になるコードでもある。
+    //  get_query_var()関数に'paged'という引数を渡すと
+    //  ページ数が返ってくる。
+    //  ただし、最初は『0』が入るので、それを三項演算子を使い『1』に変更する。
+    //  get_query_var('paged')がtrueならget_query_var('paged')を代入。
+    //  get_query_var('paged')がfalseだったら『1』を代入する。
     $recent_page = get_query_var('paged') ? get_query_var('paged') : 1;
     $args = array(
       // defaultでは'post'。例えば'mesg'という名称のカスタム投稿を追加した場合は、
       // 'post_type' => 'mesg'として宣言する。
       'post_type' => 'post',
+      // 投稿全体から3ページだけ取ってきてと命令してる。
       'posts_per_page' => 3,
       'paged' => $recent_page,
+      // 質問 ///////////////////////////////////////////////////////////////////////////////////
       // ここで1ページ目を抜かす設定を追加している。
-      'offset' => 1
+      // これをつけるとページネーションが効かない。
+      // 'offset' => 1
     );
-    // 投稿数を6ページに限定する設定
-    // 3ページだけ取ってくるという状態を変数に格納。
-    // $args = array('posts_per_page' => 6);
-    // このインスタンスで機能しているDBへ引数として渡し、
-    // 該当データを変数へ保存。
+    // 投稿に関する設定を入れた変数をWP_Query()関数の引数とする。
     $my_query = new WP_Query($args);
+    // もし、投稿があれば、投稿が尽きるまでループする。ループしている間は次々にポストを投げ続ける。 
+    if ($my_query->have_posts()) : while ($my_query->have_posts()) : $my_query->the_post(); 
     ?>
-    <?php if ($my_query->have_posts()) : ?>
-      <?php while ($my_query->have_posts()) : ?>
-        <?php $my_query->the_post(); ?>
-        <li>
-          <!-- 『the_permalink()』の内側に、
-                  リスト要素を発生させるで生成させる
-                  『the_category()』を入れ子にすると、
-                  『the_permalink()』で生成したa要素の括りの構造を破壊する。
-                  回避方法は、『the_category()』を配列にして出力すること。  -->
-          <a href="<?php the_permalink(); ?>">
-            <div class="frame">
-              <?php the_post_thumbnail(); ?>
-            </div>
-            <div class="header-sub">
-              <ul class="post-categorie">
-                <?php
-                // 『the_category()』を配列にして出力すには、
-                // 『get_the_category()関数』を使う。
-                // 『the_category()』の属性が配列として取れた。
-                $category = get_the_category();
-                // name属性をキーにして値を取り出す。
-                foreach ($category as $attr) {
-                  echo '<li>' . $attr->name . '</li>';
-                }
-                ?>
-              </ul>
-              <time datetime="<?php echo get_the_date("Y-m-d") ?>"><?php echo get_the_date("Y.m.d") ?></time>
-            </div>
-            <h4 class="shrinkLine"><?php the_title(); ?></h4>
+    <li>
+      <!-- 『the_permalink()』の内側に、
+              リスト要素を発生させるで生成させる
+              『the_category()』を入れ子にすると、
+              『the_permalink()』で生成したa要素の括りの構造を破壊する。
+              回避方法は、『the_category()』を配列にして出力すること。  -->
+      <a href="<?php the_permalink(); ?>">
+        <div class="frame">
+          <?php the_post_thumbnail(); ?>
+        </div>
+        <div class="header-sub">
+          <ul class="post-categorie">
             <?php
-            add_filter('excerpt_length', function ($length) {
-              return 50; //表示する文字数
-            }, 999);
+            // 『the_category()』を配列にして出力すには、
+            // 『get_the_category()関数』を使う。
+            // 『the_category()』の属性が配列として取れた。
+            $category = get_the_category();
+            // name属性をキーにして値を取り出す。
+            foreach ($category as $attr) {
+              echo '<li>' . $attr->name . '</li>';
+            }
             ?>
-            <p><?php the_excerpt(); ?></p>
-          </a>
-        </li>
-      <?php endwhile; ?>
-    <?php endif; ?>
+          </ul>
+          <time datetime="<?php echo get_the_date("Y-m-d") ?>"><?php echo get_the_date("Y.m.d") ?></time>
+        </div>
+        <h4 class="shrinkLine"><?php the_title(); ?></h4>
+        <?php
+        add_filter('excerpt_length', function ($length) {
+          return 50; //表示する文字数
+        }, 999);
+        ?>
+        <p><?php the_excerpt(); ?></p>
+      </a>
+    </li>
+    <?php endwhile; endif; ?>
   </ul>
 
-  <!-- 装飾（<, >, ...）については、
-        WPが書き出した要素を参照してSassで調節している。 -->
+  <!-- あしらいと装飾（<, >, ...）については、
+        WPが書き出した要素を参照してSassで調節する。 -->
   <?php
   $args = array(
     'type' => 'list',

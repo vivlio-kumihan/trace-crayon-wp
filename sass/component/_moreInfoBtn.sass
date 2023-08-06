@@ -1,0 +1,58 @@
+@use "../library/function" as fn
+@use "../library/texts" as tx
+@use "../library/mixin/_positionAbsoluteCTL" as pab
+@use "../library/mixin/postCategorie" as pc
+@use "../library/mixin" as mx
+@use "../variables" as var
+@use "../variables" as col
+
+=moreInfoBtn
+  display: flex
+  justify-content: center
+  align-items: center
+  position: relative
+  width: max-content
+  margin: 40px auto 0
+  padding: 30px 65px
+  font-size: 1.8rem
+  font-weight: 500
+  line-height: 1
+  letter-spacing: .15em
+  color: col.$color-cyan-vivid-blue
+  transition: .5s
+  @content
+  &:hover
+    color: #fff
+    background-color: col.$color-cyan-vivid-blue
+    .border
+      border: 1px solid #fff
+      span
+        background-color: #fff
+  .border
+    +pab.positionAbsoluteCTL
+    width: calc(100% - 12px)
+    height: calc(100% - 12px)
+    border: 1px solid col.$color-cyan-vivid-blue
+    span 
+      position: absolute
+      top: -2.5px
+      left: -2.5px
+      width: 5px
+      height: 5px
+      background-color: col.$color-cyan-vivid-blue
+      &:nth-of-type(2) 
+        top: -2.5px
+        left: 50%
+        transform: translateX(-50%)
+      &:nth-of-type(3) 
+        top: -2.5px
+        left: calc(100% - 2.5px)
+      &:nth-of-type(4) 
+        top: calc(100% - 2.5px)
+        left: -2.5px
+      &:nth-of-type(5) 
+        top: calc(100% - 2.5px)
+        left: 50%
+      &:nth-of-type(6) 
+        top: calc(100% - 2.5px)
+        left: calc(100% - 2.5px)

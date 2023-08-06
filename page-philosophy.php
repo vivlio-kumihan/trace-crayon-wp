@@ -1,6 +1,13 @@
-<?php /* Template Name: 企業理念 */ ?>
+<?php get_header(); ?>
 
-<header>
+<div class="sample-page-wrapper">
+  <p>philosophy</p>
+  <button onclick="location.href='<?php echo home_url('/') ?>'">to top</a>
+</div>
+
+<?php get_footer(); ?>
+
+  <!-- <header>
   <div class="upper">
     <h1><span lang="en">PHILOSOPHY</span><br><span lang="ja">企業理念</span></h1>
     TOP 企業理念
@@ -124,4 +131,4 @@
       </p>
     </div>
   </section>
-</div>
+</div> -->

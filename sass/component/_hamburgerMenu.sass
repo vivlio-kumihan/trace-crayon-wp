@@ -103,99 +103,99 @@
   z-index: fw.set-index(menuLink)
   &.active
     transform: translateX(0)
-    .menu-menu_link-container
-      width: 100%
-      .menu
-        display: grid
-        grid-template-columns: repeat(2, 1fr)
-        grid-template-rows: repeat(5, 1fr)
-        grid-auto-flow: column
-        column-gap: 20px
-        li
-          position: relative
-          padding: 16px 8px
-          font-size: 16px
-          font-weight: 500
-          line-height: 1
-          border-bottom: 1px solid fw.$color-light-gray-mid
-          transition: .5s
-          &:hover
-            color: fw.$color-theme-blue
-            background-color: #fff
-          a
-            display: block
-            width: 100%
-            height: 100%
-          &::after
-            +fw.positionAbsoluteCTL(true)
-            +fw.fontAwesome("\f178")
-            position: absolute
-            top: 50%
-            transform: translateY(-50%)
-            right: 5%
-    .contact
-      +fw.toContactAnchor(16.5px, 50px)
-      margin-top: 40px
-      padding: 30px 0
-      background-image: none
-      background-color: fw.$color-cyan-dark-blue2
-      transition: .3s
-      &:hover
-        background-color: #fff
-        p
-          color: #333
-      p
-        color: #fff
-        &::before
-          +fw.fontAwesome("\f0e0", 1.8rem)
-          position: absolute
-          top: 15%
-          left: -25px
-    .other-links 
-      display: flex
-      justify-content: space-between
-      align-items: center
-      width: 100%
-      padding: 30px 0 0
+  .menu-menu_link-container
+    width: 100%
+    .menu
+      display: grid
+      grid-template-columns: repeat(2, 1fr)
+      grid-template-rows: repeat(5, 1fr)
+      grid-auto-flow: column
+      column-gap: 20px
       li
-        &:first-of-type
-          .shrinkLine
-            +fw.shrinkBorderHeader(15px, -5px, 1px, fw.$colorLinkHover, fw.$left_right)
-            font-weight: 700
-        &:last-of-type
-          .icon
-            +fw.snsLinks(24px, 20px, 0, #fff) 
-    +fw.media-query-sp
-      width: 100vw
-      overflow: auto
-      .menu-menu_link-container
-        .menu
-          grid-template-columns: 1fr
-          grid-auto-flow: unset
-          margin-top: 550px
-      .contact
-        margin-top: 30px
-        padding: 25px 25px 30px 25px
-        p
-          padding-left: 25px
-          letter-spacing: 0
-          &::before
-            left: 0px
-          &::after
-            top: 45%
-            font-size: 45px
-            letter-spacing: .07em
-            -webkit-text-stroke: 1px rgba(255, 255, 255, .65)
-      .other-links
-        flex-direction: column
-        align-items: flex-start
-        margin-top: 30px
-        border-top: 1px solid #fff
-        li:last-of-type
-          margin: 20px 0 170px
-          .icon
-            margin: 0
-            &.twitter::before, &.instagram::before
-              font-size: 40px
-            + .icon
-              margin-left: 30px
+        position: relative
+        padding: 16px 8px
+        font-size: 16px
+        font-weight: 500
+        line-height: 1
+        border-bottom: 1px solid fw.$color-light-gray-mid
+        transition: .5s
+        &:hover
+          color: fw.$color-theme-blue
+          background-color: #fff
+        a
+          display: block
+          width: 100%
+          height: 100%
+        &::after
+          +fw.positionAbsoluteCTL(true)
+          +fw.fontAwesome("\f178")
+          position: absolute
+          top: 50%
+          transform: translateY(-50%)
+          right: 5%
+  .contact
+    +fw.toContactAnchor(16.5px, 50px)
+    margin-top: 40px
+    padding: 30px 0
+    background-image: none
+    background-color: fw.$color-cyan-dark-blue2
+    transition: .3s
+    &:hover
+      background-color: #fff
+      p
+        color: #333
+    p
+      color: #fff
+      &::before
+        +fw.fontAwesome("\f0e0", 1.8rem)
+        position: absolute
+        top: 15%
+        left: -25px
+  .other-links 
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: 100%
+    padding: 30px 0 0
+    li
+      &:first-of-type
+        .shrinkLine
+          +fw.shrinkBorderHeader(15px, -5px, 1px, fw.$colorLinkHover, fw.$left_right)
+          font-weight: 700
+      &:last-of-type
+        .icon
+          +fw.snsLinks(24px, 20px, 0, #fff) 
+  +fw.media-query-sp
+    width: 100vw
+    overflow: auto
+    .menu-menu_link-container
+      .menu
+        grid-template-columns: 1fr
+        grid-auto-flow: unset
+        margin-top: 550px
+    .contact
+      margin-top: 30px
+      padding: 25px 25px 30px 25px
+      p
+        padding-left: 25px
+        letter-spacing: 0
+        &::before
+          left: 0px
+        &::after
+          top: 45%
+          font-size: 45px
+          letter-spacing: .07em
+          -webkit-text-stroke: 1px rgba(255, 255, 255, .65)
+    .other-links
+      flex-direction: column
+      align-items: flex-start
+      margin-top: 30px
+      border-top: 1px solid #fff
+      li:last-of-type
+        margin: 20px 0 170px
+        .icon
+          margin: 0
+          &.twitter::before, &.instagram::before
+            font-size: 40px
+          + .icon
+            margin-left: 30px

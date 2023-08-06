@@ -1,5 +1,13 @@
-<?php /* Template Name: 事業紹介 */ ?>
+<?php get_header(); ?>
 
+<div class="sample-page-wrapper">
+  <p>service</p>
+  <button onclick="location.href='<?php echo home_url('/') ?>'">to top</a>
+</div>
+
+<?php get_footer(); ?>
+
+<!-- 
 <header>
   <div class="upper">
     <h1><span lang="en">SERVICE</span><br><span lang="ja">事業紹介</span></h1>
@@ -267,4 +275,5 @@
     <div>
       <img src="" alt="">
     </div>
-  </div>
+  </div> 
+-->

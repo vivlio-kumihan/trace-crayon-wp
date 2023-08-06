@@ -69,6 +69,10 @@ gsap.timeline()
 // for content-links-btn div
 // document.getElementById('content-links-btn').insertAdjacentHTML('afterbegin', '<div></div><div></div><div></div>')
 
+document.querySelectorAll('.a2a_button_twitter').forEach(elem => {
+  elem.insertAdjacentHTML('afterbegin', '<p>この記事をシェアする<span class="fa-brands fa-twitter"></span></p>')
+})
+
 // for .more-info-btn .boder
 document.querySelectorAll('.border').forEach(elem => {
   elem.insertAdjacentHTML('afterbegin', '<span></span><span></span><span></span><span></span><span></span><span></span>')
@@ -248,8 +252,10 @@ gsap.fromTo(elems, .7, {
     trigger: '#composed-staff',
     // 画像の上端10%をトリガーに、スクリーンの25%上の地点から
     // アニメーションを開始するという意味。
-    start: '30% 60%',
-    end: '60% 50%',
+    // start: '30% 60%',
+    // end: '60% 50%',
+    start: 'top bottom',
+    end: '80% top',
     scrub: true,
     // markers: true
   }
@@ -453,3 +459,236 @@ mm.add("(min-width: 897px)", () => {
 //     })
 //   })
 // })
+
+// // banners
+// const banners = Array.from(document.querySelectorAll('.banners li a'))
+// const bannersFirst = banners.slice(0, 3)
+// const bannersSecond = banners.slice(3, 6)
+
+// ScrollTrigger.create({
+//   tirgger: '#banners ul',
+//   start: 'center center',
+//   markers: true,
+//   onEnter: () => {
+//     bannersFirst.forEach((elem, idx) => {
+//       const parentElem = gsap.utils.selector(elem)
+//       gsap.timeline()
+//         .from(parentElem('img'), 1, {
+//           opacity: 0
+//         })
+//         .from(parentElem('.content'), 2, {
+//           opacity: 0
+//         })
+//     })
+//   }
+// })
+
+
+
+
+// tlBanners = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: bannersFirst,
+//     start: 'center center',
+//     markers: true
+//   }
+// })
+// bannersFirst.forEach(elem => {
+//   const parentElem = gsap.utils.selector(elem)
+//   tlBanners
+//     .from(parentElem('img'), 1, {
+//       opacity: 0
+//     })
+//     .from(parentElem('.content'), 1, {
+//       opacity: 0
+//     })
+// })
+
+
+
+// tlBanners.fromTo()
+// const tlContact = gsap.timeline({
+//   defaults: {
+//     duration: 1,
+//     opacity: 0,
+//     ease: 'power3.out'
+//   },
+//   scrollTrigger: {
+//     trigger: '#contact',
+//     start: '0% 50%',
+//     // markers: true
+//   }
+// })
+// tlContact.fromTo('#contact > a', {}, { opacity: 1 })
+//   .from('#contact > p', {}, .5)
+//   .from('#contact > ul', {}, .5)
+
+
+
+// ScrollTrigger.create({
+//   trigger: bannersFirst,
+//   start: 'center center',
+//   markers: true,
+//   // 引き金が引きれたタイミングで => onEnterコールバック関数発動
+//   onEnter: () => {
+//     console.log(bannersFirst)
+//     bannersFirst.forEach((elem, idx) => {
+//       console.log(elem)
+//       const parentElem = gsap.utils.selector(elem)
+//       console.log(parentElem('img'))
+//       gsap.timeline()
+//         .fromTo(parentElem('img'), .3, {
+//           opacity: 0
+//         }, {
+//           opacity: 1
+//         })
+//     })
+    // ３つのli要素を順次処理する。
+    // lists.forEach((elem, idx) => {
+    //   // forEachで回すごとに『idx * .2』延滞させる。
+    //   // const animationDelay = `+=${idx * .2}`
+    //   // li要素を親要素として内包されている要素へアクセスする準備
+    //   let parentElem = gsap.utils.selector(elem)
+    //   // 後は、下記の進行通り効果・動きが処理される。
+    //   gsap.timeline()
+    //     // li要素全体に対して延滞効果をつける。
+    //     // これをつけないと一斉に変化してしまう。効果抜群。
+    //     // .to(elem, .4, { opacity: 1 })
+    //     // .to(elem, .4, { opacity: 1 }, animationDelay)
+    //     // 動きが始まるのを合図にクラスをつける。シャッター効果。
+    //     // .to(elem, .4, { onStart: () => elem.classList.add('open') })
+    //     .fromTo(parentElem('img'), .5, {
+    //       opacity: 0
+    //     }, {
+    //       opacity: 1
+    //     })
+        // li > div要素全体に延滞効果をつける。
+        // これをつけないと一斉に変化してしまう。効果抜群。
+        // .to(parentElem('div'), .7, { opacity: 1 })
+        // .to(parentElem('div'), .7, { opacity: 1 }, animationDelay)
+        // .to(parentElem('h4'), .7, { opacity: 1 })
+        // .to(parentElem('p:first-of-type'), .7, { opacity: 1 })
+        // .to(parentElem('p:last-of-type'), .7, { opacity: 1 }, '-=0.3')
+    // })
+//   }
+// })
+
+// banners
+const banners = Array.from(document.querySelectorAll('.banners li a'))
+const bannersFirst = banners.slice(0, 3)
+const bannersSecond = banners.slice(3, 6)
+
+// // 全体を表すのはできた。
+// gsap.fromTo(bannersFirst, {
+//   opacity: 0
+// },
+// {
+//   opacity: 1,
+//   duration: .5,
+//   scrollTrigger: {
+//     trigger: bannersFirst,
+//     start: 'center center',
+//     end: 'center center',
+//     markers: true
+//   }
+// })
+
+// // imgだけを表すのはできた。
+// bannersFirst.forEach(elem => {
+//   const parentElem = gsap.utils.selector(elem)
+//   gsap.fromTo(parentElem('img'), {
+//     opacity: 0
+//   },
+//   {
+//     opacity: 1,
+//     duration: .5,
+//     scrollTrigger: {
+//       trigger: bannersFirst,
+//       start: 'center center',
+//       end: 'center center',
+//       markers: true
+//     }
+//   })
+// })
+
+// 質問 /////////////////////////////////////////////////////
+
+bannersFirst.forEach(elem => {
+  const tl = gsap.timeline()
+  const parentElem = gsap.utils.selector(elem)
+  ScrollTrigger.create({
+    trigger: bannersFirst,
+    start: 'top center',
+    markers: true,
+    onEnter: () => {
+      tl.to(parentElem('img'), {
+          opacity: 1,
+          duration: .5,
+        })
+        .to(parentElem('.content'), {
+          opacity: 1,
+          duration: 1,
+        })
+        .to(elem, {
+          onEnter: () => elem.classList.add('active')
+        })
+        .to(parentElem('svg'), {
+          opacity: 1,
+          duration: .3,
+        })
+    }
+  })
+})
+
+bannersSecond.forEach(elem => {
+  const tl = gsap.timeline()
+  const parentElem = gsap.utils.selector(elem)
+  ScrollTrigger.create({
+    trigger: bannersSecond,
+    start: 'top center',
+    markers: true,
+    onEnter: () => {
+      tl.to(parentElem('img'), {
+          opacity: 1,
+          duration: .5,
+        })
+        .to(parentElem('.content'), {
+          opacity: 1,
+          duration: .3,
+        })
+        .to(elem, {
+          onEnter: () => elem.classList.add('active')
+        })
+        .to(parentElem('svg'), {
+          opacity: 1,
+          duration: 1,
+        })
+    }
+  })
+})
+
+gsap.to('#banners .frame', {
+  opacity: 1,
+  duration: .5,
+  scrollTrigger: {
+    trigger: '#banners .frame',
+    start: 'top center',
+    markers: true
+  }
+})
+
+///////////////////////////////////////////////////////
+
+// gsap.timeline()
+//   .fromTo('.outer_frame',
+//     { 'stroke-dashoffset': '-1300px' },
+//     { 'stroke-dashoffset': '0', duration: 1, delay: 1, stagger: .2 })
+//   .fromTo('.logo_svg',
+//     { 'stroke-dashoffset': '1300px' },
+//     { 'stroke-dashoffset': '0', duration: 2.5 }, '-=0.2')
+//   .to('.outer_frame',
+//     { opacity: 0, duration: .5, ease: 'power1.inOut' }, '-=1.5')
+//   .to('.logo_svg',
+//     { opacity: 0, duration: .5, ease: 'power1.inOut' }, '<')
+//   .to('.org_logo',
+//     { opacity: 1, duration: .5, ease: 'power1.inOut' }, '<')

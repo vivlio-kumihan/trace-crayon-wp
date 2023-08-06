@@ -1,3 +1,8 @@
-<?php /* Template Name: 会社情報　*/ ?>
+<?php get_header(); ?>
 
-<h1>会社情報のページ</h1>
+<div class="sample-page-wrapper">
+  <p>campany</p>
+  <button onclick="location.href='<?php echo home_url('/') ?>'">to top</a>
+</div>
+
+<?php get_footer(); ?>
